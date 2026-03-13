@@ -1,0 +1,737 @@
+/* ===== Reset (usuwa m.in. margin: 8px) ===== */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* ===== Theme tokens ===== */
+:root{
+  --accent: #f5c518;   /* żółty */
+  --accent-2: #ffde59;
+  --bg1: #070b14;
+  --bg2: #091329;
+  --card: rgba(255,255,255,0.06);
+  --card2: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.10);
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.68);
+  --shadow: 0 18px 60px rgba(0,0,0,0.45);
+}
+
+.app.dark{
+  --bg1: #070b14;
+  --bg2: #0b1833;
+  --card: rgba(255,255,255,0.06);
+  --card2: rgba(255,255,255,0.09);
+  --border: rgba(255,255,255,0.12);
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.70);
+}
+
+.app.light{
+  --bg1: #f6f7fb;
+  --bg2: #eef2ff;
+  --card: rgba(0,0,0,0.05);
+  --card2: rgba(0,0,0,0.07);
+  --border: rgba(0,0,0,0.12);
+  --text: rgba(0,0,0,0.88);
+  --muted: rgba(0,0,0,0.60);
+  --shadow: 0 18px 60px rgba(30,41,59,0.20);
+}
+
+/* ===== Layout background ===== */
+.app{
+  padding-top: 20px;
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(800px 400px at 10% 10%, rgba(245,197,24,0.18), transparent 60%),
+    radial-gradient(700px 400px at 90% 0%, rgba(100,160,255,0.18), transparent 55%),
+    radial-gradient(900px 500px at 50% 110%, rgba(120,255,190,0.10), transparent 60%),
+    linear-gradient(180deg, var(--bg1), var(--bg2));
+}
+
+.container{
+  width: min(1100px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 18px 0 48px;
+}
+
+/* ===== Navbar ===== */
+.navbar{
+  position: relative;          /* ważne */
+  z-index: 100;                /* ⬅️ kluczowe */
+  width: min(1100px, calc(100% - 48px));
+  margin: 0 auto 16px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--card2), var(--card));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: sticky;
+  top: 16px;
+  z-index: 100;
+}
+/* ZAPYTAJ IDE */
+.nav-avatar{
+  width:40px;
+  height:50px;
+  border-radius:10px;
+  object-fit:cover;
+  display:block;
+}
+/* ZAPYTAJ IDE */
+
+/* .nav-avatar{
+  width:40px;
+  height:40px;
+  border-radius:10px;
+  object-fit:cover;
+  display:block;
+  border:1px solid var(--border);
+} */
+
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 260px;
+}
+.brand-badge{
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+.brand-text{
+  line-height: 1.1;
+}
+.brand-text .title{
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+.brand-text .subtitle{
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.nav-actions{
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn:hover{
+  border-color: rgba(255,255,255,0.22);
+}
+.app.light .btn:hover{
+  border-color: rgba(0,0,0,0.22);
+}
+.btn.primary{
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border: 1px solid rgba(0,0,0,0.12);
+  color: #151515;
+}
+.btn.primary:hover{
+  filter: brightness(1.03);
+}
+.btn.ghost{
+  background: rgba(255,255,255,0.03);
+}
+.app.light .btn.ghost{
+  background: rgba(0,0,0,0.03);
+}
+.btn.active{
+  outline: 2px solid rgba(245,197,24,0.35);
+  outline-offset: 1px;
+}
+
+/* Theme toggle – żółty jak prosiłeś */
+.theme-btn{
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.14);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #151515;
+  font-weight: 700;
+  cursor: pointer;
+}
+.theme-btn:hover{ filter: brightness(1.03); }
+
+/* ===== Grid + Cards ===== */
+.grid{
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 18px;
+  margin-top: 18px;
+  align-items: start; /*<-- to naprawia wysokość kart*/
+}
+.right-col{
+  display: grid;
+  gap: 18px;
+}
+
+@media (max-width: 920px){
+  .grid{ grid-template-columns: 1fr; }
+}
+
+.card{
+  border-radius: 18px;
+  background: linear-gradient(180deg, var(--card2), var(--card));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  padding: 18px;
+}
+
+/* ===== Home content ===== */
+.section-label{
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 17px;
+  margin-bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-label .dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+/* button ma wyglądać 1:1 jak section-label */
+/* "PROJEKTY" jako link (wygląda jak label, ale jest klikalne)
+   Nie ruszamy typografii z .section-label – tylko resetujemy style buttona. */
+.section-label.section-label-link{
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  text-align: left;
+  user-select: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  transition: filter 0.2s ease;
+}
+.section-label.section-label-link:hover{ filter: brightness(1.15); }
+.section-label.section-label-link:focus,
+.section-label.section-label-link:focus-visible{ outline: none; box-shadow: none; }
+
+/* wspólny odstęp od navbaru dla stron, które nie używają .grid */
+.page{ margin-top: 18px; }
+
+.section-label-link{
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent);
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+.section-label-link:hover{
+  color: #ffd84d;   
+
+  /* NIC nie nadpisujemy fontów */
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  line-height: inherit;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-label,
+.section-label.section-label-link{
+  font-family: Lato, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji" !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  line-height: normal !important;
+  color: var(--accent) !important;
+  -webkit-text-fill-color: currentColor !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+ 
+.h1{
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.12;
+  letter-spacing: -0.6px;
+}
+h3 {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+.p{
+  margin-top: 7px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 10px;
+}
+.chip{
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+.app.light .chip{
+  background: rgba(0,0,0,0.04);
+}
+
+.divider{
+  height: 1px;
+  background: rgba(255,255,255,0.10);
+  margin: 14px 0;
+}
+.app.light .divider{
+  background: rgba(0,0,0,0.12);
+}
+
+.tip{
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ===== Info table ===== */
+.info{
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+}
+.info-row{
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+.info h4 {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  color: var(--accent);
+}
+
+.app.light .info-row{
+  border-bottom: 1px solid rgba(0,0,0,0.10);
+}
+.info-row:last-child{ border-bottom: none; padding-bottom: 0; }
+.info-k{
+  color: var(--muted);
+  font-weight: 650;
+}
+.info-v{
+  font-weight: 500;
+}
+
+/* ===== Password checker ===== */
+.input{
+  width: 100%;
+  height: 42px;
+  border-radius: 12px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  font-weight: 700;
+  outline: none;
+}
+.app.light .input{
+  background: rgba(0,0,0,0.03);
+}
+.input:focus{
+  border-color: rgba(245,197,24,0.55);
+  box-shadow: 0 0 0 4px rgba(245,197,24,0.18);
+}
+
+.textarea{
+  width: 100%;
+  min-height: 110px;
+  resize: vertical;
+
+  border-radius: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  font-weight: 700;
+  outline: none;
+  line-height: 1.4;
+}
+.app.light .textarea{
+  background: rgba(0,0,0,0.03);
+}
+.textarea:focus{
+  border-color: rgba(245,197,24,0.55);
+  box-shadow: 0 0 0 4px rgba(245,197,24,0.18);
+}
+
+/* honeypot - ukryte pole anty-bot */
+.hp{
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.actions{
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.result{
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  font-weight: 800;
+}
+.app.light .result{ background: rgba(0,0,0,0.03); }
+.result.good{ border-color: rgba(120,255,190,0.35); }
+.result.bad{ border-color: rgba(255,120,120,0.35); }
+
+.small-link{
+  color: var(--muted);
+  font-weight: 800;
+  text-decoration: none;
+}
+.small-link:hover{ color: var(--text); }
+
+:root{
+  --bg: #0b1220;
+  --fg: #eaf0ff;
+
+  --card: rgba(255, 255, 255, 0.06);
+  --card-strong: rgba(255, 255, 255, 0.08);
+
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  --muted: rgba(234, 240, 255, 0.75);
+
+  --shadow: 0 18px 60px rgba(0,0,0,0.55);
+
+  --accent: #f7c400;         /* żółty */
+  --accent-2: #ffdd55;       /* jaśniejszy żółty */
+  --accent-fg: #111318;      /* tekst na żółtym */
+
+  --btn: rgba(255, 255, 255, 0.06);
+  --btn-hover: rgba(255, 255, 255, 0.10);
+  --btn-active: rgba(255, 255, 255, 0.12);
+  --btn-fg: rgba(234, 240, 255, 0.92);
+}
+
+/* Jasny motyw */
+.app.light {
+  --bg: #f4f6fb;
+  --fg: #101828;
+
+  --card: rgba(16, 24, 40, 0.05);
+  --card-strong: rgba(16, 24, 40, 0.07);
+
+  --border: rgba(16, 24, 40, 0.12);
+  --border-strong: rgba(16, 24, 40, 0.18);
+
+  --muted: rgba(16, 24, 40, 0.70);
+
+  --shadow: 0 18px 60px rgba(16,24,40,0.18);
+
+  --btn: rgba(16, 24, 40, 0.06);
+  --btn-hover: rgba(16, 24, 40, 0.10);
+  --btn-active: rgba(16, 24, 40, 0.14);
+  --btn-fg: rgba(16, 24, 40, 0.92);
+}
+
+/* ===== FIX: link-button bez podkreślenia ===== */
+a.btn,
+a.btn:link,
+a.btn:visited,
+a.btn:hover,
+a.btn:active {
+  text-decoration: none;
+}
+
+/* ===== Image Editor: file upload ===== */
+.file-upload {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+}
+
+.app.light .file-upload {
+  background: rgba(0,0,0,0.03);
+}
+
+.file-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #151515;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.file-button:hover {
+  filter: brightness(1.05);
+}
+
+.file-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 260px;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.contact-list a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.contact-list a:hover {
+  text-decoration: underline;
+}
+
+/* Projects: right column */
+.right-col{
+  display: grid;
+  gap: 18px;
+}
+
+/* Roadmap list */
+.roadmap-list{
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.roadmap-list li{
+  margin: 6px 0;
+}
+
+/* Planned projects list */
+.plan-list{
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+.plan-list li{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 8px 0;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.status{
+  width: 24px;
+  line-height: 1.2;
+  flex: 0 0 24px;
+}
+
+.plan-text{
+  color: var(--text);
+  font-weight: 600;
+}
+
+.subtle-title{
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+/* ===============================
+   Contact form – per-field feedback
+================================ */
+
+.contact-form{
+  display: grid;
+  gap: 12px;
+}
+
+.field{
+  display: grid;
+  gap: 8px;
+}
+
+/* Poświata błędu – tylko na danym polu */
+.input--error,
+.textarea--error{
+  border-color: rgba(255, 80, 80, 0.55) !important;
+  box-shadow: 0 0 0 4px rgba(255, 80, 80, 0.18) !important;
+}
+
+/* Poświata OK – subtelna */
+.input--ok,
+.textarea--ok{
+  border-color: rgba(120, 255, 190, 0.45) !important;
+  box-shadow: 0 0 0 4px rgba(120, 255, 190, 0.14) !important;
+}
+
+.field-error{
+  font-size: 12px;
+  font-weight: 800;
+  color: rgb(255, 120, 120);
+  padding-left: 2px;
+}
+
+/* status ogólny (np. 429/502) – w obrębie formularza */
+.contact-status{
+  margin-top: 2px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-weight: 800;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+}
+.app.light .contact-status{ background: rgba(0,0,0,0.03); }
+
+.contact-status--error{
+  border-color: rgba(255, 80, 80, 0.35);
+  color: rgb(255, 120, 120);
+  background: rgba(255, 80, 80, 0.08);
+}
+
+.contact-status--ok{
+  border-color: rgba(120, 255, 190, 0.30);
+  color: rgb(120, 255, 190);
+  background: rgba(120, 255, 190, 0.08);
+}
+
+/* Language dropdown */
+.lang {
+  position: relative;
+  display: inline-block;
+}
+
+.lang-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  /* min-width: 160px; */
+  padding: 8px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+  z-index: 110;   /* ⬅️ ważne */
+}
+
+.lang-item {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.lang-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.app.light .lang-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.lang-item.active {
+  border-color: rgba(255, 213, 79, 0.35);
+  box-shadow: 0 0 0 3px rgba(255, 213, 79, 0.12);
+}
+

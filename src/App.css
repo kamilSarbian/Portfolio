@@ -1,0 +1,189 @@
+/* ===============================
+   GLOBAL APP LAYOUT
+================================ */
+
+.app {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+
+  background-image:
+    radial-gradient(900px 500px at 10% 0%, rgba(247,196,0,0.10), transparent 60%),
+    radial-gradient(900px 500px at 90% 0%, rgba(80,160,255,0.10), transparent 60%);
+  background-attachment: fixed;
+}
+
+/* główny kontener treści */
+.container {
+  width: min(1100px, calc(100% - 48px));
+  margin: 28px auto 40px;
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+
+.navbar {
+  width: min(1100px, calc(100% - 48px));
+  margin: 20px auto 0;            /* 👈 OBNIŻENIE NAVBARA */
+  padding: 14px 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  border-radius: 18px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.07),
+    rgba(255,255,255,0.04)
+  );
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+/* ===============================
+   BRAND (LEWA STRONA)
+================================ */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--accent);
+  box-shadow: 0 10px 28px rgba(247,196,0,0.28);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+.brand-subtitle {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ===============================
+   NAV ACTIONS (PRAWA STRONA)
+================================ */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* wspólny styl przycisków */
+.nav-btn {
+  padding: 9px 14px;
+  border-radius: 12px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  background: var(--btn);
+  color: var(--btn-fg);
+  border: 1px solid var(--border);
+
+  cursor: pointer;
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    transform 120ms ease;
+}
+
+.nav-btn:hover {
+  background: var(--btn-hover);
+  border-color: var(--border-strong);
+}
+
+.nav-btn:active {
+  transform: translateY(1px);
+}
+
+/* aktywna zakładka */
+.nav-btn.active {
+  background: var(--btn-active);
+  border-color: var(--border-strong);
+  box-shadow: inset 0 0 0 2px rgba(247,196,0,0.12);
+}
+
+/* przycisk zmiany języka */
+.nav-btn.lang {
+  min-width: 88px;
+}
+
+/* przycisk motywu (żółty) */
+.nav-btn.theme {
+  background: linear-gradient(
+    180deg,
+    var(--accent-2),
+    var(--accent)
+  );
+  color: var(--accent-fg);
+  border: 1px solid rgba(0,0,0,0.15);
+  box-shadow: 0 10px 26px rgba(247,196,0,0.25);
+}
+
+.nav-btn.theme:hover {
+  filter: brightness(1.04);
+}
+
+/* ===============================
+   SEKCJE / KARTY
+================================ */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: 22px 24px;
+}
+
+/* nagłówki sekcji */
+.section-label {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 720px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-actions {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .container {
+    margin-top: 20px;
+  }
+}
