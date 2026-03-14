@@ -47,3 +47,7 @@ def version():
         "service": "portfolio-api",
         "version": "1.0.0"
     }
+
+@app.get("/")
+def root():
+    return {"message": "Portfolio API is running"}
