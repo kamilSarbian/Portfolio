@@ -3,9 +3,9 @@ import Button from "./Button";
 import { useTranslation } from "react-i18next";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://127.0.0.1:8000";
-const API_CLASSIFY = `${API_BASE}/api/ml/classify`;
-const API_INFO = `${API_BASE}/api/ml/info`;
-const API_EXAMPLES = `${API_BASE}/api/ml/examples`;
+const API_CLASSIFY = `${API_BASE}/backend/ml/classify`;
+const API_INFO = `${API_BASE}/backend/ml/info`;
+const API_EXAMPLES = `${API_BASE}/backend/ml/examples`;
 
 function clamp(n, min, max) {
   const v = Number.isFinite(n) ? n : min;

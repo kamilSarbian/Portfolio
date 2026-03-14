@@ -67,7 +67,7 @@ export default function AuthApiDemo() {
       form.append("username", email);
       form.append("password", password);
 
-      const res = await fetch(`${API_BASE}/api/auth/login`, {
+      const res = await fetch(`${API_BASE}/backend/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -92,7 +92,7 @@ export default function AuthApiDemo() {
   }
 
   async function onRegister() {
-    await callJson("POST", "/api/auth/register", { email, password });
+    await callJson("POST", "/backend/auth/register", { email, password });
   }
 
   async function onLogin() {
@@ -103,7 +103,7 @@ export default function AuthApiDemo() {
       setToken(freshToken);
 
       // od razu pobierz profil z użyciem ŚWIEŻEGO tokenu
-      await callJson("GET", "/api/users/profile", null, {
+      await callJson("GET", "/backend/users/profile", null, {
         setProfile: true,
         tokenOverride: freshToken,
       });
@@ -111,11 +111,11 @@ export default function AuthApiDemo() {
   }
 
   async function onProfile() {
-    await callJson("GET", "/api/users/profile", null, { setProfile: true });
+    await callJson("GET", "/backend/users/profile", null, { setProfile: true });
   }
 
   async function onUsers() {
-    await callJson("GET", "/api/users");
+    await callJson("GET", "/backend/users");
   }
 
   function onClear() {

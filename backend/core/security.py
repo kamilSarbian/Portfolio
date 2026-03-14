@@ -11,12 +11,12 @@ from sqlalchemy.orm import Session
 
 from .config import settings
 from .db import get_db
-from api.models.user import User
+from backend.models.user import User
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # tokenUrl jest “informacyjne” dla Swaggera
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/backend/auth/login")
 
 def hash_password(password: str) -> str:
     return pwd_context.hash(password)

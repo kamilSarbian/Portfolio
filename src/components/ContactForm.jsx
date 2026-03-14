@@ -84,7 +84,7 @@ export default function ContactForm() {
     try {
       const lang = (i18n.language || "pl").slice(0, 2); // pl/en/no
 
-      const res = await fetch(`${API_BASE}/api/contact/send`, {
+      const res = await fetch(`${API_BASE}/backend/contact/send`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

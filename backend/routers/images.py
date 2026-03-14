@@ -3,10 +3,10 @@ from __future__ import annotations
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from fastapi.responses import Response
 
-from api.core.config import settings
-from api.services.image_service import ProcessOptions, ImageProcessingError, process_image_to_png
+from backend.core.config import settings
+from backend.services.image_service import ProcessOptions, ImageProcessingError, process_image_to_png
 
-router = APIRouter(prefix="/api/image", tags=["images"])
+router = APIRouter(prefix="/backend/image", tags=["images"])
 
 
 @router.post("/process")

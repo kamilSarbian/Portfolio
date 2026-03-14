@@ -1,16 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .routers.passwords import router as passwords_router
-from .routers.images import router as images_router
-from .routers.contact import router as contact_router
-from .routers.vision import router as ml_router
+from routers.passwords import router as passwords_router
+from routers.images import router as images_router
+from routers.contact import router as contact_router
+from routers.vision import router as ml_router
+from routers.auth import router as auth_router
+from routers.users import router as users_router
 
-from .routers.auth import router as auth_router
-from .routers.users import router as users_router
-
-from .core.db import Base, engine
-from .models.user import User  # noqa: F401
+from core.db import Base, engine
+from models.user import User
 
 app = FastAPI(title="Portfolio API", version="1.0.0")
 

@@ -1,7 +1,7 @@
 import smtplib
 from email.message import EmailMessage
 
-from api.core.config import settings
+from backend.core.config import settings
 
 SUPPORTED_LANGS = {"pl", "en", "no"}
 
@@ -93,7 +93,7 @@ def send_contact_emails(
 
     # sanity-check konfiguracji
     if not settings.smtp_host or not settings.smtp_user or not settings.smtp_password:
-        raise RuntimeError("Brak konfiguracji SMTP (sprawdź api/.env).")
+        raise RuntimeError("Brak konfiguracji SMTP (sprawdź backend/.env).")
 
     from_addr = (getattr(settings, "smtp_from", None) or settings.smtp_user).strip()
     owner_addr = settings.owner_email.strip()

@@ -3,7 +3,7 @@ import Button from "./Button";
 import { useTranslation } from "react-i18next";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://127.0.0.1:8000";
-const API_URL = `${API_BASE}/api/image/process`;
+const API_URL = `${API_BASE}/backend/image/process`;
 
 const SIZES = [
   { key: "S", label: "S (320px)" },
