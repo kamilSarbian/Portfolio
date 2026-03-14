@@ -18,14 +18,14 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
-        "https://portfolio-nine-alpha-p5y45jis4c.vercel.app",
+        "https://kamilsarbian-dev.vercel.app",
     ],
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# tworzy tabelę users przy starcie
 Base.metadata.create_all(bind=engine)
 
 app.include_router(passwords_router)
@@ -36,9 +36,15 @@ app.include_router(auth_router)
 app.include_router(users_router)
 
 
+@app.get("/")
+def root():
+    return {"message": "Portfolio API is running"}
+
+
 @app.get("/health")
 def health():
     return {"ok": True}
+
 
 @app.get("/version")
 def version():
@@ -46,7 +52,3 @@ def version():
         "service": "portfolio-api",
         "version": "1.0.0"
     }
-
-@app.get("/")
-def root():
-    return {"message": "Portfolio API is running"}
