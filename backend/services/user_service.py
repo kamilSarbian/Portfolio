@@ -3,8 +3,8 @@ from __future__ import annotations
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
-from backend.core.security import hash_password, verify_password
-from backend.models.user import User
+from core.security import hash_password, verify_password
+from models.user import User
 
 
 def get_user_by_email(db: Session, email: str) -> User | None:

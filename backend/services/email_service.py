@@ -1,7 +1,7 @@
 import smtplib
 from email.message import EmailMessage
 
-from backend.core.config import settings
+from core.config import settings
 
 SUPPORTED_LANGS = {"pl", "en", "no"}
 

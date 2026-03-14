@@ -1,7 +1,7 @@
 from fastapi import APIRouter, BackgroundTasks, HTTPException, Request
 from pydantic import BaseModel, EmailStr, Field
 
-from backend.services.email_service import send_contact_emails
+from services.email_service import send_contact_emails
 
 router = APIRouter(prefix="/backend/contact", tags=["contact"])
 

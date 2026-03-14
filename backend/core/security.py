@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session
 
 from .config import settings
 from .db import get_db
-from backend.models.user import User
+from models.user import User
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

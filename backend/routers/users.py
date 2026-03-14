@@ -3,11 +3,11 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from backend.core.db import get_db
-from backend.core.security import get_current_user, require_admin
-from backend.models.user import User
-from backend.schemas.user import ProfileResponse, UsersResponse, UserOut
-from backend.services.user_service import list_users
+from core.db import get_db
+from core.security import get_current_user, require_admin
+from models.user import User
+from schemas.user import ProfileResponse, UsersResponse, UserOut
+from services.user_service import list_users
 
 router = APIRouter(prefix="/backend/users", tags=["users"])
 

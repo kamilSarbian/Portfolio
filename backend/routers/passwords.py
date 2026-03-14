@@ -4,8 +4,8 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 import httpx
 
-from backend.core.config import settings
-from backend.services.hibp_service import query_pwned_password_range
+from core.config import settings
+from services.hibp_service import query_pwned_password_range
 
 router = APIRouter(prefix="/backend/password", tags=["passwords"])
 

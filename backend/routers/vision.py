@@ -4,8 +4,8 @@ from typing import List, Optional
 
 from fastapi import APIRouter, File, HTTPException, Query, UploadFile
 
-from backend.services.clip_classifier import get_classifier
-from backend.services.vision_taxonomy import SMART_LABELS_200
+from services.clip_classifier import get_classifier
+from services.vision_taxonomy import SMART_LABELS_200
 
 router = APIRouter(prefix="/backend/ml", tags=["ml"])
 
