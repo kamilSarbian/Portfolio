@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "./Button";
+import { API } from "../api";
 
-const API_BASE = import.meta.env.VITE_API_BASE || "http://127.0.0.1:8000";
 
 function countLinks(text) {
   return (text.match(/(https?:\/\/\S+|www\.\S+)/gi) || []).length;
@@ -84,7 +84,7 @@ export default function ContactForm() {
     try {
       const lang = (i18n.language || "pl").slice(0, 2); // pl/en/no
 
-      const res = await fetch(`${API_BASE}/backend/contact/send`, {
+      const res = await fetch(API.contact.send, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

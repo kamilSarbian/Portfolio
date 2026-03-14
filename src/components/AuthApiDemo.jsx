@@ -4,8 +4,9 @@ import { useTranslation } from "react-i18next";
 import AuthStatus from "./AuthStatus";
 import JsonViewer from "./JsonViewer";
 import CopyTokenButton from "./CopyTokenButton";
+import { API } from "../api";
 
-const API_BASE = import.meta.env.VITE_API_BASE || "http://127.0.0.1:8000";
+// const API_BASE = import.meta.env.VITE_API_BASE || "http://127.0.0.1:8000";
 
 export default function AuthApiDemo() {
   const { t } = useTranslation();
@@ -26,7 +27,7 @@ export default function AuthApiDemo() {
     setOut(null);
 
     try {
-      const res = await fetch(`${API_BASE}${path}`, {
+      const res = await fetch(path, {
         method,
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +68,7 @@ export default function AuthApiDemo() {
       form.append("username", email);
       form.append("password", password);
 
-      const res = await fetch(`${API_BASE}/backend/auth/login`, {
+      const res = await fetch(API.auth.login, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -92,7 +93,7 @@ export default function AuthApiDemo() {
   }
 
   async function onRegister() {
-    await callJson("POST", "/backend/auth/register", { email, password });
+    await callJson("POST", API.auth.register, { email, password });
   }
 
   async function onLogin() {
@@ -103,7 +104,7 @@ export default function AuthApiDemo() {
       setToken(freshToken);
 
       // od razu pobierz profil z użyciem ŚWIEŻEGO tokenu
-      await callJson("GET", "/backend/users/profile", null, {
+      await callJson("GET", API.users.profile, null, {
         setProfile: true,
         tokenOverride: freshToken,
       });
@@ -111,11 +112,11 @@ export default function AuthApiDemo() {
   }
 
   async function onProfile() {
-    await callJson("GET", "/backend/users/profile", null, { setProfile: true });
+    await callJson("GET", API.users.profile, null, { setProfile: true });
   }
 
   async function onUsers() {
-    await callJson("GET", "/backend/users");
+    await callJson("GET", API.users.list);
   }
 
   function onClear() {
