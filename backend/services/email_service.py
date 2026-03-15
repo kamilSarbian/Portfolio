@@ -1,7 +1,10 @@
+import logging
 import smtplib
 from email.message import EmailMessage
 
 from core.config import settings
+
+logger = logging.getLogger(__name__)
 
 SUPPORTED_LANGS = {"pl", "en", "no"}
 
@@ -65,9 +68,6 @@ TEMPLATES = {
 
 
 def _send_smtp(msg: EmailMessage) -> None:
-    """
-    Wysyłka SMTP (STARTTLS).
-    """
     with smtplib.SMTP(settings.smtp_host, settings.smtp_port, timeout=20) as server:
         server.ehlo()
         server.starttls()
@@ -85,29 +85,39 @@ def send_contact_emails(
     lang: str | None = None,
 ) -> None:
     """
-    1) Mail do OWNER (Twojego maila) z treścią wiadomości (Reply-To = user email)
-    2) Autoresponder do nadawcy w języku ustawionym na stronie (lang)
+    1) Mail do OWNER z treścią wiadomości
+    2) Autoresponder do nadawcy
     """
+
+    logger.warning("EMAIL_ENABLED=%s", getattr(settings, "email_enabled", None))
+    logger.warning(
+        "SMTP host=%s port=%s user=%s from=%s owner=%s",
+        settings.smtp_host,
+        settings.smtp_port,
+        settings.smtp_user,
+        getattr(settings, "smtp_from", None),
+        settings.owner_email,
+    )
+
     if not getattr(settings, "email_enabled", True):
+        logger.warning("Email sending disabled by config")
         return
 
-    # sanity-check konfiguracji
     if not settings.smtp_host or not settings.smtp_user or not settings.smtp_password:
         raise RuntimeError("Brak konfiguracji SMTP (sprawdź backend/.env).")
 
     from_addr = (getattr(settings, "smtp_from", None) or settings.smtp_user).strip()
-    owner_addr = settings.owner_email.strip()
+    owner_addr = (settings.owner_email or "").strip()
     sender_addr = email.strip()
 
-    # ---------------------------
+    if not owner_addr:
+        raise RuntimeError("OWNER_EMAIL is not configured")
+
     # 1) Wiadomość do Ciebie
-    # ---------------------------
     owner_msg = EmailMessage()
     owner_msg["Subject"] = f"[Portfolio] Message from: {name}"
     owner_msg["From"] = from_addr
     owner_msg["To"] = owner_addr
-
-    # Najczyściej: odpowiadasz bezpośrednio do nadawcy
     owner_msg["Reply-To"] = sender_addr
 
     meta_lines = []
@@ -124,11 +134,10 @@ def send_contact_emails(
         f"Message:\n{message}\n"
     )
 
+    logger.warning("Sending owner email to %s", owner_addr)
     _send_smtp(owner_msg)
 
-    # ---------------------------
     # 2) Autoresponder do usera
-    # ---------------------------
     chosen = _pick_lang(lang)
     tpl = TEMPLATES[chosen]
 
@@ -138,4 +147,5 @@ def send_contact_emails(
     auto["To"] = sender_addr
     auto.set_content(tpl["body"](name))
 
+    logger.warning("Sending autoresponder to %s in lang=%s", sender_addr, chosen)
     _send_smtp(auto)
