@@ -64,7 +64,7 @@ export default function Projects({ onOpenAuth, onOpenPwned, onOpenImageEditor, o
             >
               {t("projects.open")}
             </Button>
-            <a className="btn ghost" href="http://127.0.0.1:8000/docs" target="_blank" rel="noreferrer">
+            <a className="btn ghost" href="https://portfolio-api-kym0.onrender.com/docs" target="_blank" rel="noreferrer">
               {t("projects.apiDocs")}
             </a>
           </div>
@@ -91,7 +91,7 @@ export default function Projects({ onOpenAuth, onOpenPwned, onOpenImageEditor, o
             <Button variant="primary" onClick={onOpenImageClassifier}>
               {t("projects.open")}
             </Button>
-            <a className="btn ghost" href="http://127.0.0.1:8000/docs" target="_blank" rel="noreferrer">
+            <a className="btn ghost" href="https://portfolio-api-kym0.onrender.com/docs" target="_blank" rel="noreferrer">
               {t("projects.apiDocs")}
             </a>
           </div>
@@ -115,7 +115,7 @@ export default function Projects({ onOpenAuth, onOpenPwned, onOpenImageEditor, o
             <Button variant="primary" onClick={onOpenImageEditor}>
               {t("projects.open")}
             </Button>
-            <a className="btn ghost" href="http://127.0.0.1:8000/docs" target="_blank" rel="noreferrer">
+            <a className="btn ghost" href="https://portfolio-api-kym0.onrender.com/docs" target="_blank" rel="noreferrer">
               {t("projects.apiDocs")}
             </a>
           </div>
@@ -139,7 +139,7 @@ export default function Projects({ onOpenAuth, onOpenPwned, onOpenImageEditor, o
             <Button variant="primary" onClick={onOpenPwned}>
               {t("projects.open")}
             </Button>
-            <a className="btn ghost" href="http://127.0.0.1:8000/docs" target="_blank" rel="noreferrer">
+            <a className="btn ghost" href="https://portfolio-api-kym0.onrender.com/docs" target="_blank" rel="noreferrer">
               {t("projects.apiDocs")}
             </a>
           </div>

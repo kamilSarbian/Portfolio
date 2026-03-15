@@ -45,7 +45,7 @@ export default function Home({ onGoProjects }) {
             {t("home.seeProjects")}
           </Button>
 
-          <a className="btn ghost" href="http://127.0.0.1:8000/docs" target="_blank" rel="noreferrer">
+          <a className="btn ghost" href="https://portfolio-api-kym0.onrender.com/docs" target="_blank" rel="noreferrer">
             {t("home.backendDocs")}
           </a>
         </div>
