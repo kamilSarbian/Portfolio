@@ -36,13 +36,14 @@ class ContactIn(BaseModel):
     website: str | None = Field(default=None, max_length=200)
     lang: str | None = Field(default=None, max_length=8)  # "pl" | "en" | "no"
 
-# TEST
+
 @router.post("/send")
-def send_contact(payload: ContactIn, request: Request):
+def send_contact(payload: ContactIn, bg: BackgroundTasks, request: Request):
     try:
         lang = _normalize_lang(payload.lang, request.headers.get("accept-language"))
 
-        send_contact_emails(
+        bg.add_task(
+            send_contact_emails,
             payload.name,
             payload.email,
             payload.message,
@@ -53,24 +54,3 @@ def send_contact(payload: ContactIn, request: Request):
         return {"ok": True}
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"Email send failed: {e}")
-
-
-
-# ORGINAL
-# @router.post("/send")
-# def send_contact(payload: ContactIn, bg: BackgroundTasks, request: Request):
-#     try:
-#         lang = _normalize_lang(payload.lang, request.headers.get("accept-language"))
-
-#         bg.add_task(
-#             send_contact_emails,
-#             payload.name,
-#             payload.email,
-#             payload.message,
-#             payload.company,
-#             payload.website,
-#             lang,
-#         )
-#         return {"ok": True}
-#     except Exception as e:
-#         raise HTTPException(status_code=502, detail=f"Email send failed: {e}")
