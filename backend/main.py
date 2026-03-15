@@ -32,7 +32,7 @@ Base.metadata.create_all(bind=engine)
 app.include_router(passwords_router)
 app.include_router(images_router)
 app.include_router(contact_router)
-app.include_router(ml_router)
+# app.include_router(ml_router)
 app.include_router(auth_router)
 app.include_router(users_router)
 
