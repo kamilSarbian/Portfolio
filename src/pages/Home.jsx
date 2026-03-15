@@ -31,10 +31,10 @@ export default function Home({ onGoProjects }) {
 
         <div className="chips">
           <Chip variant="primary">Python</Chip>
-          <Chip variant="primary">SQL</Chip>
+          <Chip variant="primary">FastAPI</Chip>
           <Chip variant="primary">PostgreSQL</Chip>
           <Chip>React</Chip>
-          <Chip>FastAPI</Chip>
+          <Chip>SQL</Chip>
           <Chip>REST</Chip>
         </div>
 
@@ -51,6 +51,16 @@ export default function Home({ onGoProjects }) {
         </div>
 
         <div className="tip">{t("home.tip")}</div>
+
+        <div className="tip">{t("home.demoInfo")}</div>
+        <div className="tech-badges">
+          <span className="tech-badge">⚡ Live API</span>
+          <span className="tech-badge">🐍 FastAPI</span>
+          <span className="tech-badge">🔐 JWT Auth</span>
+          <span className="tech-badge">🧠 CLIP ML</span>
+          <span className="tech-badge">☁️ Render Cloud</span>
+          <span className="tech-badge">🗄 PostgreSQL (Neon)</span>
+      </div>
       </Card>
 
       {/* PRAWA KOLUMNA */}
