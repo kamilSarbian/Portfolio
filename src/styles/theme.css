@@ -752,7 +752,8 @@ a.btn:active {
   padding: 6px 10px;
   border-radius: 999px;
   font-size: 12px;
-  border: 1px solid rgba(255,255,255,0.15);
+  font-weight: 800;
+  border: 1px solid var(--border);
   background: rgba(255,255,255,0.04);
-  color: #d7dde8;
+  color: var(--text);
 }

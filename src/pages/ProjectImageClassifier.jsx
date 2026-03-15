@@ -27,7 +27,7 @@ export default function ProjectImageClassifier({ onGoProjects }) {
           <div className="divider" />
 
           <strong>{t("imageClassifier.warning")}</strong>
-          <p className="p">{t("imageClassifier.warningDecs")}</p>
+          <p className="p">{t("imageClassifier.warningDesc")}</p>
 
           <div className="divider" />
             <ImageClassifier />
