@@ -165,10 +165,6 @@ export default function Projects({ onOpenAuth, onOpenPwned, onOpenImageEditor, o
           <div className="subtle-title">{t("projects.statusTitle")}</div>
           <PlannedProjects />
         </Card>
-
-        <Card>
-          <div className="section-label">{t("projects.")}</div>
-        </Card>
       </div>
     </div>
   );
