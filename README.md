@@ -184,7 +184,7 @@ Kamil Sarbian
 Junior Backend Developer
 
 LinkedIn  
-https://linkedin.com/in/kamilsarbian
+https://www.linkedin.com/in/kamil-sarbian-3399991ba/
 
 GitHub  
-https://github.com/kamilSarbian
+https://github.com/kamilSarbian/Portfolio
