@@ -37,10 +37,10 @@ export default function ProjectAuth({ onGoProjects }) {
             </div>
 
             <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.8, color: "var(--muted)", fontWeight: 650 }}>
-              <li><span style={{ color: "var(--fg)", fontWeight: 900 }}>POST</span> /auth/register</li>
-              <li><span style={{ color: "var(--fg)", fontWeight: 900 }}>POST</span> /auth/login</li>
-              <li><span style={{ color: "var(--fg)", fontWeight: 900 }}>GET</span> /users/profile</li>
-              <li><span style={{ color: "var(--fg)", fontWeight: 900 }}>GET</span> /users/admin</li>
+              <li><span style={{ color: "var(--fg)", fontWeight: 900 }}>POST</span> /backend/auth/register</li>
+              <li><span style={{ color: "var(--fg)", fontWeight: 900 }}>POST</span> /backend/auth/login</li>
+              <li><span style={{ color: "var(--fg)", fontWeight: 900 }}>GET</span> /backend/users/profile</li>
+              <li><span style={{ color: "var(--fg)", fontWeight: 900 }}>GET</span> /backend/users</li>
             </ul>
           </div>
 

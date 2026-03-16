@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import { Routes, Route, useLocation, useNavigate, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import Navbar from "./components/Navbar";
@@ -13,35 +14,13 @@ import "./App.css";
 
 export default function App() {
   const { i18n } = useTranslation();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const [theme, setTheme] = useState("dark");
-  const [view, setView] = useState("home");
-
-  // (język trzymamy też lokalnie, żeby toggle był prosty)
   const [lang, setLang] = useState("pl");
 
-  // Dla podstron projektów w navbarze dalej ma świecić "Projekty"
-  const navActive = view === "home" ? "home" : "projects";
-
-  const page = useMemo(() => {
-    if (view === "projects") {
-      return (
-        <Projects
-          onOpenAuth={() => setView("auth")}
-          onOpenPwned={() => setView("pwned")}
-          onOpenImageEditor={() => setView("imageEditor")}
-          onOpenImageClassifier={() => setView("imageClassifier")}
-        />
-      );
-    }
-
-    if (view === "auth") return <ProjectAuth onGoProjects={() => setView("projects")} />;
-    if (view === "pwned") return <ProjectPwned onGoProjects={() => setView("projects")} />;
-    if (view === "imageEditor") return <ProjectImageEditor onGoProjects={() => setView("projects")} />;
-    if (view === "imageClassifier") return <ProjectImageClassifier onGoProjects={() => setView("projects")} />;
-
-    return <Home onGoProjects={() => setView("projects")} />;
-  }, [view]);
+  const navActive = location.pathname === "/" ? "home" : "projects";
 
   function toggleTheme() {
     setTheme((t) => (t === "dark" ? "light" : "dark"));
@@ -61,11 +40,52 @@ export default function App() {
         onToggleTheme={toggleTheme}
         lang={lang}
         onToggleLang={toggleLang}
-        onGoHome={() => setView("home")}
-        onGoProjects={() => setView("projects")}
+        onGoHome={() => navigate("/")}
+        onGoProjects={() => navigate("/projects")}
       />
 
-      <main className="container">{page}</main>
+      <main className="container">
+        <Routes>
+          <Route
+            path="/"
+            element={<Home onGoProjects={() => navigate("/projects")} />}
+          />
+
+          <Route
+            path="/projects"
+            element={
+              <Projects
+                onOpenAuth={() => navigate("/projects/auth-api")}
+                onOpenPwned={() => navigate("/projects/password-checker")}
+                onOpenImageEditor={() => navigate("/projects/image-editor")}
+                onOpenImageClassifier={() => navigate("/projects/image-classifier")}
+              />
+            }
+          />
+
+          <Route
+            path="/projects/auth-api"
+            element={<ProjectAuth onGoProjects={() => navigate("/projects")} />}
+          />
+
+          <Route
+            path="/projects/password-checker"
+            element={<ProjectPwned onGoProjects={() => navigate("/projects")} />}
+          />
+
+          <Route
+            path="/projects/image-editor"
+            element={<ProjectImageEditor onGoProjects={() => navigate("/projects")} />}
+          />
+
+          <Route
+            path="/projects/image-classifier"
+            element={<ProjectImageClassifier onGoProjects={() => navigate("/projects")} />}
+          />
+
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
     </div>
   );
 }
