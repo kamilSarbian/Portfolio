@@ -150,7 +150,7 @@ export default function Home({ onGoProjects }) {
               <li>
                 <strong>{t("home.education")}:</strong>{" "}
                 <a
-                  href="/Generell_godkjenning_av_utenlandsk_utdanning_med_vedlegg.pdf"
+                  href="/Generell_godkjenning_av_utenlandsk_utdanning.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -158,7 +158,7 @@ export default function Home({ onGoProjects }) {
                 </a>
                 {" · "}
                 <a
-                  href="/Generell_godkjenning_av_utenlandsk_utdanning_med_vedlegg.pdf"
+                  href="/Generell_godkjenning_av_utenlandsk_utdanning.pdf"
                   download
                 >
                   {t("home.download")}
