@@ -16,7 +16,7 @@ i18n
       en: { translation: en },
       no: { translation: no },
     },
-    lng: saved || "pl",
+    lng: saved || (navigator.language.startsWith("pl") ? "pl" : "en"),
     fallbackLng: "en",
     interpolation: { escapeValue: false },
   });

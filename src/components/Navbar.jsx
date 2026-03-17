@@ -25,7 +25,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
     };
   }, []);
 
-  const lang = i18n.language || "pl";
+  const lang = i18n.language || "en";
   const subtitle =
     lang === "no" ? "Portefølje · Prosjekter" : lang === "en" ? "Portfolio · Projects" : "Portfolio · Projekty";
 
@@ -43,6 +43,15 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
           <div className="subtitle">{subtitle}</div>
         </div>
       </div>
+
+      {/* Mobile hamburger */}
+      <button
+          type="button"
+          className="nav-hamburger"
+          onClick={() => setMenuOpen((v) => !v)}
+        >
+          ☰
+      </button>
 
       {/* Desktop actions */}
       <div className="nav-actions nav-actions--desktop">

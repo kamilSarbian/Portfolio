@@ -757,3 +757,55 @@ a.btn:active {
   background: rgba(255,255,255,0.04);
   color: var(--text);
 }
+/* ===============================
+   MOBILE NAVBAR FIX
+================================ */
+
+.nav-hamburger {
+  display: none;
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* drawer (menu rozwijane) */
+.nav-drawer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.nav-drawer-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* mobile rules */
+@media (max-width: 720px) {
+
+  /* chowamy desktop */
+  .nav-actions--desktop {
+    display: none;
+  }
+
+  /* pokazujemy hamburger */
+  .nav-hamburger {
+    display: block;
+  }
+
+  /* navbar bardziej kompaktowy */
+  .navbar {
+    padding: 8px 12px;
+  }
+
+  .brand-text .title {
+    font-size: 14px;
+  }
+
+  .brand-text .subtitle {
+    font-size: 11px;
+  }
+}
