@@ -74,6 +74,7 @@ Example endpoint:
 
 ## Project Structure
 
+```text
 Portfolio/
 ├─ backend/
 │  ├─ core/         # config, database, security helpers
