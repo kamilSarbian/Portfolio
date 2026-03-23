@@ -1,190 +1,153 @@
-# Backend Portfolio – FastAPI + React + ML
+# Backend Portfolio App
 
-This repository contains a backend-focused portfolio project demonstrating API development, database integration, authentication systems, and basic machine learning inference.
+Backend-focused portfolio application built with FastAPI, PostgreSQL, JWT auth, external API integration, image processing, and ML inference.
 
-The application includes several interactive demo projects exposed through a web interface and connected to a real backend API.
+## Live Links
 
-The goal of this project is to demonstrate practical backend engineering skills such as:
+- Frontend: https://kamilsarbian-dev.vercel.app
+- API docs: https://portfolio-api-kym0.onrender.com/docs
 
-- REST API design
-- authentication and authorization
-- database modeling
-- image processing
-- integration with external APIs
-- deploying production-like services
-- basic machine learning inference
+## What this project demonstrates
 
----
+- REST API design with FastAPI
+- JWT authentication and role-based access
+- PostgreSQL integration with SQLAlchemy
+- external API integration with Have I Been Pwned
+- file upload and image processing
+- ML inference with a CLIP-based classifier
+- deployed frontend and backend services
 
-# Live Demo
+## Main Modules
 
-Frontend  
-https://kamilsarbian-dev.vercel.app
-
-Backend API (Swagger documentation)  
-https://portfolio-api-kym0.onrender.com/docs
-
----
-
-# Projects
-
-## Authentication API
-
-User management system with JWT authentication.
-
-Features:
-
-- user registration
-- login endpoint
-- JWT token authentication
-- protected endpoints
-- role-based access (admin / user)
+### 1. Authentication and Users
+User registration, login, JWT-based authentication, protected endpoints, and role-based access.
 
 Example endpoints:
+- `POST /auth/register`
+- `POST /auth/login`
+- `GET /users/profile`
+- `GET /users`
 
-POST /backend/auth/register  
-POST /backend/auth/login  
-GET /backend/users/profile  
-GET /backend/users
+### 2. Password Breach Checker
+Checks whether a password appears in known breaches using the Have I Been Pwned k-Anonymity API flow.
 
-Technologies:
+Example endpoint:
+- `POST /passwords/check`
 
-FastAPI  
-JWT  
-PostgreSQL  
-SQLAlchemy
+### 3. Image Processing API
+Simple image upload and transformation service.
 
----
+Example capabilities:
+- resize
+- grayscale conversion
+- rotation
 
-## Password Breach Checker
+### 4. Image Classifier
+Image classification demo using a CLIP-based model with predefined categories.
 
-Checks whether a password appears in known data breaches using the HaveIBeenPwned API.
+Example endpoint:
+- `POST /vision/classify`
 
-Features:
+## Tech Stack
 
-- password breach detection
-- integration with external API
-- simple password strength feedback
+### Backend
+- Python
+- FastAPI
+- SQLAlchemy
+- PostgreSQL
+- JWT authentication
+- Pillow
 
-Technologies:
+### Frontend
+- React
+- Vite
+- React Router
 
-FastAPI  
-HaveIBeenPwned API
+### ML
+- PyTorch
+- OpenCLIP
 
----
+### Infrastructure
+- Vercel
+- Render
+- Neon PostgreSQL
 
-## Image Processing API
+## Project Structure
 
-A simple image processing service accessible via API.
-
-Features:
-
-- image upload
-- image transformation
-- basic image manipulation
-
-Technologies:
-
-FastAPI  
-Pillow
-
----
-
-## Image Classifier (Machine Learning)
-
-An image classification demo using a CLIP-based model.
-
-Features:
-
-- image upload
-- classification into predefined categories
-- inference using a pretrained model
-
-Note:
-
-The first request may take a few seconds because the ML model loads on demand.  
-This approach reduces memory usage in the hosting environment.
-
-Technologies:
-
-PyTorch  
-OpenCLIP  
-FastAPI
-
----
-
-# Architecture
-
-Frontend
-
-React  
-Vite  
-React Router
-
-Backend
-
-FastAPI  
-SQLAlchemy  
-PostgreSQL
-
-Machine Learning
-
-PyTorch  
-OpenCLIP
-
-Infrastructure
-
-Vercel – frontend hosting  
-Render – backend API hosting  
-Neon – PostgreSQL database
-
----
-
-# API Documentation
-
-Swagger documentation:
-
-https://portfolio-api-kym0.onrender.com/docs
+Portfolio/
+├─ backend/
+│  ├─ core/         # config, database, security helpers
+│  ├─ models/       # SQLAlchemy models
+│  ├─ routers/      # API route modules
+│  ├─ services/     # business logic and integrations
+│  └─ main.py       # FastAPI app entrypoint
+├─ public/          # static frontend assets
+├─ src/
+│  ├─ components/   # reusable UI components
+│  ├─ pages/        # app pages
+│  ├─ i18n/         # translations
+│  └─ App.jsx       # frontend app entry
+├─ package.json
+├─ vercel.json
+└─ README.md
 
 
----
+## API Overview
 
-# Technologies Used
+| Method | Endpoint            | Auth  | Purpose                          |
+|--------|-------------------|-------|----------------------------------|
+| POST   | /auth/register     | No    | Register a new user              |
+| POST   | /auth/login        | No    | Log in and receive token         |
+| GET    | /users/profile     | Yes   | Get current user profile         |
+| GET    | /users             | Admin | List users                       |
+| POST   | /passwords/check   | No    | Check password against breaches  |
+| POST   | /images/...        | No    | Process uploaded image           |
+| POST   | /vision/classify   | No    | Run image classification         |
+| GET    | /health            | No    | Health check                     |
+| GET    | /version           | No    | Service version                  |
 
-Backend
+## Run Locally
 
-Python  
-FastAPI  
-SQLAlchemy  
-PostgreSQL  
-JWT
+### Backend
 
-Frontend
+cd backend
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload
 
-React  
-Vite  
-React Router
 
-Machine Learning
+### Frontend
 
-PyTorch  
-OpenCLIP
+npm install
+npm run dev
 
-Infrastructure
 
-Render  
-Vercel  
-Neon PostgreSQL
+## Service Endpoints
 
----
+- `/health` – basic health check  
+- `/version` – service version info  
 
-# Author
+## Notes
 
-Kamil Sarbian  
-Junior Backend Developer
+- ML model loads on first request (slower initial response)  
+- free hosting may cause cold starts  
+- some endpoints are demo-focused  
+- frontend is intentionally simple (backend-focused project)  
 
-LinkedIn  
-https://www.linkedin.com/in/kamil-sarbian-3399991ba/
+## Next Improvements
 
-GitHub  
-https://github.com/kamilSarbian/Portfolio
+- backend test coverage  
+- GitHub Actions (CI)  
+- Alembic migrations  
+- better validation and error handling  
+- rate limiting  
+- Docker support  
+
+## Author
+
+**Kamil Sarbian**  
+Junior Backend Developer  
+
+- LinkedIn: https://www.linkedin.com/in/kamil-sarbian-3399991ba/  
+- GitHub: https://github.com/kamilSarbian  
