@@ -7,30 +7,60 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Frontend
+node_modules/
+dist/
+dist-ssr/
+.vite/
 *.local
 
-# Editor directories and files
+# Editor / OS
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+Thumbs.db
 
 # Python
 venv/
 .venv/
+backend/venv/
 api/venv/
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
-# env files
+# Environments
 .env
 .env.*
+!.env.example
+backend/.env
 api/.env
+
+# Databases
+*.db
+*.sqlite3
+
+# Uploads / generated files
+uploads/
+tmp/
+temp/
+*.tmp
+
+# Build / coverage
+coverage/
+htmlcov/
+.coverage
+coverage.xml
+
+# Jupyter / misc
+.ipynb_checkpoints/
