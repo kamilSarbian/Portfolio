@@ -111,6 +111,17 @@ export default function Home({ onGoProjects }) {
               </li>
 
               <li>
+                <strong>{t("home.github")}:</strong>{" "}
+                <a
+                  href="https://github.com/kamilSarbian"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  github.com/kamilSarbian
+                </a>
+              </li>
+
+              <li>
                 <strong>{t("home.linkedin")}:</strong>{" "}
                 <a
                   href="https://www.linkedin.com/in/kamil-sarbian-3399991ba/"
