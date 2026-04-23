@@ -1,0 +1,24 @@
+from __future__ import annotations
+
+from pydantic import BaseModel, Field
+
+
+class ErrorResponse(BaseModel):
+    detail: str = Field(..., examples=["Human-readable error message."])
+
+
+class OkResponse(BaseModel):
+    ok: bool = True
+
+
+class MessageResponse(BaseModel):
+    message: str
+
+
+class HealthResponse(BaseModel):
+    ok: bool = True
+
+
+class VersionResponse(BaseModel):
+    service: str
+    version: str

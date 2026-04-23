@@ -6,18 +6,36 @@ from sqlalchemy.orm import Session
 from core.db import get_db
 from core.security import get_current_user, require_admin
 from models.user import User
+from schemas.common import ErrorResponse
 from schemas.user import ProfileResponse, UsersResponse, UserOut
 from services.user_service import list_users
 
 router = APIRouter(prefix="/backend/users", tags=["users"])
 
 
-@router.get("/profile", response_model=ProfileResponse)
+@router.get(
+    "/profile",
+    response_model=ProfileResponse,
+    summary="Get current user profile",
+    description="Returns the authenticated user's profile extracted from the JWT token.",
+    responses={
+        401: {"model": ErrorResponse, "description": "Missing or invalid bearer token."},
+    },
+)
 def profile(current_user: User = Depends(get_current_user)):
     return ProfileResponse(user=UserOut.model_validate(current_user))
 
 
-@router.get("", response_model=UsersResponse)
+@router.get(
+    "",
+    response_model=UsersResponse,
+    summary="List users (admin only)",
+    description="Returns all users. Requires a valid JWT token with the admin role.",
+    responses={
+        401: {"model": ErrorResponse, "description": "Missing or invalid bearer token."},
+        403: {"model": ErrorResponse, "description": "Authenticated user does not have admin access."},
+    },
+)
 def users_admin(
     db: Session = Depends(get_db),
     _: User = Depends(require_admin),

@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import Button from "./Button";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+
 import { API } from "../api";
+import Button from "./Button";
 
 const API_URL = API.image.process;
 
@@ -11,12 +12,16 @@ const SIZES = [
   { key: "L", label: "L (1024px)" },
 ];
 
+
 function rotateLeft(r) {
   return (r + 270) % 360;
 }
+
+
 function rotateRight(r) {
   return (r + 90) % 360;
 }
+
 
 export default function ImageEditor() {
   const { t } = useTranslation();
@@ -25,7 +30,6 @@ export default function ImageEditor() {
   const [size, setSize] = useState("M");
   const [grayscale, setGrayscale] = useState(false);
   const [rotate, setRotate] = useState(0);
-
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [resultBlob, setResultBlob] = useState(null);
@@ -51,16 +55,14 @@ export default function ImageEditor() {
   function onPick(e) {
     setError("");
     setResultBlob(null);
-    const f = e.target.files?.[0] || null;
-    setFile(f);
-
-    // reset opcji
+    const nextFile = e.target.files?.[0] || null;
+    setFile(nextFile);
     setSize("M");
     setGrayscale(false);
     setRotate(0);
   }
 
-  async function callApi(signal) {
+  const callApi = useCallback(async (signal) => {
     if (!file) return;
 
     const fd = new FormData();
@@ -72,12 +74,12 @@ export default function ImageEditor() {
     const res = await fetch(API_URL, { method: "POST", body: fd, signal });
     if (!res.ok) {
       const data = await res.json().catch(() => null);
-      throw new Error(data?.detail || `Błąd API: ${res.status}`);
+      throw new Error(data?.detail || `API error: ${res.status}`);
     }
 
     const blob = await res.blob();
     setResultBlob(blob);
-  }
+  }, [file, grayscale, rotate, size]);
 
   useEffect(() => {
     setError("");
@@ -95,7 +97,7 @@ export default function ImageEditor() {
         await callApi(controller.signal);
       } catch (e) {
         if (e?.name !== "AbortError") {
-          setError(e?.message || "Nieznany błąd.");
+          setError(e?.message || "Unknown error.");
         }
       } finally {
         setBusy(false);
@@ -105,7 +107,7 @@ export default function ImageEditor() {
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };
-  }, [file, size, grayscale, rotate]);
+  }, [callApi, file]);
 
   function download() {
     if (!resultBlob) return;
@@ -120,13 +122,8 @@ export default function ImageEditor() {
       <div className="file-upload">
         <label className="file-button">
           {t("imageEditor.pick")}
-        <input
-          type="file"
-          accept="image/*"
-          onChange={onPick}
-          hidden
-        />
-      </label>
+          <input type="file" accept="image/*" onChange={onPick} hidden />
+        </label>
 
         <span className="file-name">
           {file ? file.name : t("imageEditor.noFileSelected")}
@@ -145,17 +142,14 @@ export default function ImageEditor() {
           </Button>
         ))}
 
-        <Button
-          variant={grayscale ? "primary" : "ghost"}
-          onClick={() => setGrayscale((v) => !v)}
-          disabled={!file}
-        >
+        <Button variant={grayscale ? "primary" : "ghost"} onClick={() => setGrayscale((v) => !v)} disabled={!file}>
           {t("imageEditor.grayscale")}
         </Button>
 
         <Button variant="ghost" onClick={() => setRotate(rotateLeft)} disabled={!file}>
           {t("imageEditor.rotateLeft")}
         </Button>
+
         <Button variant="ghost" onClick={() => setRotate(rotateRight)} disabled={!file}>
           {t("imageEditor.rotateRight")}
         </Button>
@@ -165,7 +159,7 @@ export default function ImageEditor() {
         </Button>
       </div>
 
-      {busy ? <div className="tip">Processing in Python…</div> : null}
+      {busy ? <div className="tip">Processing in Python...</div> : null}
       {error ? <div className="result bad">{error}</div> : null}
 
       {file ? (
@@ -178,31 +172,13 @@ export default function ImageEditor() {
         >
           <div className="result" style={{ marginTop: 0 }}>
             <div style={{ fontWeight: 900, marginBottom: 8 }}>{t("imageEditor.original")}</div>
-            <img
-              src={originalUrl}
-              alt="original"
-              style={{
-                width: "100%",
-                height: "auto",
-                borderRadius: 12,
-                border: "1px solid var(--border)",
-              }}
-            />
+            <img src={originalUrl} alt="original" style={{ width: "100%", height: "auto", borderRadius: 12, border: "1px solid var(--border)" }} />
           </div>
 
           <div className="result" style={{ marginTop: 0 }}>
             <div style={{ fontWeight: 900, marginBottom: 8 }}>{t("imageEditor.output")}</div>
             {resultBlob ? (
-              <img
-                src={resultUrl}
-                alt="edited"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  borderRadius: 12,
-                  border: "1px solid var(--border)",
-                }}
-              />
+              <img src={resultUrl} alt="edited" style={{ width: "100%", height: "auto", borderRadius: 12, border: "1px solid var(--border)" }} />
             ) : (
               <div className="tip">The result will appear automatically after processing.</div>
             )}

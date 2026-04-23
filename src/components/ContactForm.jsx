@@ -1,15 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import Button from "./Button";
+
 import { API } from "../api";
+import Button from "./Button";
 
 
 function countLinks(text) {
   return (text.match(/(https?:\/\/\S+|www\.\S+)/gi) || []).length;
 }
+
+
 function isEmailLike(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 }
+
 
 export default function ContactForm() {
   const { t, i18n } = useTranslation();
@@ -19,7 +23,7 @@ export default function ContactForm() {
     email: "",
     company: "",
     message: "",
-    website: "" // honeypot
+    website: ""
   });
 
   const [touched, setTouched] = useState({
@@ -28,11 +32,10 @@ export default function ContactForm() {
     message: false
   });
 
-  const [status, setStatus] = useState(null); // null | {type:"ok"|"err", msg:string}
+  const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
   const [submittedOnce, setSubmittedOnce] = useState(false);
 
-  // auto-hide success after 15s
   useEffect(() => {
     if (status?.type !== "ok") return;
     const timer = setTimeout(() => setStatus(null), 15000);
@@ -40,26 +43,29 @@ export default function ContactForm() {
   }, [status]);
 
   function setField(key, value) {
-    setForm((p) => ({ ...p, [key]: value }));
+    setForm((previous) => ({ ...previous, [key]: value }));
   }
+
   function markTouched(key) {
-    setTouched((p) => ({ ...p, [key]: true }));
+    setTouched((previous) => ({ ...previous, [key]: true }));
   }
 
   const errors = useMemo(() => {
-    const e = {};
+    const nextErrors = {};
     const name = form.name.trim();
     const email = form.email.trim();
-    const msg = form.message.trim();
+    const message = form.message.trim();
 
-    if (name.length < 2) e.name = t("contactForm.errors.nameMin");
-    if (!isEmailLike(email)) e.email = t("contactForm.errors.emailInvalid");
+    if (name.length < 2) nextErrors.name = t("contactForm.errors.nameMin");
+    if (!isEmailLike(email)) nextErrors.email = t("contactForm.errors.emailInvalid");
 
-    if (msg.length < 20) e.message = t("contactForm.errors.messageTooShort");
-    const links = countLinks(msg);
-    if (msg.length >= 20 && links > 2) e.message = t("contactForm.errors.tooManyLinks");
+    if (message.length < 20) nextErrors.message = t("contactForm.errors.messageTooShort");
+    const links = countLinks(message);
+    if (message.length >= 20 && links > 2) {
+      nextErrors.message = t("contactForm.errors.tooManyLinks");
+    }
 
-    return e;
+    return nextErrors;
   }, [form.name, form.email, form.message, t]);
 
   function shouldShowError(field) {
@@ -69,8 +75,16 @@ export default function ContactForm() {
   function inputClass(field) {
     return shouldShowError(field) ? "input input--error" : "input";
   }
+
   function textareaClass(field) {
     return shouldShowError(field) ? "textarea textarea--error" : "textarea";
+  }
+
+  function resetForm() {
+    setForm({ name: "", email: "", company: "", message: "", website: "" });
+    setTouched({ name: false, email: false, message: false });
+    setSubmittedOnce(false);
+    setStatus(null);
   }
 
   async function onSubmit(e) {
@@ -82,7 +96,7 @@ export default function ContactForm() {
 
     setLoading(true);
     try {
-      const lang = (i18n.language || "pl").slice(0, 2); // pl/en/no
+      const lang = (i18n.language || "pl").slice(0, 2);
 
       const res = await fetch(API.contact.send, {
         method: "POST",
@@ -96,14 +110,16 @@ export default function ContactForm() {
           company: form.company.trim() || null,
           message: form.message.trim(),
           website: form.website.trim() || null,
-          lang // <<< kluczowe: backend wybierze autoresponder
+          lang
         })
       });
 
       let data = null;
       try {
         data = await res.json();
-      } catch {}
+      } catch {
+        data = null;
+      }
 
       if (!res.ok) {
         const msg =
@@ -126,7 +142,6 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="contact-form">
-      {/* honeypot */}
       <div className="hp" aria-hidden="true">
         <input
           type="text"
@@ -137,7 +152,6 @@ export default function ContactForm() {
         />
       </div>
 
-      {/* placeholders zostają po EN */}
       <div className="field">
         <input
           className={inputClass("name")}
@@ -194,17 +208,7 @@ export default function ContactForm() {
           {loading ? t("contactForm.sending") : t("contactForm.send")}
         </Button>
 
-        <Button
-          variant="ghost"
-          type="button"
-          disabled={loading}
-          onClick={() => {
-            setForm({ name: "", email: "", company: "", message: "", website: "" });
-            setTouched({ name: false, email: false, message: false });
-            setSubmittedOnce(false);
-            setStatus(null);
-          }}
-        >
+        <Button variant="ghost" type="button" disabled={loading} onClick={resetForm}>
           {t("contactForm.clear")}
         </Button>
       </div>

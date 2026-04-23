@@ -1,5 +1,5 @@
 {
-  "name": "pwned-ui",
+  "name": "portfolio-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:backend": ".\\venv\\Scripts\\python.exe -m pytest -q",
+    "check": "npm run lint && npm run build"
   },
   "dependencies": {
     "i18next": "^25.8.0",

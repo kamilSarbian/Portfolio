@@ -14,29 +14,38 @@ from .db import get_db
 from models.user import User
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
-# tokenUrl jest “informacyjne” dla Swaggera
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/backend/auth/login")
+
+
+def _require_jwt_secret() -> str:
+    if not settings.jwt_secret:
+        raise RuntimeError("JWT_SECRET must be configured.")
+    return settings.jwt_secret
+
 
 def hash_password(password: str) -> str:
     return pwd_context.hash(password)
 
+
 def verify_password(password: str, hashed: str) -> bool:
     return pwd_context.verify(password, hashed)
+
 
 def create_access_token(*, sub: str, role: str, expires_minutes: int | None = None) -> str:
     now = datetime.now(timezone.utc)
     exp_min = expires_minutes if expires_minutes is not None else settings.access_token_expire_min
     payload = {
-        "sub": sub,             # zwykle email
-        "role": role,           # "admin" / "user"
+        "sub": sub,
+        "role": role,
         "iat": int(now.timestamp()),
         "exp": int((now + timedelta(minutes=exp_min)).timestamp()),
     }
-    return jwt.encode(payload, settings.jwt_secret, algorithm=settings.jwt_alg)
+    return jwt.encode(payload, _require_jwt_secret(), algorithm=settings.jwt_alg)
+
 
 def decode_token(token: str) -> dict:
-    return jwt.decode(token, settings.jwt_secret, algorithms=[settings.jwt_alg])
+    return jwt.decode(token, _require_jwt_secret(), algorithms=[settings.jwt_alg])
+
 
 def get_current_user(
     token: str = Depends(oauth2_scheme),
@@ -61,6 +70,7 @@ def get_current_user(
         raise cred_exc
 
     return user
+
 
 def require_admin(current_user: User = Depends(get_current_user)) -> User:
     if current_user.role != "admin":

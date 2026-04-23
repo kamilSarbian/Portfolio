@@ -1,12 +1,12 @@
 import { useState } from "react";
-import Button from "./Button";
 import { useTranslation } from "react-i18next";
-import AuthStatus from "./AuthStatus";
-import JsonViewer from "./JsonViewer";
-import CopyTokenButton from "./CopyTokenButton";
-import { API } from "../api";
 
-// const API_BASE = import.meta.env.VITE_API_BASE || "http://127.0.0.1:8000";
+import { API } from "../api";
+import AuthStatus from "./AuthStatus";
+import Button from "./Button";
+import CopyTokenButton from "./CopyTokenButton";
+import JsonViewer from "./JsonViewer";
+
 
 export default function AuthApiDemo() {
   const { t } = useTranslation();
@@ -39,7 +39,7 @@ export default function AuthApiDemo() {
       const data = await res.json().catch(() => null);
 
       if (!res.ok) {
-        throw new Error(data?.detail || `${t("auth.error") || "Błąd"} (${res.status})`);
+        throw new Error(data?.detail || `${t("auth.error") || "Error"} (${res.status})`);
       }
 
       setOut(data);
@@ -50,7 +50,7 @@ export default function AuthApiDemo() {
 
       return data;
     } catch (e) {
-      setError(e?.message || (t("auth.error") || "Błąd"));
+      setError(e?.message || (t("auth.error") || "Error"));
       return null;
     } finally {
       setBusy(false);
@@ -79,13 +79,13 @@ export default function AuthApiDemo() {
       const data = await res.json().catch(() => null);
 
       if (!res.ok) {
-        throw new Error(data?.detail || `${t("auth.error") || "Błąd"} (${res.status})`);
+        throw new Error(data?.detail || `${t("auth.error") || "Error"} (${res.status})`);
       }
 
       setOut(data);
       return data;
     } catch (e) {
-      setError(e?.message || (t("auth.error") || "Błąd"));
+      setError(e?.message || (t("auth.error") || "Error"));
       return null;
     } finally {
       setBusy(false);
@@ -103,7 +103,6 @@ export default function AuthApiDemo() {
       const freshToken = data.access_token;
       setToken(freshToken);
 
-      // od razu pobierz profil z użyciem ŚWIEŻEGO tokenu
       await callJson("GET", API.users.profile, null, {
         setProfile: true,
         tokenOverride: freshToken,
@@ -142,34 +141,23 @@ export default function AuthApiDemo() {
             <div style={{ fontWeight: 800, marginBottom: 6, color: "var(--muted)" }}>
               {t("auth.email") || "Email"}
             </div>
-            <input
-              className="input"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="email"
-            />
+            <input className="input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" />
           </div>
 
           <div>
             <div style={{ fontWeight: 800, marginBottom: 6, color: "var(--muted)" }}>
               {t("auth.password") || "Password"}
             </div>
-            <input
-              className="input"
-              value={password}
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="password"
-            />
+            <input className="input" value={password} type="password" onChange={(e) => setPassword(e.target.value)} placeholder="password" />
           </div>
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Button variant="primary" disabled={busy} onClick={onRegister}>
-              {busy ? (t("auth.loading") || "Ładowanie...") : (t("auth.register") || "Register")}
+              {busy ? (t("auth.loading") || "Loading...") : (t("auth.register") || "Register")}
             </Button>
 
             <Button variant="primary" disabled={busy} onClick={onLogin}>
-              {busy ? (t("auth.loading") || "Ładowanie...") : (t("auth.login") || "Login")}
+              {busy ? (t("auth.loading") || "Loading...") : (t("auth.login") || "Login")}
             </Button>
 
             <Button variant="ghost" disabled={busy || !token} onClick={onProfile}>
@@ -189,7 +177,7 @@ export default function AuthApiDemo() {
 
           <div className="tip">
             {token
-              ? t("auth.tokenOk") || "JWT token active — requests include Authorization: Bearer token."
+              ? t("auth.tokenOk") || "JWT token active - requests include Authorization: Bearer token."
               : t("auth.tokenMissing") || "Login first to receive a JWT token."}
           </div>
         </div>

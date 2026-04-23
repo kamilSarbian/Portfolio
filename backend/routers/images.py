@@ -1,20 +1,37 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, File, Form, HTTPException, UploadFile
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 from fastapi.responses import Response
 
 from core.config import settings
-from services.image_service import ProcessOptions, ImageProcessingError, process_image_to_png
+from core.rate_limit import upload_rate_limit
+from schemas.common import ErrorResponse
+from services.image_service import ImageProcessingError, ProcessOptions, process_image_to_png
 
-router = APIRouter(prefix="/backend/image", tags=["images"])
+router = APIRouter(prefix="/backend/image", tags=["images"], dependencies=[Depends(upload_rate_limit)])
 
 
-@router.post("/process")
+@router.post(
+    "/process",
+    summary="Process an uploaded image",
+    description="Resizes, rotates, or converts an uploaded image to grayscale and returns a PNG file.",
+    responses={
+        200: {
+            "description": "Processed PNG image.",
+            "content": {"image/png": {}},
+        },
+        400: {"model": ErrorResponse, "description": "Invalid processing options or malformed image."},
+        413: {"model": ErrorResponse, "description": "Uploaded file exceeds the configured size limit."},
+        415: {"model": ErrorResponse, "description": "Unsupported file type."},
+        429: {"model": ErrorResponse, "description": "Upload rate limit exceeded."},
+        500: {"model": ErrorResponse, "description": "Unexpected image processing failure."},
+    },
+)
 async def process_image_endpoint(
     file: UploadFile = File(...),
-    size: str = Form("M"),
-    grayscale: bool = Form(False),
-    rotate: int = Form(0),
+    size: str = Form("M", description="Resize preset, for example S, M, or L."),
+    grayscale: bool = Form(False, description="Convert the image to grayscale."),
+    rotate: int = Form(0, description="Rotation in degrees. Expected values are 0, 90, 180, or 270."),
 ):
     if file.content_type not in settings.allowed_mime:
         raise HTTPException(status_code=415, detail="Unsupported file type.")
@@ -31,7 +48,6 @@ async def process_image_endpoint(
     except ImageProcessingError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
-        # żebyś widział sensowny komunikat zamiast "500 i CORS"
         raise HTTPException(status_code=500, detail=f"Image processing failed: {e}")
 
     return Response(

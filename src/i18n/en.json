@@ -87,6 +87,7 @@
 
     "password":"Enter password",
     "placeHolderPassword":"Enter a password to check",
+    "passwordRequired":"Enter a password.",
 
     "howTitle": "HOW IT WORKS",
     "how1": "The backend calculates the SHA-1 hash of the password and sends only the first 5 characters to the API.",
@@ -150,7 +151,7 @@
     "result": "Result (API):",
     "hint": "Pick an image and click “Classify”.",
     "error": "Classification error",
-    "smartTip": "Smart mode uses about 200 general categories available on the backend side. You don’t need to type anything.",
+    "smartTip": "Smart mode uses a broad pool of general categories available on the backend side. You don’t need to type anything.",
     "unknownInline": "below threshold",
     "presetsLoading": "Loading presets...",
     "presetsError": "Could not load presets from the API.",

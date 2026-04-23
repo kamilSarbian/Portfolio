@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import { API } from "../api";
 import Button from "./Button";
 import ResultBox from "./ResultBox";
-import { useTranslation } from "react-i18next";
-import { API } from "../api";
 
 const API_URL = API.password.check;
+
 
 export default function PasswordChecker() {
   const { t } = useTranslation();
@@ -20,7 +22,7 @@ export default function PasswordChecker() {
 
     const pwd = password.trim();
     if (!pwd) {
-      setError("Wpisz hasło.");
+      setError(t("pwnedProject.passwordRequired") || "Enter a password.");
       return;
     }
 
@@ -38,13 +40,13 @@ export default function PasswordChecker() {
         throw new Error(
           typeof data?.detail === "string"
             ? data.detail
-            : `Błąd API: HTTP ${res.status}`
+            : `API error: HTTP ${res.status}`
         );
       }
 
       setResult(data);
     } catch (e) {
-      setError(e?.message || "Błąd połączenia z backendem.");
+      setError(e?.message || "Backend connection error.");
     } finally {
       setLoading(false);
     }
