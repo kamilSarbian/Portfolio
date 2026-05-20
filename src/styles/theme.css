@@ -587,8 +587,8 @@ a.btn:active {
   gap: 18px;
 }
 
-/* Roadmap list */
-.roadmap-list{
+/* System focus list */
+.system-focus-list{
   margin: 10px 0 0;
   padding-left: 18px;
   color: var(--muted);
@@ -596,11 +596,11 @@ a.btn:active {
   line-height: 1.5;
 }
 
-.roadmap-list li{
+.system-focus-list li{
   margin: 6px 0;
 }
 
-/* Planned projects list */
+/* Other experiments list */
 .plan-list{
   list-style: none;
   padding: 0;

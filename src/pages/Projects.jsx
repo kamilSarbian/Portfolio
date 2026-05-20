@@ -2,32 +2,32 @@ import Card from "../components/Card";
 import Button from "../components/Button";
 import { useTranslation } from "react-i18next";
 
-function RoadmapList() {
+function SystemFocusList() {
   const { t } = useTranslation();
   return (
-    <ul className="roadmap-list">
-      <li>{t("projects.roadmap.a")}</li>
-      <li>{t("projects.roadmap.b")}</li>
-      <li>{t("projects.roadmap.c")}</li>
-      <li>{t("projects.roadmap.d")}</li>
-      <li>{t("projects.roadmap.e")}</li>
+    <ul className="system-focus-list">
+      <li>{t("projects.systemFocus.a")}</li>
+      <li>{t("projects.systemFocus.b")}</li>
+      <li>{t("projects.systemFocus.c")}</li>
+      <li>{t("projects.systemFocus.d")}</li>
+      <li>{t("projects.systemFocus.e")}</li>
     </ul>
   );
 }
 
-function PlannedProjects() {
+function OtherExperiments() {
   const { t } = useTranslation();
 
   return (
     <ul className="plan-list">
-      <li><span className="status done">✅</span><span className="plan-text">{t("projects.planned.a")}</span></li>
-      <li><span className="status done">✅</span><span className="plan-text">{t("projects.planned.b")}</span></li>
-      <li><span className="status done">✅</span><span className="plan-text">{t("projects.planned.c")}</span></li>
-      <li><span className="status next">✅</span><span className="plan-text">{t("projects.planned.d")}</span></li>
-      <li><span className="status later">✅</span><span className="plan-text">{t("projects.planned.e")}</span></li>
-      <li><span className="status later">🔜</span><span className="plan-text">{t("projects.planned.f")}</span></li>
-      {/* <li><span className="status later">⏳</span><span className="plan-text">{t("projects.planned.g")}</span></li> */}
-      {/* <li><span className="status later">⏳</span><span className="plan-text">{t("projects.planned.h")}</span></li> */}
+      <li><span className="status done">✅</span><span className="plan-text">{t("projects.experiments.a")}</span></li>
+      <li><span className="status done">✅</span><span className="plan-text">{t("projects.experiments.b")}</span></li>
+      <li><span className="status done">✅</span><span className="plan-text">{t("projects.experiments.c")}</span></li>
+      <li><span className="status next">✅</span><span className="plan-text">{t("projects.experiments.d")}</span></li>
+      <li><span className="status later">✅</span><span className="plan-text">{t("projects.experiments.e")}</span></li>
+      <li><span className="status later">🔜</span><span className="plan-text">{t("projects.experiments.f")}</span></li>
+      {/* <li><span className="status later">⏳</span><span className="plan-text">{t("projects.experiments.g")}</span></li> */}
+      {/* <li><span className="status later">⏳</span><span className="plan-text">{t("projects.experiments.h")}</span></li> */}
     </ul>
   );
 }
@@ -157,13 +157,13 @@ export default function Projects({ onOpenAuth, onOpenPwned, onOpenImageEditor, o
       <div className="right-col">
         <Card>
           <div className="section-label">{t("projects.planTitle")}</div>
-          <RoadmapList />
+          <SystemFocusList />
         </Card>
 
         <Card>
-          <div className="section-label">{t("projects.plannedTitle")}</div>
+          <div className="section-label">{t("projects.experimentsTitle")}</div>
           <div className="subtle-title">{t("projects.statusTitle")}</div>
-          <PlannedProjects />
+          <OtherExperiments />
         </Card>
       </div>
     </div>

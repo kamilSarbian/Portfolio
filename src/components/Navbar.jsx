@@ -38,7 +38,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
         </div>
 
         <div className="brand-text">
-          <div className="title">Kamil Sarbian - Junior Developer</div>
+          <div className="title">Kamil Sarbian</div>
           <div className="subtitle">{t("nav.openTo")}</div>
           <div className="subtitle">{subtitle}</div>
         </div>

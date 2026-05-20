@@ -8,26 +8,62 @@
     "langNo": "Norweski",
     "light": "Light",
     "dark": "Dark",
-    "openTo": "Szukam pierwszej roli jako Junior Backend Developer (Python / FastAPI / SQL)."
+    "openTo": "Backend Developer · API · Automatyzacja · Integracje"
   },
   "home": {
-    "aboutLabel": "O MNIE",
-    "headline": "Cześć, buduję backendowe aplikacje w Pythonie oraz API oparte o FastAPI i SQL.",
-    "intro": "Tworzę backendowe aplikacje w Pythonie (FastAPI, SQL) oraz API do pracy z danymi. Interesuje mnie projektowanie systemów backendowych i budowanie praktycznych rozwiązań opartych na danych.",
-    "whyTitle": "Dlaczego IT",
-    "whyBody": "Jestem absolwentem kierunku IT ze stopniem inżynierskim uznanym w Norwegii. Skupiam się na rozwoju jako backend developer. Projektuję API, pracuję z bazami danych i buduję własne projekty, które pokazują jak rozwiązuję realne problemy.",
-    "seeProjects": "Zobacz projekty",
+    "aboutLabel": "BACKEND · AUTOMATYZACJA · INTEGRACJE",
+    "headline": "Backend Developer & AI Automation",
+    "intro": "Buduję systemy backendowe, integracje API i automatyzacje workflow, które pomagają ograniczać ręczną pracę i poprawiać niezawodność.",
+    "heroTech": "Python · FastAPI · PostgreSQL · Integracje API · Automatyzacja",
+    "whyTitle": "Co buduję",
+    "whyBody": "Skupiam się na praktycznych systemach backendowych: API, walidacji, logice biznesowej, workflow opartych o bazę danych i integracjach, które ułatwiają utrzymanie procesów.",
+    "seeProjects": "Zobacz case studies",
     "backendDocs": "Dokumentacja API (docs)",
-    "tip": "Projekty pokazują moje podejście do backendu, API oraz pracy z danymi.",
+    "tip": "Projekty pokazują moje podejście do backendu, integracji, automatyzacji i praktycznego projektowania API.",
     "demoInfo": "Demo działa na rzeczywistym API i infrastrukturze chmurowej:",
+    "whatIBuild": {
+      "title": "CO BUDUJĘ",
+      "backendTitle": "Backend Systems",
+      "backendBody": "API obsługujące uwierzytelnianie, walidację, logikę biznesową i komunikację między usługami.",
+      "automationTitle": "AI Automation",
+      "automationBody": "Workflow z użyciem LLM lub embeddings, które ograniczają powtarzalne zadania i usprawniają pracę z danymi.",
+      "integrationTitle": "API & Data Integration",
+      "integrationBody": "Łączenie baz danych, zewnętrznych API i usług backendowych w stabilne workflow."
+    },
+    "howIWork": {
+      "title": "JAK PRACUJĘ",
+      "a": "Zaczynam od workflow, nie od frameworka.",
+      "b": "Analizuję, jak systemy się komunikują, gdzie powstają wąskie gardła i które procesy można uprościć.",
+      "c": "Buduję iteracyjnie: najpierw działający system, potem lepsza struktura, walidacja i utrzymywalność.",
+      "d": "Liczy się dla mnie praktyczna inżynieria backendu, nie izolowane fragmenty kodu."
+    },
+    "stackSection": {
+      "title": "STACK",
+      "backend": "Backend",
+      "backendValue": "Python, FastAPI, REST APIs",
+      "database": "Database",
+      "databaseValue": "PostgreSQL, SQL",
+      "automation": "AI / Automation",
+      "automationValue": "CLIP, embeddings, OpenAI APIs",
+      "tools": "Tools",
+      "toolsValue": "Git, Vercel"
+    },
+    "cta": {
+      "title": "Masz workflow, który warto zautomatyzować?",
+      "body": "Potrzebujesz backend API, integracji albo narzędzia wewnętrznego? Opisz problem — odpowiem z praktycznym kierunkiem technicznym.",
+      "primary": "Omów workflow"
+    },
+    "footer": {
+      "location": "Oslo area, Norway — open to remote / hybrid opportunities"
+    },
     "quickTitle": "SZYBKIE INFO",
     "stack": "Stack",
     "goal": "Cel",
     "today": "Aktualnie",
     "stackVal": "Python • FastAPI • SQL • React • REST",
-    "goalVal": "Junior Backend Developer (Python • FastAPI • SQL)",
-    "todayVal": "Rozwijam projekty backendowe i API w Pythonie",
-    "quickBody": "Rozwijam się jako backend developer, budując API i aplikacje oparte na pracy z danymi.",
+    "goalVal": "Systemy backendowe, automatyzacje workflow i integracje API",
+    "todayVal": "Buduję backendowe demo z działającymi API",
+    "quickBody": "Najpierw buduję mały działający system, potem poprawiam niezawodność, walidację, utrzymywalność i deployment.",
     "contactTitle": "KONTAKT",
     "email": "Email",
     "phone": "Telefon",
@@ -41,12 +77,12 @@
     "download": "Pobierz",
     "nationality": "Narodowość",
     "messageTitle": "WIADOMOŚĆ",
-    "messageBody": "Napisz krótką wiadomość — odpowiadam zwykle w ciągu 1–2 dni roboczych."
+    "messageBody": "Opisz workflow, integrację albo problem backendowy, który chcesz usprawnić."
   },
   "projects": {
     "label": "PROJEKTY",
-    "title": "Moje projekty",
-    "subtitle": "Projekty backendowe pokazujące pracę z API, bazami danych oraz przetwarzaniem danych w Pythonie.",
+    "title": "Featured case studies",
+    "subtitle": "Wybrane projekty backendowe i automatyzacyjne opisane przez problem, rozwiązanie, wartość i production thinking.",
     "open": "Otwórz",
     "apiDocs": "API docs",
     "pwnedTitle": "Pwned Password Check",
@@ -57,25 +93,25 @@
     "imgClassDesc":"API w Pythonie, które przyjmuje obraz i zwraca klasyfikację przy użyciu modelu ML. Endpoint obsługuje przesyłanie plików oraz zwraca wyniki predykcji w formacie JSON.",
     "authTitle": "Auth & User Management API",
     "authDesc": "API do zarządzania użytkownikami z rejestracją, logowaniem oraz autoryzacją JWT. System obsługuje role użytkowników (admin/user), profile oraz integrację z bazą danych PostgreSQL przy użyciu SQLAlchemy.",
-    "planTitle": "AKTUALNIE ROZWIJAM",
-    "plannedTitle": "PLANOWANE PROJEKTY",
-    "statusTitle": "Roadmapa projektów",
-    "roadmap": {
+    "planTitle": "PRODUCTION THINKING",
+    "experimentsTitle": "OTHER EXPERIMENTS",
+    "statusTitle": "System focus",
+    "systemFocus": {
       "a": "Autoryzacja i role użytkowników (JWT)",
       "b": "Testy API (pytest)",
       "c": "Integracja z PostgreSQL i migracje",
       "d": "Walidacja danych i obsługa błędów w API",
       "e": "Docker i podstawy CI/CD"
     },
-    "planned": {
+    "experiments": {
       "a": "Pwned Password Check",
       "b": "Image Editor (Python API)",
       "c": "Formularz kontaktowy z autoresponderem",
       "d": "Image Classifier (Machine Learning)",
       "e": "Auth & User Management API",
-      "f": "Data Analytics API jeszcze nie rozpoczęty",
+      "f": "Data Analytics API experiment",
       "g": "Prosta gra w języku Python",
-      "h": "Nowy projekt (w planach) – jeszcze nie rozpoczęty"
+      "h": "New project experiment"
     }
   },
   "pwnedProject": {

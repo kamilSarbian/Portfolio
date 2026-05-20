@@ -8,26 +8,62 @@
     "langNo": "Norsk",
     "light": "Light",
     "dark": "Dark",
-    "openTo": "Jeg ser etter min første jobb som Junior Backend-utvikler (Python / FastAPI / SQL)."
+    "openTo": "Backend Developer · API-er · Automatisering · Integrasjoner"
   },
   "home": {
-    "aboutLabel": "OM MEG",
-    "headline": "Hei, jeg bygger backend-applikasjoner i Python og API-er basert på FastAPI og SQL.",
-    "intro": "Jeg utvikler backend-applikasjoner i Python (FastAPI, SQL) og API-er for arbeid med data. Jeg er interessert i design av backend-systemer og i å bygge praktiske, datadrevne løsninger.",
-    "whyTitle": "Hvorfor IT",
-    "whyBody": "Jeg er utdannet innen IT med en ingeniørgrad (bachelor) som er godkjent i Norge. Jeg fokuserer på å utvikle meg som backend-utvikler. Jeg designer API-er, jobber med databaser og bygger egne prosjekter som viser hvordan jeg løser reelle problemer.",
-    "seeProjects": "Se prosjekter",
+    "aboutLabel": "BACKEND · AUTOMATISERING · INTEGRASJONER",
+    "headline": "Backend Developer & AI Automation",
+    "intro": "Jeg bygger backend-systemer, API-integrasjoner og automatiserte arbeidsflyter som hjelper team med å redusere manuelt arbeid og forbedre pålitelighet.",
+    "heroTech": "Python · FastAPI · PostgreSQL · API-integrasjoner · Automatisering",
+    "whyTitle": "Hva jeg bygger",
+    "whyBody": "Jeg fokuserer på praktiske backend-systemer: API-er, validering, forretningslogikk, databasebaserte arbeidsflyter og integrasjoner som er enklere å drifte og vedlikeholde.",
+    "seeProjects": "Se case studies",
     "backendDocs": "API-dokumentasjon (docs)",
-    "tip": "Prosjektene viser min tilnærming til backend, API-er og arbeid med data.",
+    "tip": "Prosjektene viser min tilnærming til backend-systemer, integrasjoner, automatisering og praktisk API-design.",
     "demoInfo": "Demoen kjører på et ekte API og skyinfrastruktur:",
+    "whatIBuild": {
+      "title": "HVA JEG BYGGER",
+      "backendTitle": "Backend Systems",
+      "backendBody": "API-er som håndterer autentisering, validering, forretningslogikk og strukturert kommunikasjon mellom tjenester.",
+      "automationTitle": "AI Automation",
+      "automationBody": "Arbeidsflyter med LLM-er eller embeddings for å redusere repeterende manuelt arbeid og forbedre datahåndtering.",
+      "integrationTitle": "API & Data Integration",
+      "integrationBody": "Kobling av databaser, eksterne API-er og backend-tjenester til pålitelige arbeidsflyter."
+    },
+    "howIWork": {
+      "title": "HVORDAN JEG JOBBER",
+      "a": "Jeg starter med arbeidsflyten, ikke frameworket.",
+      "b": "Jeg ser på hvordan systemer kommuniserer, hvor flaskehalser oppstår, og hvordan repeterende prosesser kan forenkles.",
+      "c": "Jeg bygger iterativt: først et system som fungerer stabilt, deretter bedre struktur, validering og vedlikeholdbarhet.",
+      "d": "Jeg bryr meg om praktisk backend engineering, ikke bare isolerte kodeeksempler."
+    },
+    "stackSection": {
+      "title": "STACK",
+      "backend": "Backend",
+      "backendValue": "Python, FastAPI, REST APIs",
+      "database": "Database",
+      "databaseValue": "PostgreSQL, SQL",
+      "automation": "AI / Automation",
+      "automationValue": "CLIP, embeddings, OpenAI APIs",
+      "tools": "Tools",
+      "toolsValue": "Git, Vercel"
+    },
+    "cta": {
+      "title": "Har du en arbeidsflyt som bør automatiseres?",
+      "body": "Trenger du et backend-API, en integrasjon eller et internt verktøy? Send problemet — jeg svarer med en praktisk teknisk retning.",
+      "primary": "Diskuter en arbeidsflyt"
+    },
+    "footer": {
+      "location": "Oslo area, Norway — open to remote / hybrid opportunities"
+    },
     "quickTitle": "RASK INFO",
     "stack": "Stack",
     "goal": "Mål",
     "today": "For tiden",
     "stackVal": "Python • FastAPI • SQL • React • REST",
-    "goalVal": "Junior Backend Developer (Python • FastAPI • SQL)",
-    "todayVal": "Utvikler backend-prosjekter og API-er i Python.",
-    "quickBody": "Jeg utvikler meg som backend-utvikler ved å bygge API-er og datadrevne applikasjoner.",
+    "goalVal": "Backend-systemer, automatiserte arbeidsflyter og API-integrasjoner",
+    "todayVal": "Bygger backend-demoer med fungerende API-er",
+    "quickBody": "Jeg bygger små fungerende systemer først, og forbedrer deretter pålitelighet, validering, vedlikeholdbarhet og deployment.",
     "contactTitle": "KONTAKT",
     "email": "E-post",
     "phone": "Telefon",
@@ -41,12 +77,12 @@
     "download": "Last ned",
     "nationality": "Nasjonalitet",
     "messageTitle": "MELDING",
-    "messageBody": "Skriv en kort melding — jeg svarer vanligvis innen 1–2 virkedager."
+    "messageBody": "Send arbeidsflyten, integrasjonen eller backend-problemet du vil forbedre."
   },
   "projects": {
     "label": "PROSJEKTER",
-    "title": "Mine prosjekter",
-    "subtitle": "Backend-prosjekter som viser arbeid med API-er, databaser og databehandling i Python.",
+    "title": "Featured case studies",
+    "subtitle": "Utvalgte backend- og automatiseringsprosjekter beskrevet med problem, løsning, verdi og production thinking.",
     "open": "Åpne",
     "apiDocs": "API-dokumentasjon",
     "pwnedTitle": "Pwned Password Check",
@@ -57,25 +93,25 @@
     "imgClassDesc":"Python-API som tar imot et bilde og returnerer en klassifisering ved hjelp av en ML-modell. Endepunktet håndterer filopplasting og returnerer prediksjonsresultater i JSON-format.",
     "authTitle": "Auth & User Management API",
     "authDesc": "API for brukeradministrasjon med registrering, innlogging og JWT-autentisering. Systemet støtter brukerroller (admin/bruker), profiler og integrasjon med PostgreSQL-database ved bruk av SQLAlchemy.",
-    "planTitle": "UTVIKLER FOR TIDEN",
-    "plannedTitle": "PLANLAGTE PROSJEKTER",
-    "statusTitle": "Prosjekt-roadmap",
-    "roadmap": {
+    "planTitle": "PRODUCTION THINKING",
+    "experimentsTitle": "OTHER EXPERIMENTS",
+    "statusTitle": "System focus",
+    "systemFocus": {
       "a": "Autentisering og brukerroller (JWT)",
       "b": "Testing av API (pytest)",
       "c": "Integrasjon med PostgreSQL og migrasjoner",
       "d": "Datavalidering og feilbehandling i API-er",
       "e": "Docker og grunnleggende CI/CD"
     },
-    "planned": {
+    "experiments": {
       "a": "Pwned Password Check",
       "b": "Image Editor (Python API)",
       "c": "Kontaktskjema med e-post autoresponder",
       "d": "Image Classifier (Machine Learning)",
       "e": "Auth & User Management API",
-      "f": "Data Analytics API – ikke startet ennå",
+      "f": "Data Analytics API experiment",
       "g": "Enkelt spill skrevet i Python",
-      "h": "Nytt prosjekt (planlagt) – ikke startet ennå"
+      "h": "New project experiment"
     }
   },
   "pwnedProject": {
