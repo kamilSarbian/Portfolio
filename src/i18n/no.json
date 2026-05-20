@@ -154,7 +154,7 @@
       "b": "Testing av API (pytest)",
       "c": "Integrasjon med PostgreSQL og migrasjoner",
       "d": "Datavalidering og feilbehandling i API-er",
-      "e": "Docker og grunnleggende CI/CD"
+      "e": "Deployment-bevisst struktur og vedlikeholdbarhet"
     },
     "experiments": {
       "pwned": "Pwned Password Check - API-integrasjonseksperiment",

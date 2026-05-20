@@ -154,7 +154,7 @@
       "b": "Testy API (pytest)",
       "c": "Integracja z PostgreSQL i migracje",
       "d": "Walidacja danych i obsługa błędów w API",
-      "e": "Docker i podstawy CI/CD"
+      "e": "Struktura gotowa pod deployment i utrzymywalność"
     },
     "experiments": {
       "pwned": "Pwned Password Check - eksperyment integracji API",

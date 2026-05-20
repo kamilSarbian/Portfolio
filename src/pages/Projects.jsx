@@ -29,6 +29,7 @@ function CaseStudy({ id, onOpen, featured = true }) {
   const { t } = useTranslation();
   const base = `projects.caseStudies.${id}`;
   const stack = t(`${base}.stack`, { returnObjects: true });
+  const visibleStack = Array.isArray(stack) ? stack.slice(0, 4) : [];
   const links = PROJECT_LINKS[id];
 
   return (
@@ -73,13 +74,11 @@ function CaseStudy({ id, onOpen, featured = true }) {
 
       <div className="case-study-footer">
         <div className="chips case-study-stack">
-          {Array.isArray(stack)
-            ? stack.map((item) => (
-                <span className="chip" key={item}>
-                  {item}
-                </span>
-              ))
-            : null}
+          {visibleStack.map((item) => (
+            <span className="chip" key={item}>
+              {item}
+            </span>
+          ))}
         </div>
 
         <div className="case-study-media-note">

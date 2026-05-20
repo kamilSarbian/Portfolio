@@ -155,7 +155,7 @@
       "b": "API testing (pytest)",
       "c": "PostgreSQL integration and migrations",
       "d": "Data validation and error handling in APIs",
-      "e": "Docker and basic CI/CD"
+      "e": "Deployment-aware structure and maintainability"
     },
     "experiments": {
       "pwned": "Pwned Password Check - API integration experiment",

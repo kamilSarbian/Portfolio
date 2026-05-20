@@ -97,6 +97,32 @@ export default function Home({ onGoProjects }) {
           </div>
         </Card>
 
+        <Card>
+          <div className="section-label">{t("home.stackSection.title")}</div>
+
+          <div className="stack-summary">
+            <div>
+              <strong>{t("home.stackSection.backend")}</strong>
+              <span>{t("home.stackSection.backendValue")}</span>
+            </div>
+
+            <div>
+              <strong>{t("home.stackSection.database")}</strong>
+              <span>{t("home.stackSection.databaseValue")}</span>
+            </div>
+
+            <div>
+              <strong>{t("home.stackSection.automation")}</strong>
+              <span>{t("home.stackSection.automationValue")}</span>
+            </div>
+
+            <div>
+              <strong>{t("home.stackSection.tools")}</strong>
+              <span>{t("home.stackSection.toolsValue")}</span>
+            </div>
+          </div>
+        </Card>
+
         <Card id="contact">
           <div className="section-label">{t("home.contactTitle")}</div>
 

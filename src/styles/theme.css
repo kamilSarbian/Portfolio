@@ -401,6 +401,38 @@ h3 {
   font-weight: 650;
 }
 
+.stack-summary{
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.stack-summary div{
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 12px;
+  align-items: baseline;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.stack-summary div:last-child{
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.stack-summary strong{
+  color: var(--text);
+  font-size: 14px;
+}
+
+.stack-summary span{
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
 @media (max-width: 720px){
   .what-build-grid{ grid-template-columns: 1fr; }
 }
@@ -700,6 +732,10 @@ h3 {
   .actions .btn,
   .actions button.btn{
     flex: 1 1 150px;
+  }
+  .stack-summary div{
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
   .case-study{ padding: 14px; }
   .case-study h2{ font-size: 20px; }
