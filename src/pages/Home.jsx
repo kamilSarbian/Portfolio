@@ -44,6 +44,23 @@ export default function Home({ onGoProjects }) {
         <p className="p" style={{ marginTop: 8 }}>
           {t("home.whyBody")}
         </p>
+
+        <div className="what-build-grid">
+          <section className="what-build-item">
+            <h3>{t("home.whatIBuild.backendTitle")}</h3>
+            <p>{t("home.whatIBuild.backendBody")}</p>
+          </section>
+
+          <section className="what-build-item">
+            <h3>{t("home.whatIBuild.automationTitle")}</h3>
+            <p>{t("home.whatIBuild.automationBody")}</p>
+          </section>
+
+          <section className="what-build-item">
+            <h3>{t("home.whatIBuild.integrationTitle")}</h3>
+            <p>{t("home.whatIBuild.integrationBody")}</p>
+          </section>
+        </div>
       </Card>
 
       <div style={{ display: "grid", gap: 18 }}>

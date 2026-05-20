@@ -353,6 +353,44 @@ h3 {
   font-weight: 700;
 }
 
+.what-build-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.what-build-item{
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.035);
+  padding: 12px;
+}
+
+.app.light .what-build-item{
+  background: rgba(0,0,0,0.025);
+}
+
+.what-build-item h3{
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.25;
+  font-weight: 900;
+}
+
+.what-build-item p{
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+  font-weight: 650;
+}
+
+@media (max-width: 720px){
+  .what-build-grid{ grid-template-columns: 1fr; }
+}
+
 /* ===== Info table ===== */
 .info{
   display: grid;
