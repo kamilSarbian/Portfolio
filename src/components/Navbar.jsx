@@ -11,12 +11,14 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
     function onDocClick(e) {
       if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(false);
     }
+
     function onEsc(e) {
       if (e.key === "Escape") {
         setLangOpen(false);
         setMenuOpen(false);
       }
     }
+
     document.addEventListener("mousedown", onDocClick);
     document.addEventListener("keydown", onEsc);
     return () => {
@@ -27,12 +29,16 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
 
   const lang = i18n.language || "en";
   const subtitle =
-    lang === "no" ? "Portefølje · Prosjekter" : lang === "en" ? "Portfolio · Projects" : "Portfolio · Projekty";
+    lang === "no" ? "Portfolio / Prosjekter" : lang === "en" ? "Portfolio / Projects" : "Portfolio / Projekty";
+
+  function chooseLanguage(nextLang) {
+    i18n.changeLanguage(nextLang);
+    setLangOpen(false);
+  }
 
   return (
     <header className="navbar">
       <div className="brand" onClick={onGoHome} role="button" tabIndex={0} onKeyDown={(e) => e.key === "Enter" && onGoHome()}>
-        {/* Avatar z gradient ring + status dot */}
         <div className="nav-avatar" aria-label="Avatar">
           <img src="/avatar.png" alt="Kamil Sarbian" className="nav-avatar" />
         </div>
@@ -44,16 +50,14 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
         </div>
       </div>
 
-      {/* Mobile hamburger */}
       <button
-          type="button"
-          className="nav-hamburger"
-          onClick={() => setMenuOpen((v) => !v)}
-        >
-          ☰
+        type="button"
+        className="nav-hamburger"
+        onClick={() => setMenuOpen((value) => !value)}
+      >
+        Menu
       </button>
 
-      {/* Desktop actions */}
       <div className="nav-actions nav-actions--desktop">
         <button className={active === "home" ? "btn primary" : "btn"} onClick={onGoHome}>
           {t("nav.home") || "Home"}
@@ -69,7 +73,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
             className="btn ghost"
             aria-haspopup="menu"
             aria-expanded={langOpen}
-            onClick={() => setLangOpen((v) => !v)}
+            onClick={() => setLangOpen((value) => !value)}
           >
             {t("nav.language") || "Language"}
           </button>
@@ -80,10 +84,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
                 type="button"
                 className={`lang-item ${lang === "pl" ? "active" : ""}`}
                 role="menuitem"
-                onClick={() => {
-                  i18n.changeLanguage("pl");
-                  setLangOpen(false);
-                }}
+                onClick={() => chooseLanguage("pl")}
               >
                 {t("nav.langPl") || "Polski"}
               </button>
@@ -92,10 +93,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
                 type="button"
                 className={`lang-item ${lang === "en" ? "active" : ""}`}
                 role="menuitem"
-                onClick={() => {
-                  i18n.changeLanguage("en");
-                  setLangOpen(false);
-                }}
+                onClick={() => chooseLanguage("en")}
               >
                 {t("nav.langEn") || "English"}
               </button>
@@ -104,10 +102,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
                 type="button"
                 className={`lang-item ${lang === "no" ? "active" : ""}`}
                 role="menuitem"
-                onClick={() => {
-                  i18n.changeLanguage("no");
-                  setLangOpen(false);
-                }}
+                onClick={() => chooseLanguage("no")}
               >
                 {t("nav.langNo") || "Norsk"}
               </button>
@@ -116,11 +111,10 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
         </div>
 
         <button className="theme-btn" onClick={onToggleTheme}>
-          ✴ {theme === "dark" ? "Light" : "Dark"}
+          {theme === "dark" ? "Light" : "Dark"}
         </button>
       </div>
 
-      {/* Mobile drawer */}
       {menuOpen && (
         <div className="nav-drawer">
           <button className={active === "home" ? "btn primary" : "btn"} onClick={() => { setMenuOpen(false); onGoHome(); }}>
@@ -138,7 +132,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
                 className="btn ghost"
                 aria-haspopup="menu"
                 aria-expanded={langOpen}
-                onClick={() => setLangOpen((v) => !v)}
+                onClick={() => setLangOpen((value) => !value)}
               >
                 {t("nav.language") || "Language"}
               </button>
@@ -150,8 +144,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
                     className={`lang-item ${lang === "pl" ? "active" : ""}`}
                     role="menuitem"
                     onClick={() => {
-                      i18n.changeLanguage("pl");
-                      setLangOpen(false);
+                      chooseLanguage("pl");
                       setMenuOpen(false);
                     }}
                   >
@@ -163,8 +156,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
                     className={`lang-item ${lang === "en" ? "active" : ""}`}
                     role="menuitem"
                     onClick={() => {
-                      i18n.changeLanguage("en");
-                      setLangOpen(false);
+                      chooseLanguage("en");
                       setMenuOpen(false);
                     }}
                   >
@@ -176,8 +168,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
                     className={`lang-item ${lang === "no" ? "active" : ""}`}
                     role="menuitem"
                     onClick={() => {
-                      i18n.changeLanguage("no");
-                      setLangOpen(false);
+                      chooseLanguage("no");
                       setMenuOpen(false);
                     }}
                   >
@@ -188,7 +179,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
             </div>
 
             <button className="theme-btn" onClick={onToggleTheme}>
-              ✴ {theme === "dark" ? "Light" : "Dark"}
+              {theme === "dark" ? "Light" : "Dark"}
             </button>
           </div>
         </div>
