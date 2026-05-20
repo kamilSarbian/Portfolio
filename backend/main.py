@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from routers.passwords import router as passwords_router
 from routers.images import router as images_router
@@ -19,6 +20,11 @@ OPENAPI_TAGS = [
     {"name": "contact", "description": "Contact form submission and email delivery workflow."},
 ]
 
+
+class _UTF8JSONResponse(JSONResponse):
+    media_type = "application/json; charset=utf-8"
+
+
 app = FastAPI(
     title="Portfolio API",
     version="1.0.0",
@@ -29,6 +35,7 @@ app = FastAPI(
         "and CLIP-based image classification."
     ),
     openapi_tags=OPENAPI_TAGS,
+    default_response_class=_UTF8JSONResponse,
 )
 
 app.add_middleware(
