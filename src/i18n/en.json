@@ -85,7 +85,49 @@
     "title": "Featured case studies",
     "subtitle": "Selected backend and automation projects described by problem, solution, business value, and production thinking.",
     "open": "Open",
+    "openSmall": "Open",
+    "liveDemo": "Live Demo",
+    "github": "GitHub",
     "apiDocs": "API docs",
+    "featuredLabel": "Featured case study",
+    "secondaryLabel": "Supporting case study",
+    "caseLabels": {
+      "problem": "Problem",
+      "solution": "Solution",
+      "businessValue": "Business Value",
+      "productionThinking": "Production Thinking",
+      "stack": "Stack",
+      "screenshot": "Screenshot/GIF:"
+    },
+    "caseStudies": {
+      "auth": {
+        "title": "Auth / Backend API System",
+        "problem": "Internal tools often need secure user access without overcomplicated identity infrastructure.",
+        "solution": "A FastAPI authentication service with registration, JWT login, protected profile access, role-based admin endpoints, password hashing, validation, and database persistence.",
+        "businessValue": "A reusable backend foundation for dashboards, admin panels, and workflow tools where access control matters.",
+        "productionThinking": "JWT configuration checks, bcrypt password hashing, role-based access, input validation, database migrations, and rate limiting.",
+        "stack": ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "JWT", "bcrypt"],
+        "screenshot": "Interactive demo available in the project view."
+      },
+      "classifier": {
+        "title": "AI-assisted Image Classification API",
+        "problem": "Teams often need a fast way to classify uploaded visual content without building a full ML product from scratch.",
+        "solution": "A FastAPI endpoint that accepts images, runs CLIP-based classification, supports smart presets or custom labels, and returns structured JSON predictions.",
+        "businessValue": "Demonstrates how practical AI features can be exposed through a reliable API and added to existing workflows.",
+        "productionThinking": "Upload validation, file handling, lazy model loading, configurable thresholds, structured responses, and clear error handling.",
+        "stack": ["Python", "FastAPI", "CLIP", "PyTorch", "Pillow", "REST API"],
+        "screenshot": "Interactive demo available in the project view."
+      },
+      "imageProcessing": {
+        "title": "Image Processing API",
+        "problem": "Simple image operations are often handled manually or scattered across desktop tools.",
+        "solution": "A backend API that accepts uploads, applies resizing, grayscale conversion, and rotation, then returns a processed PNG.",
+        "businessValue": "Shows how repetitive media tasks can be moved into a predictable API workflow.",
+        "productionThinking": "MIME validation, upload size limits, image decoding errors, deterministic output format, and API-level processing.",
+        "stack": ["Python", "FastAPI", "Pillow", "File Upload", "REST API"],
+        "screenshot": "Interactive demo available in the project view."
+      }
+    },
     "pwnedTitle": "Pwned Password Check",
     "pwnedDesc": "Python API using the k-Anonymity method with the HaveIBeenPwned API to check whether a password has appeared in data breaches.",
     "imgTitle": "Image Editor (Python API)",
@@ -105,6 +147,9 @@
       "e": "Docker and basic CI/CD"
     },
     "experiments": {
+      "pwned": "Pwned Password Check - API integration experiment",
+      "contact": "Contact workflow with email autoresponder",
+      "analytics": "Data Analytics API experiment",
       "a": "Pwned Password Check",
       "b": "Image Editor (Python API)",
       "c": "Contact form with email autoresponder",

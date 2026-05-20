@@ -84,7 +84,49 @@
     "title": "Featured case studies",
     "subtitle": "Utvalgte backend- og automatiseringsprosjekter beskrevet med problem, løsning, verdi og production thinking.",
     "open": "Åpne",
+    "openSmall": "Åpne",
+    "liveDemo": "Live Demo",
+    "github": "GitHub",
     "apiDocs": "API-dokumentasjon",
+    "featuredLabel": "Featured case study",
+    "secondaryLabel": "Supporting case study",
+    "caseLabels": {
+      "problem": "Problem",
+      "solution": "Solution",
+      "businessValue": "Business Value",
+      "productionThinking": "Production Thinking",
+      "stack": "Stack",
+      "screenshot": "Screenshot/GIF:"
+    },
+    "caseStudies": {
+      "auth": {
+        "title": "Auth / Backend API System",
+        "problem": "Interne verktøy trenger ofte sikker brukertilgang uten for komplisert identity-infrastruktur.",
+        "solution": "En FastAPI-tjeneste med registrering, JWT-innlogging, beskyttet profil, rollebaserte admin-endepunkter, passordhashing, validering og databasepersistens.",
+        "businessValue": "Et gjenbrukbart backend-grunnlag for dashboards, adminpaneler og workflow-verktøy der tilgangskontroll er viktig.",
+        "productionThinking": "JWT-konfigurasjonssjekker, bcrypt-passordhashing, rollebasert tilgang, inputvalidering, databasemigrasjoner og rate limiting.",
+        "stack": ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "JWT", "bcrypt"],
+        "screenshot": "Interaktiv demo tilgjengelig i prosjektvisningen."
+      },
+      "classifier": {
+        "title": "AI-assisted Image Classification API",
+        "problem": "Team trenger ofte en rask måte å klassifisere visuelt innhold på uten å bygge et komplett ML-produkt fra bunnen av.",
+        "solution": "Et FastAPI-endepunkt som tar imot bilder, kjører CLIP-basert klassifisering, støtter smart presets eller egne etiketter og returnerer strukturerte JSON-prediksjoner.",
+        "businessValue": "Viser hvordan praktiske AI-funksjoner kan eksponeres gjennom et pålitelig API og legges til eksisterende arbeidsflyter.",
+        "productionThinking": "Upload-validering, filhåndtering, lazy model loading, konfigurerbare terskler, strukturerte svar og tydelig feilhåndtering.",
+        "stack": ["Python", "FastAPI", "CLIP", "PyTorch", "Pillow", "REST API"],
+        "screenshot": "Interaktiv demo tilgjengelig i prosjektvisningen."
+      },
+      "imageProcessing": {
+        "title": "Image Processing API",
+        "problem": "Enkle bildeoperasjoner håndteres ofte manuelt eller spredt mellom desktop-verktøy.",
+        "solution": "Et backend-API som tar imot opplastinger, utfører resizing, grayscale og rotation, og returnerer en behandlet PNG.",
+        "businessValue": "Viser hvordan repeterende mediaoppgaver kan flyttes inn i en forutsigbar API-arbeidsflyt.",
+        "productionThinking": "MIME-validering, upload limits, bildedekodingsfeil, deterministisk outputformat og API-basert behandling.",
+        "stack": ["Python", "FastAPI", "Pillow", "File Upload", "REST API"],
+        "screenshot": "Interaktiv demo tilgjengelig i prosjektvisningen."
+      }
+    },
     "pwnedTitle": "Pwned Password Check",
     "pwnedDesc": "Python-API som bruker k-anonymitetsmetoden sammen med HaveIBeenPwned API for å sjekke om et passord har dukket opp i datalekkasjer.",
     "imgTitle": "Image Editor (Python API)",
@@ -104,6 +146,9 @@
       "e": "Docker og grunnleggende CI/CD"
     },
     "experiments": {
+      "pwned": "Pwned Password Check - API-integrasjonseksperiment",
+      "contact": "Contact workflow med e-post autoresponder",
+      "analytics": "Data Analytics API experiment",
       "a": "Pwned Password Check",
       "b": "Image Editor (Python API)",
       "c": "Kontaktskjema med e-post autoresponder",

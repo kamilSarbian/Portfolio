@@ -2,8 +2,38 @@ import Card from "../components/Card";
 import ImageClassifier from "../components/ImageClassifier";
 import { useTranslation } from "react-i18next";
 
+function CaseStudySummary({ caseId }) {
+  const { t } = useTranslation();
+  const base = `projects.caseStudies.${caseId}`;
+
+  return (
+    <div className="case-study-grid case-study-grid--detail">
+      <section>
+        <h3>{t("projects.caseLabels.problem")}</h3>
+        <p>{t(`${base}.problem`)}</p>
+      </section>
+
+      <section>
+        <h3>{t("projects.caseLabels.solution")}</h3>
+        <p>{t(`${base}.solution`)}</p>
+      </section>
+
+      <section>
+        <h3>{t("projects.caseLabels.businessValue")}</h3>
+        <p>{t(`${base}.businessValue`)}</p>
+      </section>
+
+      <section>
+        <h3>{t("projects.caseLabels.productionThinking")}</h3>
+        <p>{t(`${base}.productionThinking`)}</p>
+      </section>
+    </div>
+  );
+}
+
 export default function ProjectImageClassifier({ onGoProjects }) {
   const { t } = useTranslation();
+  const stack = t("projects.caseStudies.classifier.stack", { returnObjects: true });
 
   return (
     <div className="page" style={{ display: "grid", placeItems: "center" }}>
@@ -14,15 +44,14 @@ export default function ProjectImageClassifier({ onGoProjects }) {
           </button>
 
           <h1 className="h1" style={{ fontSize: 30 }}>
-            {t("imageClassifier.title")}
+            {t("projects.caseStudies.classifier.title")}
           </h1>
 
           <p className="p">{t("imageClassifier.desc")}</p>
 
           <div className="divider" />
-        
-          <strong>{t("imageClassifier.arch")}</strong>
-          <p className="p">{t("imageClassifier.archDesc")}</p>
+
+          <CaseStudySummary caseId="classifier" />
 
           <div className="divider" />
 
@@ -30,18 +59,20 @@ export default function ProjectImageClassifier({ onGoProjects }) {
           <p className="p">{t("imageClassifier.warningDesc")}</p>
 
           <div className="divider" />
-            <ImageClassifier />
+
+          <ImageClassifier />
+
           <div className="divider" />
 
           <div className="chips">
-            <span className="chip">Python</span>
-            <span className="chip">FastAPI</span>
-            <span className="chip">PyTorch</span>
-            <span className="chip">CLIP</span>
-            <span className="chip">Pillow</span>
-            <span className="chip">NumPy</span>
+            {Array.isArray(stack)
+              ? stack.map((item) => (
+                  <span className="chip" key={item}>
+                    {item}
+                  </span>
+                ))
+              : null}
           </div>
-          
         </Card>
       </div>
     </div>

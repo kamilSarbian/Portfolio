@@ -493,6 +493,120 @@ h3 {
 .result.good{ border-color: rgba(120,255,190,0.35); }
 .result.bad{ border-color: rgba(255,120,120,0.35); }
 
+.case-study-list{
+  display: grid;
+  gap: 14px;
+}
+
+.case-study{
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+  padding: 14px;
+}
+
+.app.light .case-study{
+  background: rgba(0,0,0,0.025);
+}
+
+.case-study--secondary{
+  opacity: 0.94;
+}
+
+.case-study-header{
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.case-study-kicker{
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case-study h2{
+  margin: 5px 0 0;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.case-study-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.case-study-grid--detail{
+  margin-top: 0;
+}
+
+.case-study-grid section{
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px;
+  background: rgba(255,255,255,0.025);
+}
+
+.app.light .case-study-grid section{
+  background: rgba(0,0,0,0.02);
+}
+
+.case-study-grid h3{
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.25;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.case-study-grid p{
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+  font-weight: 650;
+}
+
+.case-study-footer{
+  margin-top: 12px;
+}
+
+.case-study-stack{
+  margin: 0 0 10px;
+}
+
+.case-study-media-note{
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.inline-link{
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 900;
+  padding: 0;
+}
+
+.inline-link:hover{
+  text-decoration: underline;
+}
+
+@media (max-width: 720px){
+  .case-study-grid{ grid-template-columns: 1fr; }
+  .case-study-header{ display: block; }
+}
+
 .small-link{
   color: var(--muted);
   font-weight: 800;
