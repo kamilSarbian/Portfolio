@@ -155,7 +155,7 @@ export default function ContactForm() {
       <div className="field">
         <input
           className={inputClass("name")}
-          placeholder="Name"
+          placeholder={t("contactForm.placeholders.name")}
           value={form.name}
           onChange={(e) => setField("name", e.target.value)}
           onBlur={() => markTouched("name")}
@@ -167,7 +167,7 @@ export default function ContactForm() {
       <div className="field">
         <input
           className={inputClass("email")}
-          placeholder="E-mail"
+          placeholder={t("contactForm.placeholders.email")}
           value={form.email}
           onChange={(e) => setField("email", e.target.value)}
           onBlur={() => markTouched("email")}
@@ -179,7 +179,7 @@ export default function ContactForm() {
       <div className="field">
         <input
           className="input"
-          placeholder="Company (optional)"
+          placeholder={t("contactForm.placeholders.company")}
           value={form.company}
           onChange={(e) => setField("company", e.target.value)}
         />
@@ -188,7 +188,7 @@ export default function ContactForm() {
       <div className="field">
         <textarea
           className={textareaClass("message")}
-          placeholder="Message"
+          placeholder={t("contactForm.placeholders.message")}
           value={form.message}
           onChange={(e) => setField("message", e.target.value)}
           onBlur={() => markTouched("message")}

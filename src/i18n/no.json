@@ -204,6 +204,12 @@
     "clear": "Tøm",
     "sending": "Sender...",
     "success": "Meldingen er sendt. Takk!",
+    "placeholders": {
+      "name": "Navn",
+      "email": "E-post",
+      "company": "Firma (valgfritt)",
+      "message": "Beskriv arbeidsflyten, integrasjonen eller backend-problemet du vil forbedre."
+    },
     "errors": {
       "nameMin": "Vennligst skriv inn navn (min. 2 tegn).",
       "emailInvalid": "Vennligst skriv inn en gyldig e-postadresse.",

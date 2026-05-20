@@ -214,6 +214,12 @@
     "clear": "Wyczyść",
     "sending": "Wysyłanie...",
     "success": "Wiadomość została wysłana. Dziękuję!",
+    "placeholders": {
+      "name": "Imię",
+      "email": "E-mail",
+      "company": "Firma (opcjonalnie)",
+      "message": "Opisz workflow, integrację albo problem backendowy, który chcesz usprawnić."
+    },
     "errors": {
       "nameMin": "Podaj imię (min. 2 znaki).",
       "emailInvalid": "Podaj poprawny adres e-mail.",

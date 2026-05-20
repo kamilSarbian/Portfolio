@@ -126,6 +126,16 @@ export default function Home({ onGoProjects }) {
         <Card id="contact">
           <div className="section-label">{t("home.contactTitle")}</div>
 
+          <h2 style={{ margin: 0, fontSize: 22, fontWeight: 900 }}>
+            {t("home.cta.title")}
+          </h2>
+
+          <p className="p" style={{ marginTop: 8 }}>
+            {t("home.cta.body")}
+          </p>
+
+          <div className="divider" />
+
           <div className="info" style={{ marginTop: 6 }}>
             <ul className="contact-list" style={{ marginTop: 0 }}>
               <li>

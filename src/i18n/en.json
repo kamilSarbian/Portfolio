@@ -217,6 +217,12 @@
     "clear": "Clear",
     "sending": "Sending...",
     "success": "Message sent successfully. Thank you!",
+    "placeholders": {
+      "name": "Name",
+      "email": "E-mail",
+      "company": "Company (optional)",
+      "message": "Describe the workflow, integration, or backend problem you want to improve."
+    },
     "errors": {
       "nameMin": "Please enter your name (min. 2 characters).",
       "emailInvalid": "Please enter a valid email address.",
