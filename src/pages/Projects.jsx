@@ -93,10 +93,10 @@ function OtherExperiments({ onOpenPwned }) {
   const { t } = useTranslation();
 
   return (
-    <ul className="plan-list">
+    <ul className="experiments-list">
       <li>
         <span className="status">Live</span>
-        <span className="plan-text">
+        <span className="experiment-text">
           {t("projects.experiments.pwned")}{" "}
           <button type="button" className="inline-link" onClick={onOpenPwned}>
             {t("projects.openSmall")}
@@ -105,11 +105,11 @@ function OtherExperiments({ onOpenPwned }) {
       </li>
       <li>
         <span className="status">Live</span>
-        <span className="plan-text">{t("projects.experiments.contact")}</span>
+        <span className="experiment-text">{t("projects.experiments.contact")}</span>
       </li>
       <li>
         <span className="status">Lab</span>
-        <span className="plan-text">{t("projects.experiments.analytics")}</span>
+        <span className="experiment-text">{t("projects.experiments.analytics")}</span>
       </li>
     </ul>
   );

@@ -1,3 +1,3 @@
-export default function Card({ children }) {
-  return <section className="card">{children}</section>;
+export default function Card({ children, ...props }) {
+  return <section className="card" {...props}>{children}</section>;
 }

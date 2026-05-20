@@ -57,7 +57,7 @@ body {
 .container{
   width: min(1100px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 18px 0 48px;
+  padding: 22px 0 56px;
 }
 
 /* ===== Navbar ===== */
@@ -193,13 +193,13 @@ body {
 .grid{
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 18px;
+  gap: 22px;
   margin-top: 18px;
-  align-items: start; /*<-- to naprawia wysokość kart*/
+  align-items: start;
 }
 .right-col{
   display: grid;
-  gap: 18px;
+  gap: 22px;
 }
 
 @media (max-width: 920px){
@@ -207,21 +207,21 @@ body {
 }
 
 .card{
-  border-radius: 18px;
+  border-radius: 12px;
   background: linear-gradient(180deg, var(--card2), var(--card));
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   backdrop-filter: blur(10px);
-  padding: 18px;
+  padding: 22px;
 }
 
 /* ===== Home content ===== */
 .section-label{
   color: var(--accent);
-  font-weight: 700;
-  letter-spacing: 2px;
-  font-size: 17px;
-  margin-bottom: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  margin-bottom: 12px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -289,9 +289,9 @@ body {
 .section-label,
 .section-label.section-label-link{
   font-family: Lato, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji" !important;
-  font-size: 17px !important;
-  font-weight: 700 !important;
-  letter-spacing: 2px !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
   line-height: normal !important;
   color: var(--accent) !important;
   -webkit-text-fill-color: currentColor !important;
@@ -305,7 +305,7 @@ body {
   margin: 0;
   font-size: 36px;
   line-height: 1.12;
-  letter-spacing: -0.6px;
+  letter-spacing: 0;
 }
 h3 {
   margin-top: 1px;
@@ -340,7 +340,7 @@ h3 {
 .divider{
   height: 1px;
   background: rgba(255,255,255,0.10);
-  margin: 14px 0;
+  margin: 18px 0;
 }
 .app.light .divider{
   background: rgba(0,0,0,0.12);
@@ -476,8 +476,9 @@ h3 {
 }
 
 .actions{
-  margin-top: 10px;
+  margin-top: 12px;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -495,14 +496,14 @@ h3 {
 
 .case-study-list{
   display: grid;
-  gap: 14px;
+  gap: 16px;
 }
 
 .case-study{
   border: 1px solid var(--border);
   border-radius: 8px;
   background: rgba(255,255,255,0.03);
-  padding: 14px;
+  padding: 16px;
 }
 
 .app.light .case-study{
@@ -530,15 +531,16 @@ h3 {
 
 .case-study h2{
   margin: 5px 0 0;
-  font-size: 22px;
+  font-size: 21px;
   line-height: 1.2;
+  letter-spacing: 0;
 }
 
 .case-study-grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 14px;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .case-study-grid--detail{
@@ -549,7 +551,7 @@ h3 {
   min-width: 0;
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 11px;
+  padding: 12px;
   background: rgba(255,255,255,0.025);
 }
 
@@ -574,7 +576,7 @@ h3 {
 }
 
 .case-study-footer{
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .case-study-stack{
@@ -585,6 +587,7 @@ h3 {
   color: var(--muted);
   font-size: 12px;
   font-weight: 750;
+  margin-bottom: 2px;
 }
 
 .inline-link{
@@ -605,6 +608,31 @@ h3 {
 @media (max-width: 720px){
   .case-study-grid{ grid-template-columns: 1fr; }
   .case-study-header{ display: block; }
+}
+
+@media (max-width: 720px){
+  .app{ padding-top: 12px; }
+  .container{
+    width: min(100% - 28px, 1100px);
+    padding: 14px 0 36px;
+  }
+  .navbar{
+    width: min(100% - 28px, 1100px);
+    top: 10px;
+  }
+  .grid{
+    gap: 16px;
+    margin-top: 14px;
+  }
+  .card{ padding: 16px; }
+  .h1{ font-size: 30px; }
+  .actions .btn,
+  .actions button.btn{
+    flex: 1 1 150px;
+  }
+  .case-study{ padding: 14px; }
+  .case-study h2{ font-size: 20px; }
+  .what-build-grid{ gap: 8px; }
 }
 
 .small-link{
@@ -753,13 +781,13 @@ a.btn:active {
 }
 
 /* Other experiments list */
-.plan-list{
+.experiments-list{
   list-style: none;
   padding: 0;
   margin: 10px 0 0;
 }
 
-.plan-list li{
+.experiments-list li{
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -769,12 +797,15 @@ a.btn:active {
 }
 
 .status{
-  width: 24px;
+  width: 40px;
   line-height: 1.2;
-  flex: 0 0 24px;
+  flex: 0 0 40px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
 }
 
-.plan-text{
+.experiment-text{
   color: var(--text);
   font-weight: 600;
 }
