@@ -1,21 +1,37 @@
-# Backend Portfolio App
+# Backend Developer & AI Automation Portfolio
 
-Backend-focused portfolio application built with FastAPI, PostgreSQL, JWT authentication, external API integrations, image processing, and ML inference.
+Portfolio site and backend demo platform for practical backend systems, API integrations, and automation workflows.
+
+The project is built to show how I approach workflows: start from the problem, design a reliable backend path, expose clear APIs, and keep the frontend focused on making the system easy to inspect.
 
 ## Live Links
 
-- Frontend: https://kamilsarbian-dev.vercel.app
+- Portfolio: https://kamilsarbian-dev.vercel.app
 - API docs: https://portfolio-api-kym0.onrender.com/docs
+- GitHub: https://github.com/kamilSarbian/Portfolio
 
-## What This Project Demonstrates
+## Problem
 
-- REST API design with FastAPI
-- JWT authentication and role-based access
-- PostgreSQL integration with SQLAlchemy
-- External API integration with Have I Been Pwned
-- File upload and image processing
-- ML inference with a CLIP-based classifier
-- Deployed frontend and backend services
+Most portfolio projects present technologies before the value they create. This project is structured around backend problems that appear in real internal tools: secure access, API communication, repetitive manual work, file processing, and clear data flow between services.
+
+## Solution
+
+The application combines a React frontend with a FastAPI backend and exposes several working backend workflows:
+
+- authentication and role-based access
+- image classification with CLIP-based inference
+- image processing through API upload flows
+- contact workflow with backend validation and email delivery
+- API documentation through Swagger
+
+The frontend presents the work as focused case studies instead of a long list of disconnected demos.
+
+## Business Value
+
+- Reusable backend foundation for dashboards, admin panels, and internal tools.
+- API workflows that reduce manual file handling and make processing repeatable.
+- Clear technical documentation that helps recruiters and engineers inspect the system quickly.
+- Production-minded details such as validation, role checks, JWT configuration, error handling, and test coverage.
 
 ## Architecture
 
@@ -31,82 +47,119 @@ FastAPI backend
 PostgreSQL database
 
 External services:
-- Have I Been Pwned API for password breach checks
 - SMTP provider for contact form email delivery
 - OpenCLIP/PyTorch for image classification
+- Have I Been Pwned API for the password breach experiment
 ```
 
-## Main Modules
+## Screenshots
 
-### 1. Authentication and Users
+Project previews are stored in `public/projects/`.
 
-User registration, login, JWT-based authentication, protected endpoints, and role-based access.
+| Auth API | AI Image Classifier | Image Processing |
+| --- | --- | --- |
+| ![Auth API preview](public/projects/auth-api.png) | ![Image classifier preview](public/projects/image-classifier.png) | ![Image processing preview](public/projects/image-processing.png) |
 
-Example endpoints:
+## Featured Case Studies
 
-- `POST /backend/auth/register`
-- `POST /backend/auth/login`
-- `GET /backend/users/profile`
-- `GET /backend/users`
+### Auth / Backend API System
 
-### 2. Password Breach Checker
+**Problem**  
+Internal tools often need secure user access without overcomplicated identity infrastructure.
 
-Checks whether a password appears in known breaches using the Have I Been Pwned k-Anonymity API flow.
+**Solution**  
+A FastAPI authentication service with registration, JWT login, protected profile access, role-based admin endpoints, password hashing, validation, and database persistence.
 
-Example endpoint:
+**Production Thinking**  
+JWT configuration checks, bcrypt password hashing, role-based access, input validation, database persistence, and focused backend tests.
 
-- `POST /backend/password/check`
+**API examples**
 
-### 3. Image Processing API
+```http
+POST /backend/auth/register
+POST /backend/auth/login
+GET /backend/users/profile
+GET /backend/users
+```
 
-Simple image upload and transformation service.
+### AI-assisted Image Classification / Automation API
 
-Example endpoint:
+**Problem**  
+Manual image review and categorization can become repetitive when teams need a first-pass classification step.
 
-- `POST /backend/image/process`
+**Solution**  
+A CLIP-based classification workflow exposed through FastAPI and connected to a frontend upload experience.
 
-Example capabilities:
+**Production Thinking**  
+Model metadata endpoint, example labels, upload handling, clear API boundaries, and cold-start awareness for hosted inference.
 
-- resize
-- grayscale conversion
-- rotation
+**API examples**
 
-### 4. Image Classifier
+```http
+GET /backend/ml/info
+GET /backend/ml/examples
+POST /backend/ml/classify
+```
 
-Image classification demo using a CLIP-based model with predefined categories.
+### Image Processing API
 
-Example endpoint:
+**Problem**  
+Teams often need repeatable file transformations instead of manual editing.
 
-- `POST /backend/ml/classify`
+**Solution**  
+An image upload and processing API that supports simple transformations through a predictable backend endpoint.
 
-## Tech Stack
+**API example**
 
-### Backend
+```http
+POST /backend/image/process
+```
 
-- Python
-- FastAPI
-- SQLAlchemy
-- PostgreSQL
-- JWT authentication
-- Pillow
+## Supporting Experiment
 
-### Frontend
+### Password Breach Checker
 
-- React
-- Vite
-- React Router
-- i18next
+Small API integration experiment using the Have I Been Pwned k-anonymity flow.
 
-### ML
+```http
+POST /backend/password/check
+```
 
-- PyTorch
-- OpenCLIP
+This remains a supporting experiment, not a featured case study.
 
-### Infrastructure
+## API Overview
 
-- Vercel
-- Render
-- Neon PostgreSQL
+| Method | Endpoint | Auth | Purpose |
+| --- | --- | --- | --- |
+| POST | `/backend/auth/register` | No | Register a new user |
+| POST | `/backend/auth/login` | No | Log in and receive token |
+| GET | `/backend/users/profile` | Yes | Get current user profile |
+| GET | `/backend/users` | Admin | List users |
+| POST | `/backend/image/process` | No | Process an uploaded image |
+| GET | `/backend/ml/info` | No | Get ML model metadata |
+| GET | `/backend/ml/examples` | No | Get example classification labels |
+| POST | `/backend/ml/classify` | No | Run image classification |
+| POST | `/backend/contact/send` | No | Send a contact form message |
+| POST | `/backend/password/check` | No | Check password against breaches |
+| GET | `/health` | No | Health check |
+| GET | `/version` | No | Service version |
+
+## Stack
+
+**Backend**  
+Python, FastAPI, REST APIs
+
+**Database**  
+PostgreSQL, SQLAlchemy, SQL
+
+**AI / Automation**  
+CLIP, embeddings-style classification workflow, OpenCLIP/PyTorch
+
+**Frontend**  
+React, Vite, i18next
+
+**Tools and Deployment**  
+Git, Vercel, Render, Neon PostgreSQL
 
 ## Project Structure
 
@@ -119,10 +172,11 @@ Portfolio/
 |   |-- services/     # business logic and integrations
 |   |-- tests/        # backend tests
 |   `-- main.py       # FastAPI app entrypoint
-|-- public/           # static frontend assets
+|-- public/
+|   `-- projects/     # project preview images
 |-- src/
 |   |-- components/   # reusable UI components
-|   |-- pages/        # app pages
+|   |-- pages/        # app pages and case studies
 |   |-- i18n/         # translations
 |   `-- App.jsx       # frontend app entry
 |-- package.json
@@ -130,24 +184,7 @@ Portfolio/
 `-- README.md
 ```
 
-## API Overview
-
-| Method | Endpoint | Auth | Purpose |
-| --- | --- | --- | --- |
-| POST | `/backend/auth/register` | No | Register a new user |
-| POST | `/backend/auth/login` | No | Log in and receive token |
-| GET | `/backend/users/profile` | Yes | Get current user profile |
-| GET | `/backend/users` | Admin | List users |
-| POST | `/backend/password/check` | No | Check password against breaches |
-| POST | `/backend/image/process` | No | Process an uploaded image |
-| GET | `/backend/ml/info` | No | Get ML model metadata |
-| GET | `/backend/ml/examples` | No | Get example classification labels |
-| POST | `/backend/ml/classify` | No | Run image classification |
-| POST | `/backend/contact/send` | No | Send a contact form message |
-| GET | `/health` | No | Health check |
-| GET | `/version` | No | Service version |
-
-## Run Locally
+## How to Run
 
 ### Backend
 
@@ -159,7 +196,7 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-Create `backend/.env` from `backend/.env.example` and set at least:
+Create `backend/.env` from `backend/.env.example` and configure:
 
 - `DATABASE_URL`
 - `JWT_SECRET`
@@ -172,7 +209,7 @@ npm install
 npm run dev
 ```
 
-Create `.env` from `.env.example` if your backend is not running on `http://127.0.0.1:8000`.
+Create `.env` from `.env.example` if the backend is not running on `http://127.0.0.1:8000`.
 
 ## Quality Checks
 
@@ -181,32 +218,33 @@ npm run check
 npm run test:backend
 ```
 
-You can also run backend tests directly from the project root with:
+Backend tests can also be run directly from the project root:
 
 ```bash
 .\venv\Scripts\python.exe -m pytest -q
 ```
 
-## Notes
+## Deployment
 
-- ML model loads on first request, so the initial classification request can be slower.
-- Free hosting may cause cold starts.
-- Some endpoints are demo-focused.
-- The frontend is intentionally simple because this is a backend-focused portfolio project.
+- Frontend: Vercel
+- Backend API: Render
+- Database: Neon PostgreSQL
+- API documentation: FastAPI Swagger UI at `/docs`
 
-## Next Improvements
+## GitHub Profile Checklist
 
-- Expand backend test coverage
-- Add Alembic migrations for production database changes
-- Add stronger validation and error handling
-- Add persistent rate limiting with Redis for production
-- Add Docker support
-- Add demo screenshots or GIFs to this README
+For the public GitHub profile, pin only the strongest repositories:
+
+1. `Portfolio` - backend portfolio and case studies.
+2. Auth/API focused project, if separated into its own repository later.
+3. AI automation or image classification project, if separated into its own repository later.
+
+Avoid pinning tutorial repositories or unfinished experiments. Supporting experiments should stay visible only when they help explain API integration or backend thinking.
 
 ## Author
 
 **Kamil Sarbian**  
-Backend Developer
+Backend Developer - APIs, automation, integrations
 
 - LinkedIn: https://www.linkedin.com/in/kamil-sarbian-3399991ba/
 - GitHub: https://github.com/kamilSarbian
