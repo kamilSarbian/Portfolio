@@ -206,7 +206,7 @@ You can also run backend tests directly from the project root with:
 ## Author
 
 **Kamil Sarbian**  
-Junior Backend Developer
+Backend Developer
 
 - LinkedIn: https://www.linkedin.com/in/kamil-sarbian-3399991ba/
 - GitHub: https://github.com/kamilSarbian

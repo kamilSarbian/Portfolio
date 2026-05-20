@@ -10,12 +10,6 @@ SUPPORTED_LANGS = {"pl", "en", "no"}
 
 
 def _pick_lang(lang: str | None) -> str:
-    """
-    Normalizacja języka:
-    - przyjmujemy: pl / en / no
-    - 'nb' mapujemy na 'no'
-    - fallback: pl
-    """
     if not lang:
         return "pl"
     base = lang.lower().strip()[:2]
@@ -26,16 +20,16 @@ def _pick_lang(lang: str | None) -> str:
 
 TEMPLATES = {
     "pl": {
-        "subject": "Dziękuję za wiadomość",
+        "subject": "Dziekuje za wiadomosc",
         "body": lambda name: (
-            f"Cześć {name},\n\n"
-            "Dziękuję za wiadomość i zainteresowanie moim profilem. "
-            "Otrzymałem Twoją wiadomość i postaram się odpowiedzieć jak najszybciej.\n\n"
+            f"Czesc {name},\n\n"
+            "Dziekuje za wiadomosc i zainteresowanie moim profilem. "
+            "Otrzymalem Twoja wiadomosc i postaram sie odpowiedziec jak najszybciej.\n\n"
             "Pozdrawiam,\n"
             "Kamil Sarbian\n"
-            "Junior Backend Developer\n"
-            "📧 sarbian.kamil@gmail.com\n"
-            "📞 +47 92 51 16 61\n"
+            "Backend Developer\n"
+            "Email: sarbian.kamil@gmail.com\n"
+            "Phone: +47 92 51 16 61\n"
         ),
     },
     "en": {
@@ -43,25 +37,25 @@ TEMPLATES = {
         "body": lambda name: (
             f"Hi {name},\n\n"
             "Thanks for reaching out and for your interest in my portfolio. "
-            "I’ve received your message and I’ll get back to you as soon as possible.\n\n"
+            "I have received your message and I will get back to you as soon as possible.\n\n"
             "Best regards,\n"
             "Kamil Sarbian\n"
-            "Junior Backend Developer\n"
-            "📧 sarbian.kamil@gmail.com\n"
-            "📞 +47 92 51 16 61\n"
+            "Backend Developer\n"
+            "Email: sarbian.kamil@gmail.com\n"
+            "Phone: +47 92 51 16 61\n"
         ),
     },
     "no": {
         "subject": "Takk for meldingen",
         "body": lambda name: (
             f"Hei {name},\n\n"
-            "Takk for meldingen og interessen for profilen/porteføljen min. "
-            "Jeg har mottatt meldingen din og svarer så snart som mulig.\n\n"
+            "Takk for meldingen og interessen for portefoljen min. "
+            "Jeg har mottatt meldingen din og svarer sa snart som mulig.\n\n"
             "Vennlig hilsen,\n"
             "Kamil Sarbian\n"
-            "Junior Backend Developer\n"
-            "📧 sarbian.kamil@gmail.com\n"
-            "📞 +47 92 51 16 61\n"
+            "Backend Developer\n"
+            "Email: sarbian.kamil@gmail.com\n"
+            "Phone: +47 92 51 16 61\n"
         ),
     },
 }
@@ -84,9 +78,18 @@ def send_contact_emails(
     website: str | None = None,
     lang: str | None = None,
 ) -> None:
-    """
-    1) Mail do OWNER z treścią wiadomości
-    2) Autoresponder do nadawcy
+    """Send the portfolio contact email and localized autoresponder.
+
+    Args:
+        name: Sender display name from the contact form.
+        email: Sender email address used for reply-to and autoresponder.
+        message: Message body submitted through the contact form.
+        company: Optional company context from the contact form.
+        website: Optional website context from the contact form.
+        lang: Optional language code used to select autoresponder copy.
+
+    Raises:
+        RuntimeError: If email sending is enabled but SMTP or owner settings are missing.
     """
 
     logger.warning("EMAIL_ENABLED=%s", getattr(settings, "email_enabled", None))
@@ -104,7 +107,7 @@ def send_contact_emails(
         return
 
     if not settings.smtp_host or not settings.smtp_user or not settings.smtp_password:
-        raise RuntimeError("Brak konfiguracji SMTP (sprawdź backend/.env).")
+        raise RuntimeError("SMTP configuration is missing. Check backend/.env.")
 
     from_addr = (getattr(settings, "smtp_from", None) or settings.smtp_user).strip()
     owner_addr = (settings.owner_email or "").strip()
@@ -113,7 +116,6 @@ def send_contact_emails(
     if not owner_addr:
         raise RuntimeError("OWNER_EMAIL is not configured")
 
-    # 1) Wiadomość do Ciebie
     owner_msg = EmailMessage()
     owner_msg["Subject"] = f"[Portfolio] Message from: {name}"
     owner_msg["From"] = from_addr
@@ -137,7 +139,6 @@ def send_contact_emails(
     logger.warning("Sending owner email to %s", owner_addr)
     _send_smtp(owner_msg)
 
-    # 2) Autoresponder do usera
     chosen = _pick_lang(lang)
     tpl = TEMPLATES[chosen]
 
