@@ -86,8 +86,19 @@
     "open": "Åpne",
     "openSmall": "Åpne",
     "liveDemo": "Live Demo",
+    "openInApp": "Åpne her",
+    "comingSoon": "Coming soon",
+    "statusLive": "Live",
     "github": "GitHub",
     "apiDocs": "API-dokumentasjon",
+    "demoMatrix": {
+      "title": "LIVE DEMO URLS",
+      "project": "Project",
+      "liveDemo": "Live Demo URL",
+      "github": "GitHub URL",
+      "asset": "Screenshot/GIF",
+      "status": "Status"
+    },
     "featuredLabel": "Featured case study",
     "secondaryLabel": "Supporting case study",
     "caseLabels": {

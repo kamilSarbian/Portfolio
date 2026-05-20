@@ -49,6 +49,13 @@ export default function ProjectImageClassifier({ onGoProjects }) {
 
           <p className="p">{t("imageClassifier.desc")}</p>
 
+          <img
+            className="case-study-preview"
+            src="/projects/image-classifier.png"
+            alt={t("projects.caseStudies.classifier.title")}
+            loading="lazy"
+          />
+
           <div className="divider" />
 
           <CaseStudySummary caseId="classifier" />

@@ -536,6 +536,17 @@ h3 {
   letter-spacing: 0;
 }
 
+.case-study-preview{
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-top: 14px;
+  background: rgba(255,255,255,0.025);
+}
+
 .case-study-grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -605,9 +616,55 @@ h3 {
   text-decoration: underline;
 }
 
+.demo-matrix{
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.demo-matrix-row{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.7fr 1fr 0.45fr;
+  gap: 8px;
+  align-items: start;
+  border-bottom: 1px solid var(--border);
+  padding: 8px 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.demo-matrix-row:last-child{
+  border-bottom: 0;
+}
+
+.demo-matrix-head{
+  color: var(--text);
+  font-weight: 900;
+}
+
+.demo-matrix a{
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.demo-matrix a:hover{
+  text-decoration: underline;
+}
+
+.demo-matrix strong{
+  color: var(--accent);
+  font-size: 12px;
+}
+
 @media (max-width: 720px){
   .case-study-grid{ grid-template-columns: 1fr; }
   .case-study-header{ display: block; }
+  .demo-matrix-row{
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
 }
 
 @media (max-width: 720px){

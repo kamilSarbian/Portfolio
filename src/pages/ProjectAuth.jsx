@@ -49,6 +49,13 @@ export default function ProjectAuth({ onGoProjects }) {
 
           <p className="p">{t("auth.desc")}</p>
 
+          <img
+            className="case-study-preview"
+            src="/projects/auth-api.png"
+            alt={t("projects.caseStudies.auth.title")}
+            loading="lazy"
+          />
+
           <div className="divider" />
 
           <CaseStudySummary caseId="auth" />

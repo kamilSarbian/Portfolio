@@ -86,8 +86,19 @@
     "open": "Otwórz",
     "openSmall": "Otwórz",
     "liveDemo": "Live Demo",
+    "openInApp": "Otwórz tutaj",
+    "comingSoon": "Coming soon",
+    "statusLive": "Live",
     "github": "GitHub",
     "apiDocs": "API docs",
+    "demoMatrix": {
+      "title": "LIVE DEMO URLS",
+      "project": "Project",
+      "liveDemo": "Live Demo URL",
+      "github": "GitHub URL",
+      "asset": "Screenshot/GIF",
+      "status": "Status"
+    },
     "featuredLabel": "Featured case study",
     "secondaryLabel": "Supporting case study",
     "caseLabels": {
