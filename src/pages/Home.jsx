@@ -86,6 +86,17 @@ export default function Home({ onGoProjects }) {
           </p>
         </Card>
 
+        <Card>
+          <div className="section-label">{t("home.howIWork.title")}</div>
+
+          <div className="how-work-list">
+            <p>{t("home.howIWork.a")}</p>
+            <p>{t("home.howIWork.b")}</p>
+            <p>{t("home.howIWork.c")}</p>
+            <p>{t("home.howIWork.d")}</p>
+          </div>
+        </Card>
+
         <Card id="contact">
           <div className="section-label">{t("home.contactTitle")}</div>
 
