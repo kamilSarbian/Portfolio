@@ -1550,7 +1550,36 @@ a.btn:active {
 
   /* navbar bardziej kompaktowy */
   .navbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
     padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .brand {
+    min-width: 0;
+    gap: 9px;
+    overflow: hidden;
+  }
+
+  .nav-avatar {
+    width: 34px;
+    height: 42px;
+    border-radius: 9px;
+    flex: 0 0 auto;
+  }
+
+  .brand-text {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .brand-text .title,
+  .brand-text .subtitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .brand-text .title {
