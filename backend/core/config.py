@@ -28,6 +28,11 @@ class Settings(BaseSettings):
     smtp_from: str = ""
     owner_email: str = ""
 
+    # AI-assisted inquiry workflow
+    jarvis_enabled: bool = False
+    jarvis_url: str = ""
+    jarvis_timeout_seconds: float = 10.0
+
     # ML
     clip_model: str = "ViT-B-32"
     clip_pretrained: str = "laion2b_s34b_b79k"

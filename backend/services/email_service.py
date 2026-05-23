@@ -22,10 +22,12 @@ def _pick_lang(lang: str | None) -> str:
 TEMPLATES = {
     "pl": {
         "subject": "Dziekuje za wiadomosc",
-        "body": lambda name: (
+        "intro": lambda name: (
             f"Czesc {name},\n\n"
             "Dziekuje za wiadomosc i zainteresowanie moim profilem. "
             "Otrzymalem Twoja wiadomosc i postaram sie odpowiedziec jak najszybciej.\n\n"
+        ),
+        "closing": (
             "Pozdrawiam,\n"
             "Kamil Sarbian\n"
             "Backend Developer\n"
@@ -35,10 +37,12 @@ TEMPLATES = {
     },
     "en": {
         "subject": "Thanks for your message",
-        "body": lambda name: (
+        "intro": lambda name: (
             f"Hi {name},\n\n"
             "Thanks for reaching out and for your interest in my portfolio. "
             "I have received your message and I will get back to you as soon as possible.\n\n"
+        ),
+        "closing": (
             "Best regards,\n"
             "Kamil Sarbian\n"
             "Backend Developer\n"
@@ -48,10 +52,12 @@ TEMPLATES = {
     },
     "no": {
         "subject": "Takk for meldingen",
-        "body": lambda name: (
+        "intro": lambda name: (
             f"Hei {name},\n\n"
             "Takk for meldingen og interessen for portefoljen min. "
             "Jeg har mottatt meldingen din og svarer sa snart som mulig.\n\n"
+        ),
+        "closing": (
             "Vennlig hilsen,\n"
             "Kamil Sarbian\n"
             "Backend Developer\n"
@@ -101,7 +107,7 @@ def _get_ai_direction_safely(message: str, name: str) -> str | None:
 
     try:
         return get_ai_technical_direction(message=message, name=name)
-    except (RuntimeError, TimeoutError, OSError) as exc:
+    except (RuntimeError, TimeoutError, OSError, ValueError) as exc:
         logger.exception("AI-assisted technical direction failed.")
         return None
 
@@ -123,7 +129,8 @@ def _format_ai_direction_section(direction: str | None) -> str:
         )
 
     return (
-        "JARVIS, my AI assistant, prepared an initial technical direction based on your message:\n\n"
+        "In the meantime, JARVIS, my AI assistant, prepared an initial technical direction "
+        "based on your message:\n\n"
         f"{direction}\n\n"
         "This is an automated suggestion, not a final estimate or commitment.\n"
     )
@@ -204,7 +211,7 @@ def send_contact_emails(
     auto["Subject"] = tpl["subject"]
     auto["From"] = from_addr
     auto["To"] = sender_addr
-    auto.set_content(tpl["body"](name) + ("\n" + ai_direction_body if ai_direction_body else ""))
+    auto.set_content(tpl["intro"](name) + (ai_direction_body + "\n" if ai_direction_body else "") + tpl["closing"])
 
     logger.info("Sending contact autoresponder in lang=%s.", chosen)
     try:
