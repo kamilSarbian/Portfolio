@@ -11,6 +11,8 @@ from PIL import Image
 import torch
 import open_clip
 
+MAX_IMAGE_SIDE = 512
+
 
 @dataclass(frozen=True)
 class Prediction:
@@ -84,6 +86,22 @@ class ClipClassifier:
             out.append(x)
         return out
 
+    @staticmethod
+    def _prepare_image(image_bytes: bytes) -> Image.Image:
+        """Decode and downscale an image before CLIP preprocessing.
+
+        Args:
+            image_bytes: Raw uploaded image bytes.
+
+        Returns:
+            RGB image with a bounded longest side.
+        """
+
+        img = Image.open(io.BytesIO(image_bytes)).convert("RGB")
+        if max(img.size) > MAX_IMAGE_SIDE:
+            img.thumbnail((MAX_IMAGE_SIDE, MAX_IMAGE_SIDE), Image.Resampling.LANCZOS)
+        return img
+
     def _get_text_tokens(self, prompts: List[str]) -> torch.Tensor:
         assert self._tokenizer is not None
 
@@ -118,8 +136,7 @@ class ClipClassifier:
         if not labels:
             raise ValueError("labels list is empty")
 
-        # Obraz
-        img = Image.open(io.BytesIO(image_bytes)).convert("RGB")
+        img = self._prepare_image(image_bytes)
         image_tensor = self._preprocess(img).unsqueeze(0).to(self.device)
 
         # Teksty (prosty prompt)
