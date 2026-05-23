@@ -14,6 +14,7 @@ from services.vision_taxonomy import SMART_LABELS
 
 router = APIRouter(prefix="/backend/ml", tags=["ml"], dependencies=[Depends(upload_rate_limit)])
 logger = logging.getLogger(__name__)
+SMART_CLASSIFY_LABELS = SMART_LABELS[:250]
 
 
 def _parse_labels(raw: str) -> List[str]:
@@ -65,7 +66,7 @@ def ml_info():
     return {
         "model_name": settings.clip_model,
         "device": settings.clip_device,
-        "smart_labels_count": len(SMART_LABELS),
+        "smart_labels_count": len(SMART_CLASSIFY_LABELS),
     }
 
 
@@ -76,7 +77,7 @@ def ml_info():
     description="Returns the backend-managed label pool used by smart ML classification mode.",
 )
 def ml_taxonomy():
-    return {"labels": SMART_LABELS, "count": len(SMART_LABELS)}
+    return {"labels": SMART_CLASSIFY_LABELS, "count": len(SMART_CLASSIFY_LABELS)}
 
 
 @router.get(
@@ -88,7 +89,7 @@ def ml_taxonomy():
 def ml_examples():
     return {
         "presets": [
-            {"id": "smart", "name": f"Smart ({len(SMART_LABELS)} labels)", "labels": SMART_LABELS},
+            {"id": "smart", "name": f"Smart ({len(SMART_CLASSIFY_LABELS)} labels)", "labels": SMART_CLASSIFY_LABELS},
             {
                 "id": "travel",
                 "name": "Travel / City",
@@ -150,7 +151,7 @@ async def classify_image(
         raise HTTPException(status_code=400, detail="Empty file.")
 
     if smart:
-        lbls = SMART_LABELS
+        lbls = SMART_CLASSIFY_LABELS
     else:
         lbls = _parse_labels(labels)
         if not lbls:
