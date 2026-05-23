@@ -35,6 +35,10 @@ class ContactIn(BaseModel):
     company: str | None = Field(default=None, max_length=120, description="Optional company name.")
     website: str | None = Field(default=None, max_length=200, description="Optional website or honeypot field.")
     lang: str | None = Field(default=None, max_length=8, description="Preferred language: pl, en, or no.")
+    ask_ai_direction: bool = Field(
+        default=False,
+        description="Whether to include an AI-assisted technical direction in the autoresponder.",
+    )
 
 
 @router.post(
@@ -72,6 +76,7 @@ def send_contact(payload: ContactIn, bg: BackgroundTasks, request: Request):
             payload.company,
             payload.website,
             lang,
+            payload.ask_ai_direction,
         )
         return {"ok": True}
     except RuntimeError as exc:

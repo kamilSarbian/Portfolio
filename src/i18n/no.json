@@ -183,7 +183,12 @@
     "send": "Send workflow details →",
     "clear": "Tøm",
     "sending": "Sender...",
+    "sendingWithAi": "Sender... JARVIS analyserer meldingen. Dette kan ta noen sekunder.",
     "success": "Meldingen er sendt. Takk!",
+    "aiDirection": {
+      "label": "Legg til AI-assisted technical direction",
+      "help": "JARVIS, Kamils AI-assistent, analyserer meldingen og foreslår en innledende teknisk retning. Du får den på e-post. Kamil svarer fortsatt personlig."
+    },
     "labels": {
       "name": "Navn",
       "email": "E-post",

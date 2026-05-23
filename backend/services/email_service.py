@@ -3,6 +3,7 @@ import smtplib
 from email.message import EmailMessage
 
 from core.config import settings
+from services.jarvis_service import get_ai_technical_direction
 
 logger = logging.getLogger(__name__)
 
@@ -87,6 +88,47 @@ def validate_email_configuration() -> None:
         raise RuntimeError("Owner email is not configured.")
 
 
+def _get_ai_direction_safely(message: str, name: str) -> str | None:
+    """Prepare AI direction without breaking contact email delivery.
+
+    Args:
+        message: Contact form message.
+        name: Sender display name.
+
+    Returns:
+        AI-assisted direction text, or None when it cannot be prepared.
+    """
+
+    try:
+        return get_ai_technical_direction(message=message, name=name)
+    except (RuntimeError, TimeoutError, OSError) as exc:
+        logger.exception("AI-assisted technical direction failed.")
+        return None
+
+
+def _format_ai_direction_section(direction: str | None) -> str:
+    """Format the optional JARVIS section for contact emails.
+
+    Args:
+        direction: AI-assisted technical direction, when available.
+
+    Returns:
+        Email text block with either the direction or fallback copy.
+    """
+
+    if not direction:
+        return (
+            "JARVIS was unable to generate a suggestion at this moment. "
+            "I will review your message personally.\n"
+        )
+
+    return (
+        "JARVIS, my AI assistant, prepared an initial technical direction based on your message:\n\n"
+        f"{direction}\n\n"
+        "This is an automated suggestion, not a final estimate or commitment.\n"
+    )
+
+
 def send_contact_emails(
     name: str,
     email: str,
@@ -94,6 +136,7 @@ def send_contact_emails(
     company: str | None = None,
     website: str | None = None,
     lang: str | None = None,
+    ask_ai_direction: bool = False,
 ) -> None:
     """Send the portfolio contact email and localized autoresponder.
 
@@ -104,6 +147,7 @@ def send_contact_emails(
         company: Optional company context from the contact form.
         website: Optional website context from the contact form.
         lang: Optional language code used to select autoresponder copy.
+        ask_ai_direction: Whether to include AI-assisted technical direction.
 
     Raises:
         RuntimeError: If email sending is enabled but SMTP or owner settings are missing.
@@ -132,11 +176,18 @@ def send_contact_emails(
         meta_lines.append(f"Website: {website}")
 
     meta_block = ("\n".join(meta_lines) + "\n\n") if meta_lines else ""
+    ai_direction_body = ""
+    owner_ai_direction_section = ""
+    if ask_ai_direction:
+        ai_direction = _get_ai_direction_safely(message=message, name=name)
+        ai_direction_body = _format_ai_direction_section(ai_direction)
+        owner_ai_direction_section = f"\nAI-assisted technical direction:\n{ai_direction_body}\n"
 
     owner_msg.set_content(
         f"Sender: {name} <{sender_addr}>\n\n"
         f"{meta_block}"
         f"Message:\n{message}\n"
+        f"{owner_ai_direction_section}"
     )
 
     logger.info("Sending contact notification email.")
@@ -153,7 +204,7 @@ def send_contact_emails(
     auto["Subject"] = tpl["subject"]
     auto["From"] = from_addr
     auto["To"] = sender_addr
-    auto.set_content(tpl["body"](name))
+    auto.set_content(tpl["body"](name) + ("\n" + ai_direction_body if ai_direction_body else ""))
 
     logger.info("Sending contact autoresponder in lang=%s.", chosen)
     try:

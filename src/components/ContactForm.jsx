@@ -35,6 +35,7 @@ export default function ContactForm() {
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
   const [submittedOnce, setSubmittedOnce] = useState(false);
+  const [askAiDirection, setAskAiDirection] = useState(false);
 
   useEffect(() => {
     if (status?.type !== "ok") return;
@@ -83,6 +84,7 @@ export default function ContactForm() {
   function resetForm() {
     setForm({ name: "", email: "", company: "", message: "", website: "" });
     setTouched({ name: false, email: false, message: false });
+    setAskAiDirection(false);
     setSubmittedOnce(false);
     setStatus(null);
   }
@@ -110,6 +112,7 @@ export default function ContactForm() {
           company: form.company.trim() || null,
           message: form.message.trim(),
           website: form.website.trim() || null,
+          ask_ai_direction: askAiDirection,
           lang
         })
       });
@@ -132,6 +135,7 @@ export default function ContactForm() {
       setStatus({ type: "ok", msg: t("contactForm.success") });
       setForm({ name: "", email: "", company: "", message: "", website: "" });
       setTouched({ name: false, email: false, message: false });
+      setAskAiDirection(false);
       setSubmittedOnce(false);
     } catch (err) {
       setStatus({ type: "err", msg: err?.message || t("contactForm.errors.sendFailed") });
@@ -216,6 +220,19 @@ export default function ContactForm() {
         {shouldShowError("message") ? <div id="contact-message-error" className="field-error">{errors.message}</div> : null}
       </div>
 
+      <label className="ai-direction-option" htmlFor="contact-ai-direction">
+        <input
+          id="contact-ai-direction"
+          type="checkbox"
+          checked={askAiDirection}
+          onChange={(e) => setAskAiDirection(e.target.checked)}
+        />
+        <span>
+          <strong>{t("contactForm.aiDirection.label")}</strong>
+          <small>{t("contactForm.aiDirection.help")}</small>
+        </span>
+      </label>
+
       {status ? (
         <div className={`contact-status ${status.type === "ok" ? "contact-status--ok" : "contact-status--error"}`}>
           {status.msg}
@@ -224,7 +241,11 @@ export default function ContactForm() {
 
       <div className="actions">
         <Button variant="primary" type="submit" disabled={loading}>
-          {loading ? t("contactForm.sending") : t("contactForm.send")}
+          {loading
+            ? askAiDirection
+              ? t("contactForm.sendingWithAi")
+              : t("contactForm.sending")
+            : t("contactForm.send")}
         </Button>
 
         <Button variant="ghost" type="button" disabled={loading} onClick={resetForm}>

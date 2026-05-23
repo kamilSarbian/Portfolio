@@ -183,7 +183,12 @@
     "send": "Send workflow details →",
     "clear": "Wyczyść",
     "sending": "Wysyłanie...",
+    "sendingWithAi": "Wysyłanie... JARVIS analizuje wiadomość. To może potrwać kilka sekund.",
     "success": "Wiadomość została wysłana. Dziękuję!",
+    "aiDirection": {
+      "label": "Dodaj AI-assisted technical direction",
+      "help": "JARVIS, asystent AI Kamila, przeanalizuje wiadomość i zaproponuje wstępny kierunek techniczny. Otrzymasz go mailem. Kamil nadal odpowie osobiście."
+    },
     "labels": {
       "name": "Imię",
       "email": "Email",

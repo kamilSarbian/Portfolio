@@ -28,7 +28,7 @@ def test_normalize_lang_defaults_to_polish():
 def test_send_contact_enqueues_email_task_with_payload_lang(monkeypatch):
     called = {}
 
-    def fake_send_contact_emails(name, email, message, company=None, website=None, lang=None):
+    def fake_send_contact_emails(name, email, message, company=None, website=None, lang=None, ask_ai_direction=False):
         called["payload"] = {
             "name": name,
             "email": email,
@@ -36,6 +36,7 @@ def test_send_contact_enqueues_email_task_with_payload_lang(monkeypatch):
             "company": company,
             "website": website,
             "lang": lang,
+            "ask_ai_direction": ask_ai_direction,
         }
 
     monkeypatch.setattr(contact_module, "send_contact_emails", fake_send_contact_emails)
@@ -50,6 +51,7 @@ def test_send_contact_enqueues_email_task_with_payload_lang(monkeypatch):
             "company": "Acme",
             "website": "https://example.com",
             "lang": "en",
+            "ask_ai_direction": True,
         },
         headers={"accept-language": "pl-PL,pl;q=0.9"},
     )
@@ -63,13 +65,14 @@ def test_send_contact_enqueues_email_task_with_payload_lang(monkeypatch):
         "company": "Acme",
         "website": "https://example.com",
         "lang": "en",
+        "ask_ai_direction": True,
     }
 
 
 def test_send_contact_uses_accept_language_when_payload_lang_missing(monkeypatch):
     called = {}
 
-    def fake_send_contact_emails(name, email, message, company=None, website=None, lang=None):
+    def fake_send_contact_emails(name, email, message, company=None, website=None, lang=None, ask_ai_direction=False):
         called["lang"] = lang
 
     monkeypatch.setattr(contact_module, "send_contact_emails", fake_send_contact_emails)
