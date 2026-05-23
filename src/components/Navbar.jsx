@@ -43,6 +43,22 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
     };
   }, []);
 
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
+    function closeMobileMenuOnScroll() {
+      setMenuOpen(false);
+      setLangOpen(false);
+    }
+
+    window.addEventListener("scroll", closeMobileMenuOnScroll, { passive: true });
+    window.addEventListener("touchmove", closeMobileMenuOnScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", closeMobileMenuOnScroll);
+      window.removeEventListener("touchmove", closeMobileMenuOnScroll);
+    };
+  }, [menuOpen]);
+
   const lang = i18n.language || "en";
 
   function chooseLanguage(nextLang) {
