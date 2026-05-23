@@ -54,7 +54,7 @@ export default function Footer() {
         </a>
         <a
           className="footer-icon-link"
-          href="https://portfolio-api-kym0.onrender.com/docs"
+          href="https://api.kamilsarbian.dev/docs"
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t("projects.apiDocs")}
@@ -65,3 +65,4 @@ export default function Footer() {
     </footer>
   );
 }
+

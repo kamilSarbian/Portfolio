@@ -6,8 +6,8 @@ The project is built to show how I approach workflows: start from the problem, d
 
 ## Live Links
 
-- Portfolio: https://kamilsarbian-dev.vercel.app
-- API docs: https://portfolio-api-kym0.onrender.com/docs
+- Portfolio: https://kamilsarbian.dev
+- API docs: https://api.kamilsarbian.dev/docs
 - GitHub: https://github.com/kamilSarbian/Portfolio
 
 ## Problem
@@ -248,3 +248,4 @@ Backend Developer - APIs, automation, integrations
 
 - LinkedIn: https://www.linkedin.com/in/kamil-sarbian-3399991ba/
 - GitHub: https://github.com/kamilSarbian
+

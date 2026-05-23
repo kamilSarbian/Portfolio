@@ -47,10 +47,11 @@ export default function ProjectPwned({ onGoProjects }) {
 
         <div className="divider" />
 
-        <a className="small-link" href="https://portfolio-api-kym0.onrender.com/docs" target="_blank" rel="noreferrer">
+        <a className="small-link" href="https://api.kamilsarbian.dev/docs" target="_blank" rel="noreferrer">
           {t("pwnedProject.docs")}
         </a>
       </Card>
     </div>
   );
 }
+

@@ -43,8 +43,9 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        "https://kamilsarbian.dev",
+        "https://www.kamilsarbian.dev",
         "https://kamilsarbian-dev.vercel.app",
-        "https://portfolio-6mlh3g953-kamilsarbians-projects.vercel.app",
     ],
     allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=False,

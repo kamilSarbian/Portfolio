@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kamilsarbian-dev.vercel.app/sitemap.xml
+Sitemap: https://kamilsarbian.dev/sitemap.xml
+

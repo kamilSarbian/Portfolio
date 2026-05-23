@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kamilsarbian-dev.vercel.app/</loc>
+    <loc>https://kamilsarbian.dev/</loc>
   </url>
   <url>
-    <loc>https://kamilsarbian-dev.vercel.app/projects</loc>
+    <loc>https://kamilsarbian.dev/projects</loc>
   </url>
   <url>
-    <loc>https://kamilsarbian-dev.vercel.app/projects/auth-api</loc>
+    <loc>https://kamilsarbian.dev/projects/auth-api</loc>
   </url>
   <url>
-    <loc>https://kamilsarbian-dev.vercel.app/projects/clip-classifier</loc>
+    <loc>https://kamilsarbian.dev/projects/clip-classifier</loc>
   </url>
   <url>
-    <loc>https://kamilsarbian-dev.vercel.app/projects/image-editor</loc>
+    <loc>https://kamilsarbian.dev/projects/image-editor</loc>
   </url>
 </urlset>
+

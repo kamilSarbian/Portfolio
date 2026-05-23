@@ -1,7 +1,7 @@
 import Card from "../components/Card";
 import { useTranslation } from "react-i18next";
 
-const API_DOCS_URL = "https://portfolio-api-kym0.onrender.com/docs";
+const API_DOCS_URL = "https://api.kamilsarbian.dev/docs";
 const GITHUB_URL = "https://github.com/kamilSarbian/Portfolio";
 const PROJECT_LINKS = {
   auth: {
@@ -130,3 +130,4 @@ export default function Projects({ onOpenAuth, onOpenImageEditor, onOpenImageCla
     </div>
   );
 }
+

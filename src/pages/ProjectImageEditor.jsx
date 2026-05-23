@@ -2,7 +2,7 @@ import Card from "../components/Card";
 import ImageEditor from "../components/ImageEditor";
 import { useTranslation } from "react-i18next";
 
-const API_DOCS_URL = "https://portfolio-api-kym0.onrender.com/docs";
+const API_DOCS_URL = "https://api.kamilsarbian.dev/docs";
 const GITHUB_URL = "https://github.com/kamilSarbian/Portfolio";
 
 function CaseStudySummary({ caseId }) {
@@ -85,3 +85,4 @@ export default function ProjectImageEditor({ onGoProjects }) {
     </div>
   );
 }
+
