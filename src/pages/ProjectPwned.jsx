@@ -8,8 +8,8 @@ export default function ProjectPwned({ onGoProjects }) {
   return (
     <div className="grid">
       <Card>
-        <button type="button" className="section-label section-label-link" onClick={onGoProjects}>
-          <span className="dot" /> {t("projects.label")}
+        <button type="button" className="project-back-link" onClick={onGoProjects}>
+          ← {t("projects.label")}
         </button>
 
         <h1 className="h1" style={{ fontSize: 30 }}>

@@ -56,13 +56,13 @@ External services:
 
 Project previews are stored in `public/projects/`.
 
-| Auth API | AI Image Classifier | Image Processing |
+| Authentication & User Management API | AI-assisted Image Classification API | Image Processing API |
 | --- | --- | --- |
-| ![Auth API preview](public/projects/auth-api.png) | ![Image classifier preview](public/projects/image-classifier.png) | ![Image processing preview](public/projects/image-processing.png) |
+| ![Authentication API preview](public/projects/auth-api.png) | ![AI-assisted image classification preview](public/projects/image-classifier.png) | ![Image processing preview](public/projects/image-processing.png) |
 
 ## Featured Case Studies
 
-### Auth / Backend API System
+### Authentication & User Management API
 
 **Problem**  
 Internal tools often need secure user access without overcomplicated identity infrastructure.
@@ -82,7 +82,7 @@ GET /backend/users/profile
 GET /backend/users
 ```
 
-### AI-assisted Image Classification / Automation API
+### AI-assisted Image Classification API
 
 **Problem**  
 Manual image review and categorization can become repetitive when teams need a first-pass classification step.

@@ -130,33 +130,48 @@ export default function ImageEditor() {
         </span>
       </div>
 
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-        {SIZES.map((s) => (
-          <Button
-            key={s.key}
-            variant={size === s.key ? "primary" : "ghost"}
-            onClick={() => setSize(s.key)}
-            disabled={!file}
-          >
-            {s.label}
-          </Button>
-        ))}
+      <div className="image-editor-controls">
+        <section className="image-editor-control-group">
+          <h3>{t("imageEditor.resizePresets")}</h3>
+          <div className="image-editor-button-row">
+            {SIZES.map((s) => (
+              <Button
+                key={s.key}
+                variant={size === s.key ? "primary" : "ghost"}
+                onClick={() => setSize(s.key)}
+                disabled={!file}
+              >
+                {s.label}
+              </Button>
+            ))}
+          </div>
+        </section>
 
-        <Button variant={grayscale ? "primary" : "ghost"} onClick={() => setGrayscale((v) => !v)} disabled={!file}>
-          {t("imageEditor.grayscale")}
-        </Button>
+        <section className="image-editor-control-group">
+          <h3>{t("imageEditor.transformations")}</h3>
+          <div className="image-editor-button-row">
+            <Button variant={grayscale ? "primary" : "ghost"} onClick={() => setGrayscale((v) => !v)} disabled={!file}>
+              {t("imageEditor.grayscale")}
+            </Button>
 
-        <Button variant="ghost" onClick={() => setRotate(rotateLeft)} disabled={!file}>
-          {t("imageEditor.rotateLeft")}
-        </Button>
+            <Button variant="ghost" onClick={() => setRotate(rotateLeft)} disabled={!file}>
+              {t("imageEditor.rotateLeft")}
+            </Button>
 
-        <Button variant="ghost" onClick={() => setRotate(rotateRight)} disabled={!file}>
-          {t("imageEditor.rotateRight")}
-        </Button>
+            <Button variant="ghost" onClick={() => setRotate(rotateRight)} disabled={!file}>
+              {t("imageEditor.rotateRight")}
+            </Button>
+          </div>
+        </section>
 
-        <Button variant="ghost" onClick={download} disabled={!resultBlob}>
-          {t("imageEditor.download")}
-        </Button>
+        <section className="image-editor-control-group">
+          <h3>{t("imageEditor.export")}</h3>
+          <div className="image-editor-button-row">
+            <Button variant="ghost" onClick={download} disabled={!resultBlob}>
+              {t("imageEditor.download")}
+            </Button>
+          </div>
+        </section>
       </div>
 
       {busy ? <div className="tip">Processing in Python...</div> : null}
@@ -185,7 +200,7 @@ export default function ImageEditor() {
           </div>
         </div>
       ) : (
-        <div className="tip">{t("imageEditor.hint")}</div>
+        null
       )}
     </div>
   );

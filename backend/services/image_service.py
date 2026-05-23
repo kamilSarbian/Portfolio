@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from io import BytesIO
-from PIL import Image, ImageOps
+from PIL import Image, ImageOps, UnidentifiedImageError
 
 
 @dataclass(frozen=True)
@@ -41,7 +41,7 @@ def process_image_to_png(data: bytes, opts: ProcessOptions) -> bytes:
         img = Image.open(BytesIO(data))
         img = ImageOps.exif_transpose(img)
         img = img.convert("RGBA")
-    except Exception as e:
+    except (OSError, UnidentifiedImageError) as e:
         raise ImageProcessingError("Failed to decode image.") from e
 
     img = _resize_keep_aspect(img, SIZE_MAX[opts.size])

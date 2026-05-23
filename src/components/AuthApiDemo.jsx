@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { API } from "../api";
-import AuthStatus from "./AuthStatus";
 import Button from "./Button";
 import CopyTokenButton from "./CopyTokenButton";
 import JsonViewer from "./JsonViewer";
@@ -17,7 +16,7 @@ export default function AuthApiDemo() {
   const [busy, setBusy] = useState(false);
   const [out, setOut] = useState(null);
   const [error, setError] = useState("");
-  const [currentUser, setCurrentUser] = useState(null);
+  const isLoggedIn = Boolean(token);
 
   async function callJson(method, path, body, options = {}) {
     const authToken = options.tokenOverride ?? token;
@@ -44,10 +43,6 @@ export default function AuthApiDemo() {
 
       setOut(data);
 
-      if (options.setProfile && data?.user) {
-        setCurrentUser(data.user);
-      }
-
       return data;
     } catch (e) {
       setError(e?.message || (t("auth.error") || "Error"));
@@ -61,7 +56,6 @@ export default function AuthApiDemo() {
     setBusy(true);
     setError("");
     setOut(null);
-    setCurrentUser(null);
 
     try {
       const form = new URLSearchParams();
@@ -104,39 +98,43 @@ export default function AuthApiDemo() {
       setToken(freshToken);
 
       await callJson("GET", API.users.profile, null, {
-        setProfile: true,
         tokenOverride: freshToken,
       });
     }
   }
 
   async function onProfile() {
-    await callJson("GET", API.users.profile, null, { setProfile: true });
+    await callJson("GET", API.users.profile);
   }
 
   async function onUsers() {
     await callJson("GET", API.users.list);
   }
 
-  function onClear() {
+  function onReset() {
     setToken("");
     setOut(null);
     setError("");
-    setCurrentUser(null);
     setEmail("demo@example.com");
     setPassword("Password123");
   }
 
   return (
-    <div style={{ display: "grid", gap: 12 }}>
-      <AuthStatus token={token} user={currentUser} />
-
+    <div id="auth-demo" style={{ display: "grid", gap: 12 }}>
       <div className="result" style={{ marginTop: 0 }}>
         <div style={{ fontWeight: 900, marginBottom: 8 }}>
           {t("auth.demoTitle") || "Demo (API)"}
         </div>
 
         <div style={{ display: "grid", gap: 10 }}>
+          <p className="auth-demo-lead">
+            {t("auth.tokenMissing") || "Use demo credentials to test the authentication flow."}
+          </p>
+
+          <p className="demo-credentials-note">
+            {t("auth.demoCredentials")}: demo@example.com / Password123
+          </p>
+
           <div>
             <div style={{ fontWeight: 800, marginBottom: 6, color: "var(--muted)" }}>
               {t("auth.email") || "Email"}
@@ -151,35 +149,40 @@ export default function AuthApiDemo() {
             <input className="input" value={password} type="password" onChange={(e) => setPassword(e.target.value)} placeholder="password" />
           </div>
 
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Button variant="primary" disabled={busy} onClick={onRegister}>
-              {busy ? (t("auth.loading") || "Loading...") : (t("auth.register") || "Register")}
-            </Button>
-
+          <div className="auth-demo-actions auth-demo-actions--primary">
             <Button variant="primary" disabled={busy} onClick={onLogin}>
               {busy ? (t("auth.loading") || "Loading...") : (t("auth.login") || "Login")}
             </Button>
 
-            <Button variant="ghost" disabled={busy || !token} onClick={onProfile}>
-              {t("auth.profile") || "Profile"}
-            </Button>
-
-            <Button variant="ghost" disabled={busy || !token} onClick={onUsers}>
-              {t("auth.usersAdmin") || "Users (admin)"}
-            </Button>
-
-            <CopyTokenButton token={token} />
-
-            <Button variant="ghost" disabled={busy} onClick={onClear}>
-              {t("auth.clear") || "Clear"}
+            <Button variant="ghost" disabled={busy} onClick={isLoggedIn ? onReset : onRegister}>
+              {isLoggedIn
+                ? (t("auth.resetSession") || "Reset session")
+                : busy
+                  ? (t("auth.loading") || "Loading...")
+                  : (t("auth.createDemoAccount") || "Create demo account")}
             </Button>
           </div>
 
-          <div className="tip">
-            {token
-              ? t("auth.tokenOk") || "JWT token active - requests include Authorization: Bearer token."
-              : t("auth.tokenMissing") || "Login first to receive a JWT token."}
-          </div>
+          {isLoggedIn ? (
+            <div className="auth-demo-actions auth-demo-actions--secondary">
+              <Button variant="ghost" disabled={busy} onClick={onProfile}>
+                {t("auth.profile") || "Profile"}
+              </Button>
+
+              <Button variant="ghost" disabled={busy} onClick={onUsers}>
+                {t("auth.usersAdmin") || "Users (admin)"}
+              </Button>
+
+              <CopyTokenButton token={token} />
+
+            </div>
+          ) : null}
+
+          {token ? (
+            <div className="tip">
+              {t("auth.tokenOk") || "JWT token active - requests include Authorization: Bearer token."}
+            </div>
+          ) : null}
         </div>
       </div>
 

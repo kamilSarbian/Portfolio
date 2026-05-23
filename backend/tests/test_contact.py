@@ -125,7 +125,7 @@ def test_send_contact_returns_502_when_task_registration_fails(monkeypatch):
     monkeypatch.setattr(contact_module.BackgroundTasks, "add_task", original_add_task)
 
     assert response.status_code == 502
-    assert response.json()["detail"] == "Email send failed: queue unavailable"
+    assert response.json()["detail"] == "Email service temporarily unavailable."
 
 
 def teardown_function():

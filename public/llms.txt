@@ -1,0 +1,23 @@
+# Kamil Sarbian Portfolio
+
+Backend developer portfolio focused on FastAPI, API integrations, automation workflows, and production-minded backend systems.
+
+## Primary Pages
+
+- Home: https://kamilsarbian-dev.vercel.app/
+- Case studies: https://kamilsarbian-dev.vercel.app/projects
+- Authentication & User Management API: https://kamilsarbian-dev.vercel.app/projects/auth-api
+- AI-assisted Image Classification API: https://kamilsarbian-dev.vercel.app/projects/clip-classifier
+- Image Processing API: https://kamilsarbian-dev.vercel.app/projects/image-editor
+
+## Technical Focus
+
+- Backend systems
+- API integrations
+- Authentication and protected routes
+- AI-assisted automation workflows
+- Practical deployment and reliability thinking
+
+## Preferred Summary
+
+Kamil Sarbian builds backend systems, API integrations, and automation workflows with Python, FastAPI, PostgreSQL, and practical AI tooling.

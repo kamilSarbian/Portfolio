@@ -70,6 +70,23 @@ def _send_smtp(msg: EmailMessage) -> None:
         server.send_message(msg)
 
 
+def validate_email_configuration() -> None:
+    """Validate that email delivery has the required runtime configuration.
+
+    Raises:
+        RuntimeError: If email delivery is enabled but SMTP or owner settings are missing.
+    """
+
+    if not getattr(settings, "email_enabled", True):
+        return
+
+    if not settings.smtp_host or not settings.smtp_user or not settings.smtp_password:
+        raise RuntimeError("SMTP configuration is incomplete.")
+
+    if not (settings.owner_email or "").strip():
+        raise RuntimeError("Owner email is not configured.")
+
+
 def send_contact_emails(
     name: str,
     email: str,
@@ -92,29 +109,15 @@ def send_contact_emails(
         RuntimeError: If email sending is enabled but SMTP or owner settings are missing.
     """
 
-    logger.warning("EMAIL_ENABLED=%s", getattr(settings, "email_enabled", None))
-    logger.warning(
-        "SMTP host=%s port=%s user=%s from=%s owner=%s",
-        settings.smtp_host,
-        settings.smtp_port,
-        settings.smtp_user,
-        getattr(settings, "smtp_from", None),
-        settings.owner_email,
-    )
-
     if not getattr(settings, "email_enabled", True):
-        logger.warning("Email sending disabled by config")
+        logger.info("Contact email delivery skipped because email is disabled.")
         return
 
-    if not settings.smtp_host or not settings.smtp_user or not settings.smtp_password:
-        raise RuntimeError("SMTP configuration is missing. Check backend/.env.")
+    validate_email_configuration()
 
     from_addr = (getattr(settings, "smtp_from", None) or settings.smtp_user).strip()
     owner_addr = (settings.owner_email or "").strip()
     sender_addr = email.strip()
-
-    if not owner_addr:
-        raise RuntimeError("OWNER_EMAIL is not configured")
 
     owner_msg = EmailMessage()
     owner_msg["Subject"] = f"[Portfolio] Message from: {name}"
@@ -136,8 +139,12 @@ def send_contact_emails(
         f"Message:\n{message}\n"
     )
 
-    logger.warning("Sending owner email to %s", owner_addr)
-    _send_smtp(owner_msg)
+    logger.info("Sending contact notification email.")
+    try:
+        _send_smtp(owner_msg)
+    except (smtplib.SMTPException, OSError) as exc:
+        logger.exception("Contact notification email failed.")
+        raise RuntimeError("Contact notification email failed.") from exc
 
     chosen = _pick_lang(lang)
     tpl = TEMPLATES[chosen]
@@ -148,5 +155,9 @@ def send_contact_emails(
     auto["To"] = sender_addr
     auto.set_content(tpl["body"](name))
 
-    logger.warning("Sending autoresponder to %s in lang=%s", sender_addr, chosen)
-    _send_smtp(auto)
+    logger.info("Sending contact autoresponder in lang=%s.", chosen)
+    try:
+        _send_smtp(auto)
+    except (smtplib.SMTPException, OSError) as exc:
+        logger.exception("Contact autoresponder email failed.")
+        raise RuntimeError("Contact autoresponder email failed.") from exc

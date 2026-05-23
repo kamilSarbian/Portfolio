@@ -2,18 +2,19 @@
   "nav": {
     "home": "Główna",
     "projects": "Projekty",
-    "language": "Language",
+    "language": "Język",
     "langPl": "Polski",
     "langEn": "English",
     "langNo": "Norweski",
     "light": "Light",
     "dark": "Dark",
-    "openTo": "Backend Developer · API · Automatyzacja · Integracje"
+    "openTo": "Backend Developer · Systems · API Integrations",
+    "openToMobile": "Backend Developer · Integrations"
   },
   "home": {
     "aboutLabel": "BACKEND · AUTOMATYZACJA · INTEGRACJE",
     "headline": "Backend Developer & AI Automation",
-    "intro": "Buduję systemy backendowe, integracje API i automatyzacje workflow, które pomagają ograniczać ręczną pracę i poprawiać niezawodność.",
+    "intro": "Buduję systemy backendowe i integracje, które upraszczają workflow i poprawiają niezawodność operacyjną.",
     "heroTech": "Python · FastAPI · PostgreSQL · Integracje API · Automatyzacja",
     "whyTitle": "Co buduję",
     "whyBody": "Skupiam się na praktycznych systemach backendowych: API, walidacji, logice biznesowej, workflow opartych o bazę danych i integracjach, które ułatwiają utrzymanie procesów.",
@@ -22,35 +23,35 @@
     "tip": "Projekty pokazują moje podejście do backendu, integracji, automatyzacji i praktycznego projektowania API.",
     "demoInfo": "Demo działa na rzeczywistym API i infrastrukturze chmurowej:",
     "whatIBuild": {
-      "title": "CO BUDUJĘ",
+      "title": "What I Build",
       "backendTitle": "Backend Systems",
-      "backendBody": "API obsługujące uwierzytelnianie, walidację, logikę biznesową i komunikację między usługami.",
+      "backendBody": "API obsługujące uwierzytelnianie, walidację, logikę biznesową i niezawodną komunikację między usługami.",
       "automationTitle": "AI Automation",
-      "automationBody": "Workflow z użyciem LLM lub embeddings, które ograniczają powtarzalne zadania i usprawniają pracę z danymi.",
+      "automationBody": "Workflow wykorzystujące embeddings i LLMs do ograniczania powtarzalnych zadań ręcznych i usprawniania przetwarzania danych.",
       "integrationTitle": "API & Data Integration",
       "integrationBody": "Łączenie baz danych, zewnętrznych API i usług backendowych w stabilne workflow."
     },
     "howIWork": {
-      "title": "JAK PRACUJĘ",
+      "title": "How I Work",
       "a": "Zaczynam od workflow, nie od frameworka.",
-      "b": "Analizuję, jak systemy się komunikują, gdzie powstają wąskie gardła i które procesy można uprościć.",
-      "c": "Buduję iteracyjnie: najpierw działający system, potem lepsza struktura, walidacja i utrzymywalność.",
-      "d": "Liczy się dla mnie praktyczna inżynieria backendu, nie izolowane fragmenty kodu."
+      "b": "Buduję iteracyjnie: najpierw system, który działa niezawodnie, potem poprawiam strukturę, utrzymywalność i deployment flow.",
+      "c": "Skupiam się na tym, jak systemy się komunikują, gdzie powstają wąskie gardła i jak można uprościć procesy.",
+      "d": "Uruchamiam własny AI automation stack na Linux VPS — używany do wsparcia deploymentu, researchu technicznego i codziennych zadań automatyzacyjnych."
     },
     "stackSection": {
-      "title": "STACK",
+      "title": "Tech Stack",
       "backend": "Backend",
       "backendValue": "Python, FastAPI, REST APIs",
       "database": "Database",
       "databaseValue": "PostgreSQL, SQL",
       "automation": "AI / Automation",
-      "automationValue": "CLIP, embeddings, OpenAI APIs",
+      "automationValue": "LLMs, embeddings, automation workflows",
       "tools": "Tools",
-      "toolsValue": "Git, Vercel"
+      "toolsValue": "Git, Vercel, Linux VPS"
     },
     "cta": {
       "title": "Masz workflow, który warto zautomatyzować?",
-      "body": "Potrzebujesz backend API, integracji albo narzędzia wewnętrznego? Opisz problem — odpowiem z praktycznym kierunkiem technicznym.",
+      "body": "Potrzebujesz backend API, integracji albo narzędzia wewnętrznego? Wyślij krótki opis problemu — odpowiem z praktycznym kierunkiem technicznym.",
       "primary": "Omów workflow"
     },
     "footer": {
@@ -76,65 +77,54 @@
     "education": "Wykształcenie",
     "download": "Pobierz",
     "nationality": "Narodowość",
-    "messageTitle": "WIADOMOŚĆ",
-    "messageBody": "Opisz workflow, integrację albo problem backendowy, który chcesz usprawnić."
+    "messageTitle": "DISCUSS A WORKFLOW",
+    "messageBody": "Opisz problem lub workflow."
   },
   "projects": {
     "label": "PROJEKTY",
-    "title": "Featured case studies",
-    "subtitle": "Wybrane projekty backendowe i automatyzacyjne opisane przez problem, rozwiązanie, wartość i production thinking.",
+    "title": "Case studies",
+    "subtitle": "Projekty backendowe i automatyzacyjne skupione na reliability, integracjach i practical system design.",
     "open": "Otwórz",
     "openSmall": "Otwórz",
-    "liveDemo": "Live Demo",
-    "openInApp": "Otwórz tutaj",
-    "comingSoon": "Coming soon",
-    "statusLive": "Live",
+    "backToCaseStudies": "Wróć do case studies",
+    "viewProject": "Zobacz projekt →",
     "github": "GitHub",
     "apiDocs": "API docs",
-    "demoMatrix": {
-      "title": "LIVE DEMO URLS",
-      "project": "Project",
-      "liveDemo": "Live Demo URL",
-      "github": "GitHub URL",
-      "asset": "Screenshot/GIF",
-      "status": "Status"
-    },
-    "featuredLabel": "Featured case study",
-    "secondaryLabel": "Supporting case study",
+    "featuredLabel": "Wyróżnione case study",
+    "secondaryLabel": "Wspierające case study",
     "caseLabels": {
       "problem": "Problem",
       "solution": "Solution",
       "businessValue": "Business Value",
       "productionThinking": "Production Thinking",
-      "stack": "Stack",
-      "screenshot": "Screenshot/GIF:"
+      "stack": "Stack"
     },
     "caseStudies": {
       "auth": {
-        "title": "Auth / Backend API System",
-        "problem": "Narzędzia wewnętrzne często potrzebują bezpiecznego dostępu użytkowników bez przesadnie rozbudowanej infrastruktury identity.",
-        "solution": "Serwis FastAPI z rejestracją, logowaniem JWT, chronionym profilem, endpointami admina opartymi o role, hashowaniem haseł, walidacją i trwałym zapisem w bazie.",
-        "businessValue": "Powtarzalny fundament backendowy dla dashboardów, paneli administracyjnych i narzędzi workflow, gdzie kontrola dostępu ma znaczenie.",
-        "productionThinking": "Sprawdzanie konfiguracji JWT, bcrypt, role-based access, walidacja wejścia, migracje bazy danych i rate limiting.",
-        "stack": ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "JWT", "bcrypt"],
+        "title": "Authentication & User Management API",
+        "problem": "Wiele narzędzi wewnętrznych potrzebuje bezpiecznego dostępu użytkowników bez opierania się na dużych zewnętrznych systemach identity.",
+        "solution": "Serwis FastAPI z logowaniem JWT, chronionym dostępem użytkownika, uprawnieniami opartymi o role, walidacją i trwałym zapisem w PostgreSQL.",
+        "businessValue": "Powtarzalny backend uwierzytelniania dla dashboardów, paneli administracyjnych i narzędzi wewnętrznych, gdzie bezpieczna kontrola dostępu ma znaczenie.",
+        "productionThinking": "Zbudowane z role-based access control, walidacją JWT, hashowaniem haseł, migracjami bazy danych, uporządkowaną input validation i konfiguracją środowiskową dla niezawodnego zachowania API.",
+        "stack": ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy"],
         "screenshot": "Interaktywne demo dostępne w widoku projektu."
       },
       "classifier": {
         "title": "AI-assisted Image Classification API",
-        "problem": "Zespoły często potrzebują szybkiej klasyfikacji treści wizualnych bez budowania pełnego produktu ML od zera.",
-        "solution": "Endpoint FastAPI przyjmujący obrazy, uruchamiający klasyfikację CLIP, obsługujący smart presets albo własne etykiety i zwracający predykcje jako JSON.",
-        "businessValue": "Pokazuje, jak praktyczne funkcje AI mogą być wystawione przez stabilne API i dodane do istniejących workflow.",
-        "productionThinking": "Walidacja uploadu, obsługa plików, lazy loading modelu, konfigurowalne progi, strukturalne odpowiedzi i czytelna obsługa błędów.",
-        "stack": ["Python", "FastAPI", "CLIP", "PyTorch", "Pillow", "REST API"],
+        "problem": "Zespoły często potrzebują szybkiej klasyfikacji przesyłanych treści wizualnych bez inwestowania w dedykowaną infrastrukturę ML.",
+        "solution": "Serwis FastAPI, który przyjmuje przesłane obrazy, wykonuje zero-shot classification z użyciem CLIP, obsługuje własne etykiety albo presety i zwraca uporządkowane predykcje JSON.",
+        "businessValue": "Umożliwia image search, content moderation albo automatyczne tagowanie bez budowania własnej infrastruktury ML.",
+        "productionThinking": "Walidacja uploadu, obsługa plików, lazy model loading, konfigurowalne confidence thresholds, uporządkowane odpowiedzi API i jawna obsługa błędów.",
+        "stack": ["Python", "FastAPI", "CLIP (zero-shot)", "PyTorch"],
         "screenshot": "Interaktywne demo dostępne w widoku projektu."
       },
       "imageProcessing": {
         "title": "Image Processing API",
-        "problem": "Proste operacje na obrazach są często wykonywane ręcznie albo rozproszone po narzędziach desktopowych.",
-        "solution": "Backend API, które przyjmuje upload, wykonuje resize, grayscale i rotation, a następnie zwraca przetworzony PNG.",
-        "businessValue": "Pokazuje, jak powtarzalne zadania medialne można przenieść do przewidywalnego workflow API.",
-        "productionThinking": "Walidacja MIME, limity uploadu, błędy dekodowania obrazu, deterministyczny format wyjściowy i przetwarzanie po stronie API.",
-        "stack": ["Python", "FastAPI", "Pillow", "File Upload", "REST API"],
+        "problem": "Zespoły tracą czas na ręczne resize, konwersję albo obracanie obrazów w narzędziach desktopowych lub rozproszonych skryptach.",
+        "solution": "Serwis FastAPI, który przyjmuje upload obrazu i wykonuje resize, konwersję do grayscale albo rotation przez API-driven processing oraz zwraca PNG gotowy do pobrania.",
+        "businessValue": "Automatyzuje powtarzalne operacje na obrazach, poprawia spójność outputu i umożliwia integrację z wewnętrznymi workflow albo content pipelines.",
+        "productionThinking": "Walidacja MIME, limity uploadu, deterministyczny format wyjściowy, zabezpieczenia przy dekodowaniu obrazów i bezpieczne przetwarzanie in-memory bez wycieków plików tymczasowych.",
+        "stack": ["Python", "FastAPI", "Pillow", "File Upload"],
         "screenshot": "Interaktywne demo dostępne w widoku projektu."
       }
     },
@@ -145,30 +135,7 @@
     "imgClassTitle":"Image Classifier (ML)",
     "imgClassDesc":"API w Pythonie, które przyjmuje obraz i zwraca klasyfikację przy użyciu modelu ML. Endpoint obsługuje przesyłanie plików oraz zwraca wyniki predykcji w formacie JSON.",
     "authTitle": "Auth & User Management API",
-    "authDesc": "API do zarządzania użytkownikami z rejestracją, logowaniem oraz autoryzacją JWT. System obsługuje role użytkowników (admin/user), profile oraz integrację z bazą danych PostgreSQL przy użyciu SQLAlchemy.",
-    "planTitle": "PRODUCTION THINKING",
-    "experimentsTitle": "OTHER EXPERIMENTS",
-    "statusTitle": "System focus",
-    "systemFocus": {
-      "a": "Autoryzacja i role użytkowników (JWT)",
-      "b": "Testy API (pytest)",
-      "c": "Integracja z PostgreSQL i migracje",
-      "d": "Walidacja danych i obsługa błędów w API",
-      "e": "Struktura gotowa pod deployment i utrzymywalność"
-    },
-    "experiments": {
-      "pwned": "Pwned Password Check - eksperyment integracji API",
-      "contact": "Contact workflow z email autoresponderem",
-      "analytics": "Data Analytics API experiment",
-      "a": "Pwned Password Check",
-      "b": "Image Editor (Python API)",
-      "c": "Formularz kontaktowy z autoresponderem",
-      "d": "Image Classifier (Machine Learning)",
-      "e": "Auth & User Management API",
-      "f": "Data Analytics API experiment",
-      "g": "Prosta gra w języku Python",
-      "h": "New project experiment"
-    }
+    "authDesc": "API do zarządzania użytkownikami z rejestracją, logowaniem oraz autoryzacją JWT. System obsługuje role użytkowników (admin/user), profile oraz integrację z bazą danych PostgreSQL przy użyciu SQLAlchemy."
   },
   "pwnedProject": {
     "title": "Pwned Password Check",
@@ -186,10 +153,13 @@
   },
   "imageEditor": {
     "title": "Image Editor (Python API)",
-    "desc": "API do przetwarzania obrazów z uploadem pliku, zmianą rozmiaru, konwersją do skali szarości, obrotem i pobieraniem gotowego pliku PNG.",
+    "desc": "Backend API do przetwarzania obrazów na żądanie: resize, grayscale conversion, rotation, preview i eksport PNG.",
     "arch": "Architektura",
     "archDesc": "Projekt składa się z backendu w Pythonie, który obsługuje upload plików oraz operacje przetwarzania obrazów, takie jak zmiana rozmiaru, konwersja do skali szarości i obrót. Operacje wykonywane są po stronie API, a frontend wyświetla wynik w formie podglądu przed pobraniem pliku.",
-    "pick": "Wybierz obraz",
+    "pick": "Prześlij obraz",
+    "resizePresets": "Resize presets",
+    "transformations": "Transformations",
+    "export": "Export",
     "grayscale": "Czarno-białe",
     "rotateLeft": "Obrót w lewo",
     "rotateRight": "Obrót w prawo",
@@ -210,15 +180,21 @@
     "error": "Błąd sprawdzania. Backend może nie działać."
   },
   "contactForm": {
-    "send": "Wyślij",
+    "send": "Send workflow details →",
     "clear": "Wyczyść",
     "sending": "Wysyłanie...",
     "success": "Wiadomość została wysłana. Dziękuję!",
+    "labels": {
+      "name": "Imię",
+      "email": "Email",
+      "company": "Firma",
+      "message": "Wiadomość"
+    },
     "placeholders": {
       "name": "Imię",
       "email": "E-mail",
       "company": "Firma (opcjonalnie)",
-      "message": "Opisz workflow, integrację albo problem backendowy, który chcesz usprawnić."
+      "message": "Opisz problem lub workflow..."
     },
     "errors": {
       "nameMin": "Podaj imię (min. 2 znaki).",
@@ -231,14 +207,15 @@
   },
   "imageClassifier": {
     "title": "Image Classifier (ML)",
-    "desc": "Backend API do klasyfikacji obrazów przy użyciu modelu uczenia maszynowego. API przyjmuje obraz, przetwarza go przy użyciu modelu ML i zwraca najbardziej prawdopodobne kategorie wraz z wynikami w formacie JSON.",
+    "desc": "Backend API do klasyfikacji obrazów z użyciem CLIP, uporządkowanymi odpowiedziami JSON i konfigurowalnymi ustawieniami predykcji.",
     "arch": "Architektura",
     "archDesc": "Backend udostępnia endpoint API, który przyjmuje obraz przesłany przez użytkownika, przygotowuje go do predykcji (preprocessing), a następnie przekazuje do modelu machine learning. Model zwraca listę najbardziej prawdopodobnych klas wraz z przypisanym prawdopodobieństwem, które API zwraca w odpowiedzi JSON.",
     "warning":"Uwaga",
-    "warningDesc":"Pierwsze uruchomienie klasyfikatora może potrwać kilka sekund. Model ML ładuje się dopiero przy żądaniu, co zmniejsza zużycie pamięci środowiska hostingowego.",    
+    "warningDesc":"Model ładuje się przy pierwszym żądaniu, aby ograniczyć zużycie pamięci w środowisku hostingowym.",
     "pick": "Wybierz obraz",
     "noFile": "Nie wybrano pliku",
     "topK": "Top-k",
+    "maxTopK": "max 3",
     "classify": "Klasyfikuj",
     "clear": "Wyczyść",
     "loading": "Klasyfikacja...",
@@ -246,7 +223,10 @@
     "result": "Wynik (API):",
     "hint": "Wybierz obraz i kliknij „Klasyfikuj”.",
     "error": "Błąd klasyfikacji",
-    "smartTip": "Smart mode używa szerokiej puli ogólnych kategorii dostępnych po stronie backendu. Nic nie musisz wpisywać.",
+    "smartTip": "Smart mode używa predefiniowanych presetów kategorii po stronie backendu.",
+    "apiResponse": "API Response",
+    "topPredictions": "Top predictions",
+    "noResult": "Brak predykcji.",
     "unknownInline": "poniżej progu",
     "presetsLoading": "Ładuję presety...",
     "presetsError": "Nie udało się pobrać presetów z API.",
@@ -260,11 +240,13 @@
   },
   "auth": {
   "title": "Auth & User Management API",
-  "desc": "Backend API do uwierzytelniania i zarządzania użytkownikami z użyciem FastAPI. Projekt implementuje logowanie JWT, hashowanie haseł, role użytkowników oraz integrację z bazą danych PostgreSQL.",
+  "desc": "Backend uwierzytelniania z logowaniem JWT, dostępem opartym o role, trwałym zapisem w PostgreSQL i chronionymi trasami API.",
   "arch": "Architektura",
   "archDesc":"Projekt składa się z backendu w FastAPI, który obsługuje rejestrację użytkowników, logowanie oraz dostęp do chronionych endpointów. Dane użytkowników są przechowywane w bazie PostgreSQL z użyciem SQLAlchemy, a hasła zabezpieczone przez hashowanie bcrypt. Po poprawnym logowaniu backend generuje token JWT, który służy do autoryzacji kolejnych żądań, a dostęp do wybranych zasobów jest kontrolowany na podstawie roli użytkownika, np. admin lub user.",
   "endpointsTitle": "Endpointy API",
   "demoTitle": "Przetestuj API",
+  "demoCredentials": "Dane demo",
+  "createDemoAccount": "Utwórz konto demo",
   "email": "Email",
   "password": "Hasło",
   "register": "Rejestruj",
@@ -272,7 +254,7 @@
   "profile": "Pobierz profil",
   "usersAdmin": "Lista użytkowników (admin)",
   "clear": "Wyczyść",
-  "tokenMissing": "Najpierw wykonaj logowanie aby otrzymać token JWT. Hasło to: Password123.",
+  "tokenMissing": "Użyj danych demo, aby przetestować authentication flow.",
   "tokenOk": "Token JWT aktywny — zapytania wysyłają Authorization: Bearer token.",
   "loading": "Ładowanie...",
   "error": "Błąd",
@@ -283,6 +265,7 @@
   "statusUser": "Zalogowany: użytkownik",
   "statusHint": "Zaloguj się, aby używać chronionych endpointów.",
   "copyToken": "Kopiuj JWT",
-  "tokenCopied": "Skopiowano"
+  "tokenCopied": "Skopiowano",
+  "resetSession": "Resetuj sesję"
   }
 }

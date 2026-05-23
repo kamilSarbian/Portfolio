@@ -7,23 +7,19 @@ export default function Home({ onGoProjects }) {
   const { t } = useTranslation();
 
   return (
-    <div className="grid">
+    <div className="home-grid">
       <Card>
-        <div className="section-label">
-          <span className="dot" /> {t("home.aboutLabel")}
-        </div>
-
         <h1 className="h1">{t("home.headline")}</h1>
 
         <p className="p">{t("home.intro")}</p>
 
-        <div className="tip" style={{ marginTop: 14 }}>
+        <div className="tip hero-tech-line">
           {t("home.heroTech")}
         </div>
 
         <div className="divider" />
 
-        <div className="actions">
+        <div className="actions hero-actions">
           <Button variant="primary" onClick={onGoProjects}>
             {t("home.seeProjects")}
           </Button>
@@ -33,17 +29,11 @@ export default function Home({ onGoProjects }) {
           </a>
         </div>
 
-        <div className="tip">{t("home.tip")}</div>
+        <div className="divider hero-section-gap" />
 
-        <div className="divider" />
-
-        <h2 style={{ margin: 0, fontSize: 18, fontWeight: 900 }}>
+        <h2 className="section-heading">
           {t("home.whyTitle")}
         </h2>
-
-        <p className="p" style={{ marginTop: 8 }}>
-          {t("home.whyBody")}
-        </p>
 
         <div className="what-build-grid">
           <section className="what-build-item">
@@ -63,42 +53,22 @@ export default function Home({ onGoProjects }) {
         </div>
       </Card>
 
-      <div style={{ display: "grid", gap: 18 }}>
+      <div className="home-side home-side--top">
         <Card>
-          <div className="section-label">{t("home.quickTitle")}</div>
-
-          <div className="info">
-            <div className="info-row">
-              <div className="info-k">{t("home.goal")}</div>
-              <div className="info-v">{t("home.goalVal")}</div>
-            </div>
-
-            <div className="info-row">
-              <div className="info-k">{t("home.today")}</div>
-              <div className="info-v">{t("home.todayVal")}</div>
-            </div>
-          </div>
-
-          <div className="divider" />
-
-          <p className="p" style={{ marginTop: 0 }}>
-            {t("home.quickBody")}
-          </p>
-        </Card>
-
-        <Card>
-          <div className="section-label">{t("home.howIWork.title")}</div>
+          <h2 className="section-heading">
+            {t("home.howIWork.title")}
+          </h2>
 
           <div className="how-work-list">
             <p>{t("home.howIWork.a")}</p>
             <p>{t("home.howIWork.b")}</p>
             <p>{t("home.howIWork.c")}</p>
-            <p>{t("home.howIWork.d")}</p>
+            {t("home.howIWork.d") && <p>{t("home.howIWork.d")}</p>}
           </div>
         </Card>
 
         <Card>
-          <div className="section-label">{t("home.stackSection.title")}</div>
+          <h2 className="section-heading">{t("home.stackSection.title")}</h2>
 
           <div className="stack-summary">
             <div>
@@ -122,71 +92,64 @@ export default function Home({ onGoProjects }) {
             </div>
           </div>
         </Card>
-
-        <Card id="contact">
-          <div className="section-label">{t("home.contactTitle")}</div>
-
-          <h2 style={{ margin: 0, fontSize: 22, fontWeight: 900 }}>
-            {t("home.cta.title")}
-          </h2>
-
-          <p className="p" style={{ marginTop: 8 }}>
-            {t("home.cta.body")}
-          </p>
-
-          <div className="divider" />
-
-          <div className="info" style={{ marginTop: 6 }}>
-            <ul className="contact-list" style={{ marginTop: 0 }}>
-              <li>
-                <strong>{t("home.email")}:</strong>{" "}
-                <a href="mailto:sarbian.kamil@email.com">sarbian.kamil@email.com</a>
-              </li>
-
-              <li>
-                <strong>{t("home.phone")}:</strong>{" "}
-                <a href="tel:+4792511661">+47 92 51 16 61</a>
-              </li>
-
-              <li>
-                <strong>{t("home.github")}:</strong>{" "}
-                <a
-                  href="https://github.com/kamilSarbian"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  github.com/kamilSarbian
-                </a>
-              </li>
-
-              <li>
-                <strong>{t("home.linkedin")}:</strong>{" "}
-                <a
-                  href="https://www.linkedin.com/in/kamil-sarbian-3399991ba/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  linkedin.com/in/kamilsarbian
-                </a>
-              </li>
-
-              <li>
-                <strong>{t("home.location")}:</strong> Oslo / {t("home.typeOfWork")}
-              </li>
-            </ul>
-          </div>
-        </Card>
-
-        <Card>
-          <div className="section-label">{t("home.messageTitle")}</div>
-          <p className="p" style={{ marginTop: 6 }}>
-            {t("home.messageBody")}
-          </p>
-
-          <div className="divider" />
-          <ContactForm />
-        </Card>
       </div>
+
+      <Card>
+        <h2 className="section-heading">
+          {t("home.cta.title")}
+        </h2>
+
+        <p className="p" style={{ marginTop: 8 }}>
+          {t("home.cta.body")}
+        </p>
+
+        <div className="divider" />
+
+        <div className="info" style={{ marginTop: 6 }}>
+          <ul className="contact-list" style={{ marginTop: 0 }}>
+            <li>
+              <strong>{t("home.email")}:</strong>{" "}
+              <a href="mailto:sarbian.kamil@email.com">sarbian.kamil@email.com</a>
+            </li>
+
+            <li>
+              <strong>{t("home.github")}:</strong>{" "}
+              <a
+                href="https://github.com/kamilSarbian"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                github.com/kamilSarbian
+              </a>
+            </li>
+
+            <li>
+              <strong>{t("home.linkedin")}:</strong>{" "}
+              <a
+                href="https://www.linkedin.com/in/kamil-sarbian-3399991ba/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                linkedin.com/in/kamilsarbian
+              </a>
+            </li>
+
+            <li>
+              <strong>{t("home.location")}:</strong> Oslo / {t("home.typeOfWork")}
+            </li>
+          </ul>
+        </div>
+      </Card>
+
+      <Card id="contact">
+        <h2 className="section-heading">{t("home.messageTitle")}</h2>
+        <p className="p" style={{ marginTop: 6 }}>
+          {t("home.messageBody")}
+        </p>
+
+        <div className="divider" />
+        <ContactForm />
+      </Card>
     </div>
   );
 }

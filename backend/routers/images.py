@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import logging
+
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 from fastapi.responses import Response
 
@@ -9,6 +11,7 @@ from schemas.common import ErrorResponse
 from services.image_service import ImageProcessingError, ProcessOptions, process_image_to_png
 
 router = APIRouter(prefix="/backend/image", tags=["images"], dependencies=[Depends(upload_rate_limit)])
+logger = logging.getLogger(__name__)
 
 
 @router.post(
@@ -45,10 +48,11 @@ async def process_image_endpoint(
             data,
             ProcessOptions(size=size, grayscale=grayscale, rotate=rotate),
         )
-    except ImageProcessingError as e:
-        raise HTTPException(status_code=400, detail=str(e))
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Image processing failed: {e}")
+    except ImageProcessingError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except OSError as exc:
+        logger.exception("Unexpected image processing failure.")
+        raise HTTPException(status_code=500, detail="Image processing failed.") from exc
 
     return Response(
         content=out_png,

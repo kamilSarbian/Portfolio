@@ -2,18 +2,19 @@
   "nav": {
     "home": "Hjem",
     "projects": "Prosjekter",
-    "language": "Language",
+    "language": "Språk",
     "langPl": "Polsk",
     "langEn": "English",
     "langNo": "Norsk",
     "light": "Light",
     "dark": "Dark",
-    "openTo": "Backend Developer · API-er · Automatisering · Integrasjoner"
+    "openTo": "Backend Developer · Systems · API Integrations",
+    "openToMobile": "Backend Developer · Integrations"
   },
   "home": {
     "aboutLabel": "BACKEND · AUTOMATISERING · INTEGRASJONER",
     "headline": "Backend Developer & AI Automation",
-    "intro": "Jeg bygger backend-systemer, API-integrasjoner og automatiserte arbeidsflyter som hjelper team med å redusere manuelt arbeid og forbedre pålitelighet.",
+    "intro": "Jeg bygger backend-systemer og integrasjoner som forenkler arbeidsflyter og forbedrer operasjonell pålitelighet.",
     "heroTech": "Python · FastAPI · PostgreSQL · API-integrasjoner · Automatisering",
     "whyTitle": "Hva jeg bygger",
     "whyBody": "Jeg fokuserer på praktiske backend-systemer: API-er, validering, forretningslogikk, databasebaserte arbeidsflyter og integrasjoner som er enklere å drifte og vedlikeholde.",
@@ -22,35 +23,35 @@
     "tip": "Prosjektene viser min tilnærming til backend-systemer, integrasjoner, automatisering og praktisk API-design.",
     "demoInfo": "Demoen kjører på et ekte API og skyinfrastruktur:",
     "whatIBuild": {
-      "title": "HVA JEG BYGGER",
+      "title": "What I Build",
       "backendTitle": "Backend Systems",
-      "backendBody": "API-er som håndterer autentisering, validering, forretningslogikk og strukturert kommunikasjon mellom tjenester.",
+      "backendBody": "API-er som håndterer autentisering, validering, forretningslogikk og pålitelig kommunikasjon mellom tjenester.",
       "automationTitle": "AI Automation",
-      "automationBody": "Arbeidsflyter med LLM-er eller embeddings for å redusere repeterende manuelt arbeid og forbedre datahåndtering.",
+      "automationBody": "Arbeidsflyter med embeddings og LLMs for å redusere repeterende manuelt arbeid og forbedre databehandling.",
       "integrationTitle": "API & Data Integration",
       "integrationBody": "Kobling av databaser, eksterne API-er og backend-tjenester til pålitelige arbeidsflyter."
     },
     "howIWork": {
-      "title": "HVORDAN JEG JOBBER",
+      "title": "How I Work",
       "a": "Jeg starter med arbeidsflyten, ikke frameworket.",
-      "b": "Jeg ser på hvordan systemer kommuniserer, hvor flaskehalser oppstår, og hvordan repeterende prosesser kan forenkles.",
-      "c": "Jeg bygger iterativt: først et system som fungerer stabilt, deretter bedre struktur, validering og vedlikeholdbarhet.",
-      "d": "Jeg bryr meg om praktisk backend engineering, ikke bare isolerte kodeeksempler."
+      "b": "Jeg bygger iterativt: først systemer som fungerer pålitelig, deretter forbedrer jeg struktur, vedlikeholdbarhet og deployment flow.",
+      "c": "Jeg fokuserer på hvordan systemer kommuniserer, hvor flaskehalser oppstår, og hvordan prosesser kan forenkles.",
+      "d": "Jeg kjører min egen AI automation stack på en Linux VPS — brukt til deployment support, teknisk research og daglige automatiseringsoppgaver."
     },
     "stackSection": {
-      "title": "STACK",
+      "title": "Tech Stack",
       "backend": "Backend",
       "backendValue": "Python, FastAPI, REST APIs",
       "database": "Database",
       "databaseValue": "PostgreSQL, SQL",
       "automation": "AI / Automation",
-      "automationValue": "CLIP, embeddings, OpenAI APIs",
+      "automationValue": "LLMs, embeddings, automation workflows",
       "tools": "Tools",
-      "toolsValue": "Git, Vercel"
+      "toolsValue": "Git, Vercel, Linux VPS"
     },
     "cta": {
       "title": "Har du en arbeidsflyt som bør automatiseres?",
-      "body": "Trenger du et backend-API, en integrasjon eller et internt verktøy? Send problemet — jeg svarer med en praktisk teknisk retning.",
+      "body": "Trenger du et backend-API, en integrasjon eller et internt verktøy? Send en kort beskrivelse av problemet — jeg svarer med en praktisk teknisk retning.",
       "primary": "Diskuter en arbeidsflyt"
     },
     "footer": {
@@ -76,65 +77,54 @@
     "education": "Utdanning",
     "download": "Last ned",
     "nationality": "Nasjonalitet",
-    "messageTitle": "MELDING",
-    "messageBody": "Send arbeidsflyten, integrasjonen eller backend-problemet du vil forbedre."
+    "messageTitle": "DISCUSS A WORKFLOW",
+    "messageBody": "Beskriv arbeidsflyten eller backend-problemet."
   },
   "projects": {
     "label": "PROSJEKTER",
-    "title": "Featured case studies",
-    "subtitle": "Utvalgte backend- og automatiseringsprosjekter beskrevet med problem, løsning, verdi og production thinking.",
+    "title": "Case studies",
+    "subtitle": "Backend- og automatiseringsprosjekter med fokus på reliability, integrasjoner og practical system design.",
     "open": "Åpne",
     "openSmall": "Åpne",
-    "liveDemo": "Live Demo",
-    "openInApp": "Åpne her",
-    "comingSoon": "Coming soon",
-    "statusLive": "Live",
+    "backToCaseStudies": "Tilbake til case studies",
+    "viewProject": "Se prosjekt →",
     "github": "GitHub",
     "apiDocs": "API-dokumentasjon",
-    "demoMatrix": {
-      "title": "LIVE DEMO URLS",
-      "project": "Project",
-      "liveDemo": "Live Demo URL",
-      "github": "GitHub URL",
-      "asset": "Screenshot/GIF",
-      "status": "Status"
-    },
-    "featuredLabel": "Featured case study",
-    "secondaryLabel": "Supporting case study",
+    "featuredLabel": "Utvalgt case study",
+    "secondaryLabel": "Supplerende case study",
     "caseLabels": {
       "problem": "Problem",
       "solution": "Solution",
       "businessValue": "Business Value",
       "productionThinking": "Production Thinking",
-      "stack": "Stack",
-      "screenshot": "Screenshot/GIF:"
+      "stack": "Stack"
     },
     "caseStudies": {
       "auth": {
-        "title": "Auth / Backend API System",
-        "problem": "Interne verktøy trenger ofte sikker brukertilgang uten for komplisert identity-infrastruktur.",
-        "solution": "En FastAPI-tjeneste med registrering, JWT-innlogging, beskyttet profil, rollebaserte admin-endepunkter, passordhashing, validering og databasepersistens.",
-        "businessValue": "Et gjenbrukbart backend-grunnlag for dashboards, adminpaneler og workflow-verktøy der tilgangskontroll er viktig.",
-        "productionThinking": "JWT-konfigurasjonssjekker, bcrypt-passordhashing, rollebasert tilgang, inputvalidering, databasemigrasjoner og rate limiting.",
-        "stack": ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "JWT", "bcrypt"],
+        "title": "Authentication & User Management API",
+        "problem": "Mange interne verktøy trenger sikker brukertilgang uten å være avhengige av store eksterne identity-systemer.",
+        "solution": "En FastAPI-tjeneste med JWT-innlogging, beskyttet brukertilgang, rollebaserte rettigheter, validering og persistens i PostgreSQL.",
+        "businessValue": "Gjenbrukbar autentiseringsbackend for dashboards, adminpaneler og interne verktøy der sikker tilgangskontroll er viktig.",
+        "productionThinking": "Bygget med role-based access control, JWT-validering, passordhashing, databasemigrasjoner, strukturert input validation og miljøbasert konfigurasjon for pålitelig API-atferd.",
+        "stack": ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy"],
         "screenshot": "Interaktiv demo tilgjengelig i prosjektvisningen."
       },
       "classifier": {
         "title": "AI-assisted Image Classification API",
-        "problem": "Team trenger ofte en rask måte å klassifisere visuelt innhold på uten å bygge et komplett ML-produkt fra bunnen av.",
-        "solution": "Et FastAPI-endepunkt som tar imot bilder, kjører CLIP-basert klassifisering, støtter smart presets eller egne etiketter og returnerer strukturerte JSON-prediksjoner.",
-        "businessValue": "Viser hvordan praktiske AI-funksjoner kan eksponeres gjennom et pålitelig API og legges til eksisterende arbeidsflyter.",
-        "productionThinking": "Upload-validering, filhåndtering, lazy model loading, konfigurerbare terskler, strukturerte svar og tydelig feilhåndtering.",
-        "stack": ["Python", "FastAPI", "CLIP", "PyTorch", "Pillow", "REST API"],
+        "problem": "Team trenger ofte en rask måte å klassifisere opplastet visuelt innhold på uten å investere i dedikert ML-infrastruktur.",
+        "solution": "En FastAPI-tjeneste som tar imot opplastede bilder, utfører CLIP-basert zero-shot classification, støtter egne etiketter eller presets og returnerer strukturerte JSON-prediksjoner.",
+        "businessValue": "Muliggjør image search, content moderation eller automatisk tagging uten å bygge egen ML-infrastruktur.",
+        "productionThinking": "Upload-validering, filhåndtering, lazy model loading, konfigurerbare confidence thresholds, strukturerte API-responser og eksplisitt feilhåndtering.",
+        "stack": ["Python", "FastAPI", "CLIP (zero-shot)", "PyTorch"],
         "screenshot": "Interaktiv demo tilgjengelig i prosjektvisningen."
       },
       "imageProcessing": {
         "title": "Image Processing API",
-        "problem": "Enkle bildeoperasjoner håndteres ofte manuelt eller spredt mellom desktop-verktøy.",
-        "solution": "Et backend-API som tar imot opplastinger, utfører resizing, grayscale og rotation, og returnerer en behandlet PNG.",
-        "businessValue": "Viser hvordan repeterende mediaoppgaver kan flyttes inn i en forutsigbar API-arbeidsflyt.",
-        "productionThinking": "MIME-validering, upload limits, bildedekodingsfeil, deterministisk outputformat og API-basert behandling.",
-        "stack": ["Python", "FastAPI", "Pillow", "File Upload", "REST API"],
+        "problem": "Team bruker tid på å endre størrelse, konvertere eller rotere bilder manuelt i desktop-verktøy eller spredte scripts.",
+        "solution": "En FastAPI-tjeneste som tar imot bildeopplastinger og utfører resizing, grayscale-konvertering eller rotation gjennom API-driven processing og nedlastbar PNG-output.",
+        "businessValue": "Automatiserer repeterende bildeoperasjoner, forbedrer output-konsistens og muliggjør integrasjon med interne workflows eller content pipelines.",
+        "productionThinking": "MIME-validering, upload size limits, deterministisk outputformat, sikring ved bildedekoding og trygg in-memory behandling uten lekkasje av midlertidige filer.",
+        "stack": ["Python", "FastAPI", "Pillow", "File Upload"],
         "screenshot": "Interaktiv demo tilgjengelig i prosjektvisningen."
       }
     },
@@ -145,30 +135,7 @@
     "imgClassTitle":"Image Classifier (ML)",
     "imgClassDesc":"Python-API som tar imot et bilde og returnerer en klassifisering ved hjelp av en ML-modell. Endepunktet håndterer filopplasting og returnerer prediksjonsresultater i JSON-format.",
     "authTitle": "Auth & User Management API",
-    "authDesc": "API for brukeradministrasjon med registrering, innlogging og JWT-autentisering. Systemet støtter brukerroller (admin/bruker), profiler og integrasjon med PostgreSQL-database ved bruk av SQLAlchemy.",
-    "planTitle": "PRODUCTION THINKING",
-    "experimentsTitle": "OTHER EXPERIMENTS",
-    "statusTitle": "System focus",
-    "systemFocus": {
-      "a": "Autentisering og brukerroller (JWT)",
-      "b": "Testing av API (pytest)",
-      "c": "Integrasjon med PostgreSQL og migrasjoner",
-      "d": "Datavalidering og feilbehandling i API-er",
-      "e": "Deployment-bevisst struktur og vedlikeholdbarhet"
-    },
-    "experiments": {
-      "pwned": "Pwned Password Check - API-integrasjonseksperiment",
-      "contact": "Contact workflow med e-post autoresponder",
-      "analytics": "Data Analytics API experiment",
-      "a": "Pwned Password Check",
-      "b": "Image Editor (Python API)",
-      "c": "Kontaktskjema med e-post autoresponder",
-      "d": "Image Classifier (Machine Learning)",
-      "e": "Auth & User Management API",
-      "f": "Data Analytics API experiment",
-      "g": "Enkelt spill skrevet i Python",
-      "h": "New project experiment"
-    }
+    "authDesc": "API for brukeradministrasjon med registrering, innlogging og JWT-autentisering. Systemet støtter brukerroller (admin/bruker), profiler og integrasjon med PostgreSQL-database ved bruk av SQLAlchemy."
   },
   "pwnedProject": {
     "title": "Pwned Password Check",
@@ -186,10 +153,13 @@
   },
   "imageEditor": {
     "title": "Image Editor (Python API)",
-    "desc": "API for bildebehandling med opplasting av filer, endring av størrelse, konvertering til gråtoner, rotering og nedlasting av ferdig PNG-fil..",
+    "desc": "Backend-API for on-demand bildebehandling med resize, grayscale-konvertering, rotation, preview og PNG-eksport.",
     "arch": "Arkitektur",
     "archDesc": "Prosjektet består av en backend i Python som håndterer filopplasting og bildebehandling som endring av størrelse, konvertering til gråtoner og rotering. Operasjonene utføres på API-siden, og frontend viser resultatet som en forhåndsvisning før filen lastes ned.",
-    "pick": "Velg bilde",
+    "pick": "Last opp bilde",
+    "resizePresets": "Resize presets",
+    "transformations": "Transformations",
+    "export": "Export",
     "grayscale": "Gråtoner",
     "rotateLeft": "Roter til venstre",
     "rotateRight": "Roter til høyre",
@@ -199,16 +169,32 @@
     "noFileSelected": "Ingen fil valgt",
     "hint": "Velg et bilde for å starte redigering."
   },
+  "password": {
+    "label": "Passord",
+    "placeholder": "Skriv inn passord for å sjekke",
+    "check": "Sjekk",
+    "clear": "Tøm",
+    "loading": "Sjekker...",
+    "safe": "Ikke funnet i lekkasjer.",
+    "pwned": "Passordet er funnet i lekkasjer!",
+    "error": "Feil under passordsjekk."
+  },
   "contactForm": {
-    "send": "Send",
+    "send": "Send workflow details →",
     "clear": "Tøm",
     "sending": "Sender...",
     "success": "Meldingen er sendt. Takk!",
+    "labels": {
+      "name": "Navn",
+      "email": "E-post",
+      "company": "Firma",
+      "message": "Melding"
+    },
     "placeholders": {
       "name": "Navn",
       "email": "E-post",
       "company": "Firma (valgfritt)",
-      "message": "Beskriv arbeidsflyten, integrasjonen eller backend-problemet du vil forbedre."
+      "message": "Beskriv arbeidsflyten eller backend-problemet..."
     },
     "errors": {
       "nameMin": "Vennligst skriv inn navn (min. 2 tegn).",
@@ -221,14 +207,15 @@
   },
   "imageClassifier": {
     "title": "Image Classifier (ML)",
-    "desc": "Backend-API for bildeklassifisering ved bruk av en maskinlæringsmodell. API-et mottar et bilde, behandler det med ML-modellen og returnerer de mest sannsynlige kategoriene sammen med resultatene i JSON-format.",
+    "desc": "Backend-API for CLIP-basert bildeklassifisering med strukturerte JSON-responser og konfigurerbare prediksjonsinnstillinger.",
     "arch": "Arkitektur",
     "archDesc": "Backend tilbyr et API-endepunkt som mottar et bilde lastet opp av brukeren, forbereder det for prediksjon (preprosessering) og sender det deretter til maskinlæringsmodellen. Modellen returnerer en liste over de mest sannsynlige klassene sammen med tilhørende sannsynlighet, som API-et returnerer i en JSON-respons.",
     "warning":"Merk",
-    "warningDesc":"Første kjøring av klassifiseringsmodellen kan ta noen sekunder. ML-modellen lastes først når en forespørsel sendes, noe som reduserer minnebruken i hostingmiljøet.",
+    "warningDesc":"Modellen lastes ved første forespørsel for å redusere minnebruk i hostingmiljøet.",
     "pick": "Velg bilde",
     "noFile": "Ingen fil valgt",
     "topK": "Top-k",
+    "maxTopK": "max 3",
     "classify": "Klassifiser",
     "clear": "Tøm",
     "loading": "Klassifiserer...",
@@ -236,7 +223,10 @@
     "result": "Resultat (API):",
     "hint": "Velg et bilde og trykk „Klassifiser”.",
     "error": "Klassifiseringsfeil",
-    "smartTip": "Smart-modus bruker en bred samling generelle kategorier som er tilgjengelige på backend-siden. Du trenger ikke å skrive noe.",
+    "smartTip": "Smart-modus bruker forhåndsdefinerte category presets på backend-siden.",
+    "apiResponse": "API Response",
+    "topPredictions": "Top predictions",
+    "noResult": "Ingen prediksjoner ennå.",
     "unknownInline": "under terskel",
     "presetsLoading": "Laster inn forhåndsvalg...",
     "presetsError": "Kunne ikke laste forhåndsvalg fra API-et.",
@@ -250,11 +240,13 @@
   },
   "auth": {
     "title": "Auth & User Management API",
-    "desc": "Backend-API for autentisering og brukeradministrasjon bygget med FastAPI. Prosjektet implementerer JWT-innlogging, hashing av passord, brukerroller og integrasjon med en PostgreSQL-database.",
+    "desc": "Autentiseringsbackend med JWT-innlogging, rollebasert tilgang, PostgreSQL-persistens og beskyttede API-ruter.",
     "arch": "Arkitektur",
     "archDesc": "Prosjektet består av en backend i FastAPI som håndterer brukerregistrering, innlogging og tilgang til beskyttede endepunkter. Brukerdata lagres i en PostgreSQL-database ved bruk av SQLAlchemy, og passord er sikret med bcrypt-hashing. Etter vellykket innlogging genererer backend en JWT-token som brukes til å autorisere videre forespørsler, og tilgang til enkelte ressurser styres basert på brukerens rolle, for eksempel admin eller bruker.",
     "endpointsTitle": "API-endepunkter",
     "demoTitle": "Prøv API-et",
+    "demoCredentials": "Demodata",
+    "createDemoAccount": "Opprett demokonto",
     "email": "E-post",
     "password": "Passord",
     "register": "Registrer",
@@ -262,7 +254,7 @@
     "profile": "Hent profil",
     "usersAdmin": "Brukerliste (admin)",
     "clear": "Tøm",
-    "tokenMissing": "Logg inn først for å få et JWT-token. Passordet er: Password123.",
+    "tokenMissing": "Bruk demodata for å teste authentication flow.",
     "tokenOk": "JWT-token aktivt — forespørsler sender Authorization: Bearer token.",
     "loading": "Laster...",
     "error": "Feil",
@@ -273,6 +265,7 @@
     "statusUser": "Logget inn: bruker",
     "statusHint": "Logg inn for å bruke beskyttede endepunkter.",
     "copyToken": "Kopier JWT",
-    "tokenCopied": "Kopiert"
+    "tokenCopied": "Kopiert",
+    "resetSession": "Tilbakestill økt"
 }
 }

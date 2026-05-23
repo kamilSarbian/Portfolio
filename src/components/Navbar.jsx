@@ -27,9 +27,23 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
     };
   }, []);
 
+  useEffect(() => {
+    const desktopQuery = window.matchMedia("(min-width: 721px)");
+
+    function closeMobileMenuOnDesktop(e) {
+      if (e.matches) {
+        setMenuOpen(false);
+        setLangOpen(false);
+      }
+    }
+
+    desktopQuery.addEventListener("change", closeMobileMenuOnDesktop);
+    return () => {
+      desktopQuery.removeEventListener("change", closeMobileMenuOnDesktop);
+    };
+  }, []);
+
   const lang = i18n.language || "en";
-  const subtitle =
-    lang === "no" ? "Portfolio / Prosjekter" : lang === "en" ? "Portfolio / Projects" : "Portfolio / Projekty";
 
   function chooseLanguage(nextLang) {
     i18n.changeLanguage(nextLang);
@@ -38,32 +52,36 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
 
   return (
     <header className="navbar">
-      <div className="brand" onClick={onGoHome} role="button" tabIndex={0} onKeyDown={(e) => e.key === "Enter" && onGoHome()}>
+      <button type="button" className="brand" onClick={onGoHome}>
         <div className="nav-avatar" aria-label="Avatar">
           <img src="/avatar.png" alt="Kamil Sarbian" className="nav-avatar" />
         </div>
 
         <div className="brand-text">
           <div className="title">Kamil Sarbian</div>
-          <div className="subtitle">{t("nav.openTo")}</div>
-          <div className="subtitle">{subtitle}</div>
+          <div className="subtitle subtitle--desktop">{t("nav.openTo")}</div>
+          <div className="subtitle subtitle--mobile">{t("nav.openToMobile")}</div>
         </div>
-      </div>
+      </button>
 
       <button
         type="button"
         className="nav-hamburger"
+        aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+        aria-expanded={menuOpen}
         onClick={() => setMenuOpen((value) => !value)}
       >
-        Menu
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </button>
 
       <div className="nav-actions nav-actions--desktop">
-        <button className={active === "home" ? "btn primary" : "btn"} onClick={onGoHome}>
+        <button type="button" className={active === "home" ? "btn primary" : "btn"} onClick={onGoHome}>
           {t("nav.home") || "Home"}
         </button>
 
-        <button className={active === "projects" ? "btn primary" : "btn"} onClick={onGoProjects}>
+        <button type="button" className={active === "projects" ? "btn primary" : "btn"} onClick={onGoProjects}>
           {t("nav.projects") || "Projects"}
         </button>
 
@@ -110,18 +128,19 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
           )}
         </div>
 
-        <button className="theme-btn" onClick={onToggleTheme}>
-          {theme === "dark" ? "Light" : "Dark"}
+        <button type="button" className="theme-btn" aria-pressed={theme === "light"} onClick={onToggleTheme}>
+          <span aria-hidden="true">{theme === "dark" ? "☀" : "☾"}</span>
+          <span>{theme === "dark" ? "Light" : "Dark"}</span>
         </button>
       </div>
 
       {menuOpen && (
         <div className="nav-drawer">
-          <button className={active === "home" ? "btn primary" : "btn"} onClick={() => { setMenuOpen(false); onGoHome(); }}>
+          <button type="button" className={active === "home" ? "btn primary" : "btn"} onClick={() => { setMenuOpen(false); onGoHome(); }}>
             {t("nav.home") || "Home"}
           </button>
 
-          <button className={active === "projects" ? "btn primary" : "btn"} onClick={() => { setMenuOpen(false); onGoProjects(); }}>
+          <button type="button" className={active === "projects" ? "btn primary" : "btn"} onClick={() => { setMenuOpen(false); onGoProjects(); }}>
             {t("nav.projects") || "Projects"}
           </button>
 
@@ -178,8 +197,14 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
               )}
             </div>
 
-            <button className="theme-btn" onClick={onToggleTheme}>
-              {theme === "dark" ? "Light" : "Dark"}
+            <button
+              type="button"
+              className="theme-btn theme-btn--icon"
+              aria-label="Toggle color theme"
+              aria-pressed={theme === "light"}
+              onClick={onToggleTheme}
+            >
+              <span aria-hidden="true">{theme === "dark" ? "☀" : "☾"}</span>
             </button>
           </div>
         </div>

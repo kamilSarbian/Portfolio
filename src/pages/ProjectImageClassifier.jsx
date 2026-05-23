@@ -2,6 +2,9 @@ import Card from "../components/Card";
 import ImageClassifier from "../components/ImageClassifier";
 import { useTranslation } from "react-i18next";
 
+const API_DOCS_URL = "https://portfolio-api-kym0.onrender.com/docs";
+const GITHUB_URL = "https://github.com/kamilSarbian/Portfolio";
+
 function CaseStudySummary({ caseId }) {
   const { t } = useTranslation();
   const base = `projects.caseStudies.${caseId}`;
@@ -39,8 +42,8 @@ export default function ProjectImageClassifier({ onGoProjects }) {
     <div className="page" style={{ display: "grid", placeItems: "center" }}>
       <div style={{ width: "min(980px, 100%)" }}>
         <Card>
-          <button type="button" className="section-label section-label-link" onClick={onGoProjects}>
-            <span className="dot" /> {t("projects.label")}
+          <button type="button" className="project-back-link" onClick={onGoProjects}>
+            ← {t("projects.title")}
           </button>
 
           <h1 className="h1" style={{ fontSize: 30 }}>
@@ -48,15 +51,6 @@ export default function ProjectImageClassifier({ onGoProjects }) {
           </h1>
 
           <p className="p">{t("imageClassifier.desc")}</p>
-
-          <img
-            className="case-study-preview"
-            src="/projects/image-classifier.png"
-            alt={t("projects.caseStudies.classifier.title")}
-            loading="lazy"
-          />
-
-          <div className="divider" />
 
           <CaseStudySummary caseId="classifier" />
 
@@ -71,15 +65,26 @@ export default function ProjectImageClassifier({ onGoProjects }) {
 
           <div className="divider" />
 
-          <div className="chips">
-            {Array.isArray(stack)
-              ? stack.map((item) => (
-                  <span className="chip" key={item}>
-                    {item}
-                  </span>
-                ))
-              : null}
-          </div>
+          <footer className="project-detail-footer">
+            <div>
+              <h2>{t("projects.caseLabels.stack")}</h2>
+              <p>{Array.isArray(stack) ? stack.join(" · ") : ""}</p>
+            </div>
+
+            <nav className="project-detail-links" aria-label="Project links">
+              <button type="button" className="inline-link" onClick={onGoProjects}>
+                {t("projects.backToCaseStudies")}
+              </button>
+              <span aria-hidden="true">|</span>
+              <a href={GITHUB_URL} target="_blank" rel="noreferrer">
+                {t("projects.github")}
+              </a>
+              <span aria-hidden="true">|</span>
+              <a href={API_DOCS_URL} target="_blank" rel="noreferrer">
+                {t("projects.apiDocs")}
+              </a>
+            </nav>
+          </footer>
         </Card>
       </div>
     </div>

@@ -153,31 +153,45 @@ export default function ContactForm() {
       </div>
 
       <div className="field">
+        <label className="field-label" htmlFor="contact-name">
+          {t("contactForm.labels.name")}
+        </label>
         <input
+          id="contact-name"
           className={inputClass("name")}
           placeholder={t("contactForm.placeholders.name")}
           value={form.name}
           onChange={(e) => setField("name", e.target.value)}
           onBlur={() => markTouched("name")}
           aria-invalid={shouldShowError("name")}
+          aria-describedby={shouldShowError("name") ? "contact-name-error" : undefined}
         />
-        {shouldShowError("name") ? <div className="field-error">{errors.name}</div> : null}
+        {shouldShowError("name") ? <div id="contact-name-error" className="field-error">{errors.name}</div> : null}
       </div>
 
       <div className="field">
+        <label className="field-label" htmlFor="contact-email">
+          {t("contactForm.labels.email")}
+        </label>
         <input
+          id="contact-email"
           className={inputClass("email")}
           placeholder={t("contactForm.placeholders.email")}
           value={form.email}
           onChange={(e) => setField("email", e.target.value)}
           onBlur={() => markTouched("email")}
           aria-invalid={shouldShowError("email")}
+          aria-describedby={shouldShowError("email") ? "contact-email-error" : undefined}
         />
-        {shouldShowError("email") ? <div className="field-error">{errors.email}</div> : null}
+        {shouldShowError("email") ? <div id="contact-email-error" className="field-error">{errors.email}</div> : null}
       </div>
 
       <div className="field">
+        <label className="field-label" htmlFor="contact-company">
+          {t("contactForm.labels.company")}
+        </label>
         <input
+          id="contact-company"
           className="input"
           placeholder={t("contactForm.placeholders.company")}
           value={form.company}
@@ -186,15 +200,20 @@ export default function ContactForm() {
       </div>
 
       <div className="field">
+        <label className="field-label" htmlFor="contact-message">
+          {t("contactForm.labels.message")}
+        </label>
         <textarea
+          id="contact-message"
           className={textareaClass("message")}
           placeholder={t("contactForm.placeholders.message")}
           value={form.message}
           onChange={(e) => setField("message", e.target.value)}
           onBlur={() => markTouched("message")}
           aria-invalid={shouldShowError("message")}
+          aria-describedby={shouldShowError("message") ? "contact-message-error" : undefined}
         />
-        {shouldShowError("message") ? <div className="field-error">{errors.message}</div> : null}
+        {shouldShowError("message") ? <div id="contact-message-error" className="field-error">{errors.message}</div> : null}
       </div>
 
       {status ? (

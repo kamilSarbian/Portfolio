@@ -1,11 +1,14 @@
+import logging
+
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request
 from pydantic import BaseModel, EmailStr, Field
 
 from core.rate_limit import contact_rate_limit
 from schemas.common import ErrorResponse, OkResponse
-from services.email_service import send_contact_emails
+from services.email_service import send_contact_emails, validate_email_configuration
 
 router = APIRouter(prefix="/backend/contact", tags=["contact"], dependencies=[Depends(contact_rate_limit)])
+logger = logging.getLogger(__name__)
 
 SUPPORTED_LANGS = {"pl", "en", "no"}
 
@@ -46,7 +49,19 @@ class ContactIn(BaseModel):
     },
 )
 def send_contact(payload: ContactIn, bg: BackgroundTasks, request: Request):
+    """Queue contact form email delivery.
+
+    Args:
+        payload: Validated contact form payload.
+        bg: FastAPI background task manager used for email delivery.
+        request: Incoming request used to infer the preferred language.
+
+    Raises:
+        HTTPException: If email delivery cannot be scheduled.
+    """
+
     try:
+        validate_email_configuration()
         lang = _normalize_lang(payload.lang, request.headers.get("accept-language"))
 
         bg.add_task(
@@ -59,5 +74,6 @@ def send_contact(payload: ContactIn, bg: BackgroundTasks, request: Request):
             lang,
         )
         return {"ok": True}
-    except Exception as e:
-        raise HTTPException(status_code=502, detail=f"Email send failed: {e}")
+    except RuntimeError as exc:
+        logger.exception("Contact email delivery could not be scheduled.")
+        raise HTTPException(status_code=502, detail="Email service temporarily unavailable.") from exc

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, useLocation, useNavigate, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -23,6 +23,17 @@ export default function App() {
 
   const navActive = location.pathname === "/" ? "home" : "projects";
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [location.pathname]);
+
+  function goTo(path) {
+    navigate(path);
+    window.setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }, 0);
+  }
+
   function toggleTheme() {
     setTheme((t) => (t === "dark" ? "light" : "dark"));
   }
@@ -41,47 +52,47 @@ export default function App() {
         onToggleTheme={toggleTheme}
         lang={lang}
         onToggleLang={toggleLang}
-        onGoHome={() => navigate("/")}
-        onGoProjects={() => navigate("/projects")}
+        onGoHome={() => goTo("/")}
+        onGoProjects={() => goTo("/projects")}
       />
 
       <main className="container">
         <Routes>
           <Route
             path="/"
-            element={<Home onGoProjects={() => navigate("/projects")} />}
+            element={<Home onGoProjects={() => goTo("/projects")} />}
           />
 
           <Route
             path="/projects"
             element={
               <Projects
-                onOpenAuth={() => navigate("/projects/auth-api")}
-                onOpenPwned={() => navigate("/projects/password-checker")}
-                onOpenImageEditor={() => navigate("/projects/image-editor")}
-                onOpenImageClassifier={() => navigate("/projects/image-classifier")}
+                onOpenAuth={() => goTo("/projects/auth-api")}
+                onOpenPwned={() => goTo("/projects/password-checker")}
+                onOpenImageEditor={() => goTo("/projects/image-editor")}
+                onOpenImageClassifier={() => goTo("/projects/image-classifier")}
               />
             }
           />
 
           <Route
             path="/projects/auth-api"
-            element={<ProjectAuth onGoProjects={() => navigate("/projects")} />}
+            element={<ProjectAuth onGoProjects={() => goTo("/projects")} />}
           />
 
           <Route
             path="/projects/password-checker"
-            element={<ProjectPwned onGoProjects={() => navigate("/projects")} />}
+            element={<ProjectPwned onGoProjects={() => goTo("/projects")} />}
           />
 
           <Route
             path="/projects/image-editor"
-            element={<ProjectImageEditor onGoProjects={() => navigate("/projects")} />}
+            element={<ProjectImageEditor onGoProjects={() => goTo("/projects")} />}
           />
 
           <Route
             path="/projects/image-classifier"
-            element={<ProjectImageClassifier onGoProjects={() => navigate("/projects")} />}
+            element={<ProjectImageClassifier onGoProjects={() => goTo("/projects")} />}
           />
 
           <Route path="*" element={<Navigate to="/" replace />} />

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 from typing import List, Optional
 
 from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile
@@ -11,6 +12,7 @@ from services.clip_classifier import get_classifier
 from services.vision_taxonomy import SMART_LABELS
 
 router = APIRouter(prefix="/backend/ml", tags=["ml"], dependencies=[Depends(upload_rate_limit)])
+logger = logging.getLogger(__name__)
 
 
 def _parse_labels(raw: str) -> List[str]:
@@ -163,5 +165,6 @@ async def classify_image(
             "smart": smart,
             "labels_count": len(lbls),
         }
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"CLIP classify failed: {e}")
+    except (OSError, RuntimeError, ValueError) as exc:
+        logger.exception("CLIP classification failed.")
+        raise HTTPException(status_code=500, detail="Image classification failed.") from exc
