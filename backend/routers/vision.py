@@ -6,6 +6,7 @@ from typing import List, Optional
 from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile
 from pydantic import BaseModel, Field
 
+from core.config import settings
 from core.rate_limit import upload_rate_limit
 from schemas.common import ErrorResponse
 from services.clip_classifier import get_classifier
@@ -61,10 +62,11 @@ class ClassificationResponse(BaseModel):
     description="Returns basic runtime information about the CLIP classifier and the smart taxonomy size.",
 )
 def ml_info():
-    clf = get_classifier()
-    meta = clf.meta()
-    meta["smart_labels_count"] = len(SMART_LABELS)
-    return meta
+    return {
+        "model_name": settings.clip_model,
+        "device": settings.clip_device,
+        "smart_labels_count": len(SMART_LABELS),
+    }
 
 
 @router.get(
