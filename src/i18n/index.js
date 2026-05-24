@@ -7,7 +7,16 @@ import en from "./en.json";
 import no from "./no.json";
 
 const saved = localStorage.getItem("lang");
-const initialLang = saved || (navigator.language.startsWith("no") || navigator.language.startsWith("nb") ? "no" : "en");
+const initialLang = saved || detectBrowserLanguage();
+
+function detectBrowserLanguage() {
+  const browserLanguages = navigator.languages?.length ? navigator.languages : [navigator.language];
+  const normalized = browserLanguages.map((lng) => (lng || "").toLowerCase());
+
+  if (normalized.some((lng) => lng.startsWith("pl"))) return "pl";
+  if (normalized.some((lng) => lng.startsWith("no") || lng.startsWith("nb"))) return "no";
+  return "en";
+}
 
 function toHtmlLang(lng) {
   const base = (lng || "en").slice(0, 2);
