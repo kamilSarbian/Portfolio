@@ -31,7 +31,7 @@ export default function Footer() {
       <div>{t("home.footer.location")}</div>
 
       <nav className="footer-links" aria-label="Footer links">
-        <a className="footer-icon-link" href="mailto:sarbian.kamil@email.com" aria-label={t("home.email")}>
+        <a className="footer-icon-link" href="mailto:sarbian.kamil@gmail.com" aria-label={t("home.email")}>
           {icons.email}
         </a>
         <a
@@ -65,4 +65,3 @@ export default function Footer() {
     </footer>
   );
 }
-
