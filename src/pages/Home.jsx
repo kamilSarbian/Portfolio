@@ -109,7 +109,7 @@ export default function Home({ onGoProjects }) {
           <ul className="contact-list" style={{ marginTop: 0 }}>
             <li>
               <strong>{t("home.email")}:</strong>{" "}
-              <a href="mailto:sarbian.kamil@email.com">sarbian.kamil@email.com</a>
+              <a href="mailto:sarbian.kamil@gmail.com">sarbian.kamil@gmail.com</a>
             </li>
 
             <li>

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -21,17 +22,18 @@ class Settings(BaseSettings):
 
     # Email
     email_enabled: bool = True
-    smtp_host: str = ""
-    smtp_port: int = 587
-    smtp_user: str = ""
-    smtp_password: str = ""
-    smtp_from: str = ""
-    owner_email: str = ""
+    smtp_host: str = Field(default="", validation_alias=AliasChoices("EMAIL_HOST", "SMTP_HOST"))
+    smtp_port: int = Field(default=587, validation_alias=AliasChoices("EMAIL_PORT", "SMTP_PORT"))
+    smtp_user: str = Field(default="", validation_alias=AliasChoices("EMAIL_USERNAME", "SMTP_USER"))
+    smtp_password: str = Field(default="", validation_alias=AliasChoices("EMAIL_PASSWORD", "SMTP_PASSWORD"))
+    smtp_from: str = Field(default="", validation_alias=AliasChoices("EMAIL_FROM", "SMTP_FROM"))
+    owner_email: str = Field(default="", validation_alias=AliasChoices("CONTACT_RECEIVER_EMAIL", "OWNER_EMAIL"))
 
     # AI-assisted inquiry workflow
     jarvis_enabled: bool = False
     jarvis_url: str = ""
     jarvis_timeout_seconds: float = 10.0
+    jarvis_api_key: str = ""
 
     # ML
     clip_model: str = "ViT-B-32"

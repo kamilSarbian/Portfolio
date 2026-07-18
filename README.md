@@ -22,6 +22,7 @@ The application combines a React frontend with a FastAPI backend and exposes sev
 - image classification with CLIP-based inference
 - image processing through API upload flows
 - contact workflow with backend validation and email delivery
+- optional AI-assisted technical direction for contact inquiries
 - API documentation through Swagger
 
 The frontend presents the work as focused case studies instead of a long list of disconnected demos.
@@ -36,21 +37,40 @@ The frontend presents the work as focused case studies instead of a long list of
 ## Architecture
 
 ```text
-React + Vite frontend
+React + Vite frontend (Vercel)
         |
         | HTTPS / JSON / file uploads
         v
-FastAPI backend
+FastAPI backend API (Render)
         |
         | SQLAlchemy
         v
 PostgreSQL database
 
+AI-assisted inquiry workflow:
+
+Contact form
+        |
+        | Optional ask_ai_direction=true
+        v
+FastAPI backend API
+        |
+        | Bearer-authenticated HTTPS request
+        v
+Isolated JARVIS API microservice (Hetzner VPS)
+        |
+        | Cloudflare Tunnel / no exposed VPS ports
+        v
+DeepSeek API
+
 External services:
 - SMTP provider for contact form email delivery
 - OpenCLIP/PyTorch for image classification
 - Have I Been Pwned API for the password breach experiment
+- DeepSeek API for AI-assisted inquiry direction
 ```
+
+The AI layer is fallback-safe: if JARVIS times out or returns a fallback response, the contact form still succeeds and both emails are still sent.
 
 ## Screenshots
 
@@ -153,13 +173,13 @@ Python, FastAPI, REST APIs
 PostgreSQL, SQLAlchemy, SQL
 
 **AI / Automation**  
-CLIP, embeddings-style classification workflow, OpenCLIP/PyTorch
+CLIP, embeddings-style classification workflow, OpenCLIP/PyTorch, AI-assisted inquiry workflow
 
 **Frontend**  
 React, Vite, i18next
 
 **Tools and Deployment**  
-Git, Vercel, Render, Neon PostgreSQL
+Git, Vercel, Render, Neon PostgreSQL, Linux VPS, Cloudflare Tunnel
 
 ## Project Structure
 
@@ -200,7 +220,29 @@ Create `backend/.env` from `backend/.env.example` and configure:
 
 - `DATABASE_URL`
 - `JWT_SECRET`
-- SMTP settings if contact email is enabled
+- email settings if contact email is enabled
+- JARVIS settings if AI-assisted technical direction is enabled
+
+Supported email environment variables:
+
+```bash
+EMAIL_ENABLED=true
+EMAIL_HOST=
+EMAIL_PORT=587
+EMAIL_USERNAME=
+EMAIL_PASSWORD=
+EMAIL_FROM=
+CONTACT_RECEIVER_EMAIL=
+```
+
+Supported JARVIS environment variables for the Render backend:
+
+```bash
+JARVIS_ENABLED=true
+JARVIS_URL=https://jarvis.kamilsarbian.dev/jarvis/direction
+JARVIS_TIMEOUT_SECONDS=20
+JARVIS_API_KEY=
+```
 
 ### Frontend
 
@@ -229,7 +271,23 @@ Backend tests can also be run directly from the project root:
 - Frontend: Vercel
 - Backend API: Render
 - Database: Neon PostgreSQL
+- AI microservice: Hetzner VPS behind Cloudflare Tunnel
 - API documentation: FastAPI Swagger UI at `/docs`
+
+Production domains:
+
+- Frontend: https://kamilsarbian.dev
+- API: https://api.kamilsarbian.dev
+- JARVIS: https://jarvis.kamilsarbian.dev
+
+Key production concepts demonstrated:
+
+- AI-assisted inquiry workflow
+- graceful degradation when AI is unavailable
+- secure API-to-service communication with Bearer authentication
+- isolated AI microservice
+- rate limiting and prompt safety rules on the AI service
+- infrastructure-aware deployment with Vercel, Render, VPS, and Cloudflare Tunnel
 
 ## GitHub Profile Checklist
 
