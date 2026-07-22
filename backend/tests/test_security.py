@@ -1,5 +1,4 @@
-from jose import jwt
-
+import jwt
 from core.config import settings
 from core.security import create_access_token
 
@@ -16,10 +15,11 @@ def test_create_access_token_requires_jwt_secret(monkeypatch):
 
 
 def test_create_access_token_contains_subject_and_role(monkeypatch):
-    monkeypatch.setattr(settings, "jwt_secret", "test-secret")
+    test_secret = "test-" + ("x" * 32)
+    monkeypatch.setattr(settings, "jwt_secret", test_secret)
 
     token = create_access_token(sub="user@example.com", role="admin", expires_minutes=5)
-    payload = jwt.decode(token, "test-secret", algorithms=[settings.jwt_alg])
+    payload = jwt.decode(token, test_secret, algorithms=[settings.jwt_alg])
 
     assert payload["sub"] == "user@example.com"
     assert payload["role"] == "admin"

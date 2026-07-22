@@ -8,17 +8,17 @@
     "langNo": "Norwegian",
     "light": "Light",
     "dark": "Dark",
-    "openTo": "Backend Developer · Systems · API Integrations",
-    "openToMobile": "Backend Developer · Integrations"
+    "openTo": "Software Developer · Backend · AI Automation",
+    "openToMobile": "Software Developer · Backend & AI"
 
   },
   "home": {
-    "aboutLabel": "BACKEND · AUTOMATION · INTEGRATIONS",
-    "headline": "Backend Developer & AI Automation",
-    "intro": "I build backend systems and integrations that simplify workflows and improve operational reliability.",
-    "heroTech": "Python · FastAPI · PostgreSQL · API Integrations · Automation",
+    "aboutLabel": "BACKEND · AI AUTOMATION · RESEARCH-LED DIGITAL PRODUCTS",
+    "headline": "Software Developer building backend systems, AI automation, and research-led digital products",
+    "intro": "I combine software engineering, automation, and product discovery to turn real workflows and user needs into practical, reliable digital solutions.",
+    "heroTech": "Python · FastAPI · PostgreSQL · REST APIs · AI Workflows · Linux/VPS",
     "whyTitle": "What I build",
-    "whyBody": "I focus on practical backend systems: APIs, validation, business logic, database-backed workflows, and integrations that make operations easier to run and maintain.",
+    "whyBody": "I work across backend engineering, AI automation, and early-stage digital products—starting with the problem, workflow, and available evidence before implementation.",
     "seeProjects": "View case studies",
     "backendDocs": "API documentation (docs)",
     "tip": "The projects show how I approach backend systems, integrations, automation, and production-minded API design.",
@@ -26,18 +26,19 @@
     "whatIBuild": {
       "title": "What I Build",
       "backendTitle": "Backend Systems",
-      "backendBody": "APIs that handle authentication, validation, business logic, and reliable communication between services.",
+      "backendBody": "APIs and backend services that handle authentication, validation, business logic, databases, and reliable communication between systems.",
       "automationTitle": "AI Automation",
-      "automationBody": "Workflows using embeddings and LLMs to reduce repetitive manual tasks and improve data processing.",
-      "integrationTitle": "API & Data Integration",
-      "integrationBody": "Connecting databases, external APIs, and backend services into reliable workflows."
+      "automationBody": "Private AI environments and workflows combining LLMs, persistent memory, scheduled tasks, research, and operational automation.",
+      "productTitle": "Research-led Digital Products",
+      "productBody": "Digital product concepts shaped through research, structured insight analysis, prototyping, and iterative testing."
     },
     "howIWork": {
       "title": "How I Work",
       "a": "I start from the workflow, not the framework.",
       "b": "I build iteratively: first making systems work reliably, then improving structure, maintainability, and deployment flow.",
       "c": "I focus on how systems communicate, where bottlenecks appear, and how processes can be simplified.",
-      "d": "I run my own AI automation stack on a Linux VPS — used for deployment support, technical research, and everyday automation tasks."
+      "d": "I run a private AI automation environment on a Linux VPS for technical research, system monitoring, and everyday automation tasks.",
+      "e": "I validate needs, workflows, and operational constraints before committing to technical implementation."
     },
     "stackSection": {
       "title": "Tech Stack",
@@ -84,11 +85,15 @@
   "projects": {
     "label": "PROJECTS",
     "title": "Case studies",
-    "subtitle": "Backend and automation projects focused on reliability, integrations, and practical system design.",
+    "subtitle": "Backend, AI automation, and product discovery case studies focused on reliable systems, practical workflows, and evidence-led decisions.",
     "open": "Open",
     "openSmall": "Open",
-    "backToCaseStudies": "Back to Case studies",
+    "backToCaseStudies": "Back to case studies",
     "viewProject": "View project →",
+    "viewArchitecture": "View architecture →",
+    "viewPrototype": "View prototype views →",
+    "privateRepository": "Private repository 🔒",
+    "privateResearch": "Private research materials 🔒",
     "github": "GitHub",
     "apiDocs": "API docs",
     "featuredLabel": "Featured case study",
@@ -109,6 +114,29 @@
         "productionThinking": "Built with role-based access control, JWT validation, password hashing, database migrations, structured input validation, and environment-based configuration for reliable API behavior.",
         "stack": ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy"],
         "screenshot": "Interactive demo available in the project view."
+      },
+      "jarvis": {
+        "title": "JARVIS — Private AI Automation Environment",
+        "problem": "Technical research, job analysis, infrastructure notes, and project decisions were spread across separate tools and sessions.",
+        "solution": "A private OpenClaw-based environment on a self-managed Ubuntu VPS with persistent memory, scheduled monitoring, supporting services, and Telegram access.",
+        "businessValue": "Keeps technical context, research outputs, and repeatable operational workflows in one private environment.",
+        "productionThinking": "Clear platform boundaries, protected secrets, isolated scheduled sessions, resource monitoring, documented limitations, and an explicit reliability roadmap.",
+        "stack": ["OpenClaw", "Linux/VPS", "Docker", "Telegram"]
+      },
+      "living": {
+        "kicker": "Research-led Digital Product Concept",
+        "title": "Living Startpakke",
+        "problem": "Critical everyday knowledge can be fragmented across families, documents, routines, and experienced staff.",
+        "discovery": "45 survey responses, qualitative interviews, expert input, and anonymized stakeholder outreach inform the concept.",
+        "currentDirection": "A living, maintainable knowledge concept focused on prioritization, recency, and controlled access.",
+        "currentStage": "Clickable concept prototype · Initial feedback outreach underway",
+        "cardLabels": {
+          "problem": "Problem",
+          "discovery": "Discovery",
+          "currentDirection": "Current Direction",
+          "currentStage": "Current Stage"
+        },
+        "stack": ["Product Discovery", "User Research", "Insight Analysis", "Figma"]
       },
       "classifier": {
         "title": "AI-assisted Image Classification API",
@@ -137,6 +165,278 @@
     "imgClassDesc":"Python API that accepts an image and returns a classification using an ML model. The endpoint handles file uploads and returns prediction results in JSON format.",
     "authTitle": "Auth & User Management API",
     "authDesc": "API for user management with registration, login, and JWT authentication. The system supports user roles (admin/user), profiles, and integration with a PostgreSQL database using SQLAlchemy."
+  },
+  "livingStartpakke": {
+    "kicker": "RESEARCH-LED PRODUCT DISCOVERY",
+    "title": "Living Startpakke — Research-led Product Discovery",
+    "subtitle": "An independently led digital product concept exploring how critical everyday knowledge about a person can be made easier to access, understand, and keep up to date across families and care environments.",
+    "statusStatement": "Living Startpakke is a research-led, user-informed concept currently in product discovery. It is not a finished product, working application, or validated solution.",
+    "status": "Clickable concept prototype ready for feedback",
+    "privateResearch": "Private research materials 🔒",
+    "updated": "Project status updated: July 2026",
+    "facts": [
+      { "label": "Role", "value": "Independent project lead" },
+      { "label": "Focus", "value": "Product discovery, user research, insight analysis, and prototyping" },
+      { "label": "Prototype", "value": "Figma concept using fictional data" },
+      { "label": "Implementation", "value": "No production application or backend" }
+    ],
+    "sections": {
+      "problem": {
+        "title": "Problem, Context and Boundaries",
+        "body": "Critical everyday knowledge about a person can be distributed across documents, routines, family members, and experienced staff. New or temporary staff may not have quick access to current, practical guidance about communication, preferences, triggers, routines, and everyday support.",
+        "items": [
+          "Families may need to repeat the same practical information when new people become involved.",
+          "Teams can become dependent on the memory of experienced staff.",
+          "Existing information may be difficult to find, outdated, or unsuitable for the moment it is needed.",
+          "The concept focuses on people who communicate with limited or no spoken language and the people supporting them."
+        ],
+        "boundaryTitle": "Project boundary",
+        "boundaryBody": "The concept is not intended to replace medical records, formal care plans, professional assessments, or existing documentation systems."
+      },
+      "discovery": {
+        "title": "Discovery Approach and Evidence Base",
+        "body": "I initiated the project and continue to lead it independently, while collecting input from relatives, care workers, professionals, and relevant stakeholder environments. Discovery began before a technical solution was defined, to understand whether the main issue was missing information, outdated information, limited access, or ineffective use of existing information.",
+        "evidence": [
+          { "value": "45", "label": "Survey responses", "body": "Responses from relatives and families." },
+          { "value": "3", "label": "Qualitative interviews", "body": "Family, school, and residential care perspectives." },
+          { "value": "1", "label": "Expert input", "body": "One expert and contextual conversation with a relevant specialist environment, presented anonymously." },
+          { "value": "10–12", "label": "Stakeholder environments", "body": "Included in outreach or landscape mapping across disability support, communication, family support, education, and municipal care. Identities are not published." }
+        ],
+        "note": "The evidence base is still developing. These activities inform the direction of the concept but do not constitute full product validation. No organization, expert, respondent, or location is identified publicly."
+      },
+      "research": {
+        "title": "Research Themes and Direction Change",
+        "themes": [
+          { "title": "Knowledge can be fragmented", "body": "Important information may be spread across documents, conversations, personal experience, and informal routines." },
+          { "title": "Information is often repeated", "body": "Relatives and experienced staff may need to explain the same practical details repeatedly." },
+          { "title": "Documentation is not always sufficient in the moment", "body": "Relevant information can be difficult to find, too extensive, outdated, or poorly suited to a new worker." },
+          { "title": "Prioritization matters", "body": "New staff need a clear view of what matters before a first interaction, not every available detail at once." }
+        ],
+        "directionTitle": "How research changed the direction",
+        "directionBody": "Discovery shifted the concept from a static start package toward a living and maintainable knowledge concept focused on prioritization, recency, and controlled access.",
+        "directionNote": "Research also indicated a need to separate stable knowledge from short-term updates instead of mixing both into one undifferentiated information view."
+      },
+      "prototype": {
+        "title": "Prototype",
+        "body": "A clickable concept prototype was created in Figma to explore the proposed MVP scope using fictional data. The complete interactive prototype remains private during the feedback process.",
+        "badge": "Current concept prototype · Fictional data",
+        "views": [
+          { "title": "Person card", "body": "Explores a prioritized view of practical information that may matter before a first interaction." },
+          { "title": "Timeline", "body": "Explores how recent updates, upcoming events, observations, and stable knowledge could remain distinct." },
+          { "title": "Access concept", "body": "Explores role-based visibility, editing responsibility, and temporary access to sensitive information." }
+        ],
+        "interactionsTitle": "Selected interaction concepts",
+        "interactionsBody": "The prototype also explores read confirmation, quick note capture, voice notes, and temporary access.",
+        "limitation": "The prototype demonstrates design hypotheses, not implemented functionality. There is no working application, production code, database, authentication system, or backend."
+      },
+      "current": {
+        "title": "Current Stage, Open Questions and Constraints",
+        "body": "The clickable concept prototype is ready for feedback, and initial feedback outreach is underway. No usability, adoption, or product-value claims are made at this stage.",
+        "questionsTitle": "What has not yet been verified",
+        "questions": [
+          "Which information is genuinely essential before a first interaction?",
+          "Can people find and understand that information quickly?",
+          "How should short-term updates and long-term knowledge be separated?",
+          "Who should maintain the information and be accountable for its quality?",
+          "Which access roles and temporary-access rules are realistic?",
+          "What privacy, consent, and security requirements would apply?",
+          "How could the concept fit alongside existing documentation systems?"
+        ],
+        "constraintsTitle": "Current constraints",
+        "constraints": [
+          "The prototype can test comprehension and workflow assumptions, but not production security or technical integration.",
+          "Feedback results are not yet sufficient to describe the concept as validated, pilot-ready, or ready for implementation.",
+          "Private research materials, raw responses, interview content, and the full prototype are not published."
+        ]
+      },
+      "risks": {
+        "title": "Risks and Next Steps",
+        "items": [
+          { "title": "Sensitive information", "body": "Any implementation would require careful decisions about privacy, consent, access control, and accountability." },
+          { "title": "Information quality", "body": "Outdated, incomplete, or incorrectly prioritized information could reduce trust and create additional risk." },
+          { "title": "Maintenance responsibility", "body": "The concept depends on current information, but ownership of updates has not yet been verified." },
+          { "title": "Organizational fit", "body": "The concept would need to support existing professional routines rather than create another disconnected system." }
+        ],
+        "nextTitle": "Next steps",
+        "nextSteps": [
+          "Collect and analyze the first round of structured prototype feedback.",
+          "Refine information hierarchy, wording, navigation, and interaction hypotheses.",
+          "Conduct focused follow-up conversations where responses require clarification.",
+          "Refine the proposed MVP scope based on recurring patterns in the evidence.",
+          "Investigate information ownership, consent, privacy, access rules, and compatibility with existing documentation.",
+          "Consider technical implementation only after the main workflow and responsibility assumptions have stronger evidence."
+        ]
+      }
+    }
+  },
+  "jarvis": {
+    "title": "Private AI Automation Environment",
+    "subtitle": "An operational OpenClaw-based workspace for research, persistent context, scheduled monitoring, and everyday technical automation.",
+    "status": "Operational private environment · Ongoing development",
+    "privateRepository": "Private repository 🔒",
+    "facts": [
+      { "label": "Started", "value": "May 2026" },
+      { "label": "Role", "value": "Environment design, integration, automation, and operations" },
+      { "label": "Infrastructure", "value": "Self-managed Ubuntu VPS on Hetzner · ARM64" },
+      { "label": "Model", "value": "DeepSeek V4 Pro" },
+      { "label": "Primary interface", "value": "Telegram" }
+    ],
+    "sections": {
+      "problem": {
+        "title": "Problem",
+        "body": "Research, infrastructure notes, project decisions, and job-search materials were distributed across tools and short-lived AI sessions.",
+        "items": [
+          "Useful context was easy to lose between sessions.",
+          "Repeated research created unnecessary work.",
+          "Technical and product materials lacked one structured workspace.",
+          "Routine monitoring and organization still required manual attention."
+        ]
+      },
+      "usage": {
+        "title": "Current Use",
+        "body": "JARVIS supports practical work rather than acting as a general-purpose automation platform.",
+        "items": [
+          "Technical and product research.",
+          "Job analysis and structured opportunity reviews.",
+          "Research reports and competitive analysis.",
+          "Project documentation and context retrieval.",
+          "Approved Git operations and maintenance tasks.",
+          "Resource monitoring and memory workflows."
+        ]
+      },
+      "openClaw": {
+        "title": "What OpenClaw Provides",
+        "body": "OpenClaw provides the core gateway and runtime. JARVIS is a deployed, configured, and extended private environment—not an agent platform built from scratch.",
+        "items": [
+          "Gateway and isolated sessions.",
+          "Tool and skill execution.",
+          "Built-in semantic memory search.",
+          "Telegram integration.",
+          "Extensible plugin architecture."
+        ],
+        "note": "Planner workflows and MCP integrations are available platform directions but are currently outside this project’s scope."
+      },
+      "contribution": {
+        "title": "My Contribution",
+        "body": "My work focuses on environment design, integrations, operational workflows, and safe day-to-day use.",
+        "items": [
+          "Deployed and configured OpenClaw on a self-managed VPS.",
+          "Integrated DeepSeek V4 Pro and Telegram access.",
+          "Defined workspace rules, memory structure, and research workflows.",
+          "Configured isolated scheduled resource-monitoring and memory workflows.",
+          "Built a custom REST service and portfolio middleware for separate use cases.",
+          "Configured CORS, Cloudflare Tunnel transport, and selected supporting services.",
+          "Documented safe Git operations and maintenance procedures."
+        ]
+      },
+      "memory": {
+        "title": "Persistent Context and Memory",
+        "body": "The current file-based memory and built-in semantic search are sufficient for the present scope, so an external vector database has not been introduced.",
+        "items": [
+          "Long-term summary for stable context.",
+          "Dated daily memory notes.",
+          "Session history and project files.",
+          "Structured research reports."
+        ]
+      },
+      "automation": {
+        "title": "Automation",
+        "body": "A scheduled isolated workflow is configured to run daily at 23:55 CEST. It creates a dated memory note and updates the long-term summary when execution completes successfully. Longer runs can approach the configured timeout limit.",
+        "items": [
+          "Server resource monitoring runs every six hours.",
+          "Alerts are configured for resource usage above 80%, but an incident-triggered path has not yet been tested end to end.",
+          "Scheduled tasks run in isolated sessions to limit context overlap."
+        ],
+        "note": "Resource monitoring runs on schedule, while the daily memory-summary workflow is configured and monitored with known timeout limitations."
+      },
+      "deployment": {
+        "title": "Deployment and Operations",
+        "items": [
+          "SSH key access and UFW firewall rules.",
+          "Docker for selected supporting services.",
+          "System service configuration for selected supporting services.",
+          "Resource monitoring and scheduled maintenance workflows.",
+          "Cloudflare Tunnel for the portfolio integration path.",
+          "Manual operational review where automatic recovery is not yet available."
+        ]
+      },
+      "security": {
+        "title": "Security Boundaries",
+        "items": [
+          "SSH key-based administration and firewall restrictions.",
+          "Cloudflare Tunnel instead of exposing the portfolio middleware directly.",
+          "Restricted CORS configuration for the public integration.",
+          "Private repository and protected environment configuration.",
+          "Private workspace data excluded from Git."
+        ]
+      },
+      "reliability": {
+        "title": "Current Limitations",
+        "items": [
+          "Automatic gateway recovery is incomplete.",
+          "Backup automation is not yet implemented.",
+          "Model requests do not use a custom retry layer.",
+          "End-to-end health monitoring and workflow tests remain limited."
+        ]
+      },
+      "outsideScope": {
+        "title": "Currently Outside the Project Scope",
+        "body": "The file-based memory and built-in semantic search meet current needs; adding more infrastructure without a demonstrated requirement would increase complexity.",
+        "items": [
+          "External vector database.",
+          "MCP integrations.",
+          "Interactive multi-agent orchestration.",
+          "Multi-step planner workflows."
+        ]
+      },
+      "results": {
+        "title": "Operational Results",
+        "body": "The outcomes are qualitative and operational; no SLA, ROI, or time-saving claim is presented without measured evidence.",
+        "items": [
+          "Job and market research is captured in reusable structured reports.",
+          "Competitive research and the KnowMe benchmark remain accessible in one workspace.",
+          "Persistent project context can be retrieved across sessions.",
+          "Resource monitoring runs on a defined schedule."
+        ]
+      },
+      "nextSteps": {
+        "title": "Next Steps",
+        "items": [
+          "Complete automatic gateway recovery.",
+          "Introduce encrypted backup automation.",
+          "Review memory-workflow timeout behavior.",
+          "Add health checks and failure notifications.",
+          "Add a custom retry strategy for model requests.",
+          "Expand end-to-end workflow tests and monitoring.",
+          "Evaluate MCP only where a concrete integration need appears.",
+          "Prepare sanitized public technical documentation."
+        ]
+      }
+    },
+    "architecture": {
+      "title": "Architecture",
+      "body": "The environment has one primary OpenClaw flow and two independent supporting integration paths.",
+      "mainTitle": "Primary JARVIS flow",
+      "mainAriaLabel": "User connects through Telegram to the OpenClaw Gateway",
+      "user": "User",
+      "telegram": "Telegram",
+      "gateway": "OpenClaw Gateway",
+      "deepseek": "DeepSeek V4 Pro API",
+      "workspace": "Persistent workspace",
+      "semantic": "Semantic memory search",
+      "scheduled": "Scheduled isolated sessions",
+      "tools": "System tools: Shell, Docker, web research, resource monitoring",
+      "supportingTitle": "Supporting integration flows",
+      "portfolioAriaLabel": "Portfolio form connects through Cloudflare Tunnel and portfolio middleware to OpenClaw",
+      "portfolioForm": "Portfolio form",
+      "tunnel": "Cloudflare Tunnel",
+      "middleware": "Portfolio middleware",
+      "openClaw": "OpenClaw",
+      "restAriaLabel": "Generic client connects through a custom REST service to the DeepSeek API",
+      "genericClient": "Generic client",
+      "restService": "Custom REST service",
+      "deepseekApi": "DeepSeek V4 Pro API"
+    }
   },
   "pwnedProject": {
     "title": "Pwned Password Check",

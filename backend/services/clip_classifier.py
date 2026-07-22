@@ -4,12 +4,10 @@ import io
 import os
 import threading
 from dataclasses import dataclass
-from typing import Dict, List, Optional, Tuple
 
-from PIL import Image
-
-import torch
 import open_clip
+import torch
+from PIL import Image
 
 MAX_IMAGE_SIDE = 512
 
@@ -25,7 +23,7 @@ class ClipClassifier:
         self,
         model_name: str = "ViT-B-32",
         pretrained: str = "laion2b_s34b_b79k",
-        device: Optional[str] = None,
+        device: str | None = None,
     ) -> None:
         self.model_name = model_name
         self.pretrained = pretrained
@@ -37,10 +35,12 @@ class ClipClassifier:
         self._lock = threading.Lock()
 
         # cache tokenów tekstu (żeby nie tokenizować za każdym kliknięciem)
-        self._text_cache: Dict[Tuple[Tuple[str, ...], str], torch.Tensor] = {}
+        self._text_cache: dict[tuple[tuple[str, ...], str], torch.Tensor] = {}
         self._text_cache_lock = threading.Lock()
 
     def load(self) -> None:
+        """Load the configured CLIP model and tokenizer once."""
+
         if self._model is not None:
             return
 
@@ -61,7 +61,9 @@ class ClipClassifier:
             self._preprocess = preprocess
             self._tokenizer = tokenizer
 
-    def meta(self) -> dict:
+    def meta(self) -> dict[str, str | int]:
+        """Return runtime metadata for the loaded classifier."""
+
         self.load()
         return {
             "engine": "open_clip",
@@ -72,8 +74,8 @@ class ClipClassifier:
         }
 
     @staticmethod
-    def _clean_labels(labels: List[str]) -> List[str]:
-        out: List[str] = []
+    def _clean_labels(labels: list[str]) -> list[str]:
+        out: list[str] = []
         seen = set()
         for x in labels:
             x = (x or "").strip()
@@ -102,7 +104,7 @@ class ClipClassifier:
             img.thumbnail((MAX_IMAGE_SIDE, MAX_IMAGE_SIDE), Image.Resampling.LANCZOS)
         return img
 
-    def _get_text_tokens(self, prompts: List[str]) -> torch.Tensor:
+    def _get_text_tokens(self, prompts: list[str]) -> torch.Tensor:
         assert self._tokenizer is not None
 
         key = (tuple(prompts), str(self.device))
@@ -123,10 +125,12 @@ class ClipClassifier:
     def classify_bytes(
         self,
         image_bytes: bytes,
-        labels: List[str],
+        labels: list[str],
         top_k: int = 3,
         min_score: float = 0.15,
-    ) -> dict:
+    ) -> dict[str, object]:
+        """Classify image bytes against the supplied text labels."""
+
         self.load()
         assert self._model is not None
         assert self._preprocess is not None
@@ -156,14 +160,17 @@ class ClipClassifier:
         top_k = max(1, min(int(top_k), len(labels)))
         scores, idxs = torch.topk(probs, k=top_k)
 
-        preds: List[Prediction] = []
-        for score, idx in zip(scores.tolist(), idxs.tolist()):
+        preds: list[Prediction] = []
+        for score, idx in zip(scores.tolist(), idxs.tolist(), strict=True):
             preds.append(Prediction(label=labels[idx], score=float(score)))
 
         filtered = [p for p in preds if p.score >= float(min_score)]
         if not filtered:
             best = preds[0] if preds else Prediction("unknown", 0.0)
-            return {"predictions": [{"label": "unknown", "score": float(best.score)}], "unknown": True}
+            return {
+                "predictions": [{"label": "unknown", "score": float(best.score)}],
+                "unknown": True,
+            }
 
         return {
             "predictions": [{"label": p.label, "score": p.score} for p in filtered],
@@ -171,11 +178,13 @@ class ClipClassifier:
         }
 
 
-_classifier: Optional[ClipClassifier] = None
+_classifier: ClipClassifier | None = None
 _classifier_lock = threading.Lock()
 
 
 def get_classifier() -> ClipClassifier:
+    """Return the process-wide lazily initialized CLIP classifier."""
+
     global _classifier
     if _classifier is not None:
         return _classifier

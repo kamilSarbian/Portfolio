@@ -10,6 +10,8 @@ import ProjectPwned from "./pages/ProjectPwned";
 import ProjectImageEditor from "./pages/ProjectImageEditor";
 import ProjectImageClassifier from "./pages/ProjectImageClassifier";
 import ProjectAuth from "./pages/ProjectAuth";
+import ProjectJarvis from "./pages/ProjectJarvis";
+import ProjectLivingStartpakke from "./pages/ProjectLivingStartpakke";
 
 import "./App.css";
 
@@ -19,19 +21,30 @@ export default function App() {
   const navigate = useNavigate();
 
   const [theme, setTheme] = useState("dark");
-  const [lang, setLang] = useState("pl");
+  const lang = (i18n.resolvedLanguage || i18n.language || "en").slice(0, 2);
 
   const navActive = location.pathname === "/" ? "home" : "projects";
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [location.pathname]);
+    if (!location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      return undefined;
+    }
+
+    const targetId = decodeURIComponent(location.hash.slice(1));
+    const timer = window.setTimeout(() => {
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      target.scrollIntoView({ behavior: "auto", block: "start" });
+      target.focus({ preventScroll: true });
+    }, 0);
+
+    return () => window.clearTimeout(timer);
+  }, [location.hash, location.pathname]);
 
   function goTo(path) {
     navigate(path);
-    window.setTimeout(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    }, 0);
   }
 
   function toggleTheme() {
@@ -40,7 +53,6 @@ export default function App() {
 
   function toggleLang() {
     const next = lang === "pl" ? "en" : lang === "en" ? "no" : "pl";
-    setLang(next);
     i18n.changeLanguage(next);
   }
 
@@ -68,6 +80,10 @@ export default function App() {
             element={
               <Projects
                 onOpenAuth={() => goTo("/projects/auth-api")}
+                onOpenJarvis={() => goTo("/projects/jarvis-ai-environment")}
+                onOpenJarvisArchitecture={() => goTo("/projects/jarvis-ai-environment#architecture")}
+                onOpenLiving={() => goTo("/projects/living-startpakke")}
+                onOpenLivingPrototype={() => goTo("/projects/living-startpakke#prototype")}
                 onOpenPwned={() => goTo("/projects/password-checker")}
                 onOpenImageEditor={() => goTo("/projects/image-editor")}
                 onOpenImageClassifier={() => goTo("/projects/image-classifier")}
@@ -78,6 +94,16 @@ export default function App() {
           <Route
             path="/projects/auth-api"
             element={<ProjectAuth onGoProjects={() => goTo("/projects")} />}
+          />
+
+          <Route
+            path="/projects/jarvis-ai-environment"
+            element={<ProjectJarvis onGoProjects={() => goTo("/projects")} />}
+          />
+
+          <Route
+            path="/projects/living-startpakke"
+            element={<ProjectLivingStartpakke onGoProjects={() => goTo("/projects")} />}
           />
 
           <Route

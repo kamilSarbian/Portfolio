@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 from dataclasses import dataclass
+
 import httpx
 
 
@@ -12,6 +13,8 @@ class HIBPResult:
 
 
 def sha1_upper(text: str) -> str:
+    """Return an uppercase SHA-1 digest for the HIBP range protocol."""
+
     return hashlib.sha1(text.encode("utf-8")).hexdigest().upper()
 
 

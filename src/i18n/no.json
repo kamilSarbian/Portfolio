@@ -6,47 +6,48 @@
     "langPl": "Polsk",
     "langEn": "English",
     "langNo": "Norsk",
-    "light": "Light",
-    "dark": "Dark",
-    "openTo": "Backend Developer · Systems · API Integrations",
-    "openToMobile": "Backend Developer · Integrations"
+    "light": "Lys",
+    "dark": "Mørk",
+    "openTo": "Programvareutvikler · Backend · AI-automatisering",
+    "openToMobile": "Programvareutvikler · Backend og AI"
   },
   "home": {
-    "aboutLabel": "BACKEND · AUTOMATISERING · INTEGRASJONER",
-    "headline": "Backend Developer & AI Automation",
-    "intro": "Jeg bygger backend-systemer og integrasjoner som forenkler arbeidsflyter og forbedrer operasjonell pålitelighet.",
-    "heroTech": "Python · FastAPI · PostgreSQL · API-integrasjoner · Automatisering",
+    "aboutLabel": "BACKEND · AI-AUTOMATISERING · INNSIKTSDREVNE DIGITALE PRODUKTER",
+    "headline": "Programvareutvikler som bygger backend-systemer, AI-automatisering og innsiktsdrevne digitale produkter",
+    "intro": "Jeg kombinerer programvareutvikling, automatisering og brukerinnsikt for å omsette reelle arbeidsflyter og brukerbehov til praktiske og pålitelige digitale løsninger.",
+    "heroTech": "Python · FastAPI · PostgreSQL · REST API-er · AI-arbeidsflyter · Linux/VPS",
     "whyTitle": "Hva jeg bygger",
-    "whyBody": "Jeg fokuserer på praktiske backend-systemer: API-er, validering, forretningslogikk, databasebaserte arbeidsflyter og integrasjoner som er enklere å drifte og vedlikeholde.",
-    "seeProjects": "Se case studies",
+    "whyBody": "Jeg arbeider med backend-utvikling, AI-automatisering og tidlige digitale produktkonsepter – med utgangspunkt i problemet, arbeidsflyten og tilgjengelig innsikt før implementering.",
+    "seeProjects": "Se casestudier",
     "backendDocs": "API-dokumentasjon (docs)",
     "tip": "Prosjektene viser min tilnærming til backend-systemer, integrasjoner, automatisering og praktisk API-design.",
     "demoInfo": "Demoen kjører på et ekte API og skyinfrastruktur:",
     "whatIBuild": {
-      "title": "What I Build",
-      "backendTitle": "Backend Systems",
-      "backendBody": "API-er som håndterer autentisering, validering, forretningslogikk og pålitelig kommunikasjon mellom tjenester.",
-      "automationTitle": "AI Automation",
-      "automationBody": "Arbeidsflyter med embeddings og LLMs for å redusere repeterende manuelt arbeid og forbedre databehandling.",
-      "integrationTitle": "API & Data Integration",
-      "integrationBody": "Kobling av databaser, eksterne API-er og backend-tjenester til pålitelige arbeidsflyter."
+      "title": "Hva jeg bygger",
+      "backendTitle": "Backend-systemer",
+      "backendBody": "API-er og backend-tjenester som håndterer autentisering, validering, forretningslogikk, databaser og pålitelig kommunikasjon mellom systemer.",
+      "automationTitle": "AI-automatisering",
+      "automationBody": "Private AI-miljøer og arbeidsflyter som kombinerer språkmodeller, vedvarende minne, planlagte oppgaver, research og operativ automatisering.",
+      "productTitle": "Innsiktsdrevne digitale produkter",
+      "productBody": "Digitale produktkonsepter utviklet gjennom innsiktsarbeid, strukturert analyse, prototyping og iterativ testing."
     },
     "howIWork": {
-      "title": "How I Work",
+      "title": "Hvordan jeg jobber",
       "a": "Jeg starter med arbeidsflyten, ikke frameworket.",
-      "b": "Jeg bygger iterativt: først systemer som fungerer pålitelig, deretter forbedrer jeg struktur, vedlikeholdbarhet og deployment flow.",
+      "b": "Jeg bygger iterativt: først systemer som fungerer pålitelig, deretter forbedrer jeg struktur, vedlikeholdbarhet og utrullingsprosess.",
       "c": "Jeg fokuserer på hvordan systemer kommuniserer, hvor flaskehalser oppstår, og hvordan prosesser kan forenkles.",
-      "d": "Jeg kjører min egen AI automation stack på en Linux VPS — brukt til deployment support, teknisk research og daglige automatiseringsoppgaver."
+      "d": "Jeg drifter et privat AI-automatiseringsmiljø på en Linux-VPS, brukt til teknisk research, systemovervåking og daglige automatiseringsoppgaver.",
+      "e": "Jeg validerer behov, arbeidsflyter og operative begrensninger før jeg går videre til teknisk implementering."
     },
     "stackSection": {
-      "title": "Tech Stack",
+      "title": "Teknologistakk",
       "backend": "Backend",
       "backendValue": "Python, FastAPI, REST APIs",
       "database": "Database",
       "databaseValue": "PostgreSQL, SQL",
       "automation": "AI / Automation",
       "automationValue": "LLMs, embeddings, automation workflows",
-      "tools": "Tools",
+      "tools": "Verktøy",
       "toolsValue": "Git, Vercel, Linux VPS"
     },
     "cta": {
@@ -77,37 +78,64 @@
     "education": "Utdanning",
     "download": "Last ned",
     "nationality": "Nasjonalitet",
-    "messageTitle": "DISCUSS A WORKFLOW",
+    "messageTitle": "DISKUTER EN ARBEIDSFLYT",
     "messageBody": "Beskriv arbeidsflyten eller backend-problemet."
   },
   "projects": {
     "label": "PROSJEKTER",
-    "title": "Case studies",
-    "subtitle": "Backend- og automatiseringsprosjekter med fokus på reliability, integrasjoner og practical system design.",
+    "title": "Casestudier",
+    "subtitle": "Casestudier innen backend, AI-automatisering og produktinnsikt, med fokus på pålitelige systemer, praktiske arbeidsflyter og beslutninger basert på innsikt.",
     "open": "Åpne",
     "openSmall": "Åpne",
-    "backToCaseStudies": "Tilbake til case studies",
+    "backToCaseStudies": "Tilbake til casestudier",
     "viewProject": "Se prosjekt →",
+    "viewArchitecture": "Se arkitektur →",
+    "viewPrototype": "Se prototypeoversikt →",
+    "privateRepository": "Privat kodearkiv 🔒",
+    "privateResearch": "Privat innsiktsmateriale 🔒",
     "github": "GitHub",
     "apiDocs": "API-dokumentasjon",
     "featuredLabel": "Utvalgt case study",
     "secondaryLabel": "Supplerende case study",
     "caseLabels": {
       "problem": "Problem",
-      "solution": "Solution",
-      "businessValue": "Business Value",
-      "productionThinking": "Production Thinking",
-      "stack": "Stack"
+      "solution": "Løsning",
+      "businessValue": "Forretningsverdi",
+      "productionThinking": "Produksjonshensyn",
+      "stack": "Teknologistakk"
     },
     "caseStudies": {
       "auth": {
         "title": "Authentication & User Management API",
-        "problem": "Mange interne verktøy trenger sikker brukertilgang uten å være avhengige av store eksterne identity-systemer.",
+        "problem": "Mange interne verktøy trenger sikker brukertilgang uten å være avhengige av store eksterne identitetsløsninger.",
         "solution": "En FastAPI-tjeneste med JWT-innlogging, beskyttet brukertilgang, rollebaserte rettigheter, validering og persistens i PostgreSQL.",
         "businessValue": "Gjenbrukbar autentiseringsbackend for dashboards, adminpaneler og interne verktøy der sikker tilgangskontroll er viktig.",
-        "productionThinking": "Bygget med role-based access control, JWT-validering, passordhashing, databasemigrasjoner, strukturert input validation og miljøbasert konfigurasjon for pålitelig API-atferd.",
+        "productionThinking": "Bygget med rollebasert tilgangskontroll, JWT-validering, passordhashing, databasemigrasjoner, strukturert validering av inndata og miljøbasert konfigurasjon for pålitelig API-atferd.",
         "stack": ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy"],
         "screenshot": "Interaktiv demo tilgjengelig i prosjektvisningen."
+      },
+      "jarvis": {
+        "title": "JARVIS — privat AI-automatiseringsmiljø",
+        "problem": "Teknisk research, jobbanalyse, infrastrukturnotater og prosjektbeslutninger var spredt mellom ulike verktøy og økter.",
+        "solution": "Et privat OpenClaw-basert miljø på en selvadministrert Ubuntu-VPS, med vedvarende minne, planlagt overvåking, støttetjenester og tilgang via Telegram.",
+        "businessValue": "Samler teknisk kontekst, researchresultater og repeterbare driftsprosesser i ett privat miljø.",
+        "productionThinking": "Tydelige plattformgrenser, beskyttede hemmeligheter, isolerte planlagte økter, ressursovervåking, dokumenterte begrensninger og et konkret veikart for pålitelighet.",
+        "stack": ["OpenClaw", "Linux/VPS", "Docker", "Telegram"]
+      },
+      "living": {
+        "kicker": "Innsiktsdrevet digitalt produktkonsept",
+        "title": "Living Startpakke",
+        "problem": "Viktig hverdagskunnskap kan være spredt mellom familier, dokumenter, rutiner og erfarne ansatte.",
+        "discovery": "45 spørreundersøkelsessvar, kvalitative intervjuer, ekspertinnspill og anonymisert kontakt med interessentmiljøer informerer konseptet.",
+        "currentDirection": "Et levende og vedlikeholdbart kunnskapskonsept med fokus på prioritering, aktualitet og kontrollert tilgang.",
+        "currentStage": "Klikkbar konseptprototype · Innledende kontakt om tilbakemeldinger er i gang",
+        "cardLabels": {
+          "problem": "Problem",
+          "discovery": "Produktinnsikt",
+          "currentDirection": "Nåværende retning",
+          "currentStage": "Nåværende fase"
+        },
+        "stack": ["Product Discovery", "Brukerinnsikt", "Innsiktsanalyse", "Figma"]
       },
       "classifier": {
         "title": "AI-assisted Image Classification API",
@@ -137,6 +165,278 @@
     "authTitle": "Auth & User Management API",
     "authDesc": "API for brukeradministrasjon med registrering, innlogging og JWT-autentisering. Systemet støtter brukerroller (admin/bruker), profiler og integrasjon med PostgreSQL-database ved bruk av SQLAlchemy."
   },
+  "livingStartpakke": {
+    "kicker": "INNSIKTSDREVET PRODUKTUTVIKLING",
+    "title": "Living Startpakke — Innsiktsdrevet produktutvikling",
+    "subtitle": "Et selvstendig ledet digitalt produktkonsept som undersøker hvordan viktig hverdagskunnskap om en person kan bli lettere å finne, forstå og holde oppdatert på tvers av familier og omsorgsmiljøer.",
+    "statusStatement": "Living Startpakke er et innsiktsdrevet konsept, informert av brukerinnsikt, og befinner seg i en pågående produktinnsiktsfase. Det er ikke et ferdig produkt, en fungerende applikasjon eller en validert løsning.",
+    "status": "Klikkbar konseptprototype klar for tilbakemeldinger",
+    "privateResearch": "Privat innsiktsmateriale 🔒",
+    "updated": "Prosjektstatus oppdatert: juli 2026",
+    "facts": [
+      { "label": "Rolle", "value": "Selvstendig prosjektleder" },
+      { "label": "Fokus", "value": "Produktinnsikt, brukerinnsikt, analyse og prototyping" },
+      { "label": "Prototype", "value": "Figma-konsept med fiktive data" },
+      { "label": "Implementasjon", "value": "Ingen produksjonsapplikasjon eller backend" }
+    ],
+    "sections": {
+      "problem": {
+        "title": "Problem, kontekst og avgrensning",
+        "body": "Viktig hverdagskunnskap om en person kan være fordelt mellom dokumenter, rutiner, familiemedlemmer og erfarne ansatte. Nye eller midlertidige ansatte har ikke alltid rask tilgang til oppdatert, praktisk veiledning om kommunikasjon, preferanser, triggere, rutiner og daglig støtte.",
+        "items": [
+          "Familier kan måtte gjenta den samme praktiske informasjonen når nye personer blir involvert.",
+          "Team kan bli avhengige av hukommelsen til erfarne ansatte.",
+          "Eksisterende informasjon kan være vanskelig å finne, utdatert eller dårlig tilpasset situasjonen der den trengs.",
+          "Konseptet retter seg mot personer som bruker lite eller ikke noe talespråk, og menneskene som støtter dem."
+        ],
+        "boundaryTitle": "Prosjektets avgrensning",
+        "boundaryBody": "Konseptet skal ikke erstatte pasientjournaler, formelle tiltaksplaner, faglige vurderinger eller eksisterende dokumentasjonssystemer."
+      },
+      "discovery": {
+        "title": "Innsiktsarbeid og kunnskapsgrunnlag",
+        "body": "Jeg tok initiativ til prosjektet og leder det fortsatt selvstendig, samtidig som jeg samler inn perspektiver fra pårørende, omsorgsarbeidere, fagpersoner og relevante interessentmiljøer. Innsiktsarbeidet startet før en teknisk løsning ble definert, for å forstå om hovedproblemet var manglende informasjon, utdatert informasjon, begrenset tilgang eller utilstrekkelig bruk av informasjon som allerede finnes.",
+        "evidence": [
+          { "value": "45", "label": "Svar på spørreundersøkelse", "body": "Svar fra pårørende og familier." },
+          { "value": "3", "label": "Kvalitative intervjuer", "body": "Perspektiver fra familie, skole og bolig." },
+          { "value": "1", "label": "Ekspert- og kontekstsamtale", "body": "Én ekspert- og kontekstsamtale med et relevant fagmiljø, presentert anonymt." },
+          { "value": "10–12", "label": "Interessentmiljøer", "body": "Inkludert i interessentarbeid eller landskapskartlegging innen funksjonsstøtte, kommunikasjon, familiestøtte, utdanning og kommunale omsorgstjenester. Identitetene publiseres ikke." }
+        ],
+        "note": "Kunnskapsgrunnlaget er fortsatt under utvikling. Aktivitetene påvirker retningen på konseptet, men utgjør ikke full produktvalidering. Ingen organisasjon, fagperson, respondent eller sted identifiseres offentlig."
+      },
+      "research": {
+        "title": "Innsiktstemaer og endret retning",
+        "themes": [
+          { "title": "Kunnskap kan være fragmentert", "body": "Viktig informasjon kan være spredt mellom dokumenter, samtaler, personlig erfaring og uformelle rutiner." },
+          { "title": "Informasjon blir ofte gjentatt", "body": "Pårørende og erfarne ansatte kan måtte forklare de samme praktiske detaljene flere ganger." },
+          { "title": "Dokumentasjon er ikke alltid tilstrekkelig i øyeblikket", "body": "Relevant informasjon kan være vanskelig å finne, for omfattende, utdatert eller lite egnet for en ny ansatt." },
+          { "title": "Prioritering er viktig", "body": "Nye ansatte trenger et tydelig bilde av det viktigste før første møte, ikke all tilgjengelig informasjon på én gang." }
+        ],
+        "directionTitle": "Hvordan innsiktsarbeidet endret retningen",
+        "directionBody": "Innsiktsarbeidet flyttet konseptet fra en statisk startpakke til et levende og vedlikeholdbart kunnskapskonsept med fokus på prioritering, aktualitet og kontrollert tilgang.",
+        "directionNote": "Arbeidet viste også et behov for å skille stabil kunnskap fra kortsiktige oppdateringer, i stedet for å blande alt i én udifferensiert informasjonsvisning."
+      },
+      "prototype": {
+        "title": "Prototype",
+        "body": "En klikkbar konseptprototype i Figma ble laget for å utforske det foreslåtte MVP-omfanget med fiktive data. Den komplette interaktive prototypen holdes privat under tilbakemeldingsprosessen.",
+        "badge": "Nåværende konseptprototype · Fiktive data",
+        "views": [
+          { "title": "Personkort", "body": "Utforsker en prioritert visning av praktisk informasjon som kan være viktig før et første møte." },
+          { "title": "Tidslinje", "body": "Utforsker hvordan nylige oppdateringer, kommende hendelser, observasjoner og stabil kunnskap kan holdes adskilt." },
+          { "title": "Tilgangskonsept", "body": "Utforsker rollebasert synlighet, redigeringsansvar og midlertidig tilgang til sensitiv informasjon." }
+        ],
+        "interactionsTitle": "Utvalgte interaksjonskonsepter",
+        "interactionsBody": "Prototypen utforsker også lesebekreftelse, raske notater, lydnotater og midlertidig tilgang.",
+        "limitation": "Prototypen viser designhypoteser, ikke implementert funksjonalitet. Det finnes ingen fungerende applikasjon, produksjonskode, database, autentiseringssystem eller backend."
+      },
+      "current": {
+        "title": "Nåværende fase, åpne spørsmål og begrensninger",
+        "body": "Den klikkbare konseptprototypen er klar for tilbakemeldinger, og innledende kontakt med mulige deltakere er i gang. Det fremsettes ingen påstander om brukervennlighet, faktisk bruk eller dokumentert produktverdi på dette stadiet.",
+        "questionsTitle": "Hva som ennå ikke er verifisert",
+        "questions": [
+          "Hvilken informasjon er faktisk nødvendig før et første møte?",
+          "Kan brukerne finne og forstå denne informasjonen raskt?",
+          "Hvordan bør kortsiktige oppdateringer og langsiktig kunnskap skilles?",
+          "Hvem bør vedlikeholde informasjonen og ha ansvar for kvaliteten?",
+          "Hvilke tilgangsroller og regler for midlertidig tilgang er realistiske?",
+          "Hvilke krav til personvern, samtykke og sikkerhet vil gjelde?",
+          "Hvordan kan konseptet fungere sammen med eksisterende dokumentasjonssystemer?"
+        ],
+        "constraintsTitle": "Nåværende begrensninger",
+        "constraints": [
+          "Prototypen kan teste forståelse og antakelser om arbeidsflyt, men ikke produksjonssikkerhet eller teknisk integrasjon.",
+          "Tilbakemeldingsgrunnlaget er ennå ikke tilstrekkelig til å beskrive konseptet som validert, pilotklart eller klart for implementasjon.",
+          "Privat innsiktsmateriale, rådata, intervjuinnhold og den komplette prototypen publiseres ikke."
+        ]
+      },
+      "risks": {
+        "title": "Risiko og neste steg",
+        "items": [
+          { "title": "Sensitive opplysninger", "body": "En eventuell implementasjon vil kreve grundige valg om personvern, samtykke, tilgangskontroll og ansvarsfordeling." },
+          { "title": "Informasjonskvalitet", "body": "Utdatert, ufullstendig eller feilprioritert informasjon kan svekke tillit og skape ytterligere risiko." },
+          { "title": "Ansvar for vedlikehold", "body": "Konseptets verdi avhenger av oppdatert informasjon, men ansvaret for oppdateringer er ennå ikke avklart." },
+          { "title": "Organisatorisk tilpasning", "body": "Konseptet må støtte eksisterende faglige rutiner fremfor å skape enda et frakoblet system." }
+        ],
+        "nextTitle": "Neste steg",
+        "nextSteps": [
+          "Samle inn og analysere de første strukturerte tilbakemeldingene på prototypen.",
+          "Forbedre informasjonshierarki, språk, navigasjon og interaksjonshypoteser.",
+          "Gjennomføre korte oppfølgingssamtaler der svar trenger avklaring.",
+          "Avgrense det foreslåtte MVP-omfanget basert på gjentakende funn.",
+          "Undersøke informasjonsansvar, samtykke, personvern, tilgangsregler og samspill med eksisterende dokumentasjon.",
+          "Vurdere teknisk implementasjon først når hovedantakelsene om arbeidsflyt og ansvar har et sterkere kunnskapsgrunnlag."
+        ]
+      }
+    }
+  },
+  "jarvis": {
+    "title": "Privat AI-automatiseringsmiljø",
+    "subtitle": "Et operativt OpenClaw-basert arbeidsmiljø for research, vedvarende kontekst, planlagt overvåking og daglig teknisk automatisering.",
+    "status": "Operativt privat miljø · Videreutvikles løpende",
+    "privateRepository": "Privat kodearkiv 🔒",
+    "facts": [
+      { "label": "Startet", "value": "Mai 2026" },
+      { "label": "Rolle", "value": "Miljødesign, integrasjoner, automatisering og drift" },
+      { "label": "Infrastruktur", "value": "Selvadministrert Ubuntu-VPS hos Hetzner · ARM64" },
+      { "label": "Modell", "value": "DeepSeek V4 Pro" },
+      { "label": "Primært grensesnitt", "value": "Telegram" }
+    ],
+    "sections": {
+      "problem": {
+        "title": "Problem",
+        "body": "Research, infrastrukturnotater, prosjektbeslutninger og jobbsøkingsmateriale var fordelt på ulike verktøy og kortvarige AI-økter.",
+        "items": [
+          "Nyttig kontekst kunne lett forsvinne mellom økter.",
+          "Gjentatt research skapte unødvendig arbeid.",
+          "Teknisk og produktrelatert materiale manglet ett strukturert arbeidsområde.",
+          "Rutinemessig overvåking og organisering krevde fortsatt manuell oppfølging."
+        ]
+      },
+      "usage": {
+        "title": "Nåværende bruk",
+        "body": "JARVIS støtter praktisk arbeid og presenteres ikke som en generell automatiseringsplattform.",
+        "items": [
+          "Teknisk research og produktresearch.",
+          "Jobbanalyse og strukturerte vurderinger av muligheter.",
+          "Researchrapporter og konkurrentanalyse.",
+          "Prosjektdokumentasjon og gjenfinning av kontekst.",
+          "Godkjente Git-operasjoner og vedlikeholdsoppgaver.",
+          "Ressursovervåking og minneprosesser."
+        ]
+      },
+      "openClaw": {
+        "title": "Hva OpenClaw leverer",
+        "body": "OpenClaw leverer kjernen i gatewayen og kjøremiljøet. JARVIS er et utrullet, konfigurert og utvidet privat miljø, ikke en agentplattform bygget fra grunnen av.",
+        "items": [
+          "Gateway og isolerte økter.",
+          "Kjøring av verktøy og ferdigheter.",
+          "Innebygd semantisk minnesøk.",
+          "Telegram-integrasjon.",
+          "Utvidbar pluginarkitektur."
+        ],
+        "note": "Planleggerprosesser og MCP-integrasjoner er mulige plattformretninger, men ligger foreløpig utenfor prosjektets omfang."
+      },
+      "contribution": {
+        "title": "Mitt bidrag",
+        "body": "Arbeidet mitt omfatter miljødesign, integrasjoner, driftsprosesser og trygg daglig bruk.",
+        "items": [
+          "Utrulling og konfigurasjon av OpenClaw på en selvadministrert VPS.",
+          "Integrasjon av DeepSeek V4 Pro og tilgang via Telegram.",
+          "Definering av regler for arbeidsområdet, minnestruktur og researchprosesser.",
+          "Konfigurasjon av isolert, planlagt ressursovervåking og minneprosesser.",
+          "Utvikling av en egen REST-tjeneste og portfolio-middleware for separate bruksområder.",
+          "Konfigurasjon av CORS, transport via Cloudflare Tunnel og utvalgte støttetjenester.",
+          "Dokumentasjon av trygge Git-operasjoner og vedlikeholdsrutiner."
+        ]
+      },
+      "memory": {
+        "title": "Vedvarende kontekst og minne",
+        "body": "Det nåværende filbaserte minnet og det innebygde semantiske søket er tilstrekkelig for dagens omfang, derfor er ingen ekstern vektordatabase innført.",
+        "items": [
+          "Langtidssammendrag for stabil kontekst.",
+          "Daterte daglige minnenotater.",
+          "Økthistorikk og prosjektfiler.",
+          "Strukturerte researchrapporter."
+        ]
+      },
+      "automation": {
+        "title": "Automatisering",
+        "body": "En planlagt isolert prosess er konfigurert til å kjøre daglig kl. 23:55 CEST. Den oppretter et datert minnenotat og oppdaterer langtidssammendraget når kjøringen fullføres. Lengre kjøringer kan nærme seg den konfigurerte tidsgrensen.",
+        "items": [
+          "Overvåking av serverressurser kjører hver sjette time.",
+          "Varsler er konfigurert for ressursbruk over 80 %, men en hendelsesutløst flyt er ennå ikke testet fra ende til ende.",
+          "Planlagte oppgaver kjører i isolerte økter for å begrense sammenblanding av kontekst."
+        ],
+        "note": "Ressursovervåkingen kjører etter planen, mens den daglige minnesammendragsprosessen er konfigurert og overvåkes med kjente tidsbegrensninger."
+      },
+      "deployment": {
+        "title": "Utrulling og drift",
+        "items": [
+          "Tilgang med SSH-nøkler og UFW-brannmurregler.",
+          "Docker for utvalgte støttetjenester.",
+          "Systemtjenestekonfigurasjon for utvalgte støttetjenester.",
+          "Ressursovervåking og planlagte vedlikeholdsprosesser.",
+          "Cloudflare Tunnel for integrasjonsflyten fra porteføljen.",
+          "Manuell driftskontroll der automatisk gjenoppretting ennå ikke er tilgjengelig."
+        ]
+      },
+      "security": {
+        "title": "Sikkerhetsgrenser",
+        "items": [
+          "Administrasjon med SSH-nøkler og brannmurbegrensninger.",
+          "Cloudflare Tunnel i stedet for direkte eksponering av portfolio-middleware.",
+          "Begrenset CORS-konfigurasjon for den offentlige integrasjonen.",
+          "Privat kodearkiv og beskyttet miljøkonfigurasjon.",
+          "Private arbeidsområdedata utelatt fra Git."
+        ]
+      },
+      "reliability": {
+        "title": "Nåværende begrensninger",
+        "items": [
+          "Automatisk gjenoppretting av gatewayen er ufullstendig.",
+          "Automatisert sikkerhetskopiering er ennå ikke implementert.",
+          "Modellforespørsler bruker ikke en egen mekanisme for automatisk gjenforsøk.",
+          "Helhetlig helseovervåking og ende-til-ende-testing av prosesser er fortsatt begrenset."
+        ]
+      },
+      "outsideScope": {
+        "title": "Foreløpig utenfor prosjektets omfang",
+        "body": "Filbasert minne og innebygd semantisk søk dekker dagens behov; mer infrastruktur uten et dokumentert behov ville økt kompleksiteten.",
+        "items": [
+          "Ekstern vektordatabase.",
+          "MCP-integrasjoner.",
+          "Interaktiv orkestrering av flere agenter.",
+          "Flertrinns planleggerprosesser."
+        ]
+      },
+      "results": {
+        "title": "Operative resultater",
+        "body": "Resultatene er kvalitative og operative; det oppgis ingen SLA, ROI eller tidsbesparelse uten målte data.",
+        "items": [
+          "Jobb- og markedsresearch lagres i strukturerte rapporter som kan brukes på nytt.",
+          "Konkurrentresearch og KnowMe-benchmarken er tilgjengelige i ett arbeidsområde.",
+          "Vedvarende prosjektkontekst kan hentes frem på tvers av økter.",
+          "Ressursovervåking kjører etter en definert tidsplan."
+        ]
+      },
+      "nextSteps": {
+        "title": "Neste steg",
+        "items": [
+          "Fullføre automatisk gjenoppretting av gatewayen.",
+          "Innføre automatiserte krypterte sikkerhetskopier.",
+          "Gjennomgå tidsgrensen for minneprosessen.",
+          "Legge til helsekontroller og feilvarsler.",
+          "Legge til en egen strategi for å prøve modellforespørsler på nytt.",
+          "Utvide ende-til-ende-tester og overvåking.",
+          "Vurdere MCP først når et konkret integrasjonsbehov oppstår.",
+          "Forberede renset offentlig teknisk dokumentasjon."
+        ]
+      }
+    },
+    "architecture": {
+      "title": "Arkitektur",
+      "body": "Miljøet har én primær OpenClaw-flyt og to uavhengige støttende integrasjonsflyter.",
+      "mainTitle": "Primær JARVIS-flyt",
+      "mainAriaLabel": "Brukeren kobler seg via Telegram til OpenClaw Gateway",
+      "user": "Bruker",
+      "telegram": "Telegram",
+      "gateway": "OpenClaw Gateway",
+      "deepseek": "DeepSeek V4 Pro API",
+      "workspace": "Vedvarende arbeidsområde",
+      "semantic": "Semantisk minnesøk",
+      "scheduled": "Planlagte isolerte økter",
+      "tools": "Systemverktøy: Shell, Docker, webresearch, ressursovervåking",
+      "supportingTitle": "Støttende integrasjonsflyter",
+      "portfolioAriaLabel": "Portfolio-skjemaet kobler seg via Cloudflare Tunnel og portfolio-middleware til OpenClaw",
+      "portfolioForm": "Portfolio-skjema",
+      "tunnel": "Cloudflare Tunnel",
+      "middleware": "Portfolio-middleware",
+      "openClaw": "OpenClaw",
+      "restAriaLabel": "En generell klient kobler seg via en egen REST-tjeneste til DeepSeek API",
+      "genericClient": "Generell klient",
+      "restService": "Egen REST-tjeneste",
+      "deepseekApi": "DeepSeek V4 Pro API"
+    }
+  },
   "pwnedProject": {
     "title": "Pwned Password Check",
     "desc": "Sjekk om et passord har dukket opp i datalekkasjer. Backend bruker k-anonymitetsmetoden sammen med Have I Been Pwned, slik at hele passordet aldri blir sendt.",
@@ -149,7 +449,7 @@
     "how1": "Backend beregner SHA-1-hashen av passordet og sender bare de første 5 tegnene til API-et.",
     "how2": "HaveIBeenPwned returnerer en liste over matchende hasher og hvor mange ganger de forekommer.",
     "how3": "Backend sammenligner resten av hashen lokalt og returnerer resultatet.",
-    "docs": "Åpne backend-dokumentasjon (FastAPI /docs)"
+    "docs": "Åpne backend-dokumentasjonen (FastAPI /docs)"
   },
   "imageEditor": {
     "title": "Image Editor (Python API)",
@@ -157,15 +457,15 @@
     "arch": "Arkitektur",
     "archDesc": "Prosjektet består av en backend i Python som håndterer filopplasting og bildebehandling som endring av størrelse, konvertering til gråtoner og rotering. Operasjonene utføres på API-siden, og frontend viser resultatet som en forhåndsvisning før filen lastes ned.",
     "pick": "Last opp bilde",
-    "resizePresets": "Resize presets",
-    "transformations": "Transformations",
-    "export": "Export",
+    "resizePresets": "Forhåndsinnstillinger for størrelse",
+    "transformations": "Transformasjoner",
+    "export": "Eksport",
     "grayscale": "Gråtoner",
     "rotateLeft": "Roter til venstre",
     "rotateRight": "Roter til høyre",
     "download": "Last ned PNG",
     "original": "Opprinnelig",
-    "output": "Utdata-bilde",
+    "output": "Resultatbilde",
     "noFileSelected": "Ingen fil valgt",
     "hint": "Velg et bilde for å starte redigering."
   },
@@ -180,13 +480,13 @@
     "error": "Feil under passordsjekk."
   },
   "contactForm": {
-    "send": "Send workflow details →",
+    "send": "Send beskrivelse av arbeidsflyten →",
     "clear": "Tøm",
     "sending": "Sender...",
     "sendingWithAi": "Sender... JARVIS analyserer meldingen. Dette kan ta noen sekunder.",
     "success": "Meldingen er sendt. Takk!",
     "aiDirection": {
-      "label": "Legg til AI-assisted technical direction",
+      "label": "Innledende teknisk retning støttet av AI",
       "help": "JARVIS, Kamils AI-assistent, analyserer meldingen og foreslår en innledende teknisk retning. Du får den på e-post. Kamil svarer fortsatt personlig."
     },
     "labels": {
@@ -220,17 +520,17 @@
     "pick": "Velg bilde",
     "noFile": "Ingen fil valgt",
     "topK": "Top-k",
-    "maxTopK": "max 3",
+    "maxTopK": "maks. 3",
     "classify": "Klassifiser",
     "clear": "Tøm",
     "loading": "Klassifiserer...",
     "preview": "Forhåndsvisning",
     "result": "Resultat (API):",
-    "hint": "Velg et bilde og trykk „Klassifiser”.",
+    "hint": "Velg et bilde og trykk «Klassifiser».",
     "error": "Klassifiseringsfeil",
     "smartTip": "Smart-modus bruker forhåndsdefinerte category presets på backend-siden.",
-    "apiResponse": "API Response",
-    "topPredictions": "Top predictions",
+    "apiResponse": "API-svar",
+    "topPredictions": "Beste prediksjoner",
     "noResult": "Ingen prediksjoner ennå.",
     "unknownInline": "under terskel",
     "presetsLoading": "Laster inn forhåndsvalg...",
@@ -241,13 +541,13 @@
     "manualTip": "Manuell modus: skriv inn dine egne etiketter (separert med komma). CLIP matcher bilde mot tekst.",
     "labels": "Etiketter (separert med komma)",
     "copyHint": "Klikk for å kopiere",
-    "unknown": "unknown"
+    "unknown": "ukjent"
   },
   "auth": {
     "title": "Auth & User Management API",
     "desc": "Autentiseringsbackend med JWT-innlogging, rollebasert tilgang, PostgreSQL-persistens og beskyttede API-ruter.",
     "arch": "Arkitektur",
-    "archDesc": "Prosjektet består av en backend i FastAPI som håndterer brukerregistrering, innlogging og tilgang til beskyttede endepunkter. Brukerdata lagres i en PostgreSQL-database ved bruk av SQLAlchemy, og passord er sikret med bcrypt-hashing. Etter vellykket innlogging genererer backend en JWT-token som brukes til å autorisere videre forespørsler, og tilgang til enkelte ressurser styres basert på brukerens rolle, for eksempel admin eller bruker.",
+    "archDesc": "Prosjektet består av en backend i FastAPI som håndterer brukerregistrering, innlogging og tilgang til beskyttede endepunkter. Brukerdata lagres i en PostgreSQL-database ved bruk av SQLAlchemy, og passord er sikret med bcrypt-hashing. Etter vellykket innlogging genererer backend et JWT-token som brukes til å autorisere videre forespørsler, og tilgang til enkelte ressurser styres basert på brukerens rolle, for eksempel admin eller bruker.",
     "endpointsTitle": "API-endepunkter",
     "demoTitle": "Prøv API-et",
     "demoCredentials": "Demodata",
@@ -259,7 +559,7 @@
     "profile": "Hent profil",
     "usersAdmin": "Brukerliste (admin)",
     "clear": "Tøm",
-    "tokenMissing": "Bruk demodata for å teste authentication flow.",
+    "tokenMissing": "Bruk demodata for å teste autentiseringsprosessen.",
     "tokenOk": "JWT-token aktivt — forespørsler sender Authorization: Bearer token.",
     "loading": "Laster...",
     "error": "Feil",

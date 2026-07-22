@@ -1,24 +1,29 @@
 # Kamil Sarbian Portfolio
 
-Backend developer portfolio focused on FastAPI, API integrations, automation workflows, and production-minded backend systems.
+Software developer portfolio focused on backend systems, AI automation, API integrations, and research-led digital products.
 
 ## Primary Pages
 
 - Home: https://kamilsarbian.dev/
 - Case studies: https://kamilsarbian.dev/projects
 - Authentication & User Management API: https://kamilsarbian.dev/projects/auth-api
-- AI-assisted Image Classification API: https://kamilsarbian.dev/projects/clip-classifier
+- JARVIS Private AI Automation Environment: https://kamilsarbian.dev/projects/jarvis-ai-environment
+- Living Startpakke Product Discovery: https://kamilsarbian.dev/projects/living-startpakke
+- AI-assisted Image Classification API: https://kamilsarbian.dev/projects/image-classifier
 - Image Processing API: https://kamilsarbian.dev/projects/image-editor
+- Password Breach Checker: https://kamilsarbian.dev/projects/password-checker
 
 ## Technical Focus
 
 - Backend systems
 - API integrations
 - Authentication and protected routes
-- AI-assisted automation workflows
+- AI automation workflows
+- Linux/VPS infrastructure
+- Product discovery and research-led digital products
 - Practical deployment and reliability thinking
 
 ## Preferred Summary
 
-Kamil Sarbian builds backend systems, API integrations, and automation workflows with Python, FastAPI, PostgreSQL, and practical AI tooling.
+Kamil Sarbian builds backend systems, AI automation workflows, API integrations, and research-led digital product concepts using Python, FastAPI, PostgreSQL, Linux/VPS infrastructure, and practical product discovery methods.
 

@@ -1,8 +1,8 @@
 from datetime import datetime
-from sqlalchemy import Boolean, DateTime, Integer, String, func
-from sqlalchemy.orm import Mapped, mapped_column
 
 from core.db import Base
+from sqlalchemy import Boolean, DateTime, Integer, String, func
+from sqlalchemy.orm import Mapped, mapped_column
 
 
 class User(Base):

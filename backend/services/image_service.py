@@ -2,14 +2,15 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from io import BytesIO
+
 from PIL import Image, ImageOps, UnidentifiedImageError
 
 
 @dataclass(frozen=True)
 class ProcessOptions:
-    size: str          # "S" | "M" | "L"
+    size: str  # "S" | "M" | "L"
     grayscale: bool
-    rotate: int        # 0 | 90 | 180 | 270
+    rotate: int  # 0 | 90 | 180 | 270
 
 
 SIZE_MAX = {"S": 320, "M": 640, "L": 1024}
@@ -35,6 +36,8 @@ def _resize_keep_aspect(img: Image.Image, max_side: int) -> Image.Image:
 
 
 def process_image_to_png(data: bytes, opts: ProcessOptions) -> bytes:
+    """Validate, transform, and encode an uploaded image as PNG."""
+
     _validate(opts)
 
     try:

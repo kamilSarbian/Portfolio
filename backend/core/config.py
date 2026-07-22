@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 from pathlib import Path
+
 from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
-
 
 API_DIR = Path(__file__).resolve().parents[1]
 ENV_PATH = API_DIR / ".env"
@@ -25,9 +25,13 @@ class Settings(BaseSettings):
     smtp_host: str = Field(default="", validation_alias=AliasChoices("EMAIL_HOST", "SMTP_HOST"))
     smtp_port: int = Field(default=587, validation_alias=AliasChoices("EMAIL_PORT", "SMTP_PORT"))
     smtp_user: str = Field(default="", validation_alias=AliasChoices("EMAIL_USERNAME", "SMTP_USER"))
-    smtp_password: str = Field(default="", validation_alias=AliasChoices("EMAIL_PASSWORD", "SMTP_PASSWORD"))
+    smtp_password: str = Field(
+        default="", validation_alias=AliasChoices("EMAIL_PASSWORD", "SMTP_PASSWORD")
+    )
     smtp_from: str = Field(default="", validation_alias=AliasChoices("EMAIL_FROM", "SMTP_FROM"))
-    owner_email: str = Field(default="", validation_alias=AliasChoices("CONTACT_RECEIVER_EMAIL", "OWNER_EMAIL"))
+    owner_email: str = Field(
+        default="", validation_alias=AliasChoices("CONTACT_RECEIVER_EMAIL", "OWNER_EMAIL")
+    )
 
     # AI-assisted inquiry workflow
     jarvis_enabled: bool = False
@@ -49,6 +53,7 @@ class Settings(BaseSettings):
     rate_limit_window_s: int = 60
     rate_limit_auth: int = 10
     rate_limit_contact: int = 5
+    rate_limit_password: int = 20
     rate_limit_upload: int = 20
 
     model_config = SettingsConfigDict(

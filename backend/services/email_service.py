@@ -12,11 +12,11 @@ SUPPORTED_LANGS = {"pl", "en", "no"}
 
 def _pick_lang(lang: str | None) -> str:
     if not lang:
-        return "pl"
+        return "en"
     base = lang.lower().strip()[:2]
     if base == "nb":
         return "no"
-    return base if base in SUPPORTED_LANGS else "pl"
+    return base if base in SUPPORTED_LANGS else "en"
 
 
 TEMPLATES = {
@@ -94,22 +94,19 @@ def validate_email_configuration() -> None:
         raise RuntimeError("Owner email is not configured.")
 
 
-def _get_ai_direction_safely(message: str, name: str, email: str, company: str | None = None) -> str | None:
+def _get_ai_direction_safely(message: str) -> str | None:
     """Prepare AI direction without breaking contact email delivery.
 
     Args:
         message: Contact form message.
-        name: Sender display name.
-        email: Sender email address.
-        company: Optional company context from the contact form.
 
     Returns:
         AI-assisted direction text, or None when it cannot be prepared.
     """
 
     try:
-        return get_ai_technical_direction(message=message, name=name, email=email, company=company)
-    except (RuntimeError, TimeoutError, OSError, ValueError) as exc:
+        return get_ai_technical_direction(message=message)
+    except (RuntimeError, TimeoutError, OSError, ValueError):
         logger.exception("AI-assisted technical direction failed.")
         return None
 
@@ -188,7 +185,7 @@ def send_contact_emails(
     ai_direction_body = ""
     owner_ai_direction_section = ""
     if ask_ai_direction:
-        ai_direction = _get_ai_direction_safely(message=message, name=name, email=sender_addr, company=company)
+        ai_direction = _get_ai_direction_safely(message=message)
         ai_direction_body = _format_ai_direction_section(ai_direction)
         owner_ai_direction_section = f"\nAI-assisted technical direction:\n{ai_direction_body}\n"
 
@@ -213,7 +210,11 @@ def send_contact_emails(
     auto["Subject"] = tpl["subject"]
     auto["From"] = from_addr
     auto["To"] = sender_addr
-    auto.set_content(tpl["intro"](name) + (ai_direction_body + "\n" if ai_direction_body else "") + tpl["closing"])
+    auto.set_content(
+        tpl["intro"](name)
+        + (ai_direction_body + "\n" if ai_direction_body else "")
+        + tpl["closing"]
+    )
 
     logger.info("Sending contact autoresponder in lang=%s.", chosen)
     try:

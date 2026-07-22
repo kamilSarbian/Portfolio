@@ -1,15 +1,14 @@
 from __future__ import annotations
 
 import logging
-from typing import List, Optional
-
-from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile
-from pydantic import BaseModel, Field
 
 from core.config import settings
 from core.rate_limit import upload_rate_limit
+from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile
+from pydantic import BaseModel
 from schemas.common import ErrorResponse
 from services.clip_classifier import get_classifier
+from services.upload_service import UploadTooLargeError, read_upload_limited
 from services.vision_taxonomy import SMART_LABELS
 
 router = APIRouter(prefix="/backend/ml", tags=["ml"], dependencies=[Depends(upload_rate_limit)])
@@ -17,7 +16,7 @@ logger = logging.getLogger(__name__)
 SMART_CLASSIFY_LABELS = SMART_LABELS[:250]
 
 
-def _parse_labels(raw: str) -> List[str]:
+def _parse_labels(raw: str) -> list[str]:
     return [x.strip() for x in (raw or "").split(",") if x.strip()]
 
 
@@ -62,7 +61,9 @@ class ClassificationResponse(BaseModel):
     summary="Get ML model metadata",
     description="Returns basic runtime information about the CLIP classifier and the smart taxonomy size.",
 )
-def ml_info():
+def ml_info() -> dict[str, object]:
+    """Return runtime metadata for the configured CLIP classifier."""
+
     return {
         "model_name": settings.clip_model,
         "device": settings.clip_device,
@@ -76,7 +77,9 @@ def ml_info():
     summary="Get smart taxonomy",
     description="Returns the backend-managed label pool used by smart ML classification mode.",
 )
-def ml_taxonomy():
+def ml_taxonomy() -> dict[str, object]:
+    """Return the backend-managed smart classification labels."""
+
     return {"labels": SMART_CLASSIFY_LABELS, "count": len(SMART_CLASSIFY_LABELS)}
 
 
@@ -86,33 +89,87 @@ def ml_taxonomy():
     summary="Get example presets",
     description="Returns curated label presets that can be used from the frontend or during API exploration.",
 )
-def ml_examples():
+def ml_examples() -> dict[str, object]:
+    """Return curated classification presets for API clients."""
+
     return {
         "presets": [
-            {"id": "smart", "name": f"Smart ({len(SMART_CLASSIFY_LABELS)} labels)", "labels": SMART_CLASSIFY_LABELS},
+            {
+                "id": "smart",
+                "name": f"Smart ({len(SMART_CLASSIFY_LABELS)} labels)",
+                "labels": SMART_CLASSIFY_LABELS,
+            },
             {
                 "id": "travel",
                 "name": "Travel / City",
                 "labels": [
-                    "city", "street", "bridge", "harbor", "museum", "monument", "statue",
-                    "building", "restaurant", "park", "night", "sunset", "hotel", "tower",
-                    "church", "beach", "mountain", "market"
+                    "city",
+                    "street",
+                    "bridge",
+                    "harbor",
+                    "museum",
+                    "monument",
+                    "statue",
+                    "building",
+                    "restaurant",
+                    "park",
+                    "night",
+                    "sunset",
+                    "hotel",
+                    "tower",
+                    "church",
+                    "beach",
+                    "mountain",
+                    "market",
                 ],
             },
             {
                 "id": "pets",
                 "name": "Pets",
-                "labels": ["cat", "dog", "rabbit", "bird", "hamster", "parrot", "kitten", "puppy", "pet", "animal"],
+                "labels": [
+                    "cat",
+                    "dog",
+                    "rabbit",
+                    "bird",
+                    "hamster",
+                    "parrot",
+                    "kitten",
+                    "puppy",
+                    "pet",
+                    "animal",
+                ],
             },
             {
                 "id": "food",
                 "name": "Food / Drink",
-                "labels": ["food", "meal", "dessert", "coffee", "tea", "pizza", "burger", "salad", "cake", "fruit"],
+                "labels": [
+                    "food",
+                    "meal",
+                    "dessert",
+                    "coffee",
+                    "tea",
+                    "pizza",
+                    "burger",
+                    "salad",
+                    "cake",
+                    "fruit",
+                ],
             },
             {
                 "id": "nature",
                 "name": "Nature / Landscape",
-                "labels": ["forest", "mountain", "river", "waterfall", "ocean", "beach", "lake", "sunset", "snow", "landscape"],
+                "labels": [
+                    "forest",
+                    "mountain",
+                    "river",
+                    "waterfall",
+                    "ocean",
+                    "beach",
+                    "lake",
+                    "sunset",
+                    "snow",
+                    "landscape",
+                ],
             },
         ]
     }
@@ -125,6 +182,10 @@ def ml_examples():
     description="Runs CLIP-based classification using either the backend smart taxonomy or custom user-provided labels.",
     responses={
         400: {"model": ErrorResponse, "description": "Uploaded file was empty."},
+        413: {
+            "model": ErrorResponse,
+            "description": "Uploaded file exceeds the configured size limit.",
+        },
         415: {"model": ErrorResponse, "description": "Unsupported file type."},
         422: {"model": ErrorResponse, "description": "Validation error or missing manual labels."},
         429: {"model": ErrorResponse, "description": "Upload rate limit exceeded."},
@@ -132,21 +193,36 @@ def ml_examples():
     },
 )
 async def classify_image(
-    file: Optional[UploadFile] = File(default=None),
-    image: Optional[UploadFile] = File(default=None),
-    smart: bool = Query(True, description="Use the backend smart taxonomy instead of manual labels."),
+    file: UploadFile | None = File(default=None),
+    image: UploadFile | None = File(default=None),
+    smart: bool = Query(
+        True, description="Use the backend smart taxonomy instead of manual labels."
+    ),
     labels: str = Query("", description="Comma-separated labels used only when smart=false."),
     top_k: int = Query(3, ge=1, le=3, description="Number of top predictions to return."),
-    min_score: float = Query(0.15, ge=0.0, le=1.0, description="Confidence threshold below which the result is marked as unknown."),
-):
+    min_score: float = Query(
+        0.15,
+        ge=0.0,
+        le=1.0,
+        description="Confidence threshold below which the result is marked as unknown.",
+    ),
+) -> dict[str, object]:
+    """Classify a size-limited image using smart or custom labels."""
+
     up = file or image
     if up is None:
-        raise HTTPException(status_code=422, detail="Missing file field (expected 'file' or 'image').")
+        raise HTTPException(
+            status_code=422, detail="Missing file field (expected 'file' or 'image')."
+        )
 
-    if not up.content_type or not up.content_type.startswith("image/"):
+    if up.content_type not in settings.allowed_mime:
         raise HTTPException(status_code=415, detail="Unsupported file type.")
 
-    data = await up.read()
+    try:
+        data = await read_upload_limited(up, settings.max_upload_mb * 1024 * 1024)
+    except UploadTooLargeError as exc:
+        raise HTTPException(status_code=413, detail="File too large.") from exc
+
     if not data:
         raise HTTPException(status_code=400, detail="Empty file.")
 

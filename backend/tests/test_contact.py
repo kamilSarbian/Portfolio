@@ -1,7 +1,6 @@
+from core.rate_limit import _BUCKETS, contact_rate_limit
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
-
-from core.rate_limit import _BUCKETS, contact_rate_limit
 from routers import contact as contact_module
 from routers.contact import _normalize_lang, router
 
@@ -21,14 +20,16 @@ def test_normalize_lang_supports_norwegian_bokmal_header():
     assert _normalize_lang(None, "nb-NO,nb;q=0.9") == "no"
 
 
-def test_normalize_lang_defaults_to_polish():
-    assert _normalize_lang(None, None) == "pl"
+def test_normalize_lang_defaults_to_english():
+    assert _normalize_lang(None, None) == "en"
 
 
 def test_send_contact_enqueues_email_task_with_payload_lang(monkeypatch):
     called = {}
 
-    def fake_send_contact_emails(name, email, message, company=None, website=None, lang=None, ask_ai_direction=False):
+    def fake_send_contact_emails(
+        name, email, message, company=None, website=None, lang=None, ask_ai_direction=False
+    ):
         called["payload"] = {
             "name": name,
             "email": email,
@@ -49,7 +50,6 @@ def test_send_contact_enqueues_email_task_with_payload_lang(monkeypatch):
             "email": "kamil@example.com",
             "message": "This is a long enough message for the contact endpoint.",
             "company": "Acme",
-            "website": "https://example.com",
             "lang": "en",
             "ask_ai_direction": True,
         },
@@ -63,7 +63,7 @@ def test_send_contact_enqueues_email_task_with_payload_lang(monkeypatch):
         "email": "kamil@example.com",
         "message": "This is a long enough message for the contact endpoint.",
         "company": "Acme",
-        "website": "https://example.com",
+        "website": None,
         "lang": "en",
         "ask_ai_direction": True,
     }
@@ -72,7 +72,9 @@ def test_send_contact_enqueues_email_task_with_payload_lang(monkeypatch):
 def test_send_contact_uses_accept_language_when_payload_lang_missing(monkeypatch):
     called = {}
 
-    def fake_send_contact_emails(name, email, message, company=None, website=None, lang=None, ask_ai_direction=False):
+    def fake_send_contact_emails(
+        name, email, message, company=None, website=None, lang=None, ask_ai_direction=False
+    ):
         called["lang"] = lang
 
     monkeypatch.setattr(contact_module, "send_contact_emails", fake_send_contact_emails)
@@ -129,6 +131,31 @@ def test_send_contact_returns_502_when_task_registration_fails(monkeypatch):
 
     assert response.status_code == 502
     assert response.json()["detail"] == "Email service temporarily unavailable."
+
+
+def test_send_contact_silently_ignores_honeypot_submission(monkeypatch):
+    called = False
+
+    def fake_send_contact_emails(*args, **kwargs):
+        nonlocal called
+        called = True
+
+    monkeypatch.setattr(contact_module, "send_contact_emails", fake_send_contact_emails)
+
+    client = make_client()
+    response = client.post(
+        "/backend/contact/send",
+        json={
+            "name": "Automated sender",
+            "email": "bot@example.com",
+            "message": "This submission filled the hidden website field.",
+            "website": "https://spam.example.com",
+        },
+    )
+
+    assert response.status_code == 200
+    assert response.json() == {"ok": True}
+    assert called is False
 
 
 def teardown_function():

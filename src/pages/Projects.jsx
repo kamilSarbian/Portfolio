@@ -6,59 +6,70 @@ const GITHUB_URL = "https://github.com/kamilSarbian/Portfolio";
 const PROJECT_LINKS = {
   auth: {
     githubUrl: GITHUB_URL,
+    apiDocsUrl: API_DOCS_URL,
+    screenshot: null,
+  },
+  jarvis: {
+    architecture: true,
+    privateRepository: true,
+    screenshot: null,
+  },
+  living: {
+    prototype: true,
+    privateResearch: true,
     screenshot: null,
   },
   classifier: {
     githubUrl: GITHUB_URL,
+    apiDocsUrl: API_DOCS_URL,
     screenshot: null,
   },
   imageProcessing: {
     githubUrl: GITHUB_URL,
+    apiDocsUrl: API_DOCS_URL,
     screenshot: null,
   },
 };
 
 const PROJECT_CASES = [
   { id: "auth", onOpenKey: "auth" },
+  { id: "jarvis", onOpenKey: "jarvis", onArchitectureKey: "jarvisArchitecture" },
+  { id: "living", onOpenKey: "living", onPrototypeKey: "livingPrototype", productCase: true },
   { id: "classifier", onOpenKey: "classifier" },
   { id: "imageProcessing", onOpenKey: "imageProcessing", secondary: true },
 ];
 
-function CaseStudy({ id, onOpen, featured = true }) {
+function CaseStudy({ id, onOpen, onOpenArchitecture, onOpenPrototype, featured = true, productCase = false }) {
   const { t } = useTranslation();
   const base = `projects.caseStudies.${id}`;
   const stack = t(`${base}.stack`, { returnObjects: true });
   const visibleStack = Array.isArray(stack) ? stack.slice(0, 4) : [];
   const links = PROJECT_LINKS[id];
+  const kicker = t(`${base}.kicker`, { defaultValue: "" });
+  const fields = productCase
+    ? ["problem", "discovery", "currentDirection", "currentStage"]
+    : ["problem", "solution", "businessValue", "productionThinking"];
 
   return (
     <article className={featured ? "case-study" : "case-study case-study--secondary"}>
       <div className="case-study-header">
         <div>
+          {kicker ? <p className="case-study-kicker">{kicker}</p> : null}
           <h2>{t(`${base}.title`)}</h2>
         </div>
       </div>
 
       <div className="case-study-grid">
-        <section>
-          <h3>{t("projects.caseLabels.problem")}</h3>
-          <p>{t(`${base}.problem`)}</p>
-        </section>
-
-        <section>
-          <h3>{t("projects.caseLabels.solution")}</h3>
-          <p>{t(`${base}.solution`)}</p>
-        </section>
-
-        <section>
-          <h3>{t("projects.caseLabels.businessValue")}</h3>
-          <p>{t(`${base}.businessValue`)}</p>
-        </section>
-
-        <section>
-          <h3>{t("projects.caseLabels.productionThinking")}</h3>
-          <p>{t(`${base}.productionThinking`)}</p>
-        </section>
+        {fields.map((field) => (
+          <section key={field}>
+            <h3>
+              {productCase
+                ? t(`${base}.cardLabels.${field}`)
+                : t(`projects.caseLabels.${field}`)}
+            </h3>
+            <p>{t(`${base}.${field}`)}</p>
+          </section>
+        ))}
       </div>
 
       <div className="case-study-footer">
@@ -80,27 +91,75 @@ function CaseStudy({ id, onOpen, featured = true }) {
             {t("projects.viewProject")}
           </button>
 
-          <span aria-hidden="true">|</span>
+          {links.architecture ? (
+            <>
+              <span aria-hidden="true">|</span>
+              <button type="button" className="inline-link" onClick={onOpenArchitecture}>
+                {t("projects.viewArchitecture")}
+              </button>
+            </>
+          ) : null}
 
-          <a href={links.githubUrl} target="_blank" rel="noreferrer">
-            {t("projects.github")}
-          </a>
+          {links.prototype ? (
+            <>
+              <span aria-hidden="true">|</span>
+              <button type="button" className="inline-link" onClick={onOpenPrototype}>
+                {t("projects.viewPrototype")}
+              </button>
+            </>
+          ) : null}
 
-          <span aria-hidden="true">|</span>
+          {links.githubUrl ? (
+            <>
+              <span aria-hidden="true">|</span>
+              <a href={links.githubUrl} target="_blank" rel="noreferrer">
+                {t("projects.github")}
+              </a>
+            </>
+          ) : null}
 
-          <a href={API_DOCS_URL} target="_blank" rel="noreferrer">
-            {t("projects.apiDocs")}
-          </a>
+          {links.apiDocsUrl ? (
+            <>
+              <span aria-hidden="true">|</span>
+              <a href={links.apiDocsUrl} target="_blank" rel="noreferrer">
+                {t("projects.apiDocs")}
+              </a>
+            </>
+          ) : null}
+
+          {links.privateRepository ? (
+            <span className="private-repository-badge">
+              {t("projects.privateRepository")}
+            </span>
+          ) : null}
+
+          {links.privateResearch ? (
+            <span className="private-repository-badge">
+              {t("projects.privateResearch")}
+            </span>
+          ) : null}
         </div>
       </div>
     </article>
   );
 }
 
-export default function Projects({ onOpenAuth, onOpenImageEditor, onOpenImageClassifier }) {
+export default function Projects({
+  onOpenAuth,
+  onOpenJarvis,
+  onOpenJarvisArchitecture,
+  onOpenLiving,
+  onOpenLivingPrototype,
+  onOpenImageEditor,
+  onOpenImageClassifier,
+}) {
   const { t } = useTranslation();
   const projectActions = {
     auth: onOpenAuth,
+    jarvis: onOpenJarvis,
+    jarvisArchitecture: onOpenJarvisArchitecture,
+    living: onOpenLiving,
+    livingPrototype: onOpenLivingPrototype,
     classifier: onOpenImageClassifier,
     imageProcessing: onOpenImageEditor,
   };
@@ -122,7 +181,10 @@ export default function Projects({ onOpenAuth, onOpenImageEditor, onOpenImageCla
               key={project.id}
               id={project.id}
               onOpen={projectActions[project.onOpenKey]}
+              onOpenArchitecture={projectActions[project.onArchitectureKey]}
+              onOpenPrototype={projectActions[project.onPrototypeKey]}
               featured={!project.secondary}
+              productCase={project.productCase}
             />
           ))}
         </div>

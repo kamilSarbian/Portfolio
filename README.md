@@ -1,8 +1,8 @@
-# Backend Developer & AI Automation Portfolio
+# Software Developer Portfolio | Backend, AI Automation & Research-led Digital Products
 
-Portfolio site and backend demo platform for practical backend systems, API integrations, and automation workflows.
+Portfolio site and backend demo platform presenting practical backend systems, AI automation, API integrations, and research-led digital product work.
 
-The project is built to show how I approach workflows: start from the problem, design a reliable backend path, expose clear APIs, and keep the frontend focused on making the system easy to inspect.
+The portfolio follows a problem-first approach: understand the workflow and underlying need, validate the direction, design a reliable technical path, and present the result through clear case studies and working demonstrations.
 
 ## Live Links
 
@@ -23,6 +23,8 @@ The application combines a React frontend with a FastAPI backend and exposes sev
 - image processing through API upload flows
 - contact workflow with backend validation and email delivery
 - optional AI-assisted technical direction for contact inquiries
+- a private AI automation environment documented as the JARVIS case study
+- a research-led digital product discovery case study for Living Startpakke
 - API documentation through Swagger
 
 The frontend presents the work as focused case studies instead of a long list of disconnected demos.
@@ -70,7 +72,7 @@ External services:
 - DeepSeek API for AI-assisted inquiry direction
 ```
 
-The AI layer is fallback-safe: if JARVIS times out or returns a fallback response, the contact form still succeeds and both emails are still sent.
+The AI layer is fallback-safe: only the inquiry message is sent to JARVIS, invalid or fallback responses do not block email delivery, and disabled integration never presents a local mock as genuine JARVIS output.
 
 ## Screenshots
 
@@ -81,6 +83,28 @@ Project previews are stored in `public/projects/`.
 | ![Authentication API preview](public/projects/auth-api.png) | ![AI-assisted image classification preview](public/projects/image-classifier.png) | ![Image processing preview](public/projects/image-processing.png) |
 
 ## Featured Case Studies
+
+### JARVIS — Private AI Automation Environment
+
+**Problem**
+Technical research, infrastructure notes, and repeatable operational work were spread across separate tools and short-lived sessions.
+
+**Solution**
+A private OpenClaw-based environment running on a self-managed Linux VPS, with persistent context, scheduled monitoring, Telegram access, and two clearly separated integration flows.
+
+**Project boundary**
+JARVIS is presented as a configured and extended private environment, not as an agent platform built from scratch. Private workspace data and repository contents are not published.
+
+### Living Startpakke — Research-led Product Discovery
+
+**Problem**
+Critical everyday knowledge can be fragmented across families, documents, routines, and experienced staff.
+
+**Approach**
+An independently led product discovery process based on survey responses, qualitative interviews, expert input, anonymized stakeholder mapping, structured insight analysis, and a private Figma concept prototype using fictional data.
+
+**Current stage**
+The concept remains in discovery and early prototype feedback outreach. It is not presented as a finished product, working application, or validated solution.
 
 ### Authentication & User Management API
 
@@ -185,6 +209,7 @@ Git, Vercel, Render, Neon PostgreSQL, Linux VPS, Cloudflare Tunnel
 
 ```text
 Portfolio/
+|-- api/               # Vercel serverless locale detection
 |-- backend/
 |   |-- core/         # config, database, security helpers
 |   |-- models/       # SQLAlchemy models
@@ -216,12 +241,16 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
+Install development and security-audit tools with `pip install -r requirements-dev.txt` when contributing to the backend.
+
 Create `backend/.env` from `backend/.env.example` and configure:
 
 - `DATABASE_URL`
 - `JWT_SECRET`
 - email settings if contact email is enabled
 - JARVIS settings if AI-assisted technical direction is enabled
+
+On Vercel, first-time visitors receive Norwegian for a Norwegian IP, Polish for a Polish IP, and English for all other countries. A manually selected language is stored locally and always takes precedence; local development falls back to English.
 
 Supported email environment variables:
 
@@ -244,6 +273,8 @@ JARVIS_TIMEOUT_SECONDS=20
 JARVIS_API_KEY=
 ```
 
+`JARVIS_API_KEY` is required whenever `JARVIS_ENABLED=true` and must match the Bearer token configured by the JARVIS middleware.
+
 ### Frontend
 
 ```bash
@@ -260,10 +291,14 @@ npm run check
 npm run test:backend
 ```
 
-Backend tests can also be run directly from the project root:
+Activate the Python virtual environment before using `npm run test:backend`. Backend checks can also be run directly from the project root:
 
 ```bash
-.\venv\Scripts\python.exe -m pytest -q
+ruff check backend
+black --check backend
+isort --check-only backend
+pip-audit -r backend/requirements.txt
+python -m pytest -q
 ```
 
 ## Deployment
@@ -289,6 +324,8 @@ Key production concepts demonstrated:
 - rate limiting and prompt safety rules on the AI service
 - infrastructure-aware deployment with Vercel, Render, VPS, and Cloudflare Tunnel
 
+Public API safeguards include explicit production CORS origins, process-local rate limits based on the trusted request client, strict upload byte limits, MIME allowlists, and generic upstream error responses. For multi-instance deployments, replace the process-local limiter with a shared store such as Redis.
+
 ## GitHub Profile Checklist
 
 For the public GitHub profile, pin only the strongest repositories:
@@ -302,7 +339,7 @@ Avoid pinning tutorial repositories or unfinished experiments. Supporting experi
 ## Author
 
 **Kamil Sarbian**  
-Backend Developer - APIs, automation, integrations
+Software Developer - backend systems, AI automation, and research-led digital products
 
 - LinkedIn: https://www.linkedin.com/in/kamil-sarbian-3399991ba/
 - GitHub: https://github.com/kamilSarbian

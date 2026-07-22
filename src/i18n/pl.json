@@ -6,47 +6,48 @@
     "langPl": "Polski",
     "langEn": "English",
     "langNo": "Norweski",
-    "light": "Light",
-    "dark": "Dark",
-    "openTo": "Backend Developer · Systems · API Integrations",
-    "openToMobile": "Backend Developer · Integrations"
+    "light": "Jasny",
+    "dark": "Ciemny",
+    "openTo": "Software Developer · Backend · AI Automation",
+    "openToMobile": "Software Developer · Backend & AI"
   },
   "home": {
-    "aboutLabel": "BACKEND · AUTOMATYZACJA · INTEGRACJE",
-    "headline": "Backend Developer & AI Automation",
-    "intro": "Buduję systemy backendowe i integracje, które upraszczają workflow i poprawiają niezawodność operacyjną.",
-    "heroTech": "Python · FastAPI · PostgreSQL · Integracje API · Automatyzacja",
+    "aboutLabel": "BACKEND · AUTOMATYZACJA AI · PRODUKTY CYFROWE OPARTE NA BADANIACH",
+    "headline": "Programista tworzący systemy backendowe, automatyzacje AI i produkty cyfrowe oparte na badaniach",
+    "intro": "Łączę tworzenie oprogramowania, automatyzację i product discovery, aby przekładać rzeczywiste procesy i potrzeby użytkowników na praktyczne, niezawodne rozwiązania cyfrowe.",
+    "heroTech": "Python · FastAPI · PostgreSQL · REST APIs · AI Workflows · Linux/VPS",
     "whyTitle": "Co buduję",
-    "whyBody": "Skupiam się na praktycznych systemach backendowych: API, walidacji, logice biznesowej, workflow opartych o bazę danych i integracjach, które ułatwiają utrzymanie procesów.",
-    "seeProjects": "Zobacz case studies",
+    "whyBody": "Łączę backend, automatyzację AI i wczesne koncepcje produktów cyfrowych — zaczynając od problemu, procesu i dostępnych danych, zanim przejdę do implementacji.",
+    "seeProjects": "Zobacz studia przypadków",
     "backendDocs": "Dokumentacja API (docs)",
     "tip": "Projekty pokazują moje podejście do backendu, integracji, automatyzacji i praktycznego projektowania API.",
     "demoInfo": "Demo działa na rzeczywistym API i infrastrukturze chmurowej:",
     "whatIBuild": {
-      "title": "What I Build",
-      "backendTitle": "Backend Systems",
-      "backendBody": "API obsługujące uwierzytelnianie, walidację, logikę biznesową i niezawodną komunikację między usługami.",
-      "automationTitle": "AI Automation",
-      "automationBody": "Workflow wykorzystujące embeddings i LLMs do ograniczania powtarzalnych zadań ręcznych i usprawniania przetwarzania danych.",
-      "integrationTitle": "API & Data Integration",
-      "integrationBody": "Łączenie baz danych, zewnętrznych API i usług backendowych w stabilne workflow."
+      "title": "Co buduję",
+      "backendTitle": "Systemy backendowe",
+      "backendBody": "API i usługi backendowe obsługujące uwierzytelnianie, walidację, logikę biznesową, bazy danych i niezawodną komunikację między systemami.",
+      "automationTitle": "Automatyzacja AI",
+      "automationBody": "Prywatne środowiska AI i workflow łączące modele językowe, pamięć długoterminową, zadania cykliczne, badania i automatyzację operacyjną.",
+      "productTitle": "Produkty cyfrowe rozwijane na podstawie badań",
+      "productBody": "Koncepcje produktów cyfrowych rozwijane na podstawie badań, uporządkowanej analizy insightów, prototypowania i iteracyjnych testów."
     },
     "howIWork": {
-      "title": "How I Work",
+      "title": "Jak pracuję",
       "a": "Zaczynam od workflow, nie od frameworka.",
-      "b": "Buduję iteracyjnie: najpierw system, który działa niezawodnie, potem poprawiam strukturę, utrzymywalność i deployment flow.",
+      "b": "Buduję iteracyjnie: najpierw system, który działa niezawodnie, potem poprawiam strukturę, utrzymywalność i proces wdrożenia.",
       "c": "Skupiam się na tym, jak systemy się komunikują, gdzie powstają wąskie gardła i jak można uprościć procesy.",
-      "d": "Uruchamiam własny AI automation stack na Linux VPS — używany do wsparcia deploymentu, researchu technicznego i codziennych zadań automatyzacyjnych."
+      "d": "Utrzymuję prywatne środowisko automatyzacji AI na serwerze VPS z Linuxem, wykorzystywane do researchu technicznego, monitoringu systemu i codziennych automatyzacji.",
+      "e": "Weryfikuję potrzeby, procesy i ograniczenia operacyjne, zanim przejdę do implementacji technicznej."
     },
     "stackSection": {
-      "title": "Tech Stack",
+      "title": "Technologie",
       "backend": "Backend",
       "backendValue": "Python, FastAPI, REST APIs",
-      "database": "Database",
+      "database": "Baza danych",
       "databaseValue": "PostgreSQL, SQL",
       "automation": "AI / Automation",
       "automationValue": "LLMs, embeddings, automation workflows",
-      "tools": "Tools",
+      "tools": "Narzędzia",
       "toolsValue": "Git, Vercel, Linux VPS"
     },
     "cta": {
@@ -77,44 +78,71 @@
     "education": "Wykształcenie",
     "download": "Pobierz",
     "nationality": "Narodowość",
-    "messageTitle": "DISCUSS A WORKFLOW",
+    "messageTitle": "OMÓW PROCES",
     "messageBody": "Opisz problem lub workflow."
   },
   "projects": {
     "label": "PROJEKTY",
-    "title": "Case studies",
-    "subtitle": "Projekty backendowe i automatyzacyjne skupione na reliability, integracjach i practical system design.",
+    "title": "Studia przypadków",
+    "subtitle": "Projekty backendowe, automatyzacyjne i produktowe skupione na niezawodności, integracjach oraz praktycznym projektowaniu systemów.",
     "open": "Otwórz",
     "openSmall": "Otwórz",
-    "backToCaseStudies": "Wróć do case studies",
+    "backToCaseStudies": "Wróć do studiów przypadków",
     "viewProject": "Zobacz projekt →",
+    "viewArchitecture": "Zobacz architekturę →",
+    "viewPrototype": "Zobacz opis prototypu →",
+    "privateRepository": "Prywatne repozytorium 🔒",
+    "privateResearch": "Prywatne materiały badawcze 🔒",
     "github": "GitHub",
-    "apiDocs": "API docs",
+    "apiDocs": "Dokumentacja API",
     "featuredLabel": "Wyróżnione case study",
     "secondaryLabel": "Wspierające case study",
     "caseLabels": {
       "problem": "Problem",
-      "solution": "Solution",
-      "businessValue": "Business Value",
-      "productionThinking": "Production Thinking",
-      "stack": "Stack"
+      "solution": "Rozwiązanie",
+      "businessValue": "Wartość biznesowa",
+      "productionThinking": "Podejście produkcyjne",
+      "stack": "Technologie"
     },
     "caseStudies": {
       "auth": {
         "title": "Authentication & User Management API",
-        "problem": "Wiele narzędzi wewnętrznych potrzebuje bezpiecznego dostępu użytkowników bez opierania się na dużych zewnętrznych systemach identity.",
+        "problem": "Wiele narzędzi wewnętrznych potrzebuje bezpiecznego dostępu użytkowników bez opierania się na dużych zewnętrznych systemach zarządzania tożsamością.",
         "solution": "Serwis FastAPI z logowaniem JWT, chronionym dostępem użytkownika, uprawnieniami opartymi o role, walidacją i trwałym zapisem w PostgreSQL.",
         "businessValue": "Powtarzalny backend uwierzytelniania dla dashboardów, paneli administracyjnych i narzędzi wewnętrznych, gdzie bezpieczna kontrola dostępu ma znaczenie.",
-        "productionThinking": "Zbudowane z role-based access control, walidacją JWT, hashowaniem haseł, migracjami bazy danych, uporządkowaną input validation i konfiguracją środowiskową dla niezawodnego zachowania API.",
+        "productionThinking": "Zbudowane z kontrolą dostępu opartą na rolach, walidacją JWT, hashowaniem haseł, migracjami bazy danych, uporządkowaną walidacją danych wejściowych i konfiguracją środowiskową dla niezawodnego zachowania API.",
         "stack": ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy"],
         "screenshot": "Interaktywne demo dostępne w widoku projektu."
+      },
+      "jarvis": {
+        "title": "JARVIS — prywatne środowisko automatyzacji AI",
+        "problem": "Research techniczny, analiza ofert pracy, notatki infrastrukturalne i decyzje projektowe były rozproszone między narzędziami i sesjami.",
+        "solution": "Prywatne środowisko oparte na OpenClaw, uruchomione na samodzielnie zarządzanym serwerze Ubuntu VPS, z trwałą pamięcią, monitoringiem i dostępem przez Telegram.",
+        "businessValue": "Utrzymuje kontekst techniczny, wyniki researchu i powtarzalne procesy operacyjne w jednym prywatnym środowisku.",
+        "productionThinking": "Jasne granice platformy, ochrona sekretów, izolowane zadania cykliczne, monitoring zasobów, udokumentowane ograniczenia i plan poprawy niezawodności.",
+        "stack": ["OpenClaw", "Linux/VPS", "Docker", "Telegram"]
+      },
+      "living": {
+        "kicker": "Koncepcja produktu cyfrowego rozwijana na podstawie badań",
+        "title": "Living Startpakke",
+        "problem": "Istotna wiedza o codziennym funkcjonowaniu może być rozproszona między rodziną, dokumentami, rutynami i doświadczonym personelem.",
+        "discovery": "45 odpowiedzi ankietowych, wywiady jakościowe, perspektywa ekspercka oraz anonimowe podsumowanie outreachu i mapowania środowisk interesariuszy wyznaczają kierunek koncepcji.",
+        "currentDirection": "Aktualizowana koncepcja wiedzy skupiona na priorytetyzacji, aktualności i kontrolowanym dostępie.",
+        "currentStage": "Klikalny prototyp koncepcyjny · Trwa wstępny kontakt w sprawie opinii o prototypie",
+        "cardLabels": {
+          "problem": "Problem",
+          "discovery": "Product Discovery",
+          "currentDirection": "Obecny kierunek",
+          "currentStage": "Aktualny etap"
+        },
+        "stack": ["Product Discovery", "User Research", "Analiza insightów", "Figma"]
       },
       "classifier": {
         "title": "AI-assisted Image Classification API",
         "problem": "Zespoły często potrzebują szybkiej klasyfikacji przesyłanych treści wizualnych bez inwestowania w dedykowaną infrastrukturę ML.",
         "solution": "Serwis FastAPI, który przyjmuje przesłane obrazy, wykonuje zero-shot classification z użyciem CLIP, obsługuje własne etykiety albo presety i zwraca uporządkowane predykcje JSON.",
-        "businessValue": "Umożliwia image search, content moderation albo automatyczne tagowanie bez budowania własnej infrastruktury ML.",
-        "productionThinking": "Walidacja uploadu, obsługa plików, lazy model loading, konfigurowalne confidence thresholds, uporządkowane odpowiedzi API i jawna obsługa błędów.",
+        "businessValue": "Umożliwia wyszukiwanie obrazów, moderację treści albo automatyczne tagowanie bez budowania własnej infrastruktury ML.",
+        "productionThinking": "Walidacja przesyłanych plików, obsługa plików, leniwe ładowanie modelu, konfigurowalne progi pewności, uporządkowane odpowiedzi API i jawna obsługa błędów.",
         "stack": ["Python", "FastAPI", "CLIP (zero-shot)", "PyTorch"],
         "screenshot": "Interaktywne demo dostępne w widoku projektu."
       },
@@ -137,6 +165,278 @@
     "authTitle": "Auth & User Management API",
     "authDesc": "API do zarządzania użytkownikami z rejestracją, logowaniem oraz autoryzacją JWT. System obsługuje role użytkowników (admin/user), profile oraz integrację z bazą danych PostgreSQL przy użyciu SQLAlchemy."
   },
+  "livingStartpakke": {
+    "kicker": "PRODUCT DISCOVERY OPARTE NA BADANIACH",
+    "title": "Living Startpakke — Proces product discovery oparty na badaniach",
+    "subtitle": "Niezależnie prowadzona koncepcja produktu cyfrowego badająca, jak ułatwić dostęp do istotnej wiedzy o codziennym funkcjonowaniu osoby, jej zrozumienie i aktualizowanie w rodzinach oraz środowiskach opieki.",
+    "statusStatement": "Living Startpakke jest koncepcją rozwijaną na podstawie badań i wniosków zebranych od rodzin, pracowników opieki, specjalistów oraz innych interesariuszy. Projekt pozostaje na etapie product discovery i nie jest gotowym produktem, działającą aplikacją ani zwalidowanym rozwiązaniem.",
+    "status": "Klikalny prototyp koncepcyjny gotowy do zbierania informacji zwrotnych",
+    "privateResearch": "Prywatne materiały badawcze 🔒",
+    "updated": "Status projektu zaktualizowany: lipiec 2026",
+    "facts": [
+      { "label": "Rola", "value": "Samodzielne prowadzenie projektu" },
+      { "label": "Zakres", "value": "Product discovery, badania, analiza insightów i prototypowanie" },
+      { "label": "Prototyp", "value": "Koncepcja w Figma wykorzystująca fikcyjne dane" },
+      { "label": "Implementacja", "value": "Brak aplikacji produkcyjnej i backendu" }
+    ],
+    "sections": {
+      "problem": {
+        "title": "Problem, kontekst i granice",
+        "body": "Istotna wiedza o codziennym funkcjonowaniu osoby może być rozproszona między dokumentami, rutynami, członkami rodziny i doświadczonym personelem. Nowe lub tymczasowe osoby wspierające mogą nie mieć szybkiego dostępu do aktualnych, praktycznych wskazówek dotyczących komunikacji, preferencji, czynników wywołujących stres, rutyn i codziennego wsparcia.",
+        "items": [
+          "Rodziny mogą wielokrotnie przekazywać te same praktyczne informacje nowym osobom.",
+          "Zespoły mogą nadmiernie polegać na pamięci doświadczonego personelu.",
+          "Istniejące informacje mogą być trudne do znalezienia, nieaktualne lub niedopasowane do chwili, w której są potrzebne.",
+          "Koncepcja skupia się na osobach, które w ograniczonym stopniu posługują się mową lub nie posługują się nią wcale, oraz na osobach zapewniających im wsparcie."
+        ],
+        "boundaryTitle": "Granica projektu",
+        "boundaryBody": "Koncepcja nie ma zastępować dokumentacji medycznej, formalnych planów opieki, ocen specjalistycznych ani istniejących systemów dokumentacji."
+      },
+      "discovery": {
+        "title": "Proces discovery i zebrane dane",
+        "body": "Samodzielnie zainicjowałem projekt i nadal go prowadzę, zbierając perspektywy rodzin, pracowników opieki, specjalistów i odpowiednich środowisk interesariuszy. Proces discovery rozpoczął się przed określeniem rozwiązania technicznego, aby sprawdzić, czy głównym problemem jest brak informacji, ich nieaktualność, ograniczony dostęp czy nieskuteczne wykorzystanie istniejącej wiedzy.",
+        "evidence": [
+          { "value": "45", "label": "Odpowiedzi ankietowe", "body": "Odpowiedzi od rodzin i bliskich." },
+          { "value": "3", "label": "Wywiady jakościowe", "body": "Perspektywa rodziny, szkoły i opieki mieszkaniowej." },
+          { "value": "1", "label": "Rozmowa ekspercka i kontekstowa", "body": "Jedna rozmowa ekspercka i kontekstowa z odpowiednim środowiskiem specjalistycznym, przedstawiona publicznie w sposób anonimowy." },
+          { "value": "10–12", "label": "Środowiska interesariuszy", "body": "Uwzględnione w outreachu lub mapowaniu otoczenia w obszarze wsparcia osób z niepełnosprawnościami, komunikacji, wsparcia rodzin, edukacji i opieki komunalnej. Nazwy nie są publikowane." }
+        ],
+        "note": "Baza dowodowa nadal się rozwija. Działania te wpływają na kierunek koncepcji, ale nie stanowią pełnej walidacji produktu. Publicznie nie identyfikujemy żadnej organizacji, eksperta, respondenta ani lokalizacji."
+      },
+      "research": {
+        "title": "Wzorce badawcze i zmiana kierunku",
+        "themes": [
+          { "title": "Wiedza może być rozproszona", "body": "Ważne informacje mogą znajdować się w dokumentach, rozmowach, osobistym doświadczeniu i nieformalnych rutynach." },
+          { "title": "Informacje są często powtarzane", "body": "Rodziny i doświadczony personel mogą wielokrotnie wyjaśniać te same praktyczne szczegóły." },
+          { "title": "Dokumentacja nie zawsze pomaga w danym momencie", "body": "Potrzebne informacje mogą być trudne do znalezienia, zbyt obszerne, nieaktualne lub niedopasowane do potrzeb nowej osoby." },
+          { "title": "Priorytetyzacja ma znaczenie", "body": "Nowa osoba potrzebuje jasnej informacji, co jest najważniejsze przed pierwszym kontaktem, a nie wszystkich dostępnych danych naraz." }
+        ],
+        "directionTitle": "Jak badania zmieniły kierunek",
+        "directionBody": "Discovery przesunęło koncepcję ze statycznego pakietu startowego w stronę aktualizowanej i możliwej do utrzymania koncepcji wiedzy, skupionej na priorytetyzacji, aktualności i kontrolowanym dostępie.",
+        "directionNote": "Badania wskazały również potrzebę oddzielenia stabilnej wiedzy od krótkoterminowych aktualizacji, zamiast łączenia obu typów informacji w jeden widok bez wyraźnego rozróżnienia."
+      },
+      "prototype": {
+        "title": "Prototyp",
+        "body": "W Figmie powstał klikalny prototyp koncepcyjny badający proponowany zakres MVP z użyciem fikcyjnych danych. Pełny interaktywny prototyp pozostaje prywatny podczas zbierania informacji zwrotnych.",
+        "badge": "Aktualny prototyp koncepcyjny · Fikcyjne dane",
+        "views": [
+          { "title": "Karta osoby", "body": "Bada priorytetowy widok praktycznych informacji, które mogą być ważne przed pierwszym kontaktem." },
+          { "title": "Oś czasu", "body": "Bada rozdzielenie ostatnich aktualizacji, nadchodzących wydarzeń, obserwacji i stabilnej wiedzy." },
+          { "title": "Koncepcja dostępu", "body": "Bada widoczność opartą na rolach, odpowiedzialność za edycję i tymczasowy dostęp do wrażliwych informacji." }
+        ],
+        "interactionsTitle": "Wybrane koncepcje interakcji",
+        "interactionsBody": "Prototyp bada również potwierdzanie przeczytania, szybkie notatki, notatki głosowe i dostęp tymczasowy.",
+        "limitation": "Prototyp pokazuje hipotezy projektowe, a nie wdrożone funkcje. Nie istnieje działająca aplikacja, kod produkcyjny, baza danych, system uwierzytelniania ani backend."
+      },
+      "current": {
+        "title": "Aktualny etap, otwarte pytania i ograniczenia",
+        "body": "Klikalny prototyp koncepcyjny jest gotowy do zbierania opinii, a wstępny kontakt z potencjalnymi uczestnikami jest w toku. Na tym etapie nie są formułowane twierdzenia dotyczące użyteczności, faktycznego wykorzystania ani potwierdzonej wartości produktu.",
+        "questionsTitle": "Czego jeszcze nie zweryfikowano",
+        "questions": [
+          "Które informacje są rzeczywiście niezbędne przed pierwszym kontaktem?",
+          "Czy osoby korzystające z koncepcji mogą szybko znaleźć i zrozumieć te informacje?",
+          "Jak rozdzielić krótkoterminowe aktualizacje od wiedzy długoterminowej?",
+          "Kto powinien aktualizować informacje i odpowiadać za ich jakość?",
+          "Które role dostępu i zasady dostępu tymczasowego są realistyczne?",
+          "Jakie wymagania dotyczące prywatności, zgody i bezpieczeństwa będą miały zastosowanie?",
+          "Jak koncepcja mogłaby współpracować z istniejącymi systemami dokumentacji?"
+        ],
+        "constraintsTitle": "Obecne ograniczenia",
+        "constraints": [
+          "Prototyp może badać zrozumienie i założenia dotyczące sposobu pracy, ale nie bezpieczeństwo produkcyjne ani integracje techniczne.",
+          "Zebrane informacje zwrotne nie pozwalają jeszcze określać koncepcji jako zwalidowanej, gotowej do pilotażu lub implementacji.",
+          "Prywatne materiały badawcze, surowe odpowiedzi, treści wywiadów i pełny prototyp nie są publikowane."
+        ]
+      },
+      "risks": {
+        "title": "Ryzyka i kolejne kroki",
+        "items": [
+          { "title": "Wrażliwe informacje", "body": "Ewentualna implementacja wymagałaby starannych decyzji dotyczących prywatności, zgody, kontroli dostępu i odpowiedzialności." },
+          { "title": "Jakość informacji", "body": "Nieaktualne, niepełne lub niewłaściwie priorytetyzowane informacje mogłyby obniżyć zaufanie i stworzyć dodatkowe ryzyko." },
+          { "title": "Odpowiedzialność za aktualizację", "body": "Wartość koncepcji zależy od aktualności wiedzy, ale odpowiedzialność za zmiany nie została jeszcze zweryfikowana." },
+          { "title": "Dopasowanie organizacyjne", "body": "Koncepcja musiałaby wspierać istniejące praktyki i sposoby pracy, a nie tworzyć kolejny system funkcjonujący poza nimi." }
+        ],
+        "nextTitle": "Kolejne kroki",
+        "nextSteps": [
+          "Zebrać i przeanalizować pierwsze uporządkowane informacje zwrotne dotyczące prototypu.",
+          "Udoskonalić hierarchię informacji, język, nawigację i hipotezy interakcji.",
+          "Przeprowadzić krótkie rozmowy uzupełniające tam, gdzie odpowiedzi wymagają wyjaśnienia.",
+          "Doprecyzować proponowany zakres MVP na podstawie powtarzających się wzorców w zebranych danych.",
+          "Zbadać odpowiedzialność za informacje, zgodę, prywatność, role dostępu i zgodność z istniejącą dokumentacją.",
+          "Rozważyć implementację techniczną dopiero po uzyskaniu silniejszych dowodów dotyczących głównego procesu i zasad odpowiedzialności."
+        ]
+      }
+    }
+  },
+  "jarvis": {
+    "title": "Prywatne środowisko automatyzacji AI",
+    "subtitle": "Działające środowisko oparte na OpenClaw do researchu, trwałego kontekstu, cyklicznego monitoringu i codziennych automatyzacji technicznych.",
+    "status": "Działające prywatne środowisko · Aktywnie rozwijane",
+    "privateRepository": "Prywatne repozytorium 🔒",
+    "facts": [
+      { "label": "Start", "value": "Maj 2026" },
+      { "label": "Rola", "value": "Projekt środowiska, integracje, automatyzacja i utrzymanie" },
+      { "label": "Infrastruktura", "value": "Samodzielnie zarządzany Ubuntu VPS w Hetzner · ARM64" },
+      { "label": "Model", "value": "DeepSeek V4 Pro" },
+      { "label": "Główny interfejs", "value": "Telegram" }
+    ],
+    "sections": {
+      "problem": {
+        "title": "Problem",
+        "body": "Research, notatki infrastrukturalne, decyzje projektowe i materiały związane z poszukiwaniem pracy były rozproszone między narzędziami i krótkimi sesjami AI.",
+        "items": [
+          "Wartościowy kontekst łatwo ginął między sesjami.",
+          "Powtarzanie researchu tworzyło niepotrzebną pracę.",
+          "Materiały techniczne i produktowe nie miały jednego uporządkowanego miejsca.",
+          "Rutynowy monitoring i organizacja nadal wymagały ręcznej uwagi."
+        ]
+      },
+      "usage": {
+        "title": "Obecne zastosowanie",
+        "body": "JARVIS wspiera praktyczną pracę, zamiast pełnić rolę uniwersalnej platformy automatyzacyjnej.",
+        "items": [
+          "Research techniczny i produktowy.",
+          "Analiza ofert pracy i uporządkowane przeglądy możliwości.",
+          "Raporty badawcze i analiza konkurencji.",
+          "Dokumentacja projektowa i wyszukiwanie kontekstu.",
+          "Zatwierdzone operacje Git i zadania utrzymaniowe.",
+          "Monitoring zasobów i procesy pamięci."
+        ]
+      },
+      "openClaw": {
+        "title": "Co zapewnia OpenClaw",
+        "body": "OpenClaw zapewnia główną bramę i środowisko wykonawcze. JARVIS jest wdrożonym, skonfigurowanym i rozszerzonym prywatnym środowiskiem, a nie platformą agentową zbudowaną od podstaw.",
+        "items": [
+          "Bramę i izolowane sesje.",
+          "Uruchamianie narzędzi i umiejętności.",
+          "Wbudowane semantyczne wyszukiwanie pamięci.",
+          "Integrację z Telegramem.",
+          "Rozszerzalną architekturę wtyczek."
+        ],
+        "note": "Procesy planowania i integracje MCP są możliwymi kierunkami platformy, ale obecnie pozostają poza zakresem projektu."
+      },
+      "contribution": {
+        "title": "Mój wkład",
+        "body": "Moja praca obejmuje projekt środowiska, integracje, procesy operacyjne i bezpieczne codzienne użytkowanie.",
+        "items": [
+          "Wdrożenie i konfiguracja OpenClaw na samodzielnie zarządzanym VPS.",
+          "Integracja DeepSeek V4 Pro i dostępu przez Telegram.",
+          "Zdefiniowanie reguł przestrzeni roboczej, struktury pamięci i procesów researchu.",
+          "Konfiguracja izolowanych zadań monitoringu i pamięci.",
+          "Budowa własnej usługi REST i middleware portfolio dla osobnych zastosowań.",
+          "Konfiguracja CORS, transportu przez Cloudflare Tunnel i wybranych usług wspierających.",
+          "Dokumentacja bezpiecznych operacji Git i procedur utrzymania."
+        ]
+      },
+      "memory": {
+        "title": "Trwały kontekst i pamięć",
+        "body": "Obecna pamięć plikowa i wbudowane wyszukiwanie semantyczne wystarczają dla aktualnego zakresu, dlatego nie wprowadzono zewnętrznej bazy wektorowej.",
+        "items": [
+          "Długoterminowe podsumowanie stabilnego kontekstu.",
+          "Dzienne notatki pamięci z datą.",
+          "Historia sesji i pliki projektowe.",
+          "Uporządkowane raporty badawcze."
+        ]
+      },
+      "automation": {
+        "title": "Automatyzacja",
+        "body": "Izolowany proces jest skonfigurowany do codziennego uruchamiania o 23:55 CEST. Tworzy notatkę pamięci z datą i aktualizuje długoterminowe podsumowanie, gdy wykonanie kończy się pomyślnie. Dłuższe uruchomienia mogą zbliżać się do skonfigurowanego limitu czasu.",
+        "items": [
+          "Monitoring zasobów serwera działa co sześć godzin.",
+          "Alerty są skonfigurowane dla wykorzystania zasobów powyżej 80%, ale ścieżka wywołana rzeczywistym incydentem nie została jeszcze przetestowana od początku do końca.",
+          "Zadania cykliczne działają w izolowanych sesjach, aby ograniczyć mieszanie kontekstu."
+        ],
+        "note": "Monitoring zasobów działa zgodnie z harmonogramem, a codzienny proces podsumowania pamięci jest skonfigurowany i monitorowany z uwzględnieniem znanych ograniczeń czasu wykonania."
+      },
+      "deployment": {
+        "title": "Wdrożenie i utrzymanie",
+        "items": [
+          "Dostęp przez klucze SSH i reguły zapory UFW.",
+          "Docker dla wybranych usług wspierających.",
+          "Konfiguracja usług systemowych dla wybranych usług wspierających.",
+          "Monitoring zasobów i zaplanowane zadania utrzymaniowe.",
+          "Cloudflare Tunnel dla ścieżki integracji z portfolio.",
+          "Ręczna kontrola operacyjna tam, gdzie automatyczne odzyskiwanie nie jest jeszcze dostępne."
+        ]
+      },
+      "security": {
+        "title": "Granice bezpieczeństwa",
+        "items": [
+          "Administracja przez klucze SSH i ograniczenia zapory.",
+          "Cloudflare Tunnel zamiast bezpośredniego wystawienia middleware portfolio.",
+          "Ograniczona konfiguracja CORS dla publicznej integracji.",
+          "Prywatne repozytorium i chroniona konfiguracja środowiska.",
+          "Prywatne dane przestrzeni roboczej wykluczone z Git."
+        ]
+      },
+      "reliability": {
+        "title": "Obecne ograniczenia",
+        "items": [
+          "Automatyczne odzyskiwanie bramy jest niekompletne.",
+          "Automatyzacja kopii zapasowych nie została jeszcze wdrożona.",
+          "Zapytania do modelu nie korzystają z własnej warstwy ponawiania.",
+          "Monitoring stanu i testy procesów od początku do końca pozostają ograniczone."
+        ]
+      },
+      "outsideScope": {
+        "title": "Obecnie poza zakresem projektu",
+        "body": "Pamięć plikowa i wbudowane wyszukiwanie semantyczne spełniają aktualne potrzeby; dodatkowa infrastruktura bez potwierdzonej potrzeby zwiększałaby złożoność.",
+        "items": [
+          "Zewnętrzna baza wektorowa.",
+          "Integracje MCP.",
+          "Interaktywna orkiestracja wielu agentów.",
+          "Wieloetapowe procesy planowania."
+        ]
+      },
+      "results": {
+        "title": "Rezultaty operacyjne",
+        "body": "Rezultaty mają charakter jakościowy i operacyjny; bez pomiarów nie przedstawiam deklaracji dotyczących SLA, ROI ani oszczędności czasu.",
+        "items": [
+          "Research rynku pracy jest zapisywany w uporządkowanych raportach do ponownego użycia.",
+          "Analiza konkurencji i benchmark KnowMe pozostają dostępne w jednym środowisku.",
+          "Trwały kontekst projektów można wyszukiwać między sesjami.",
+          "Monitoring zasobów działa według określonego harmonogramu."
+        ]
+      },
+      "nextSteps": {
+        "title": "Kolejne kroki",
+        "items": [
+          "Dokończyć automatyczne odzyskiwanie bramy.",
+          "Wprowadzić automatyczne szyfrowane kopie zapasowe.",
+          "Przeanalizować limity czasu procesu pamięci.",
+          "Dodać kontrole stanu i powiadomienia o błędach.",
+          "Dodać własną strategię ponawiania zapytań do modelu.",
+          "Rozszerzyć testy procesów od początku do końca i monitoring.",
+          "Ocenić MCP dopiero przy konkretnej potrzebie integracyjnej.",
+          "Przygotować oczyszczoną publiczną dokumentację techniczną."
+        ]
+      }
+    },
+    "architecture": {
+      "title": "Architektura",
+      "body": "Środowisko ma jeden główny przepływ OpenClaw oraz dwie niezależne ścieżki integracji wspierających.",
+      "mainTitle": "Główny przepływ JARVIS",
+      "mainAriaLabel": "Użytkownik łączy się przez Telegram z bramą OpenClaw",
+      "user": "Użytkownik",
+      "telegram": "Telegram",
+      "gateway": "Brama OpenClaw",
+      "deepseek": "API DeepSeek V4 Pro",
+      "workspace": "Trwała przestrzeń robocza",
+      "semantic": "Semantyczne wyszukiwanie pamięci",
+      "scheduled": "Zaplanowane izolowane sesje",
+      "tools": "Narzędzia: Shell, Docker, research internetowy, monitoring zasobów",
+      "supportingTitle": "Wspierające przepływy integracji",
+      "portfolioAriaLabel": "Formularz portfolio łączy się przez Cloudflare Tunnel i middleware portfolio z OpenClaw",
+      "portfolioForm": "Formularz portfolio",
+      "tunnel": "Cloudflare Tunnel",
+      "middleware": "Middleware portfolio",
+      "openClaw": "OpenClaw",
+      "restAriaLabel": "Klient łączy się przez własną usługę REST z API DeepSeek",
+      "genericClient": "Dowolny klient",
+      "restService": "Własna usługa REST",
+      "deepseekApi": "API DeepSeek V4 Pro"
+    }
+  },
   "pwnedProject": {
     "title": "Pwned Password Check",
     "desc": "Sprawdź czy hasło pojawiło się w wyciekach danych. Backend wykorzystuje metodę k-Anonymity z HaveIBeenPwned, dzięki czemu hasło nie jest wysyłane w całości.",
@@ -157,14 +457,14 @@
     "arch": "Architektura",
     "archDesc": "Projekt składa się z backendu w Pythonie, który obsługuje upload plików oraz operacje przetwarzania obrazów, takie jak zmiana rozmiaru, konwersja do skali szarości i obrót. Operacje wykonywane są po stronie API, a frontend wyświetla wynik w formie podglądu przed pobraniem pliku.",
     "pick": "Prześlij obraz",
-    "resizePresets": "Resize presets",
-    "transformations": "Transformations",
-    "export": "Export",
+    "resizePresets": "Ustawienia rozmiaru",
+    "transformations": "Przekształcenia",
+    "export": "Eksport",
     "grayscale": "Czarno-białe",
     "rotateLeft": "Obrót w lewo",
     "rotateRight": "Obrót w prawo",
     "download": "Pobierz PNG",
-    "original": "Originał",
+    "original": "Oryginał",
     "output": "Obraz wynikowy",
     "noFileSelected": "Nie wybrano pliku",
     "hint": "Wybierz obraz, aby rozpocząć edycję."
@@ -180,13 +480,13 @@
     "error": "Błąd sprawdzania. Backend może nie działać."
   },
   "contactForm": {
-    "send": "Send workflow details →",
+    "send": "Wyślij opis procesu →",
     "clear": "Wyczyść",
     "sending": "Wysyłanie...",
     "sendingWithAi": "Wysyłanie... JARVIS analizuje wiadomość. To może potrwać kilka sekund.",
     "success": "Wiadomość została wysłana. Dziękuję!",
     "aiDirection": {
-      "label": "Dodaj AI-assisted technical direction",
+      "label": "Wstępny kierunek techniczny wspierany przez AI",
       "help": "JARVIS, asystent AI Kamila, przeanalizuje wiadomość i zaproponuje wstępny kierunek techniczny. Otrzymasz go mailem. Kamil nadal odpowie osobiście."
     },
     "labels": {
@@ -205,7 +505,7 @@
       "nameMin": "Podaj imię (min. 2 znaki).",
       "emailInvalid": "Podaj poprawny adres e-mail.",
       "messageTooShort": "Wiadomość jest zbyt krótka (min. 20 znaków).",
-      "tooManyLinks": "Wiadomość zawiera zbyt wiele linków (max 2).",
+      "tooManyLinks": "Wiadomość zawiera zbyt wiele linków (maks. 2).",
       "serverError": "Błąd serwera (HTTP {{code}}).",
       "sendFailed": "Nie udało się wysłać wiadomości."
     }
@@ -220,7 +520,7 @@
     "pick": "Wybierz obraz",
     "noFile": "Nie wybrano pliku",
     "topK": "Top-k",
-    "maxTopK": "max 3",
+    "maxTopK": "maks. 3",
     "classify": "Klasyfikuj",
     "clear": "Wyczyść",
     "loading": "Klasyfikacja...",
@@ -229,8 +529,8 @@
     "hint": "Wybierz obraz i kliknij „Klasyfikuj”.",
     "error": "Błąd klasyfikacji",
     "smartTip": "Smart mode używa predefiniowanych presetów kategorii po stronie backendu.",
-    "apiResponse": "API Response",
-    "topPredictions": "Top predictions",
+    "apiResponse": "Odpowiedź API",
+    "topPredictions": "Najlepsze wyniki",
     "noResult": "Brak predykcji.",
     "unknownInline": "poniżej progu",
     "presetsLoading": "Ładuję presety...",
@@ -241,7 +541,7 @@
     "manualTip": "Tryb manualny: wpisz własne etykiety (po przecinku). CLIP dopasowuje obraz do tekstu.",
     "labels": "Etykiety (po przecinku)",
     "copyHint": "Kliknij, aby skopiować",
-    "unknown": "unknown"
+    "unknown": "nieznane"
   },
   "auth": {
   "title": "Auth & User Management API",
@@ -254,12 +554,12 @@
   "createDemoAccount": "Utwórz konto demo",
   "email": "Email",
   "password": "Hasło",
-  "register": "Rejestruj",
-  "login": "Zaloguj",
+  "register": "Zarejestruj się",
+  "login": "Zaloguj się",
   "profile": "Pobierz profil",
   "usersAdmin": "Lista użytkowników (admin)",
   "clear": "Wyczyść",
-  "tokenMissing": "Użyj danych demo, aby przetestować authentication flow.",
+  "tokenMissing": "Użyj danych demo, aby przetestować proces uwierzytelniania.",
   "tokenOk": "Token JWT aktywny — zapytania wysyłają Authorization: Bearer token.",
   "loading": "Ładowanie...",
   "error": "Błąd",

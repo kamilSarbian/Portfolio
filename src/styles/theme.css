@@ -1537,6 +1537,501 @@ a.btn:active {
   background: rgba(255,255,255,0.04);
   color: var(--text);
 }
+
+/* JARVIS case study */
+.private-repository-badge{
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 5px 9px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.2;
+  cursor: default;
+  user-select: none;
+}
+
+.app.light .private-repository-badge{
+  background: rgba(0,0,0,0.035);
+}
+
+.jarvis-page{
+  display: grid;
+  place-items: center;
+}
+
+.jarvis-page-inner{
+  width: min(1040px, 100%);
+}
+
+.jarvis-title{
+  max-width: 820px;
+  margin-bottom: 8px;
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.08;
+}
+
+.jarvis-subtitle{
+  max-width: 780px;
+}
+
+.jarvis-status-row{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.jarvis-status{
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1px solid rgba(120,255,190,0.28);
+  border-radius: 999px;
+  background: rgba(120,255,190,0.07);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.jarvis-meta-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0 0;
+}
+
+.jarvis-meta-item{
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.025);
+}
+
+.app.light .jarvis-meta-item{
+  background: rgba(0,0,0,0.02);
+}
+
+.jarvis-meta-item dt{
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.jarvis-meta-item dd{
+  margin: 5px 0 0;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.45;
+}
+
+.jarvis-sections{
+  display: grid;
+  gap: 14px;
+}
+
+.jarvis-section{
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.025);
+  scroll-margin-top: 108px;
+}
+
+.app.light .jarvis-section{
+  background: rgba(0,0,0,0.018);
+}
+
+.jarvis-section:focus{
+  outline: 2px solid rgba(245,197,24,0.5);
+  outline-offset: 4px;
+}
+
+.jarvis-section h2{
+  margin: 0;
+  color: var(--accent);
+  font-size: 21px;
+  line-height: 1.25;
+}
+
+.jarvis-section h3{
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.jarvis-section p{
+  margin: 9px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.65;
+}
+
+.jarvis-section ul{
+  display: grid;
+  gap: 7px;
+  margin: 12px 0 0;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.jarvis-section-note{
+  padding: 10px 12px;
+  border-left: 3px solid var(--accent);
+  background: rgba(245,197,24,0.06);
+}
+
+.jarvis-architecture-panel,
+.jarvis-architecture-supporting{
+  margin-top: 16px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(7,11,20,0.3);
+}
+
+.app.light .jarvis-architecture-panel,
+.app.light .jarvis-architecture-supporting{
+  background: rgba(255,255,255,0.45);
+}
+
+.jarvis-architecture-chain,
+.jarvis-service-flow{
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 8px;
+}
+
+.jarvis-architecture-node{
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 54px;
+  padding: 9px 11px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card2);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.jarvis-architecture-node--gateway{
+  border-color: rgba(245,197,24,0.48);
+  box-shadow: 0 0 0 3px rgba(245,197,24,0.08);
+}
+
+.jarvis-architecture-arrow{
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.jarvis-architecture-branch-arrow{
+  margin: 8px 0;
+  color: var(--accent);
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.jarvis-architecture-branches{
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.jarvis-architecture-supporting{
+  display: grid;
+  gap: 12px;
+}
+
+.jarvis-service-flow + .jarvis-service-flow{
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.jarvis-service-flow .jarvis-architecture-node{
+  flex: 1 1 0;
+}
+
+.jarvis-page .project-detail-footer{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Living Startpakke case study */
+.living-page{
+  display: grid;
+  place-items: center;
+}
+
+.living-page-inner{
+  width: min(1040px, 100%);
+}
+
+.living-kicker{
+  margin: 4px 0 8px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+}
+
+.living-title{
+  max-width: 880px;
+  margin-bottom: 8px;
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.08;
+}
+
+.living-subtitle{
+  max-width: 820px;
+}
+
+.living-status-statement{
+  max-width: 820px;
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-left: 3px solid var(--accent);
+  background: rgba(245,197,24,0.06);
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.living-status-row{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.living-status{
+  display: inline-flex;
+  padding: 6px 10px;
+  border: 1px solid rgba(120,255,190,0.28);
+  border-radius: 999px;
+  background: rgba(120,255,190,0.07);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.living-updated{
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.living-facts-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0 0;
+}
+
+.living-fact{
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.025);
+}
+
+.app.light .living-fact{
+  background: rgba(0,0,0,0.02);
+}
+
+.living-fact dt{
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.living-fact dd{
+  margin: 5px 0 0;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.45;
+}
+
+.living-sections{
+  display: grid;
+  gap: 14px;
+}
+
+.living-section{
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.025);
+  scroll-margin-top: 108px;
+}
+
+.app.light .living-section{
+  background: rgba(0,0,0,0.018);
+}
+
+.living-section:focus{
+  outline: 2px solid rgba(245,197,24,0.5);
+  outline-offset: 4px;
+}
+
+.living-section h2{
+  margin: 0;
+  color: var(--accent);
+  font-size: 21px;
+  line-height: 1.25;
+}
+
+.living-section p{
+  margin: 9px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.65;
+}
+
+.living-section ul{
+  display: grid;
+  gap: 7px;
+  margin: 12px 0 0;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.living-content-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.living-content-card,
+.living-evidence-card{
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(7,11,20,0.22);
+}
+
+.app.light .living-content-card,
+.app.light .living-evidence-card{
+  background: rgba(255,255,255,0.5);
+}
+
+.living-content-card h3,
+.living-boundary h3,
+.living-direction-change h3,
+.living-subheading{
+  margin: 0;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.living-evidence-grid{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.living-evidence-card{
+  display: flex;
+  flex-direction: column;
+}
+
+.living-evidence-card strong{
+  color: var(--accent);
+  font-size: 27px;
+  line-height: 1;
+}
+
+.living-evidence-card span{
+  margin-top: 8px;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.living-evidence-card p{
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.living-boundary,
+.living-direction-change{
+  margin-top: 14px;
+  padding: 13px 14px;
+  border-left: 3px solid var(--accent);
+  background: rgba(245,197,24,0.06);
+}
+
+.living-note{
+  margin-top: 14px !important;
+  padding: 11px 13px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.living-prototype-badge{
+  display: inline-flex;
+  margin-top: 12px;
+  padding: 6px 10px;
+  border: 1px solid rgba(100,160,255,0.3);
+  border-radius: 999px;
+  background: rgba(100,160,255,0.08);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.living-subheading{
+  margin-top: 20px;
+}
+
+.living-footer{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
 /* ===============================
    MOBILE NAVBAR FIX
 ================================ */
@@ -1578,6 +2073,51 @@ a.btn:active {
 
 /* mobile rules */
 @media (max-width: 720px) {
+
+  .jarvis-meta-grid,
+  .jarvis-architecture-branches{
+    grid-template-columns: 1fr;
+  }
+
+  .jarvis-section{
+    padding: 15px;
+    scroll-margin-top: 96px;
+  }
+
+  .jarvis-architecture-panel,
+  .jarvis-architecture-supporting{
+    padding: 12px;
+  }
+
+  .jarvis-architecture-chain,
+  .jarvis-service-flow{
+    flex-direction: column;
+  }
+
+  .jarvis-architecture-arrow{
+    transform: rotate(90deg);
+  }
+
+  .jarvis-page .project-detail-footer{
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .living-facts-grid,
+  .living-content-grid,
+  .living-evidence-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .living-section{
+    padding: 15px;
+    scroll-margin-top: 96px;
+  }
+
+  .living-footer{
+    align-items: flex-start;
+    flex-direction: column;
+  }
 
   /* chowamy desktop */
   .nav-actions--desktop {

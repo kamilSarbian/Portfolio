@@ -1,17 +1,20 @@
 from __future__ import annotations
 
-from fastapi import HTTPException, status
-from sqlalchemy.orm import Session
-
 from core.security import hash_password, verify_password
+from fastapi import HTTPException, status
 from models.user import User
+from sqlalchemy.orm import Session
 
 
 def get_user_by_email(db: Session, email: str) -> User | None:
+    """Return a user by email address when present."""
+
     return db.query(User).filter(User.email == email).first()
 
 
 def create_user(db: Session, *, email: str, password: str, role: str = "user") -> User:
+    """Create and persist a user with a securely hashed password."""
+
     existing = get_user_by_email(db, email)
     if existing:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email already registered")
@@ -29,6 +32,8 @@ def create_user(db: Session, *, email: str, password: str, role: str = "user") -
 
 
 def authenticate_user(db: Session, *, email: str, password: str) -> User:
+    """Validate credentials and return the active user."""
+
     user = get_user_by_email(db, email)
     if not user or not user.is_active:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
@@ -40,4 +45,6 @@ def authenticate_user(db: Session, *, email: str, password: str) -> User:
 
 
 def list_users(db: Session) -> list[User]:
+    """Return all users ordered by their database identifier."""
+
     return db.query(User).order_by(User.id.asc()).all()

@@ -1,22 +1,27 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-
-from routers.passwords import router as passwords_router
-from routers.images import router as images_router
-from routers.contact import router as contact_router
-from routers.vision import router as ml_router
 from routers.auth import router as auth_router
+from routers.contact import router as contact_router
+from routers.images import router as images_router
+from routers.passwords import router as passwords_router
 from routers.users import router as users_router
+from routers.vision import router as ml_router
 from schemas.common import HealthResponse, MessageResponse, VersionResponse
 
 OPENAPI_TAGS = [
     {"name": "meta", "description": "Service metadata and operational health endpoints."},
     {"name": "auth", "description": "User registration and JWT authentication."},
     {"name": "users", "description": "Authenticated profile access and admin-only user listing."},
-    {"name": "passwords", "description": "Password breach checks using the Have I Been Pwned k-Anonymity flow."},
+    {
+        "name": "passwords",
+        "description": "Password breach checks using the Have I Been Pwned k-Anonymity flow.",
+    },
     {"name": "images", "description": "Image upload and transformation endpoints."},
-    {"name": "ml", "description": "CLIP-based image classification, presets, and taxonomy endpoints."},
+    {
+        "name": "ml",
+        "description": "CLIP-based image classification, presets, and taxonomy endpoints.",
+    },
     {"name": "contact", "description": "Contact form submission and email delivery workflow."},
 ]
 
@@ -43,11 +48,12 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        "http://localhost:5174",
+        "http://127.0.0.1:5174",
         "https://kamilsarbian.dev",
         "https://www.kamilsarbian.dev",
         "https://kamilsarbian-dev.vercel.app",
     ],
-    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -68,7 +74,9 @@ app.include_router(users_router)
     description="Basic root endpoint confirming that the Portfolio API is running.",
     response_model=MessageResponse,
 )
-def root():
+def root() -> dict[str, str]:
+    """Return a basic service availability message."""
+
     return {"message": "Portfolio API is running"}
 
 
@@ -79,7 +87,9 @@ def root():
     description="Simple liveness endpoint for uptime checks and deployment verification.",
     response_model=HealthResponse,
 )
-def health():
+def health() -> dict[str, bool]:
+    """Return the API liveness status."""
+
     return {"ok": True}
 
 
@@ -90,8 +100,7 @@ def health():
     description="Returns the current service identifier and API version.",
     response_model=VersionResponse,
 )
-def version():
-    return {
-        "service": "portfolio-api",
-        "version": "1.0.0"
-    }
+def version() -> dict[str, str]:
+    """Return the public service identifier and version."""
+
+    return {"service": "portfolio-api", "version": "1.0.0"}

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from collections.abc import Generator
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
@@ -18,7 +20,10 @@ SessionLocal = sessionmaker(
     autoflush=False,
 )
 
-def get_db():
+
+def get_db() -> Generator:
+    """Yield a database session and close it after the request."""
+
     db = SessionLocal()
     try:
         yield db

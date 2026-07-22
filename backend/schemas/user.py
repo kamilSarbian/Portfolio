@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+
 from pydantic import BaseModel, EmailStr, Field, field_serializer
 
 
@@ -29,7 +30,9 @@ class UserOut(BaseModel):
     model_config = {"from_attributes": True}
 
     @field_serializer("created_at")
-    def serialize_created_at(self, value: datetime, _info):
+    def serialize_created_at(self, value: datetime, _info: object) -> str:
+        """Serialize timestamps consistently for the public API."""
+
         return value.strftime("%Y-%m-%d %H:%M:%S")
 
 

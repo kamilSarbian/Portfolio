@@ -3,12 +3,10 @@ from __future__ import annotations
 from logging.config import fileConfig
 
 from alembic import context
-from sqlalchemy import engine_from_config, pool
-
 from core.config import settings
 from core.db import Base
 from models.user import User  # noqa: F401
-
+from sqlalchemy import engine_from_config, pool
 
 config = context.config
 config.set_main_option("sqlalchemy.url", settings.database_url)
@@ -20,6 +18,8 @@ target_metadata = Base.metadata
 
 
 def run_migrations_offline() -> None:
+    """Run Alembic migrations without creating a database connection."""
+
     context.configure(
         url=settings.database_url,
         target_metadata=target_metadata,
@@ -32,6 +32,8 @@ def run_migrations_offline() -> None:
 
 
 def run_migrations_online() -> None:
+    """Run Alembic migrations using an active database connection."""
+
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",

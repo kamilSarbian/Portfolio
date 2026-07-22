@@ -47,8 +47,8 @@ export default function Home({ onGoProjects }) {
           </section>
 
           <section className="what-build-item">
-            <h3>{t("home.whatIBuild.integrationTitle")}</h3>
-            <p>{t("home.whatIBuild.integrationBody")}</p>
+            <h3>{t("home.whatIBuild.productTitle")}</h3>
+            <p>{t("home.whatIBuild.productBody")}</p>
           </section>
         </div>
       </Card>
@@ -64,6 +64,7 @@ export default function Home({ onGoProjects }) {
             <p>{t("home.howIWork.b")}</p>
             <p>{t("home.howIWork.c")}</p>
             {t("home.howIWork.d") && <p>{t("home.howIWork.d")}</p>}
+            {t("home.howIWork.e") && <p>{t("home.howIWork.e")}</p>}
           </div>
         </Card>
 

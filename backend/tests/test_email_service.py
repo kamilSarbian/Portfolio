@@ -21,7 +21,7 @@ def test_send_contact_emails_includes_ai_direction_when_requested(monkeypatch):
     monkeypatch.setattr(
         email_service,
         "get_ai_technical_direction",
-        lambda message, name=None, email=None, company=None: "Map the workflow and automate the repeated backend step.",
+        lambda message: "Map the workflow and automate the repeated backend step.",
     )
 
     email_service.send_contact_emails(
@@ -64,7 +64,7 @@ def test_send_contact_emails_uses_fallback_when_ai_direction_fails(monkeypatch):
     _configure_email(monkeypatch)
     sent: list[EmailMessage] = []
 
-    def fail_ai_direction(message, name=None, email=None, company=None):
+    def fail_ai_direction(message):
         raise TimeoutError("JARVIS timeout")
 
     monkeypatch.setattr(email_service, "_send_smtp", sent.append)

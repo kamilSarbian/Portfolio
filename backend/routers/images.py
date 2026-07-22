@@ -2,15 +2,17 @@ from __future__ import annotations
 
 import logging
 
-from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
-from fastapi.responses import Response
-
 from core.config import settings
 from core.rate_limit import upload_rate_limit
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
+from fastapi.responses import Response
 from schemas.common import ErrorResponse
 from services.image_service import ImageProcessingError, ProcessOptions, process_image_to_png
+from services.upload_service import UploadTooLargeError, read_upload_limited
 
-router = APIRouter(prefix="/backend/image", tags=["images"], dependencies=[Depends(upload_rate_limit)])
+router = APIRouter(
+    prefix="/backend/image", tags=["images"], dependencies=[Depends(upload_rate_limit)]
+)
 logger = logging.getLogger(__name__)
 
 
@@ -23,8 +25,14 @@ logger = logging.getLogger(__name__)
             "description": "Processed PNG image.",
             "content": {"image/png": {}},
         },
-        400: {"model": ErrorResponse, "description": "Invalid processing options or malformed image."},
-        413: {"model": ErrorResponse, "description": "Uploaded file exceeds the configured size limit."},
+        400: {
+            "model": ErrorResponse,
+            "description": "Invalid processing options or malformed image.",
+        },
+        413: {
+            "model": ErrorResponse,
+            "description": "Uploaded file exceeds the configured size limit.",
+        },
         415: {"model": ErrorResponse, "description": "Unsupported file type."},
         429: {"model": ErrorResponse, "description": "Upload rate limit exceeded."},
         500: {"model": ErrorResponse, "description": "Unexpected image processing failure."},
@@ -34,14 +42,19 @@ async def process_image_endpoint(
     file: UploadFile = File(...),
     size: str = Form("M", description="Resize preset, for example S, M, or L."),
     grayscale: bool = Form(False, description="Convert the image to grayscale."),
-    rotate: int = Form(0, description="Rotation in degrees. Expected values are 0, 90, 180, or 270."),
-):
+    rotate: int = Form(
+        0, description="Rotation in degrees. Expected values are 0, 90, 180, or 270."
+    ),
+) -> Response:
+    """Process a validated image upload and return a PNG response."""
+
     if file.content_type not in settings.allowed_mime:
         raise HTTPException(status_code=415, detail="Unsupported file type.")
 
-    data = await file.read()
-    if len(data) > settings.max_upload_mb * 1024 * 1024:
-        raise HTTPException(status_code=413, detail="File too large.")
+    try:
+        data = await read_upload_limited(file, settings.max_upload_mb * 1024 * 1024)
+    except UploadTooLargeError as exc:
+        raise HTTPException(status_code=413, detail="File too large.") from exc
 
     try:
         out_png = process_image_to_png(

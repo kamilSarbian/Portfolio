@@ -82,7 +82,6 @@ export default function ImageEditor() {
   }, [file, grayscale, rotate, size]);
 
   useEffect(() => {
-    setError("");
     if (!file) return;
 
     if (debounceRef.current) clearTimeout(debounceRef.current);
@@ -92,6 +91,7 @@ export default function ImageEditor() {
       const controller = new AbortController();
       abortRef.current = controller;
 
+      setError("");
       setBusy(true);
       try {
         await callApi(controller.signal);

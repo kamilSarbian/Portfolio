@@ -1,13 +1,14 @@
 import logging
 
+from core.rate_limit import contact_rate_limit
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request
 from pydantic import BaseModel, EmailStr, Field
-
-from core.rate_limit import contact_rate_limit
 from schemas.common import ErrorResponse, OkResponse
 from services.email_service import send_contact_emails, validate_email_configuration
 
-router = APIRouter(prefix="/backend/contact", tags=["contact"], dependencies=[Depends(contact_rate_limit)])
+router = APIRouter(
+    prefix="/backend/contact", tags=["contact"], dependencies=[Depends(contact_rate_limit)]
+)
 logger = logging.getLogger(__name__)
 
 SUPPORTED_LANGS = {"pl", "en", "no"}
@@ -25,7 +26,7 @@ def _normalize_lang(payload_lang: str | None, accept_language: str | None) -> st
         if base == "nb":
             return "no"
 
-    return "pl"
+    return "en"
 
 
 class ContactIn(BaseModel):
@@ -33,8 +34,12 @@ class ContactIn(BaseModel):
     email: EmailStr = Field(description="Sender email address.")
     message: str = Field(min_length=20, max_length=4000, description="Contact message body.")
     company: str | None = Field(default=None, max_length=120, description="Optional company name.")
-    website: str | None = Field(default=None, max_length=200, description="Optional website or honeypot field.")
-    lang: str | None = Field(default=None, max_length=8, description="Preferred language: pl, en, or no.")
+    website: str | None = Field(
+        default=None, max_length=200, description="Optional website or honeypot field."
+    )
+    lang: str | None = Field(
+        default=None, max_length=8, description="Preferred language: pl, en, or no."
+    )
     ask_ai_direction: bool = Field(
         default=False,
         description="Whether to include an AI-assisted technical direction in the autoresponder.",
@@ -49,10 +54,13 @@ class ContactIn(BaseModel):
     responses={
         422: {"model": ErrorResponse, "description": "Validation error."},
         429: {"model": ErrorResponse, "description": "Contact form rate limit exceeded."},
-        502: {"model": ErrorResponse, "description": "Email delivery could not be scheduled or sent."},
+        502: {
+            "model": ErrorResponse,
+            "description": "Email delivery could not be scheduled or sent.",
+        },
     },
 )
-def send_contact(payload: ContactIn, bg: BackgroundTasks, request: Request):
+def send_contact(payload: ContactIn, bg: BackgroundTasks, request: Request) -> dict[str, bool]:
     """Queue contact form email delivery.
 
     Args:
@@ -63,6 +71,10 @@ def send_contact(payload: ContactIn, bg: BackgroundTasks, request: Request):
     Raises:
         HTTPException: If email delivery cannot be scheduled.
     """
+
+    if payload.website and payload.website.strip():
+        logger.info("Contact form honeypot submission ignored.")
+        return {"ok": True}
 
     try:
         validate_email_configuration()
@@ -81,4 +93,6 @@ def send_contact(payload: ContactIn, bg: BackgroundTasks, request: Request):
         return {"ok": True}
     except RuntimeError as exc:
         logger.exception("Contact email delivery could not be scheduled.")
-        raise HTTPException(status_code=502, detail="Email service temporarily unavailable.") from exc
+        raise HTTPException(
+            status_code=502, detail="Email service temporarily unavailable."
+        ) from exc
