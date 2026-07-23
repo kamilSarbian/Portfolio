@@ -30,7 +30,7 @@ export default function Footer() {
     <footer className="footer">
       <div>{t("home.footer.location")}</div>
 
-      <nav className="footer-links" aria-label="Footer links">
+      <nav className="footer-links" aria-label={t("home.footer.linksLabel")}>
         <a className="footer-icon-link" href="mailto:sarbian.kamil@gmail.com" aria-label={t("home.email")}>
           {icons.email}
         </a>

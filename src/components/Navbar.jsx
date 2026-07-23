@@ -69,7 +69,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
   return (
     <header className="navbar">
       <button type="button" className="brand" onClick={onGoHome}>
-        <div className="nav-avatar" aria-label="Avatar">
+        <div className="nav-avatar">
           <img src="/avatar.png" alt="Kamil Sarbian" className="nav-avatar" />
         </div>
 
@@ -83,7 +83,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
       <button
         type="button"
         className="nav-hamburger"
-        aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+        aria-label={t(menuOpen ? "nav.closeMenu" : "nav.openMenu")}
         aria-expanded={menuOpen}
         onClick={() => setMenuOpen((value) => !value)}
       >
@@ -94,11 +94,11 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
 
       <div className="nav-actions nav-actions--desktop">
         <button type="button" className={active === "home" ? "btn primary" : "btn"} onClick={onGoHome}>
-          {t("nav.home") || "Home"}
+          {t("nav.home")}
         </button>
 
         <button type="button" className={active === "projects" ? "btn primary" : "btn"} onClick={onGoProjects}>
-          {t("nav.projects") || "Projects"}
+          {t("nav.projects")}
         </button>
 
         <div className="lang" ref={langRef}>
@@ -109,7 +109,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
             aria-expanded={langOpen}
             onClick={() => setLangOpen((value) => !value)}
           >
-            {t("nav.language") || "Language"}
+            {t("nav.language")}
           </button>
 
           {langOpen && (
@@ -120,7 +120,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
                 role="menuitem"
                 onClick={() => chooseLanguage("pl")}
               >
-                {t("nav.langPl") || "Polski"}
+                {t("nav.langPl")}
               </button>
 
               <button
@@ -129,7 +129,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
                 role="menuitem"
                 onClick={() => chooseLanguage("en")}
               >
-                {t("nav.langEn") || "English"}
+                {t("nav.langEn")}
               </button>
 
               <button
@@ -138,26 +138,32 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
                 role="menuitem"
                 onClick={() => chooseLanguage("no")}
               >
-                {t("nav.langNo") || "Norsk"}
+                {t("nav.langNo")}
               </button>
             </div>
           )}
         </div>
 
-        <button type="button" className="theme-btn" aria-pressed={theme === "light"} onClick={onToggleTheme}>
+        <button
+          type="button"
+          className="theme-btn"
+          aria-label={t("nav.toggleTheme")}
+          aria-pressed={theme === "light"}
+          onClick={onToggleTheme}
+        >
           <span aria-hidden="true">{theme === "dark" ? "☀" : "☾"}</span>
-          <span>{theme === "dark" ? "Light" : "Dark"}</span>
+          <span>{t(theme === "dark" ? "nav.light" : "nav.dark")}</span>
         </button>
       </div>
 
       {menuOpen && (
         <div className="nav-drawer">
           <button type="button" className={active === "home" ? "btn primary" : "btn"} onClick={() => { setMenuOpen(false); onGoHome(); }}>
-            {t("nav.home") || "Home"}
+            {t("nav.home")}
           </button>
 
           <button type="button" className={active === "projects" ? "btn primary" : "btn"} onClick={() => { setMenuOpen(false); onGoProjects(); }}>
-            {t("nav.projects") || "Projects"}
+            {t("nav.projects")}
           </button>
 
           <div className="nav-drawer-row">
@@ -169,7 +175,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
                 aria-expanded={langOpen}
                 onClick={() => setLangOpen((value) => !value)}
               >
-                {t("nav.language") || "Language"}
+                {t("nav.language")}
               </button>
 
               {langOpen && (
@@ -183,7 +189,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
                       setMenuOpen(false);
                     }}
                   >
-                    {t("nav.langPl") || "Polski"}
+                    {t("nav.langPl")}
                   </button>
 
                   <button
@@ -195,7 +201,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
                       setMenuOpen(false);
                     }}
                   >
-                    {t("nav.langEn") || "English"}
+                    {t("nav.langEn")}
                   </button>
 
                   <button
@@ -207,7 +213,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
                       setMenuOpen(false);
                     }}
                   >
-                    {t("nav.langNo") || "Norsk"}
+                    {t("nav.langNo")}
                   </button>
                 </div>
               )}
@@ -216,7 +222,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
             <button
               type="button"
               className="theme-btn theme-btn--icon"
-              aria-label="Toggle color theme"
+              aria-label={t("nav.toggleTheme")}
               aria-pressed={theme === "light"}
               onClick={onToggleTheme}
             >

@@ -12,7 +12,7 @@ const GEO_TIMEOUT_MS = 2000;
 function toHtmlLang(lng) {
   const base = (lng || "en").slice(0, 2);
   if (base === "pl") return "pl";
-  if (base === "no" || base === "nb") return "no";
+  if (base === "no" || base === "nb") return "nb";
   return "en";
 }
 

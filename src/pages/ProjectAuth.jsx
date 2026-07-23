@@ -89,7 +89,7 @@ export default function ProjectAuth({ onGoProjects }) {
               <p>{Array.isArray(stack) ? stack.join(" · ") : ""}</p>
             </div>
 
-            <nav className="project-detail-links" aria-label="Project links">
+            <nav className="project-detail-links" aria-label={t("projects.linksLabel")}>
               <button type="button" className="inline-link" onClick={onGoProjects}>
                 {t("projects.backToCaseStudies")}
               </button>

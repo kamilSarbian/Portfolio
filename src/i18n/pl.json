@@ -8,6 +8,9 @@
     "langNo": "Norweski",
     "light": "Jasny",
     "dark": "Ciemny",
+    "openMenu": "Otwórz menu nawigacji",
+    "closeMenu": "Zamknij menu nawigacji",
+    "toggleTheme": "Przełącz motyw kolorystyczny",
     "openTo": "Software Developer · Backend · AI Automation",
     "openToMobile": "Software Developer · Backend & AI"
   },
@@ -79,7 +82,8 @@
       ]
     },
     "footer": {
-      "location": "Oslo area, Norway — open to remote / hybrid opportunities"
+      "location": "Okolice Oslo, Norwegia — otwarty na pracę zdalną lub hybrydową",
+      "linksLabel": "Linki w stopce"
     },
     "quickTitle": "SZYBKIE INFO",
     "stack": "Stack",
@@ -116,6 +120,7 @@
     "privateResearch": "Prywatne materiały badawcze 🔒",
     "github": "GitHub",
     "apiDocs": "Dokumentacja API",
+    "linksLabel": "Linki projektu",
     "featuredLabel": "Wyróżnione case study",
     "secondaryLabel": "Wspierające case study",
     "caseLabels": {

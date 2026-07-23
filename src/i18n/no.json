@@ -8,6 +8,9 @@
     "langNo": "Norsk",
     "light": "Lys",
     "dark": "Mørk",
+    "openMenu": "Åpne navigasjonsmenyen",
+    "closeMenu": "Lukk navigasjonsmenyen",
+    "toggleTheme": "Bytt fargetema",
     "openTo": "Programvareutvikler · Backend · AI-automatisering",
     "openToMobile": "Programvareutvikler · Backend og AI"
   },
@@ -79,7 +82,8 @@
       ]
     },
     "footer": {
-      "location": "Oslo area, Norway — open to remote / hybrid opportunities"
+      "location": "Oslo-området, Norge — åpen for fjernarbeid og hybridarbeid",
+      "linksLabel": "Lenker i bunnteksten"
     },
     "quickTitle": "RASK INFO",
     "stack": "Stack",
@@ -116,6 +120,7 @@
     "privateResearch": "Privat innsiktsmateriale 🔒",
     "github": "GitHub",
     "apiDocs": "API-dokumentasjon",
+    "linksLabel": "Prosjektlenker",
     "featuredLabel": "Utvalgt case study",
     "secondaryLabel": "Supplerende case study",
     "caseLabels": {
