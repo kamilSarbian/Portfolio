@@ -3,8 +3,21 @@ import Button from "../components/Button";
 import ContactForm from "../components/ContactForm";
 import { useTranslation } from "react-i18next";
 
+const STACK_ROWS = [
+  ["backend", "backendValue"],
+  ["data", "dataValue"],
+  ["integrations", "integrationsValue"],
+  ["automation", "automationValue"],
+  ["infrastructure", "infrastructureValue"],
+];
+
 export default function Home({ onGoProjects }) {
   const { t } = useTranslation();
+  const howIWorkSteps = t("home.howIWork.steps", { returnObjects: true });
+  const methods = t("home.stackSection.methods", { returnObjects: true });
+  const contactTopics = t("home.contactSection.topics", {
+    returnObjects: true,
+  });
 
   return (
     <div className="home-grid">
@@ -25,7 +38,7 @@ export default function Home({ onGoProjects }) {
           </Button>
 
           <a className="btn ghost" href="#contact">
-            {t("home.cta.primary")}
+            {t("home.heroContact")}
           </a>
         </div>
 
@@ -53,104 +66,111 @@ export default function Home({ onGoProjects }) {
         </div>
       </Card>
 
-      <div className="home-side home-side--top">
+      <Card data-home-panel="stack">
+        <h2 className="section-heading">{t("home.stackSection.title")}</h2>
+
+        <dl className="stack-summary">
+          {STACK_ROWS.map(([labelKey, valueKey]) => (
+            <div key={labelKey}>
+              <dt>{t(`home.stackSection.${labelKey}`)}</dt>
+              <dd>{t(`home.stackSection.${valueKey}`)}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <section className="stack-methods">
+          <h3>{t("home.stackSection.methodsTitle")}</h3>
+          <ul className="method-chips" role="list">
+            {Array.isArray(methods) &&
+              methods.map((method) => <li key={method}>{method}</li>)}
+          </ul>
+        </section>
+      </Card>
+
+      <div className="home-full-row">
         <Card>
           <h2 className="section-heading">
             {t("home.howIWork.title")}
           </h2>
 
-          <div className="how-work-list">
-            <p>{t("home.howIWork.a")}</p>
-            <p>{t("home.howIWork.b")}</p>
-            <p>{t("home.howIWork.c")}</p>
-            {t("home.howIWork.d") && <p>{t("home.howIWork.d")}</p>}
-            {t("home.howIWork.e") && <p>{t("home.howIWork.e")}</p>}
-          </div>
-        </Card>
-
-        <Card>
-          <h2 className="section-heading">{t("home.stackSection.title")}</h2>
-
-          <div className="stack-summary">
-            <div>
-              <strong>{t("home.stackSection.backend")}</strong>
-              <span>{t("home.stackSection.backendValue")}</span>
-            </div>
-
-            <div>
-              <strong>{t("home.stackSection.database")}</strong>
-              <span>{t("home.stackSection.databaseValue")}</span>
-            </div>
-
-            <div>
-              <strong>{t("home.stackSection.automation")}</strong>
-              <span>{t("home.stackSection.automationValue")}</span>
-            </div>
-
-            <div>
-              <strong>{t("home.stackSection.tools")}</strong>
-              <span>{t("home.stackSection.toolsValue")}</span>
-            </div>
-          </div>
+          <ol className="how-work-list" role="list">
+            {Array.isArray(howIWorkSteps) &&
+              howIWorkSteps.map((step, index) => (
+                <li key={step}>
+                  <span className="how-work-number" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span>{step}</span>
+                </li>
+              ))}
+          </ol>
         </Card>
       </div>
 
-      <Card>
-        <h2 className="section-heading">
-          {t("home.cta.title")}
-        </h2>
+      <div className="home-full-row">
+        <Card id="contact">
+          <h2 className="section-heading">{t("home.contactSection.title")}</h2>
 
-        <p className="p" style={{ marginTop: 8 }}>
-          {t("home.cta.body")}
-        </p>
+          <div className="home-contact-grid">
+            <section className="home-contact-details">
+              <h3 className="home-contact-subheading">
+                {t("home.contactSection.detailsTitle")}
+              </h3>
+              <p className="home-contact-copy">{t("home.contactSection.body")}</p>
 
-        <div className="divider" />
+              <div className="info">
+                <ul className="contact-list">
+                  <li>
+                    <strong>{t("home.email")}:</strong>{" "}
+                    <a href="mailto:sarbian.kamil@gmail.com">sarbian.kamil@gmail.com</a>
+                  </li>
 
-        <div className="info" style={{ marginTop: 6 }}>
-          <ul className="contact-list" style={{ marginTop: 0 }}>
-            <li>
-              <strong>{t("home.email")}:</strong>{" "}
-              <a href="mailto:sarbian.kamil@gmail.com">sarbian.kamil@gmail.com</a>
-            </li>
+                  <li>
+                    <strong>{t("home.github")}:</strong>{" "}
+                    <a
+                      href="https://github.com/kamilSarbian"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      github.com/kamilSarbian
+                    </a>
+                  </li>
 
-            <li>
-              <strong>{t("home.github")}:</strong>{" "}
-              <a
-                href="https://github.com/kamilSarbian"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                github.com/kamilSarbian
-              </a>
-            </li>
+                  <li>
+                    <strong>{t("home.linkedin")}:</strong>{" "}
+                    <a
+                      href="https://www.linkedin.com/in/kamil-sarbian-3399991ba/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      linkedin.com/in/kamilsarbian
+                    </a>
+                  </li>
 
-            <li>
-              <strong>{t("home.linkedin")}:</strong>{" "}
-              <a
-                href="https://www.linkedin.com/in/kamil-sarbian-3399991ba/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                linkedin.com/in/kamilsarbian
-              </a>
-            </li>
+                  <li>
+                    <strong>{t("home.location")}:</strong> Oslo / {t("home.typeOfWork")}
+                  </li>
+                </ul>
+              </div>
 
-            <li>
-              <strong>{t("home.location")}:</strong> Oslo / {t("home.typeOfWork")}
-            </li>
-          </ul>
-        </div>
-      </Card>
+              <div className="home-contact-topics">
+                <h4>{t("home.contactSection.topicsTitle")}</h4>
+                <ul>
+                  {Array.isArray(contactTopics) &&
+                    contactTopics.map((topic) => <li key={topic}>{topic}</li>)}
+                </ul>
+              </div>
+            </section>
 
-      <Card id="contact">
-        <h2 className="section-heading">{t("home.messageTitle")}</h2>
-        <p className="p" style={{ marginTop: 6 }}>
-          {t("home.messageBody")}
-        </p>
-
-        <div className="divider" />
-        <ContactForm />
-      </Card>
+            <section className="home-contact-form">
+              <h3 className="home-contact-subheading">
+                {t("home.contactSection.formTitle")}
+              </h3>
+              <ContactForm />
+            </section>
+          </div>
+        </Card>
+      </div>
     </div>
   );
 }

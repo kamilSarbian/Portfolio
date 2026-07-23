@@ -17,9 +17,10 @@
     "headline": "Software Developer building backend systems, AI automation, and research-led digital products",
     "intro": "I combine software engineering, automation, and product discovery to turn real workflows and user needs into practical, reliable digital solutions.",
     "heroTech": "Python · FastAPI · PostgreSQL · REST APIs · AI Workflows · Linux/VPS",
-    "whyTitle": "What I build",
+    "whyTitle": "What I Build",
     "whyBody": "I work across backend engineering, AI automation, and early-stage digital products—starting with the problem, workflow, and available evidence before implementation.",
     "seeProjects": "View case studies",
+    "heroContact": "Get in Touch",
     "backendDocs": "API documentation (docs)",
     "tip": "The projects show how I approach backend systems, integrations, automation, and production-minded API design.",
     "demoInfo": "The demo runs on a real API and cloud infrastructure:",
@@ -34,27 +35,49 @@
     },
     "howIWork": {
       "title": "How I Work",
-      "a": "I start from the workflow, not the framework.",
-      "b": "I build iteratively: first making systems work reliably, then improving structure, maintainability, and deployment flow.",
-      "c": "I focus on how systems communicate, where bottlenecks appear, and how processes can be simplified.",
-      "d": "I run a private AI automation environment on a Linux VPS for technical research, system monitoring, and everyday automation tasks.",
-      "e": "I validate needs, workflows, and operational constraints before committing to technical implementation."
+      "steps": [
+        "I clarify the problem, the people involved, and the operational context.",
+        "I map the current workflow, information flow, dependencies, and bottlenecks.",
+        "I use product discovery and targeted research to test assumptions before choosing a solution.",
+        "I synthesize findings into patterns, priorities, constraints, and open questions.",
+        "I create lightweight prototypes to turn the direction into something concrete and testable.",
+        "I collect feedback and validate the direction before defining the implementation scope.",
+        "I implement the solution with clear APIs, validation, data models, and a maintainable structure.",
+        "I iteratively improve reliability, deployment, monitoring, and maintainability."
+      ]
     },
     "stackSection": {
-      "title": "Tech Stack",
+      "title": "Technical Stack",
       "backend": "Backend",
-      "backendValue": "Python, FastAPI, REST APIs",
-      "database": "Database",
-      "databaseValue": "PostgreSQL, SQL",
-      "automation": "AI / Automation",
-      "automationValue": "LLMs, embeddings, automation workflows",
-      "tools": "Tools",
-      "toolsValue": "Git, Vercel, Linux VPS"
+      "backendValue": "Python · FastAPI · REST APIs",
+      "data": "Data",
+      "dataValue": "PostgreSQL · SQL · SQLAlchemy",
+      "integrations": "Integrations",
+      "integrationsValue": "API integrations · External APIs · Middleware",
+      "automation": "AI Automation",
+      "automationValue": "LLM workflows · Persistent memory · Scheduled tasks",
+      "infrastructure": "Infrastructure, Deployment & Tooling",
+      "infrastructureValue": "Linux/VPS · Docker · Git · Vercel · Render",
+      "methodsTitle": "Methods",
+      "methods": [
+        "Product discovery",
+        "Research",
+        "Insight analysis",
+        "Prototyping",
+        "Iterative testing"
+      ]
     },
-    "cta": {
-      "title": "Have a workflow that should be automated?",
-      "body": "Need a backend API, integration, or internal tool? Send a short description of the problem — I’ll reply with a practical technical direction.",
-      "primary": "Discuss a workflow"
+    "contactSection": {
+      "title": "Start a Conversation",
+      "detailsTitle": "Have a project, workflow, or technical challenge?",
+      "body": "Describe what you are trying to build, improve, or automate. I’ll reply with a practical technical direction.",
+      "formTitle": "Send a Message",
+      "topicsTitle": "You can contact me about",
+      "topics": [
+        "Backend APIs and integrations",
+        "AI automation and workflow improvements",
+        "Software development opportunities"
+      ]
     },
     "footer": {
       "location": "Oslo area, Norway — open to remote / hybrid opportunities"
@@ -78,9 +101,7 @@
     "certs": "Certificates",
     "education": "Education",
     "download": "Download",
-    "nationality": "Nationality",
-    "messageTitle": "DISCUSS A WORKFLOW",
-    "messageBody": "Describe the workflow or backend problem."
+    "nationality": "Nationality"
   },
   "projects": {
     "label": "PROJECTS",
@@ -483,8 +504,7 @@
     "error": "Error while checking password."
   },
   "contactForm": {
-    "send": "Send workflow details →",
-    "clear": "Clear",
+    "send": "Send message →",
     "sending": "Sending...",
     "sendingWithAi": "Sending... JARVIS is analyzing your request. This may take a few seconds.",
     "success": "Message sent successfully. Thank you!",
@@ -502,7 +522,7 @@
       "name": "Name",
       "email": "E-mail",
       "company": "Company (optional)",
-      "message": "Describe the workflow or backend problem..."
+      "message": "Tell me briefly what you’re working on or what you need help with..."
     },
     "errors": {
       "nameMin": "Please enter your name (min. 2 characters).",

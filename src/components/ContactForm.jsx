@@ -81,14 +81,6 @@ export default function ContactForm() {
     return shouldShowError(field) ? "textarea textarea--error" : "textarea";
   }
 
-  function resetForm() {
-    setForm({ name: "", email: "", company: "", message: "", website: "" });
-    setTouched({ name: false, email: false, message: false });
-    setAskAiDirection(false);
-    setSubmittedOnce(false);
-    setStatus(null);
-  }
-
   async function onSubmit(e) {
     e.preventDefault();
     setStatus(null);
@@ -156,38 +148,40 @@ export default function ContactForm() {
         />
       </div>
 
-      <div className="field">
-        <label className="field-label" htmlFor="contact-name">
-          {t("contactForm.labels.name")}
-        </label>
-        <input
-          id="contact-name"
-          className={inputClass("name")}
-          placeholder={t("contactForm.placeholders.name")}
-          value={form.name}
-          onChange={(e) => setField("name", e.target.value)}
-          onBlur={() => markTouched("name")}
-          aria-invalid={shouldShowError("name")}
-          aria-describedby={shouldShowError("name") ? "contact-name-error" : undefined}
-        />
-        {shouldShowError("name") ? <div id="contact-name-error" className="field-error">{errors.name}</div> : null}
-      </div>
+      <div className="contact-form-primary-fields">
+        <div className="field">
+          <label className="field-label" htmlFor="contact-name">
+            {t("contactForm.labels.name")}
+          </label>
+          <input
+            id="contact-name"
+            className={inputClass("name")}
+            placeholder={t("contactForm.placeholders.name")}
+            value={form.name}
+            onChange={(e) => setField("name", e.target.value)}
+            onBlur={() => markTouched("name")}
+            aria-invalid={shouldShowError("name")}
+            aria-describedby={shouldShowError("name") ? "contact-name-error" : undefined}
+          />
+          {shouldShowError("name") ? <div id="contact-name-error" className="field-error">{errors.name}</div> : null}
+        </div>
 
-      <div className="field">
-        <label className="field-label" htmlFor="contact-email">
-          {t("contactForm.labels.email")}
-        </label>
-        <input
-          id="contact-email"
-          className={inputClass("email")}
-          placeholder={t("contactForm.placeholders.email")}
-          value={form.email}
-          onChange={(e) => setField("email", e.target.value)}
-          onBlur={() => markTouched("email")}
-          aria-invalid={shouldShowError("email")}
-          aria-describedby={shouldShowError("email") ? "contact-email-error" : undefined}
-        />
-        {shouldShowError("email") ? <div id="contact-email-error" className="field-error">{errors.email}</div> : null}
+        <div className="field">
+          <label className="field-label" htmlFor="contact-email">
+            {t("contactForm.labels.email")}
+          </label>
+          <input
+            id="contact-email"
+            className={inputClass("email")}
+            placeholder={t("contactForm.placeholders.email")}
+            value={form.email}
+            onChange={(e) => setField("email", e.target.value)}
+            onBlur={() => markTouched("email")}
+            aria-invalid={shouldShowError("email")}
+            aria-describedby={shouldShowError("email") ? "contact-email-error" : undefined}
+          />
+          {shouldShowError("email") ? <div id="contact-email-error" className="field-error">{errors.email}</div> : null}
+        </div>
       </div>
 
       <div className="field">
@@ -246,10 +240,6 @@ export default function ContactForm() {
               ? t("contactForm.sendingWithAi")
               : t("contactForm.sending")
             : t("contactForm.send")}
-        </Button>
-
-        <Button variant="ghost" type="button" disabled={loading} onClick={resetForm}>
-          {t("contactForm.clear")}
         </Button>
       </div>
     </form>

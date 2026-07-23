@@ -19,6 +19,7 @@
     "whyTitle": "Hva jeg bygger",
     "whyBody": "Jeg arbeider med backend-utvikling, AI-automatisering og tidlige digitale produktkonsepter – med utgangspunkt i problemet, arbeidsflyten og tilgjengelig innsikt før implementering.",
     "seeProjects": "Se casestudier",
+    "heroContact": "Ta kontakt",
     "backendDocs": "API-dokumentasjon (docs)",
     "tip": "Prosjektene viser min tilnærming til backend-systemer, integrasjoner, automatisering og praktisk API-design.",
     "demoInfo": "Demoen kjører på et ekte API og skyinfrastruktur:",
@@ -33,27 +34,49 @@
     },
     "howIWork": {
       "title": "Hvordan jeg jobber",
-      "a": "Jeg starter med arbeidsflyten, ikke frameworket.",
-      "b": "Jeg bygger iterativt: først systemer som fungerer pålitelig, deretter forbedrer jeg struktur, vedlikeholdbarhet og utrullingsprosess.",
-      "c": "Jeg fokuserer på hvordan systemer kommuniserer, hvor flaskehalser oppstår, og hvordan prosesser kan forenkles.",
-      "d": "Jeg drifter et privat AI-automatiseringsmiljø på en Linux-VPS, brukt til teknisk research, systemovervåking og daglige automatiseringsoppgaver.",
-      "e": "Jeg validerer behov, arbeidsflyter og operative begrensninger før jeg går videre til teknisk implementering."
+      "steps": [
+        "Jeg avklarer problemet, hvem som er involvert, og den operative konteksten.",
+        "Jeg kartlegger dagens arbeidsflyt, informasjonsflyt, avhengigheter og flaskehalser.",
+        "Jeg bruker innsiktsarbeid og målrettede undersøkelser for å teste antakelser før jeg velger løsning.",
+        "Jeg strukturerer funn i mønstre, prioriteringer, begrensninger og åpne spørsmål.",
+        "Jeg lager enkle prototyper for å gjøre retningen konkret og mulig å teste.",
+        "Jeg samler inn tilbakemeldinger og validerer retningen før jeg fastsetter implementeringsomfanget.",
+        "Jeg implementerer løsningen med tydelige API-er, validering, datamodeller og en vedlikeholdbar struktur.",
+        "Jeg forbedrer pålitelighet, utrulling, overvåking og vedlikeholdbarhet gjennom kontinuerlig iterasjon."
+      ]
     },
     "stackSection": {
       "title": "Teknologistakk",
       "backend": "Backend",
-      "backendValue": "Python, FastAPI, REST APIs",
-      "database": "Database",
-      "databaseValue": "PostgreSQL, SQL",
-      "automation": "AI / Automation",
-      "automationValue": "LLMs, embeddings, automation workflows",
-      "tools": "Verktøy",
-      "toolsValue": "Git, Vercel, Linux VPS"
+      "backendValue": "Python · FastAPI · REST API-er",
+      "data": "Data",
+      "dataValue": "PostgreSQL · SQL · SQLAlchemy",
+      "integrations": "Integrasjoner",
+      "integrationsValue": "API-integrasjoner · Eksterne API-er · Middleware",
+      "automation": "AI-automatisering",
+      "automationValue": "LLM-arbeidsflyter · Vedvarende minne · Planlagte oppgaver",
+      "infrastructure": "Infrastruktur, utrulling og verktøy",
+      "infrastructureValue": "Linux/VPS · Docker · Git · Vercel · Render",
+      "methodsTitle": "Arbeidsmetoder",
+      "methods": [
+        "Innsiktsarbeid",
+        "Research",
+        "Innsiktsanalyse",
+        "Prototyping",
+        "Iterativ testing"
+      ]
     },
-    "cta": {
-      "title": "Har du en arbeidsflyt som bør automatiseres?",
-      "body": "Trenger du et backend-API, en integrasjon eller et internt verktøy? Send en kort beskrivelse av problemet — jeg svarer med en praktisk teknisk retning.",
-      "primary": "Diskuter en arbeidsflyt"
+    "contactSection": {
+      "title": "Start en samtale",
+      "detailsTitle": "Har du et prosjekt, en arbeidsflyt eller en teknisk utfordring?",
+      "body": "Beskriv hva du ønsker å bygge, forbedre eller automatisere. Jeg svarer med et praktisk forslag til teknisk retning.",
+      "formTitle": "Send en melding",
+      "topicsTitle": "Du kan kontakte meg om",
+      "topics": [
+        "Backend-API-er og integrasjoner",
+        "AI-automatisering og forbedring av arbeidsflyter",
+        "Jobbmuligheter og samarbeid innen programvareutvikling"
+      ]
     },
     "footer": {
       "location": "Oslo area, Norway — open to remote / hybrid opportunities"
@@ -77,9 +100,7 @@
     "certs": "Sertifikater",
     "education": "Utdanning",
     "download": "Last ned",
-    "nationality": "Nasjonalitet",
-    "messageTitle": "DISKUTER EN ARBEIDSFLYT",
-    "messageBody": "Beskriv arbeidsflyten eller backend-problemet."
+    "nationality": "Nasjonalitet"
   },
   "projects": {
     "label": "PROSJEKTER",
@@ -480,8 +501,7 @@
     "error": "Feil under passordsjekk."
   },
   "contactForm": {
-    "send": "Send beskrivelse av arbeidsflyten →",
-    "clear": "Tøm",
+    "send": "Send melding →",
     "sending": "Sender...",
     "sendingWithAi": "Sender... JARVIS analyserer meldingen. Dette kan ta noen sekunder.",
     "success": "Meldingen er sendt. Takk!",
@@ -499,7 +519,7 @@
       "name": "Navn",
       "email": "E-post",
       "company": "Firma (valgfritt)",
-      "message": "Beskriv arbeidsflyten eller backend-problemet..."
+      "message": "Beskriv kort hva du jobber med eller hva du trenger hjelp til..."
     },
     "errors": {
       "nameMin": "Vennligst skriv inn navn (min. 2 tegn).",

@@ -19,6 +19,7 @@
     "whyTitle": "Co buduję",
     "whyBody": "Łączę backend, automatyzację AI i wczesne koncepcje produktów cyfrowych — zaczynając od problemu, procesu i dostępnych danych, zanim przejdę do implementacji.",
     "seeProjects": "Zobacz studia przypadków",
+    "heroContact": "Skontaktuj się",
     "backendDocs": "Dokumentacja API (docs)",
     "tip": "Projekty pokazują moje podejście do backendu, integracji, automatyzacji i praktycznego projektowania API.",
     "demoInfo": "Demo działa na rzeczywistym API i infrastrukturze chmurowej:",
@@ -33,27 +34,49 @@
     },
     "howIWork": {
       "title": "Jak pracuję",
-      "a": "Zaczynam od workflow, nie od frameworka.",
-      "b": "Buduję iteracyjnie: najpierw system, który działa niezawodnie, potem poprawiam strukturę, utrzymywalność i proces wdrożenia.",
-      "c": "Skupiam się na tym, jak systemy się komunikują, gdzie powstają wąskie gardła i jak można uprościć procesy.",
-      "d": "Utrzymuję prywatne środowisko automatyzacji AI na serwerze VPS z Linuxem, wykorzystywane do researchu technicznego, monitoringu systemu i codziennych automatyzacji.",
-      "e": "Weryfikuję potrzeby, procesy i ograniczenia operacyjne, zanim przejdę do implementacji technicznej."
+      "steps": [
+        "Doprecyzowuję problem, zaangażowane osoby i kontekst operacyjny.",
+        "Mapuję obecny workflow, przepływ informacji, zależności i wąskie gardła.",
+        "Prowadzę product discovery i ukierunkowane badania, aby sprawdzić założenia przed wyborem rozwiązania.",
+        "Porządkuję wnioski w powtarzające się wzorce, priorytety, ograniczenia i otwarte pytania.",
+        "Tworzę proste prototypy, aby przekształcić kierunek w konkretną formę możliwą do przetestowania.",
+        "Zbieram informacje zwrotne i weryfikuję kierunek przed określeniem zakresu implementacji.",
+        "Implementuję rozwiązanie z przejrzystymi API, walidacją, modelami danych i łatwą w utrzymaniu strukturą.",
+        "Iteracyjnie poprawiam niezawodność, wdrażanie, monitoring i łatwość utrzymania rozwiązania."
+      ]
     },
     "stackSection": {
       "title": "Technologie",
       "backend": "Backend",
-      "backendValue": "Python, FastAPI, REST APIs",
-      "database": "Baza danych",
-      "databaseValue": "PostgreSQL, SQL",
-      "automation": "AI / Automation",
-      "automationValue": "LLMs, embeddings, automation workflows",
-      "tools": "Narzędzia",
-      "toolsValue": "Git, Vercel, Linux VPS"
+      "backendValue": "Python · FastAPI · REST APIs",
+      "data": "Dane",
+      "dataValue": "PostgreSQL · SQL · SQLAlchemy",
+      "integrations": "Integracje",
+      "integrationsValue": "Integracje API · Zewnętrzne API · Middleware",
+      "automation": "Automatyzacja AI",
+      "automationValue": "Workflow oparte na LLM · Trwała pamięć · Zadania cykliczne",
+      "infrastructure": "Infrastruktura, wdrażanie i narzędzia",
+      "infrastructureValue": "Linux/VPS · Docker · Git · Vercel · Render",
+      "methodsTitle": "Metody pracy",
+      "methods": [
+        "Product discovery",
+        "Badania",
+        "Analiza insightów",
+        "Prototypowanie",
+        "Iteracyjne testowanie"
+      ]
     },
-    "cta": {
-      "title": "Masz workflow, który warto zautomatyzować?",
-      "body": "Potrzebujesz backend API, integracji albo narzędzia wewnętrznego? Wyślij krótki opis problemu — odpowiem z praktycznym kierunkiem technicznym.",
-      "primary": "Omów workflow"
+    "contactSection": {
+      "title": "Rozpocznij rozmowę",
+      "detailsTitle": "Masz projekt, proces lub wyzwanie techniczne?",
+      "body": "Opisz, co chcesz zbudować, usprawnić lub zautomatyzować. Odpowiem z praktyczną propozycją kierunku technicznego.",
+      "formTitle": "Wyślij wiadomość",
+      "topicsTitle": "Możesz skontaktować się ze mną w sprawie",
+      "topics": [
+        "API backendowych i integracji",
+        "Automatyzacji AI i usprawniania procesów",
+        "Ofert pracy i współpracy przy tworzeniu oprogramowania"
+      ]
     },
     "footer": {
       "location": "Oslo area, Norway — open to remote / hybrid opportunities"
@@ -77,9 +100,7 @@
     "certs": "Certyfikaty",
     "education": "Wykształcenie",
     "download": "Pobierz",
-    "nationality": "Narodowość",
-    "messageTitle": "OMÓW PROCES",
-    "messageBody": "Opisz problem lub workflow."
+    "nationality": "Narodowość"
   },
   "projects": {
     "label": "PROJEKTY",
@@ -480,8 +501,7 @@
     "error": "Błąd sprawdzania. Backend może nie działać."
   },
   "contactForm": {
-    "send": "Wyślij opis procesu →",
-    "clear": "Wyczyść",
+    "send": "Wyślij wiadomość →",
     "sending": "Wysyłanie...",
     "sendingWithAi": "Wysyłanie... JARVIS analizuje wiadomość. To może potrwać kilka sekund.",
     "success": "Wiadomość została wysłana. Dziękuję!",
@@ -499,7 +519,7 @@
       "name": "Imię",
       "email": "E-mail",
       "company": "Firma (opcjonalnie)",
-      "message": "Opisz problem lub workflow..."
+      "message": "Napisz krótko, nad czym pracujesz lub czego potrzebujesz..."
     },
     "errors": {
       "nameMin": "Podaj imię (min. 2 znaki).",
