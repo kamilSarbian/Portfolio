@@ -38,14 +38,16 @@ export default function AuthApiDemo() {
       const data = await res.json().catch(() => null);
 
       if (!res.ok) {
-        throw new Error(data?.detail || `${t("auth.error") || "Error"} (${res.status})`);
+        throw new Error(data?.detail || `${t("auth.error")} (${res.status})`);
       }
 
       setOut(data);
 
       return data;
     } catch (e) {
-      setError(e?.message || (t("auth.error") || "Error"));
+      setError(
+        e instanceof TypeError ? t("auth.error") : e?.message || t("auth.error"),
+      );
       return null;
     } finally {
       setBusy(false);
@@ -73,13 +75,15 @@ export default function AuthApiDemo() {
       const data = await res.json().catch(() => null);
 
       if (!res.ok) {
-        throw new Error(data?.detail || `${t("auth.error") || "Error"} (${res.status})`);
+        throw new Error(data?.detail || `${t("auth.error")} (${res.status})`);
       }
 
       setOut(data);
       return data;
     } catch (e) {
-      setError(e?.message || (t("auth.error") || "Error"));
+      setError(
+        e instanceof TypeError ? t("auth.error") : e?.message || t("auth.error"),
+      );
       return null;
     } finally {
       setBusy(false);
@@ -123,12 +127,12 @@ export default function AuthApiDemo() {
     <div id="auth-demo" style={{ display: "grid", gap: 12 }}>
       <div className="result" style={{ marginTop: 0 }}>
         <div style={{ fontWeight: 900, marginBottom: 8 }}>
-          {t("auth.demoTitle") || "Demo (API)"}
+          {t("auth.demoTitle")}
         </div>
 
         <div style={{ display: "grid", gap: 10 }}>
           <p className="auth-demo-lead">
-            {t("auth.tokenMissing") || "Use demo credentials to test the authentication flow."}
+            {t("auth.tokenMissing")}
           </p>
 
           <p className="demo-credentials-note">
@@ -137,40 +141,40 @@ export default function AuthApiDemo() {
 
           <div>
             <div style={{ fontWeight: 800, marginBottom: 6, color: "var(--muted)" }}>
-              {t("auth.email") || "Email"}
+              {t("auth.email")}
             </div>
-            <input className="input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" />
+            <input className="input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t("auth.emailPlaceholder")} />
           </div>
 
           <div>
             <div style={{ fontWeight: 800, marginBottom: 6, color: "var(--muted)" }}>
-              {t("auth.password") || "Password"}
+              {t("auth.password")}
             </div>
-            <input className="input" value={password} type="password" onChange={(e) => setPassword(e.target.value)} placeholder="password" />
+            <input className="input" value={password} type="password" onChange={(e) => setPassword(e.target.value)} placeholder={t("auth.passwordPlaceholder")} />
           </div>
 
           <div className="auth-demo-actions auth-demo-actions--primary">
             <Button variant="primary" disabled={busy} onClick={onLogin}>
-              {busy ? (t("auth.loading") || "Loading...") : (t("auth.login") || "Login")}
+              {busy ? t("auth.loading") : t("auth.login")}
             </Button>
 
             <Button variant="ghost" disabled={busy} onClick={isLoggedIn ? onReset : onRegister}>
               {isLoggedIn
-                ? (t("auth.resetSession") || "Reset session")
+                ? t("auth.resetSession")
                 : busy
-                  ? (t("auth.loading") || "Loading...")
-                  : (t("auth.createDemoAccount") || "Create demo account")}
+                  ? t("auth.loading")
+                  : t("auth.createDemoAccount")}
             </Button>
           </div>
 
           {isLoggedIn ? (
             <div className="auth-demo-actions auth-demo-actions--secondary">
               <Button variant="ghost" disabled={busy} onClick={onProfile}>
-                {t("auth.profile") || "Profile"}
+                {t("auth.profile")}
               </Button>
 
               <Button variant="ghost" disabled={busy} onClick={onUsers}>
-                {t("auth.usersAdmin") || "Users (admin)"}
+                {t("auth.usersAdmin")}
               </Button>
 
               <CopyTokenButton token={token} />
@@ -180,7 +184,7 @@ export default function AuthApiDemo() {
 
           {token ? (
             <div className="tip">
-              {t("auth.tokenOk") || "JWT token active - requests include Authorization: Bearer token."}
+              {t("auth.tokenOk")}
             </div>
           ) : null}
         </div>
@@ -188,7 +192,7 @@ export default function AuthApiDemo() {
 
       {error ? <div className="result bad">{error}</div> : null}
 
-      <JsonViewer title={t("auth.response") || "API Response"} data={out} />
+      <JsonViewer title={t("auth.response")} data={out} />
     </div>
   );
 }

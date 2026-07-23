@@ -21,8 +21,8 @@ export default function CopyTokenButton({ token }) {
   return (
     <Button variant="ghost" onClick={onCopy} disabled={!token}>
       {copied
-        ? t("auth.tokenCopied") || "Copied"
-        : t("auth.copyToken") || "Copy JWT"}
+        ? t("auth.tokenCopied")
+        : t("auth.copyToken")}
     </Button>
   );
 }

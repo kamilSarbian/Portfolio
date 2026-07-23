@@ -119,7 +119,11 @@ export default function ImageClassifier() {
         predictions,
       });
     } catch (e) {
-      setError(e?.message || t("imageClassifier.error"));
+      setError(
+        e instanceof TypeError
+          ? t("imageClassifier.error")
+          : e?.message || t("imageClassifier.error"),
+      );
     } finally {
       setBusy(false);
     }
@@ -153,7 +157,7 @@ export default function ImageClassifier() {
 
       <div className="classifier-settings-row">
         <div className="result classifier-setting">
-          <div style={{ fontWeight: 900, marginBottom: 6 }}>{t("imageClassifier.minScore") || "Min score"}</div>
+          <div style={{ fontWeight: 900, marginBottom: 6 }}>{t("imageClassifier.minScore")}</div>
           <input
             className="input"
             type="number"
@@ -166,17 +170,17 @@ export default function ImageClassifier() {
         </div>
 
         <div className="result classifier-setting">
-          <div style={{ fontWeight: 900, marginBottom: 6 }}>{t("imageClassifier.mode") || "Mode"}</div>
+          <div style={{ fontWeight: 900, marginBottom: 6 }}>{t("imageClassifier.mode")}</div>
           <label style={{ display: "flex", gap: 8, alignItems: "center", fontWeight: 800, color: "var(--muted)" }}>
             <input type="checkbox" checked={smartMode} onChange={(e) => setSmartMode(e.target.checked)} />
-            {t("imageClassifier.smartMode") || "Smart mode"}
+            {t("imageClassifier.smartMode")}
           </label>
         </div>
 
         <div className="result classifier-setting">
           <div style={{ fontWeight: 900, marginBottom: 6 }}>
             {t("imageClassifier.topK")}
-            <span className="setting-hint">{t("imageClassifier.maxTopK") || "max 3"}</span>
+            <span className="setting-hint">{t("imageClassifier.maxTopK")}</span>
           </div>
           <input
             className="input"
@@ -208,10 +212,8 @@ export default function ImageClassifier() {
 
       <div className="tip" style={{ marginTop: -2 }}>
         {smartMode
-          ? t("imageClassifier.smartTip") ||
-            "Smart mode uses predefined general categories available on the backend side."
-          : t("imageClassifier.manualTip") ||
-            "Manual mode: type your own labels (comma-separated). CLIP matches image to text."}
+          ? t("imageClassifier.smartTip")
+          : t("imageClassifier.manualTip")}
         {info?.model_name ? (
           <span style={{ marginLeft: 8 }}>
             ({info.model_name}
@@ -223,13 +225,13 @@ export default function ImageClassifier() {
       {!smartMode ? (
         <div className="result" style={{ marginTop: 0 }}>
           <div style={{ fontWeight: 900, marginBottom: 6 }}>
-            {t("imageClassifier.labels") || "Labels (comma-separated)"}
+            {t("imageClassifier.labels")}
           </div>
           <input
             className="input"
             value={labels}
             onChange={(e) => setLabels(e.target.value)}
-            placeholder="statue, monument, band, animal..."
+            placeholder={t("imageClassifier.labelsPlaceholder")}
           />
 
           {examples?.length ? (
@@ -252,13 +254,13 @@ export default function ImageClassifier() {
 
       {error ? <div className="result bad">{error}</div> : null}
 
-      <JsonViewer title={t("imageClassifier.apiResponse") || "API Response"} data={apiResponse} />
+      <JsonViewer title={t("imageClassifier.apiResponse")} data={apiResponse} />
 
       {file ? (
         <div style={{ display: "grid", gap: 12 }}>
           <div className="result" style={{ marginTop: 0 }}>
             <div style={{ fontWeight: 900, marginBottom: 8 }}>
-              {t("imageClassifier.topPredictions") || "Top predictions"}
+              {t("imageClassifier.topPredictions")}
             </div>
 
             {preds?.length ? (
@@ -269,7 +271,7 @@ export default function ImageClassifier() {
                     type="button"
                     className="chip"
                     onClick={() => copyLabel(p.label)}
-                    title={t("imageClassifier.copyHint") || "Click to copy"}
+                    title={t("imageClassifier.copyHint")}
                     style={{ cursor: "pointer" }}
                   >
                     <span style={{ fontWeight: 900 }}>{p.label}</span>
@@ -281,7 +283,7 @@ export default function ImageClassifier() {
 
                 {unknown ? (
                   <span className="tip" style={{ marginTop: 0 }}>
-                    {t("imageClassifier.unknown") || "unknown"}
+                    {t("imageClassifier.unknown")}
                   </span>
                 ) : null}
               </div>
@@ -295,7 +297,7 @@ export default function ImageClassifier() {
 
             <img
               src={previewUrl}
-              alt="preview"
+              alt={t("imageClassifier.previewAlt")}
               className="classifier-preview-image"
             />
           </div>

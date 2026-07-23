@@ -22,7 +22,7 @@ export default function PasswordChecker() {
 
     const pwd = password.trim();
     if (!pwd) {
-      setError(t("pwnedProject.passwordRequired") || "Enter a password.");
+      setError(t("pwnedProject.passwordRequired"));
       return;
     }
 
@@ -40,13 +40,17 @@ export default function PasswordChecker() {
         throw new Error(
           typeof data?.detail === "string"
             ? data.detail
-            : `API error: HTTP ${res.status}`
+            : t("pwnedProject.apiError", { status: res.status })
         );
       }
 
       setResult(data);
     } catch (e) {
-      setError(e?.message || "Backend connection error.");
+      setError(
+        e instanceof TypeError
+          ? t("pwnedProject.connectionError")
+          : e?.message || t("pwnedProject.connectionError"),
+      );
     } finally {
       setLoading(false);
     }
@@ -77,10 +81,10 @@ export default function PasswordChecker() {
 
       <div className="actions">
         <Button variant="primary" onClick={onCheck} disabled={loading}>
-          {loading ? "Checking..." : "Check"}
+          {loading ? t("pwnedProject.checking") : t("pwnedProject.check")}
         </Button>
         <Button variant="ghost" onClick={onClear} disabled={loading}>
-          Clear
+          {t("pwnedProject.clear")}
         </Button>
       </div>
 

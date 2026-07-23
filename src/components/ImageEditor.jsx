@@ -74,12 +74,14 @@ export default function ImageEditor() {
     const res = await fetch(API_URL, { method: "POST", body: fd, signal });
     if (!res.ok) {
       const data = await res.json().catch(() => null);
-      throw new Error(data?.detail || `API error: ${res.status}`);
+      throw new Error(
+        data?.detail || t("imageEditor.apiError", { status: res.status }),
+      );
     }
 
     const blob = await res.blob();
     setResultBlob(blob);
-  }, [file, grayscale, rotate, size]);
+  }, [file, grayscale, rotate, size, t]);
 
   useEffect(() => {
     if (!file) return;
@@ -97,7 +99,11 @@ export default function ImageEditor() {
         await callApi(controller.signal);
       } catch (e) {
         if (e?.name !== "AbortError") {
-          setError(e?.message || "Unknown error.");
+          setError(
+            e instanceof TypeError
+              ? t("imageEditor.connectionError")
+              : e?.message || t("imageEditor.unknownError"),
+          );
         }
       } finally {
         setBusy(false);
@@ -107,7 +113,7 @@ export default function ImageEditor() {
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };
-  }, [callApi, file]);
+  }, [callApi, file, t]);
 
   function download() {
     if (!resultBlob) return;
@@ -174,7 +180,7 @@ export default function ImageEditor() {
         </section>
       </div>
 
-      {busy ? <div className="tip">Processing in Python...</div> : null}
+      {busy ? <div className="tip">{t("imageEditor.processing")}</div> : null}
       {error ? <div className="result bad">{error}</div> : null}
 
       {file ? (
@@ -187,15 +193,15 @@ export default function ImageEditor() {
         >
           <div className="result" style={{ marginTop: 0 }}>
             <div style={{ fontWeight: 900, marginBottom: 8 }}>{t("imageEditor.original")}</div>
-            <img src={originalUrl} alt="original" style={{ width: "100%", height: "auto", borderRadius: 12, border: "1px solid var(--border)" }} />
+            <img src={originalUrl} alt={t("imageEditor.originalAlt")} style={{ width: "100%", height: "auto", borderRadius: 12, border: "1px solid var(--border)" }} />
           </div>
 
           <div className="result" style={{ marginTop: 0 }}>
             <div style={{ fontWeight: 900, marginBottom: 8 }}>{t("imageEditor.output")}</div>
             {resultBlob ? (
-              <img src={resultUrl} alt="edited" style={{ width: "100%", height: "auto", borderRadius: 12, border: "1px solid var(--border)" }} />
+              <img src={resultUrl} alt={t("imageEditor.outputAlt")} style={{ width: "100%", height: "auto", borderRadius: 12, border: "1px solid var(--border)" }} />
             ) : (
-              <div className="tip">The result will appear automatically after processing.</div>
+              <div className="tip">{t("imageEditor.resultPending")}</div>
             )}
           </div>
         </div>

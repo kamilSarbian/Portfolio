@@ -33,16 +33,16 @@ export default function AuthStatus({ token, user }) {
         <div>
           <div style={{ fontWeight: 900, color: "var(--fg)" }}>
             {isLogged
-              ? t("auth.statusLogged") || "Authenticated"
-              : t("auth.statusGuest") || "Not authenticated"}
+              ? t("auth.statusLogged")
+              : t("auth.statusGuest")}
           </div>
 
           <div style={{ color: "var(--muted)", fontWeight: 600, fontSize: 14 }}>
             {isLogged
               ? role === "admin"
-                ? t("auth.statusAdmin") || "Current role: admin"
-                : t("auth.statusUser") || "Current role: user"
-              : t("auth.statusHint") || "Login to access protected endpoints."}
+                ? t("auth.statusAdmin")
+                : t("auth.statusUser")
+              : t("auth.statusHint")}
           </div>
         </div>
       </div>

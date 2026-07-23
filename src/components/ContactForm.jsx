@@ -130,7 +130,13 @@ export default function ContactForm() {
       setAskAiDirection(false);
       setSubmittedOnce(false);
     } catch (err) {
-      setStatus({ type: "err", msg: err?.message || t("contactForm.errors.sendFailed") });
+      setStatus({
+        type: "err",
+        msg:
+          err instanceof TypeError
+            ? t("contactForm.errors.sendFailed")
+            : err?.message || t("contactForm.errors.sendFailed"),
+      });
     } finally {
       setLoading(false);
     }

@@ -153,7 +153,7 @@
         "kicker": "Research-led Digital Product Concept",
         "title": "Living Startpakke",
         "problem": "Critical everyday knowledge can be fragmented across families, documents, routines, and experienced staff.",
-        "discovery": "45 survey responses, qualitative interviews, expert input, and anonymized stakeholder outreach inform the concept.",
+        "discovery": "45 survey responses, qualitative interviews, expert input, and anonymized summaries of stakeholder outreach and landscape mapping inform the concept.",
         "currentDirection": "A living, maintainable knowledge concept focused on prioritization, recency, and controlled access.",
         "currentStage": "Clickable concept prototype · Initial feedback outreach underway",
         "cardLabels": {
@@ -296,7 +296,7 @@
     }
   },
   "jarvis": {
-    "title": "Private AI Automation Environment",
+    "title": "JARVIS — Private AI Automation Environment",
     "subtitle": "An operational OpenClaw-based workspace for research, persistent context, scheduled monitoring, and everyday technical automation.",
     "status": "Operational private environment · Ongoing development",
     "privateRepository": "Private repository 🔒",
@@ -473,6 +473,16 @@
     "password":"Enter password",
     "placeHolderPassword":"Enter a password to check",
     "passwordRequired":"Enter a password.",
+    "check": "Check",
+    "checking": "Checking...",
+    "clear": "Clear",
+    "apiError": "API error (HTTP {{status}}).",
+    "connectionError": "Could not connect to the backend.",
+    "resultFound_one": "Found in known breaches: {{formattedCount}} time.",
+    "resultFound_few": "Found in known breaches: {{formattedCount}} times.",
+    "resultFound_many": "Found in known breaches: {{formattedCount}} times.",
+    "resultFound_other": "Found in known breaches: {{formattedCount}} times.",
+    "resultNotFound": "Not found in known breaches.",
 
     "howTitle": "HOW IT WORKS",
     "how1": "The backend calculates the SHA-1 hash of the password and sends only the first 5 characters to the API.",
@@ -496,7 +506,14 @@
     "original": "Original",
     "output": "Output image",
     "noFileSelected": "No file selected",
-    "hint": "Choose an image to start editing."
+    "hint": "Choose an image to start editing.",
+    "processing": "Processing in Python...",
+    "unknownError": "An unknown error occurred.",
+    "connectionError": "Could not connect to the image processing service.",
+    "apiError": "API error (HTTP {{status}}).",
+    "resultPending": "The result will appear automatically after processing.",
+    "originalAlt": "Original uploaded image",
+    "outputAlt": "Processed output image"
   },
   "password": {
     "label": "Password",
@@ -568,8 +585,10 @@
     "smartMode": "Smart mode",
     "manualTip": "Manual mode: type your own labels (comma-separated). CLIP matches image to text.",
     "labels": "Labels (comma-separated)",
+    "labelsPlaceholder": "statue, monument, animal, building...",
     "copyHint": "Click to copy",
-    "unknown": "unknown"
+    "unknown": "unknown",
+    "previewAlt": "Preview of the image selected for classification"
   },
   "auth": {
   "title": "Auth & User Management API",
@@ -581,7 +600,9 @@
   "demoCredentials": "Demo credentials",
   "createDemoAccount": "Create demo account",
   "email": "Email",
+  "emailPlaceholder": "demo@example.com",
   "password": "Password",
+  "passwordPlaceholder": "Enter password",
   "register": "Register",
   "login": "Login",
   "profile": "Get profile",

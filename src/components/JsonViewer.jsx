@@ -8,7 +8,7 @@ export default function JsonViewer({ title, data }) {
   return (
     <div className="result" style={{ marginTop: 0 }}>
       <div style={{ fontWeight: 900, marginBottom: 10 }}>
-        {title || t("auth.response") || "API Response"}
+        {title || t("auth.response")}
       </div>
 
       <pre
