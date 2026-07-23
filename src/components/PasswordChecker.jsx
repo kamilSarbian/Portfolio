@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { API } from "../api";
+import { getApiErrorMessage } from "../apiErrors";
 import Button from "./Button";
 import ResultBox from "./ResultBox";
 
@@ -38,9 +39,7 @@ export default function PasswordChecker() {
 
       if (!res.ok) {
         throw new Error(
-          typeof data?.detail === "string"
-            ? data.detail
-            : t("pwnedProject.apiError", { status: res.status })
+          getApiErrorMessage(data, t, "pwnedProject.checkFailed"),
         );
       }
 

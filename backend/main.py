@@ -1,3 +1,4 @@
+from core.errors import register_error_handlers
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -42,6 +43,8 @@ app = FastAPI(
     openapi_tags=OPENAPI_TAGS,
     default_response_class=_UTF8JSONResponse,
 )
+
+register_error_handlers(app)
 
 app.add_middleware(
     CORSMiddleware,

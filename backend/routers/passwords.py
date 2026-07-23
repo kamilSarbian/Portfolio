@@ -2,8 +2,9 @@ from __future__ import annotations
 
 import httpx
 from core.config import settings
+from core.errors import ApiError, ErrorCode
 from core.rate_limit import password_rate_limit
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends
 from pydantic import BaseModel, Field
 from schemas.common import ErrorResponse
 from services.hibp_service import query_pwned_password_range
@@ -43,7 +44,11 @@ async def check_password(body: PasswordIn) -> dict[str, int | bool]:
 
     password = body.password.strip()
     if not password:
-        raise HTTPException(status_code=400, detail="Password is required.")
+        raise ApiError(
+            status_code=400,
+            error_code=ErrorCode.PASSWORD_REQUIRED,
+            detail="Password is required.",
+        )
 
     try:
         async with httpx.AsyncClient(timeout=settings.http_timeout_s) as client:
@@ -53,6 +58,10 @@ async def check_password(body: PasswordIn) -> dict[str, int | bool]:
                 password=password,
             )
     except httpx.HTTPError as exc:
-        raise HTTPException(status_code=502, detail="HIBP request failed.") from exc
+        raise ApiError(
+            status_code=502,
+            error_code=ErrorCode.HIBP_UNAVAILABLE,
+            detail="HIBP request failed.",
+        ) from exc
 
     return {"found": result.found, "count": result.count}

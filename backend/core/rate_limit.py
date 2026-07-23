@@ -5,9 +5,10 @@ from collections import defaultdict, deque
 from collections.abc import Callable
 from threading import Lock
 
-from fastapi import HTTPException, Request, status
+from fastapi import Request, status
 
 from .config import settings
+from .errors import ApiError, ErrorCode
 
 _BUCKETS: dict[str, deque[float]] = defaultdict(deque)
 _BUCKETS_LOCK = Lock()
@@ -58,8 +59,9 @@ def rate_limiter(scope: str, limit: int) -> Callable[[Request], None]:
                 bucket.popleft()
 
             if len(bucket) >= limit:
-                raise HTTPException(
+                raise ApiError(
                     status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+                    error_code=ErrorCode.RATE_LIMIT_EXCEEDED,
                     detail="Too many requests. Please try again later.",
                 )
 

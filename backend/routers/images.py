@@ -3,8 +3,9 @@ from __future__ import annotations
 import logging
 
 from core.config import settings
+from core.errors import ApiError, ErrorCode
 from core.rate_limit import upload_rate_limit
-from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
+from fastapi import APIRouter, Depends, File, Form, UploadFile
 from fastapi.responses import Response
 from schemas.common import ErrorResponse
 from services.image_service import ImageProcessingError, ProcessOptions, process_image_to_png
@@ -49,12 +50,20 @@ async def process_image_endpoint(
     """Process a validated image upload and return a PNG response."""
 
     if file.content_type not in settings.allowed_mime:
-        raise HTTPException(status_code=415, detail="Unsupported file type.")
+        raise ApiError(
+            status_code=415,
+            error_code=ErrorCode.UNSUPPORTED_FILE_TYPE,
+            detail="Unsupported file type.",
+        )
 
     try:
         data = await read_upload_limited(file, settings.max_upload_mb * 1024 * 1024)
     except UploadTooLargeError as exc:
-        raise HTTPException(status_code=413, detail="File too large.") from exc
+        raise ApiError(
+            status_code=413,
+            error_code=ErrorCode.FILE_TOO_LARGE,
+            detail="File too large.",
+        ) from exc
 
     try:
         out_png = process_image_to_png(
@@ -62,10 +71,18 @@ async def process_image_endpoint(
             ProcessOptions(size=size, grayscale=grayscale, rotate=rotate),
         )
     except ImageProcessingError as exc:
-        raise HTTPException(status_code=400, detail=str(exc)) from exc
+        raise ApiError(
+            status_code=400,
+            error_code=ErrorCode.INVALID_IMAGE,
+            detail="Invalid image or processing options.",
+        ) from exc
     except OSError as exc:
         logger.exception("Unexpected image processing failure.")
-        raise HTTPException(status_code=500, detail="Image processing failed.") from exc
+        raise ApiError(
+            status_code=500,
+            error_code=ErrorCode.IMAGE_PROCESSING_FAILED,
+            detail="Image processing failed.",
+        ) from exc
 
     return Response(
         content=out_png,

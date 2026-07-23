@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { API } from "../api";
+import { getApiErrorMessage } from "../apiErrors";
 import Button from "./Button";
 
 
@@ -117,11 +118,9 @@ export default function ContactForm() {
       }
 
       if (!res.ok) {
-        const msg =
-          typeof data?.detail === "string"
-            ? data.detail
-            : t("contactForm.errors.serverError", { code: res.status });
-        throw new Error(msg);
+        throw new Error(
+          getApiErrorMessage(data, t, "contactForm.errors.sendFailed"),
+        );
       }
 
       setStatus({ type: "ok", msg: t("contactForm.success") });

@@ -1,7 +1,8 @@
 from __future__ import annotations
 
+from core.errors import ApiError, ErrorCode
 from core.security import hash_password, verify_password
-from fastapi import HTTPException, status
+from fastapi import status
 from models.user import User
 from sqlalchemy.orm import Session
 
@@ -17,7 +18,11 @@ def create_user(db: Session, *, email: str, password: str, role: str = "user") -
 
     existing = get_user_by_email(db, email)
     if existing:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email already registered")
+        raise ApiError(
+            status_code=status.HTTP_409_CONFLICT,
+            error_code=ErrorCode.USER_ALREADY_EXISTS,
+            detail="Email already registered",
+        )
 
     user = User(
         email=email,
@@ -36,10 +41,18 @@ def authenticate_user(db: Session, *, email: str, password: str) -> User:
 
     user = get_user_by_email(db, email)
     if not user or not user.is_active:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
+        raise ApiError(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            error_code=ErrorCode.INVALID_CREDENTIALS,
+            detail="Invalid credentials",
+        )
 
     if not verify_password(password, user.hashed_password):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
+        raise ApiError(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            error_code=ErrorCode.INVALID_CREDENTIALS,
+            detail="Invalid credentials",
+        )
 
     return user
 

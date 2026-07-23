@@ -3,6 +3,7 @@ import Button from "./Button";
 import JsonViewer from "./JsonViewer";
 import { useTranslation } from "react-i18next";
 import { API } from "../api";
+import { getApiErrorMessage } from "../apiErrors";
 
 const API_CLASSIFY = API.ml.classify;
 const API_INFO = API.ml.info;
@@ -102,7 +103,9 @@ export default function ImageClassifier() {
 
       if (!res.ok) {
         const data = await res.json().catch(() => null);
-        throw new Error(data?.detail || `${t("imageClassifier.error")} (${res.status})`);
+        throw new Error(
+          getApiErrorMessage(data, t, "imageClassifier.error"),
+        );
       }
 
       const data = await res.json();

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { API } from "../api";
+import { getApiErrorMessage } from "../apiErrors";
 import Button from "./Button";
 
 const API_URL = API.image.process;
@@ -74,9 +75,7 @@ export default function ImageEditor() {
     const res = await fetch(API_URL, { method: "POST", body: fd, signal });
     if (!res.ok) {
       const data = await res.json().catch(() => null);
-      throw new Error(
-        data?.detail || t("imageEditor.apiError", { status: res.status }),
-      );
+      throw new Error(getApiErrorMessage(data, t, "imageEditor.unknownError"));
     }
 
     const blob = await res.blob();

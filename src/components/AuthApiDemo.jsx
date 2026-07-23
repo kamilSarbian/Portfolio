@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { API } from "../api";
+import { getApiErrorMessage } from "../apiErrors";
 import Button from "./Button";
 import CopyTokenButton from "./CopyTokenButton";
 import JsonViewer from "./JsonViewer";
@@ -38,7 +39,7 @@ export default function AuthApiDemo() {
       const data = await res.json().catch(() => null);
 
       if (!res.ok) {
-        throw new Error(data?.detail || `${t("auth.error")} (${res.status})`);
+        throw new Error(getApiErrorMessage(data, t, "auth.error"));
       }
 
       setOut(data);
@@ -75,7 +76,7 @@ export default function AuthApiDemo() {
       const data = await res.json().catch(() => null);
 
       if (!res.ok) {
-        throw new Error(data?.detail || `${t("auth.error")} (${res.status})`);
+        throw new Error(getApiErrorMessage(data, t, "auth.error"));
       }
 
       setOut(data);

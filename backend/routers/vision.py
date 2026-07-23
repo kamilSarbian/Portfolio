@@ -3,8 +3,9 @@ from __future__ import annotations
 import logging
 
 from core.config import settings
+from core.errors import ApiError, ErrorCode
 from core.rate_limit import upload_rate_limit
-from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile
+from fastapi import APIRouter, Depends, File, Query, UploadFile
 from pydantic import BaseModel
 from schemas.common import ErrorResponse
 from services.clip_classifier import get_classifier
@@ -211,27 +212,45 @@ async def classify_image(
 
     up = file or image
     if up is None:
-        raise HTTPException(
-            status_code=422, detail="Missing file field (expected 'file' or 'image')."
+        raise ApiError(
+            status_code=422,
+            error_code=ErrorCode.MISSING_FILE,
+            detail="Missing file field.",
         )
 
     if up.content_type not in settings.allowed_mime:
-        raise HTTPException(status_code=415, detail="Unsupported file type.")
+        raise ApiError(
+            status_code=415,
+            error_code=ErrorCode.UNSUPPORTED_FILE_TYPE,
+            detail="Unsupported file type.",
+        )
 
     try:
         data = await read_upload_limited(up, settings.max_upload_mb * 1024 * 1024)
     except UploadTooLargeError as exc:
-        raise HTTPException(status_code=413, detail="File too large.") from exc
+        raise ApiError(
+            status_code=413,
+            error_code=ErrorCode.FILE_TOO_LARGE,
+            detail="File too large.",
+        ) from exc
 
     if not data:
-        raise HTTPException(status_code=400, detail="Empty file.")
+        raise ApiError(
+            status_code=400,
+            error_code=ErrorCode.EMPTY_FILE,
+            detail="Empty file.",
+        )
 
     if smart:
         lbls = SMART_CLASSIFY_LABELS
     else:
         lbls = _parse_labels(labels)
         if not lbls:
-            raise HTTPException(status_code=422, detail="labels is required when smart=false")
+            raise ApiError(
+                status_code=422,
+                error_code=ErrorCode.LABELS_REQUIRED,
+                detail="Labels are required in manual mode.",
+            )
 
     try:
         clf = get_classifier()
@@ -246,4 +265,8 @@ async def classify_image(
         }
     except (OSError, RuntimeError, ValueError) as exc:
         logger.exception("CLIP classification failed.")
-        raise HTTPException(status_code=500, detail="Image classification failed.") from exc
+        raise ApiError(
+            status_code=500,
+            error_code=ErrorCode.IMAGE_CLASSIFICATION_FAILED,
+            detail="Image classification failed.",
+        ) from exc

@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import UTC, datetime, timedelta
 
 import jwt
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, status
 from fastapi.security import OAuth2PasswordBearer
 from models.user import User
 from passlib.context import CryptContext
@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 
 from .config import settings
 from .db import get_db
+from .errors import ApiError, ErrorCode
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/backend/auth/login")
@@ -60,8 +61,9 @@ def get_current_user(
 ) -> User:
     """Resolve the active database user represented by a bearer token."""
 
-    cred_exc = HTTPException(
+    cred_exc = ApiError(
         status_code=status.HTTP_401_UNAUTHORIZED,
+        error_code=ErrorCode.AUTHENTICATION_REQUIRED,
         detail="Not authenticated",
         headers={"WWW-Authenticate": "Bearer"},
     )
@@ -85,5 +87,9 @@ def require_admin(current_user: User = Depends(get_current_user)) -> User:
     """Require the current authenticated user to have the admin role."""
 
     if current_user.role != "admin":
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Admin only")
+        raise ApiError(
+            status_code=status.HTTP_403_FORBIDDEN,
+            error_code=ErrorCode.ADMIN_REQUIRED,
+            detail="Admin only",
+        )
     return current_user

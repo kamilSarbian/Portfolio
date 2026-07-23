@@ -1,7 +1,8 @@
 import logging
 
+from core.errors import ApiError, ErrorCode
 from core.rate_limit import contact_rate_limit
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request
+from fastapi import APIRouter, BackgroundTasks, Depends, Request
 from pydantic import BaseModel, EmailStr, Field
 from schemas.common import ErrorResponse, OkResponse
 from services.email_service import send_contact_emails, validate_email_configuration
@@ -69,7 +70,7 @@ def send_contact(payload: ContactIn, bg: BackgroundTasks, request: Request) -> d
         request: Incoming request used to infer the preferred language.
 
     Raises:
-        HTTPException: If email delivery cannot be scheduled.
+        ApiError: If email delivery cannot be scheduled.
     """
 
     if payload.website and payload.website.strip():
@@ -93,6 +94,8 @@ def send_contact(payload: ContactIn, bg: BackgroundTasks, request: Request) -> d
         return {"ok": True}
     except RuntimeError as exc:
         logger.exception("Contact email delivery could not be scheduled.")
-        raise HTTPException(
-            status_code=502, detail="Email service temporarily unavailable."
+        raise ApiError(
+            status_code=502,
+            error_code=ErrorCode.EMAIL_SERVICE_UNAVAILABLE,
+            detail="Email service temporarily unavailable.",
         ) from exc

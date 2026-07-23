@@ -188,6 +188,25 @@ This remains a supporting experiment, not a featured case study.
 | GET | `/health` | No | Health check |
 | GET | `/version` | No | Service version |
 
+### API Error Contract
+
+Public API errors include a stable `error_code` for frontend localization and retain a generic `detail` field for backward compatibility:
+
+```json
+{
+  "error_code": "validation_error",
+  "detail": "Request validation failed.",
+  "fields": [
+    {
+      "field": "body.email",
+      "type": "value_error"
+    }
+  ]
+}
+```
+
+The frontend maps `error_code` to EN, PL, or NO copy and never displays `detail` directly. Validation responses expose field paths and error types without returning submitted values. Unknown exceptions use the generic `internal_error` response.
+
 ## Stack
 
 **Backend**  

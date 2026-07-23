@@ -1,3 +1,4 @@
+from core.errors import register_error_handlers
 from core.rate_limit import _BUCKETS, contact_rate_limit
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
@@ -7,6 +8,7 @@ from routers.contact import _normalize_lang, router
 
 def make_client() -> TestClient:
     app = FastAPI()
+    register_error_handlers(app)
     app.dependency_overrides[contact_rate_limit] = lambda: None
     app.include_router(router)
     return TestClient(app)
