@@ -5,10 +5,17 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
   const { t, i18n } = useTranslation();
   const [langOpen, setLangOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navbarRef = useRef(null);
   const langRef = useRef(null);
 
   useEffect(() => {
     function onDocClick(e) {
+      if (navbarRef.current && !navbarRef.current.contains(e.target)) {
+        setLangOpen(false);
+        setMenuOpen(false);
+        return;
+      }
+
       if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(false);
     }
 
@@ -43,22 +50,6 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
     };
   }, []);
 
-  useEffect(() => {
-    if (!menuOpen) return undefined;
-
-    function closeMobileMenuOnScroll() {
-      setMenuOpen(false);
-      setLangOpen(false);
-    }
-
-    window.addEventListener("scroll", closeMobileMenuOnScroll, { passive: true });
-    window.addEventListener("touchmove", closeMobileMenuOnScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", closeMobileMenuOnScroll);
-      window.removeEventListener("touchmove", closeMobileMenuOnScroll);
-    };
-  }, [menuOpen]);
-
   const lang = i18n.language || "en";
 
   function chooseLanguage(nextLang) {
@@ -67,7 +58,7 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
   }
 
   return (
-    <header className="navbar">
+    <header className="navbar" ref={navbarRef}>
       <button type="button" className="brand" onClick={onGoHome}>
         <div className="nav-avatar">
           <img src="/avatar.png" alt="Kamil Sarbian" className="nav-avatar" />
