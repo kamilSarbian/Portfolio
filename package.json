@@ -8,10 +8,11 @@
     "build": "vite build",
     "lint": "eslint .",
     "check:i18n": "node scripts/check-i18n.mjs",
+    "check:seo": "node scripts/check-seo.mjs",
     "test:frontend": "node --test tests/*.test.mjs",
     "preview": "vite preview",
     "test:backend": "python -m pytest -q",
-    "check": "npm run lint && npm run check:i18n && npm run test:frontend && npm run build"
+    "check": "npm run lint && npm run check:i18n && npm run check:seo && npm run test:frontend && npm run build"
   },
   "dependencies": {
     "i18next": "^25.8.0",

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, useLocation, useNavigate, Navigate } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import RouteMeta from "./components/RouteMeta";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 import Projects from "./pages/Projects";
 import ProjectPwned from "./pages/ProjectPwned";
 import ProjectImageEditor from "./pages/ProjectImageEditor";
@@ -58,6 +60,8 @@ export default function App() {
 
   return (
     <div className={`app ${theme}`}>
+      <RouteMeta />
+
       <Navbar
         theme={theme}
         active={navActive}
@@ -121,7 +125,15 @@ export default function App() {
             element={<ProjectImageClassifier onGoProjects={() => goTo("/projects")} />}
           />
 
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route
+            path="*"
+            element={
+              <NotFound
+                onGoHome={() => goTo("/")}
+                onGoProjects={() => goTo("/projects")}
+              />
+            }
+          />
         </Routes>
       </main>
 

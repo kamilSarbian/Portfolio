@@ -14,6 +14,54 @@
     "openTo": "Software Developer · Backend · AI Automation",
     "openToMobile": "Software Developer · Backend & AI"
   },
+  "seo": {
+    "imageAlt": "Kamil Sarbian — Software Developer specjalizujący się w systemach backendowych, automatyzacji AI i produktach cyfrowych rozwijanych na podstawie badań.",
+    "routes": {
+      "home": {
+        "title": "Kamil Sarbian | Software Developer — Backend i AI",
+        "description": "Programista tworzący systemy backendowe, automatyzacje AI, integracje API oraz koncepcje produktów cyfrowych rozwijane na podstawie badań."
+      },
+      "projects": {
+        "title": "Studia przypadków tworzenia oprogramowania | Kamil Sarbian",
+        "description": "Studia przypadków obejmujące backendowe API, uwierzytelnianie, automatyzację AI, przetwarzanie obrazów, infrastrukturę i product discovery."
+      },
+      "auth": {
+        "title": "API uwierzytelniania i zarządzania użytkownikami | Kamil Sarbian",
+        "description": "Studium FastAPI obejmujące JWT, chronione trasy, role użytkowników, PostgreSQL, walidację danych oraz wdrożenie."
+      },
+      "jarvis": {
+        "title": "JARVIS — prywatne środowisko automatyzacji AI | Kamil Sarbian",
+        "description": "Studium prywatnego środowiska opartego na OpenClaw z trwałym kontekstem, cyklicznym monitoringiem, bezpiecznymi integracjami i obsługą Linux VPS."
+      },
+      "living": {
+        "title": "Living Startpakke — badania i product discovery | Kamil Sarbian",
+        "description": "Koncepcja produktu cyfrowego rozwijana na podstawie badań, kontaktu z interesariuszami, analizy insightów, prototypowania i iteracyjnych testów."
+      },
+      "passwordChecker": {
+        "title": "Sprawdzanie wycieków haseł | Kamil Sarbian",
+        "description": "Demo bezpieczeństwa haseł w FastAPI wykorzystujące prywatne wyszukiwanie prefiksu SHA-1 w API Have I Been Pwned oraz lokalne komunikaty wyników."
+      },
+      "imageEditor": {
+        "title": "API przetwarzania obrazów | Kamil Sarbian",
+        "description": "Studium przetwarzania obrazów z wysyłaniem plików przez API, walidacją, zmianą rozmiaru, transformacjami, eksportem i integracją frontendu."
+      },
+      "imageClassifier": {
+        "title": "API klasyfikacji obrazów AI | Kamil Sarbian",
+        "description": "API klasyfikacji obrazów oparte na CLIP z konfigurowalnymi etykietami, progami pewności, uporządkowanymi predykcjami i lokalizowanym demo."
+      },
+      "notFound": {
+        "title": "Nie znaleziono strony | Kamil Sarbian",
+        "description": "Nie udało się znaleźć wskazanej strony portfolio."
+      }
+    }
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "title": "Nie znaleziono strony",
+    "body": "Strona mogła zostać przeniesiona albo podany adres jest nieprawidłowy.",
+    "home": "Przejdź na stronę główną",
+    "projects": "Zobacz studia przypadków"
+  },
   "apiErrors": {
     "invalidCredentials": "Nieprawidłowy adres e-mail lub hasło.",
     "userAlreadyExists": "Konto z tym adresem e-mail już istnieje.",

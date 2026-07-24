@@ -14,6 +14,54 @@
     "openTo": "Programvareutvikler · Backend · AI-automatisering",
     "openToMobile": "Programvareutvikler · Backend og AI"
   },
+  "seo": {
+    "imageAlt": "Kamil Sarbian — Softwareutvikler med fokus på backend-systemer, AI-automatisering og innsiktsdrevne digitale produkter.",
+    "routes": {
+      "home": {
+        "title": "Kamil Sarbian | Softwareutvikler — Backend og AI",
+        "description": "Programvareutvikler som bygger backend-systemer, AI-automatisering, API-integrasjoner og innsiktsdrevne digitale produktkonsepter."
+      },
+      "projects": {
+        "title": "Casestudier innen programvareutvikling | Kamil Sarbian",
+        "description": "Casestudier om backend-API-er, autentisering, AI-automatisering, bildebehandling, infrastruktur og innsiktsdrevet produktutvikling."
+      },
+      "auth": {
+        "title": "API for autentisering og brukeradministrasjon | Kamil Sarbian",
+        "description": "FastAPI-casestudie med JWT-autentisering, beskyttede ruter, rollebasert tilgang, PostgreSQL, datavalidering og utrulling."
+      },
+      "jarvis": {
+        "title": "JARVIS — privat AI-automatiseringsmiljø | Kamil Sarbian",
+        "description": "Casestudie av et privat OpenClaw-basert AI-miljø med vedvarende kontekst, planlagt overvåking, sikre integrasjoner og drift på Linux VPS."
+      },
+      "living": {
+        "title": "Living Startpakke — innsiktsdrevet produktarbeid | Kamil Sarbian",
+        "description": "Et innsiktsdrevet og brukerorientert digitalt produktkonsept formet gjennom kontakt med interessenter, innsiktsanalyse, prototyping og iterativ testing."
+      },
+      "passwordChecker": {
+        "title": "Kontroll av passordlekkasjer | Kamil Sarbian",
+        "description": "FastAPI-demo for passordsikkerhet med personvernvennlig SHA-1-prefikssøk mot Have I Been Pwned API og lokaliserte resultater."
+      },
+      "imageEditor": {
+        "title": "API for bildebehandling | Kamil Sarbian",
+        "description": "Casestudie om bildebehandling med API-opplasting, validering, størrelsesendring, transformasjoner, eksport og frontend-integrasjon."
+      },
+      "imageClassifier": {
+        "title": "API for AI-basert bildeklassifisering | Kamil Sarbian",
+        "description": "CLIP-basert API for bildeklassifisering med konfigurerbare etiketter, terskelverdier, strukturerte prediksjoner og en lokalisert demo."
+      },
+      "notFound": {
+        "title": "Fant ikke siden | Kamil Sarbian",
+        "description": "Den forespurte portfoliosiden ble ikke funnet."
+      }
+    }
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "title": "Fant ikke siden",
+    "body": "Siden kan ha blitt flyttet, eller adressen kan være feil.",
+    "home": "Gå til forsiden",
+    "projects": "Se casestudier"
+  },
   "apiErrors": {
     "invalidCredentials": "Ugyldig e-postadresse eller passord.",
     "userAlreadyExists": "Det finnes allerede en konto med denne e-postadressen.",

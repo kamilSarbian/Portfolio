@@ -15,6 +15,54 @@
     "openToMobile": "Software Developer · Backend & AI"
 
   },
+  "seo": {
+    "imageAlt": "Kamil Sarbian — Software Developer specializing in backend systems, AI automation, and research-led digital products.",
+    "routes": {
+      "home": {
+        "title": "Kamil Sarbian | Software Developer — Backend & AI",
+        "description": "Software developer building backend systems, AI automation, API integrations, and research-led digital product concepts with a practical approach."
+      },
+      "projects": {
+        "title": "Software Development Case Studies | Kamil Sarbian",
+        "description": "Case studies covering backend APIs, authentication, AI automation, image processing, infrastructure, and research-led digital product discovery."
+      },
+      "auth": {
+        "title": "Authentication & User Management API | Kamil Sarbian",
+        "description": "FastAPI case study covering JWT authentication, protected routes, role-based access, PostgreSQL persistence, validation, and deployment."
+      },
+      "jarvis": {
+        "title": "JARVIS — Private AI Automation Environment | Kamil Sarbian",
+        "description": "Case study of a private OpenClaw-based AI automation environment with persistent context, scheduled monitoring, secure integrations, and Linux VPS operations."
+      },
+      "living": {
+        "title": "Living Startpakke — Research-led Discovery | Kamil Sarbian",
+        "description": "Research-led, user-informed digital product concept shaped through stakeholder outreach, structured insight analysis, prototyping, and iterative testing."
+      },
+      "passwordChecker": {
+        "title": "Password Breach Checker | Kamil Sarbian",
+        "description": "FastAPI password security demo using privacy-preserving SHA-1 prefix lookup with the Have I Been Pwned API and localized result handling."
+      },
+      "imageEditor": {
+        "title": "Image Processing API | Kamil Sarbian",
+        "description": "Image processing case study with API uploads, validation, resizing, transformations, export controls, and frontend integration."
+      },
+      "imageClassifier": {
+        "title": "AI Image Classification API | Kamil Sarbian",
+        "description": "CLIP-based image classification API with configurable labels, confidence thresholds, structured predictions, and a localized interactive demo."
+      },
+      "notFound": {
+        "title": "Page Not Found | Kamil Sarbian",
+        "description": "The requested portfolio page could not be found."
+      }
+    }
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "title": "Page not found",
+    "body": "The page may have moved or the address may be incorrect.",
+    "home": "Go to home",
+    "projects": "View case studies"
+  },
   "apiErrors": {
     "invalidCredentials": "Invalid email or password.",
     "userAlreadyExists": "An account with this email already exists.",

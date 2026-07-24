@@ -86,6 +86,8 @@ Project previews are stored in `public/projects/`.
 
 ### JARVIS — Private AI Automation Environment
 
+Live case study: https://kamilsarbian.dev/projects/jarvis-ai-environment
+
 **Problem**
 Technical research, infrastructure notes, and repeatable operational work were spread across separate tools and short-lived sessions.
 
@@ -96,6 +98,8 @@ A private OpenClaw-based environment running on a self-managed Linux VPS, with p
 JARVIS is presented as a configured and extended private environment, not as an agent platform built from scratch. Private workspace data and repository contents are not published.
 
 ### Living Startpakke — Research-led Product Discovery
+
+Live case study: https://kamilsarbian.dev/projects/living-startpakke
 
 **Problem**
 Critical everyday knowledge can be fragmented across families, documents, routines, and experienced staff.
@@ -310,6 +314,8 @@ npm run check
 npm run test:backend
 ```
 
+`npm run check` runs ESLint, translation parity validation, SEO route and sitemap validation, frontend tests, and the production build.
+
 Activate the Python virtual environment before using `npm run test:backend`. Backend checks can also be run directly from the project root:
 
 ```bash
@@ -319,6 +325,14 @@ isort --check-only backend
 pip-audit -r backend/requirements.txt
 python -m pytest -q
 ```
+
+## SEO
+
+The static `index.html` provides English fallback metadata, a global Person JSON-LD entity, and a 1200 x 630 Open Graph image. React updates the page title, description, canonical URL, Open Graph metadata, Twitter metadata, robots directive, and route-specific JSON-LD when the route or interface language changes.
+
+All eight public routes use one canonical URL per route. Languages do not have separate URL variants, so the project intentionally does not publish `hreflang` links. The client-side 404 page uses `noindex,follow`, but Vercel can still return HTTP 200 for unknown SPA routes.
+
+Social crawlers that do not execute JavaScript receive the global English fallback and shared Open Graph image. Route-specific social previews and server-level 404 responses require prerendering or server-rendered routes and remain outside the current MVP.
 
 ## Deployment
 

@@ -744,6 +744,48 @@ h3 {
   .what-build-grid{ grid-template-columns: 1fr; }
 }
 
+.not-found-page{
+  min-height: min(560px, calc(100vh - 190px));
+  display: grid;
+  place-items: center;
+}
+
+.not-found-card{
+  width: min(640px, 100%);
+  text-align: center;
+}
+
+.not-found-eyebrow{
+  margin: 0;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.not-found-card h1{
+  margin: 12px 0 0;
+  color: var(--text);
+  font-size: clamp(30px, 6vw, 48px);
+  line-height: 1.1;
+}
+
+.not-found-card > p:not(.not-found-eyebrow){
+  margin: 14px auto 0;
+  max-width: 48ch;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.not-found-actions{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
 /* ===== Info table ===== */
 .info{
   display: grid;

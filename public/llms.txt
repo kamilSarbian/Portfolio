@@ -7,8 +7,8 @@ Software developer portfolio focused on backend systems, AI automation, API inte
 - Home: https://kamilsarbian.dev/
 - Case studies: https://kamilsarbian.dev/projects
 - Authentication & User Management API: https://kamilsarbian.dev/projects/auth-api
-- JARVIS Private AI Automation Environment: https://kamilsarbian.dev/projects/jarvis-ai-environment
-- Living Startpakke Product Discovery: https://kamilsarbian.dev/projects/living-startpakke
+- JARVIS — private OpenClaw-based AI automation environment, configured and extended for persistent context, monitoring, and operational workflows: https://kamilsarbian.dev/projects/jarvis-ai-environment
+- Living Startpakke — research-led, user-informed digital product concept in discovery and prototype feedback outreach, not a finished or validated product: https://kamilsarbian.dev/projects/living-startpakke
 - AI-assisted Image Classification API: https://kamilsarbian.dev/projects/image-classifier
 - Image Processing API: https://kamilsarbian.dev/projects/image-editor
 - Password Breach Checker: https://kamilsarbian.dev/projects/password-checker
