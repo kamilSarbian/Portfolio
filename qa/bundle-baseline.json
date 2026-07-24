@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "totalBytes": 1635361,
+  "js": {
+    "rawBytes": 449037,
+    "gzipBytes": 137762
+  },
+  "css": {
+    "rawBytes": 34696,
+    "gzipBytes": 6708
+  },
+  "largestJsChunk": {
+    "path": "assets/index-B394yd1l.js",
+    "rawBytes": 449037
+  },
+  "largestAssets": [
+    {
+      "path": "og/portfolio-og.png",
+      "rawBytes": 607757
+    },
+    {
+      "path": "assets/index-B394yd1l.js",
+      "rawBytes": 449037
+    },
+    {
+      "path": "favicon/android-chrome-512x512.png",
+      "rawBytes": 263067
+    },
+    {
+      "path": "favicon/favicon.ico",
+      "rawBytes": 87164
+    },
+    {
+      "path": "avatar.png",
+      "rawBytes": 46911
+    },
+    {
+      "path": "assets/index-ewslDWsY.css",
+      "rawBytes": 34696
+    },
+    {
+      "path": "favicon/android-chrome-192x192.png",
+      "rawBytes": 33807
+    },
+    {
+      "path": "favicon/apple-touch-icon.png",
+      "rawBytes": 30060
+    },
+    {
+      "path": "projects/image-classifier.png",
+      "rawBytes": 25680
+    },
+    {
+      "path": "projects/auth-api.png",
+      "rawBytes": 24788
+    }
+  ],
+  "largeImages": [
+    {
+      "path": "og/portfolio-og.png",
+      "rawBytes": 607757
+    }
+  ]
+}

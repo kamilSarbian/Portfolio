@@ -7,12 +7,17 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "check:json": "node scripts/check-json.mjs",
     "check:i18n": "node scripts/check-i18n.mjs",
+    "check:i18n:unused": "node scripts/check-unused-i18n.mjs",
     "check:seo": "node scripts/check-seo.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check:secrets": "node scripts/check-secrets.mjs",
+    "check:bundle": "node scripts/check-bundle.mjs",
     "test:frontend": "node --test tests/*.test.mjs",
     "preview": "vite preview",
     "test:backend": "python -m pytest -q",
-    "check": "npm run lint && npm run check:i18n && npm run check:seo && npm run test:frontend && npm run build"
+    "check": "npm run lint && npm run check:json && npm run check:i18n && npm run check:i18n:unused && npm run check:seo && npm run check:links && npm run check:secrets && npm run test:frontend && npm run build && npm run check:bundle"
   },
   "dependencies": {
     "i18next": "^25.8.0",

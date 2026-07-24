@@ -314,7 +314,15 @@ npm run check
 npm run test:backend
 ```
 
-`npm run check` runs ESLint, translation parity validation, SEO route and sitemap validation, frontend tests, and the production build.
+`npm run check` runs ESLint, Git-visible JSON validation, translation parity and unused-key reporting, SEO validation, internal route and asset checks, a tracked and non-ignored file secret scan, frontend tests, the production build, and bundle reporting.
+
+The unused translation report is warning-only and classified in `qa/unused-i18n-review.json`. Bundle measurements are compared with `qa/bundle-baseline.json`; intentionally refresh the baseline after an accepted production-size change:
+
+```bash
+npm run check:bundle -- --update-baseline
+```
+
+The regex-based secret scan checks tracked files and non-ignored files waiting to be committed. It complements, but does not replace, a dedicated history scanner such as Gitleaks.
 
 Activate the Python virtual environment before using `npm run test:backend`. Backend checks can also be run directly from the project root:
 
