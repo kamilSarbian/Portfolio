@@ -61,7 +61,14 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
     <header className="navbar" ref={navbarRef}>
       <button type="button" className="brand" onClick={onGoHome}>
         <div className="nav-avatar">
-          <img src="/avatar.png" alt="Kamil Sarbian" className="nav-avatar" />
+          <img
+            src="/avatar_new.png"
+            alt="Kamil Sarbian"
+            className="nav-avatar"
+            width="330"
+            height="547"
+            decoding="async"
+          />
         </div>
 
         <div className="brand-text">
