@@ -45,7 +45,7 @@ export default function Footer() {
         </a>
         <a
           className="footer-icon-link"
-          href="https://www.linkedin.com/in/kamil-sarbian-3399991ba/"
+          href="https://www.linkedin.com/in/kamil-sarbian/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t("home.linkedin")}

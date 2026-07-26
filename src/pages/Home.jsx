@@ -139,11 +139,11 @@ export default function Home({ onGoProjects }) {
                   <li>
                     <strong>{t("home.linkedin")}:</strong>{" "}
                     <a
-                      href="https://www.linkedin.com/in/kamil-sarbian-3399991ba/"
+                      href="https://www.linkedin.com/in/kamil-sarbian/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      linkedin.com/in/kamilsarbian
+                      linkedin.com/in/kamil-sarbian
                     </a>
                   </li>
 

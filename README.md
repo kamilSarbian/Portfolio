@@ -382,6 +382,6 @@ Avoid pinning tutorial repositories or unfinished experiments. Supporting experi
 **Kamil Sarbian**  
 Software Developer - backend systems, AI automation, and research-led digital products
 
-- LinkedIn: https://www.linkedin.com/in/kamil-sarbian-3399991ba/
+- LinkedIn: https://www.linkedin.com/in/kamil-sarbian/
 - GitHub: https://github.com/kamilSarbian
 
