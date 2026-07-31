@@ -34,8 +34,8 @@
         "description": "Casestudie av et privat OpenClaw-basert AI-miljø med vedvarende kontekst, planlagt overvåking, sikre integrasjoner og drift på Linux VPS."
       },
       "nova": {
-        "title": "NOVA Market — Flask & Stripe Case Study | Kamil Sarbian",
-        "description": "Explore NOVA Market, a Flask e-commerce portfolio demo with Neon PostgreSQL, Stripe Sandbox Checkout, signed webhooks, rate limiting, and 40 tests."
+        "title": "NOVA Market — casestudie med Flask og Stripe | Kamil Sarbian",
+        "description": "Utforsk NOVA Market, en e-handelsdemo med Flask, Neon PostgreSQL, Stripe Sandbox Checkout, signerte webhooks, rate limiting og 40 tester."
       },
       "living": {
         "title": "Living Startpakke — innsiktsdrevet produktarbeid | Kamil Sarbian",
@@ -210,6 +210,7 @@
     },
     "caseStudies": {
       "auth": {
+        "kicker": "Backendautentisering og tilgangskontroll",
         "title": "Authentication & User Management API",
         "problem": "Mange interne verktøy trenger sikker brukertilgang uten å være avhengige av store eksterne identitetsløsninger.",
         "solution": "En FastAPI-tjeneste med JWT-innlogging, beskyttet brukertilgang, rollebaserte rettigheter, validering og persistens i PostgreSQL.",
@@ -219,12 +220,22 @@
         "screenshot": "Interaktiv demo tilgjengelig i prosjektvisningen."
       },
       "jarvis": {
+        "kicker": "Privat AI-automatiseringsmiljø",
         "title": "JARVIS — privat AI-automatiseringsmiljø",
         "problem": "Teknisk research, jobbanalyse, infrastrukturnotater og prosjektbeslutninger var spredt mellom ulike verktøy og økter.",
         "solution": "Et privat OpenClaw-basert miljø på en selvadministrert Ubuntu-VPS, med vedvarende minne, planlagt overvåking, støttetjenester og tilgang via Telegram.",
         "businessValue": "Samler teknisk kontekst, researchresultater og repeterbare driftsprosesser i ett privat miljø.",
         "productionThinking": "Tydelige plattformgrenser, beskyttede hemmeligheter, isolerte planlagte økter, ressursovervåking, dokumenterte begrensninger og et konkret veikart for pålitelighet.",
         "stack": ["OpenClaw", "Linux/VPS", "Docker", "Telegram"]
+      },
+      "nova": {
+        "kicker": "E-handelscase med Flask",
+        "title": "NOVA Market",
+        "problem": "Et visuelt butikkgrensesnitt alene viser ikke tillitsgrenser, datalagring eller feilhåndtering i en komplett kjøpsprosess.",
+        "solution": "En utrullet Flask-applikasjon som kobler produktkatalog, kundekontoer, serverberegnet checkout, PostgreSQL og Stripe Sandbox.",
+        "businessValue": "Viser en komplett kundereise og backend-kontrollene som holder beløp, betalinger og ordrestatus pålitelige.",
+        "productionThinking": "Signerte webhooks, idempotent betalingsbekreftelse, versjonerte migrasjoner, delt rate limiting, sikkerhetsheadere og isolerte PostgreSQL-tester.",
+        "stack": ["Python", "Flask", "PostgreSQL", "Stripe"]
       },
       "living": {
         "kicker": "Innsiktsdrevet digitalt produktkonsept",
@@ -242,6 +253,7 @@
         "stack": ["Product Discovery", "Brukerinnsikt", "Innsiktsanalyse", "Figma"]
       },
       "classifier": {
+        "kicker": "AI-støttet backendtjeneste",
         "title": "AI-assisted Image Classification API",
         "problem": "Team trenger ofte en rask måte å klassifisere opplastet visuelt innhold på uten å investere i dedikert ML-infrastruktur.",
         "solution": "En FastAPI-tjeneste som tar imot opplastede bilder, utfører CLIP-basert zero-shot classification, støtter egne etiketter eller presets og returnerer strukturerte JSON-prediksjoner.",
@@ -251,6 +263,7 @@
         "screenshot": "Interaktiv demo tilgjengelig i prosjektvisningen."
       },
       "imageProcessing": {
+        "kicker": "Backendtjeneste for bildebehandling",
         "title": "Image Processing API",
         "problem": "Team bruker tid på å endre størrelse, konvertere eller rotere bilder manuelt i desktop-verktøy eller spredte scripts.",
         "solution": "En FastAPI-tjeneste som tar imot bildeopplastinger og utfører resizing, grayscale-konvertering eller rotation gjennom API-driven processing og nedlastbar PNG-output.",
@@ -268,6 +281,196 @@
     "imgClassDesc":"Python-API som tar imot et bilde og returnerer en klassifisering ved hjelp av en ML-modell. Endepunktet håndterer filopplasting og returnerer prediksjonsresultater i JSON-format.",
     "authTitle": "Auth & User Management API",
     "authDesc": "API for brukeradministrasjon med registrering, innlogging og JWT-autentisering. Systemet støtter brukerroller (admin/bruker), profiler og integrasjon med PostgreSQL-database ved bruk av SQLAlchemy."
+  },
+  "novaMarket": {
+    "cta": {
+      "live": "Se live-demo",
+      "source": "Se kildekoden"
+    },
+    "hero": {
+      "eyebrow": "Flask · PostgreSQL · Stripe Sandbox",
+      "title": "En komplett e-handelsreise bygget som en utrullbar porteføljecase.",
+      "description": "NOVA Market er en responsiv Flask-applikasjon som kobler produktkatalog, kundekontoer, serverberegnet handlekurv, valg av levering, Stripe Sandbox Checkout, behandling av signerte webhooks og ordrehistorikk i én sammenhengende flyt.",
+      "status": "Live porteføljedemo · Stripe i testmodus",
+      "language": "Engelsk applikasjonsgrensesnitt",
+      "disclaimer": "NOVA Market er en teknisk porteføljedemonstrasjon. Produkter, kundeopplysninger og bestillinger er fiktive. Stripe kjører kun i sandbox-modus, og applikasjonen tar ikke imot kommersielle bestillinger eller tilbyr leveringstjenester."
+    },
+    "facts": [
+      { "label": "Automatiserte tester", "value": "40 bestått" },
+      { "label": "Database", "value": "Neon PostgreSQL" },
+      { "label": "Migrasjoner", "value": "2 versjonerte SQL-migrasjoner" },
+      { "label": "Produktressurser", "value": "20 dokumenterte WebP-bilder" }
+    ],
+    "overview": {
+      "title": "Prosjektoversikt",
+      "paragraphs": [
+        "NOVA Market viser utviklingsarbeidet bak en moderne e-handelsreise, i stedet for bare å presentere et visuelt butikkgrensesnitt.",
+        "Applikasjonen kobler et responsivt grensesnitt til en Flask-backend, lagring i PostgreSQL, serverkontrollerte priser, autentiserte økter og Stripe Sandbox Checkout. Betalingsbekreftelsen behandles gjennom en signert webhook før lokal ordrestatus oppdateres."
+      ]
+    },
+    "problem": {
+      "title": "Problem",
+      "body": "En checkout-flyt må samordne tilstand mellom nettleseren, applikasjonen, databasen og betalingsleverandøren uten å stole på priser fra klienten eller anta at en viderekobling bekrefter betaling.",
+      "items": [
+        "Holde produktpriser, leveringskostnader, valuta og totalsummer under serverens kontroll.",
+        "Koble autentisering, handlekurv, leveringsvalg, betaling og ordrehistorikk.",
+        "Behandle asynkron betalingsbekreftelse sikkert og idempotent.",
+        "Beskytte offentlige operasjoner for innlogging, registrering og checkout mot misbruk.",
+        "Kommunisere tydelig at katalogen er fiktiv og betalingene kun er i sandbox-modus."
+      ]
+    },
+    "solution": {
+      "title": "Løsning",
+      "body": "Jeg bygget en modulær Flask-applikasjon med separate lag for ruter, forretningsregler, persistens, betalingsintegrasjon, sikkerhetskontroller og lagring av rate limits.",
+      "items": [
+        "Pålitelige produktdata og leveringsregler hentes på nytt fra PostgreSQL før checkout.",
+        "Stripe Checkout Sessions opprettes fra EUR-beløp beregnet på serveren.",
+        "Signerte webhook-hendelser kontrolleres mot lokal ordre, beløp, valuta og Session ID.",
+        "Versjonerte SQL-migrasjoner og idempotent seeding styrer initialisering av databasen.",
+        "PostgreSQL-baserte tellere deler rate-limit-tilstand mellom applikasjonsprosesser."
+      ]
+    },
+    "architecture": {
+      "title": "Arkitektur",
+      "body": "Cloudflare leverer kun autoritativ DNS. Applikasjons- og webhooktrafikk termineres hos Render før den når Gunicorn og Flask.",
+      "dnsTitle": "DNS-oppslag",
+      "dnsAriaLabel": "Nettleseren slår opp NOVA Market-domenet gjennom Cloudflare autoritativ DNS, som returnerer Render-målet.",
+      "dnsNodes": ["Nettleser", "Cloudflare autoritativ DNS", "Render-mål"],
+      "dnsNote": "Cloudflare er konfigurert som DNS only og fungerer ikke som applikasjonsproxy.",
+      "appTitle": "Applikasjonsforespørsel",
+      "appAriaLabel": "Nettleseren sender en HTTPS-forespørsel gjennom Render-domenet til Gunicorn, Flask og Neon PostgreSQL.",
+      "appNodes": ["Nettleser", "Eget Render-domene", "Gunicorn", "Flask", "Neon PostgreSQL"],
+      "stripeTitle": "Signert webhook",
+      "stripeAriaLabel": "Stripe sender en signert webhook gjennom Render og Gunicorn til verifisering i Flask og Neon PostgreSQL.",
+      "stripeNodes": ["Stripe", "Render", "Gunicorn", "Flask-verifisering", "Neon PostgreSQL"]
+    },
+    "featuresTitle": "Kjernefunksjoner",
+    "featureGroups": [
+      {
+        "title": "Nettbutikk og kontoer",
+        "items": [
+          "Responsiv katalog, søk, filtrering, sortering og produktvisninger.",
+          "Registrering, innlogging, øktbasert handlekurv og kundens ordrehistorikk.",
+          "Tjue optimaliserte produktillustrasjoner laget spesielt for demoen."
+        ]
+      },
+      {
+        "title": "Checkout og betaling",
+        "items": [
+          "Serverkontrollerte EUR-priser og tydelige leveringskostnader.",
+          "Intern ordregjennomgang før Stripe-hostet Sandbox Checkout.",
+          "Signert, validert og idempotent betalingsbekreftelse."
+        ]
+      },
+      {
+        "title": "Drift",
+        "items": [
+          "Gunicorn utrullet på Render med et offentlig health-endepunkt.",
+          "Neon PostgreSQL med versjonerte migrasjoner og isolerte testskjemaer.",
+          "Brukervennlige feilsider for 404, 429, 500 og 503."
+        ]
+      }
+    ],
+    "security": {
+      "title": "Sikkerhet og pålitelighet",
+      "body": "Den offentlige utrullingen bruker flere lag med sikkerhetskontroller:",
+      "items": [
+        "scrypt-hashing av passord, CSRF-beskyttelse og sikre produksjonscookies",
+        "serverkontrollerte priser, leveringskostnader, totalsummer og EUR-valuta",
+        "parametriserte PostgreSQL-spørringer og e-postunikhet uten forskjell på store og små bokstaver",
+        "Content Security Policy, validering av betrodde verter og grunnleggende sikkerhetsheadere",
+        "håndheving av Stripe-testnøkler og verifisering av webhook-signaturer",
+        "idempotent opprettelse av Checkout Session og betalingsbekreftelse",
+        "PostgreSQL-basert rate limiting med HMAC-SHA256-identifikatorer",
+        "fail-closed-responser når det delte rate-limit-lageret er utilgjengelig"
+      ]
+    },
+    "payment": {
+      "title": "Betalingsflyt",
+      "steps": [
+        "Kunden gjennomgår produktene og velger leveringsmetode.",
+        "Flask henter pålitelige produktpriser på nytt og beregner totalen i EUR.",
+        "En lokal ventende ordre og ordrelinjene lagres i PostgreSQL.",
+        "Flask oppretter en Stripe Sandbox Checkout Session fra pålitelige verdier.",
+        "Nettleseren fullfører testbetalingen i Stripe-hostet Checkout.",
+        "Stripe sender en signert hendelse til webhook-endepunktet.",
+        "Flask verifiserer signatur, beløp, valuta, Session ID og ordrereferanse.",
+        "Den lokale ordren oppdateres idempotent og vises i kontohistorikken."
+      ],
+      "note": "Applikasjonen håndterer aldri kortopplysninger direkte."
+    },
+    "contribution": {
+      "title": "Mitt bidrag",
+      "body": "Jeg designet og implementerte hele porteføljeprosjektet, inkludert:",
+      "items": [
+        "Flask-arkitektur, responsiv nettbutikk og visuelt designsystem",
+        "katalog-, konto-, handlekurv-, leverings-, checkout- og ordreprosesser",
+        "PostgreSQL-skjema, migrasjoner, idempotent seeding og isolert testoppsett",
+        "Stripe Sandbox Checkout, signerte webhooks og lokal betalingsverifisering",
+        "sikkerhetsheadere, konfigurasjon av betrodd proxy og databasebasert rate limiting",
+        "Gunicorn- og Render-konfigurasjon, Neon-integrasjon og eget domene",
+        "automatiserte tester, verifisering av utrulling og dokumentasjon av bildeopprinnelse"
+      ]
+    },
+    "results": {
+      "title": "Resultater",
+      "items": [
+        "40 automatiserte tester består mot et isolert PostgreSQL-testmiljø.",
+        "Fungerende katalog, kontoer, handlekurv, checkout og lagring av ordre.",
+        "Fungerende opprettelse av Stripe Sandbox Checkout Session og signert webhook-bekreftelse.",
+        "Fungerende idempotente ordreoppdateringer på et offentlig eget domene.",
+        "Tjue dokumenterte WebP-produktressurser uten referanser til gamle JPEG-filer."
+      ],
+      "note": "Hele sandbox-reisen fra registrering til betaling ble verifisert manuelt. Resultatene innebærer ikke målinger av produksjonstrafikk, konvertering eller skalerbarhet."
+    },
+    "gallery": {
+      "title": "Gjennomgang av grensesnittet",
+      "body": "Demoapplikasjonen forblir med hensikt engelskspråklig. Skjermbildene bruker fiktive data og viser hele sandbox-reisen.",
+      "images": [
+        {
+          "caption": "Responsiv NOVA Market-nettbutikk med produktutforskning, kategorinavigasjon og et mørkt e-handelsgrensesnitt.",
+          "alt": "NOVA Market-forsiden med hero-seksjon, navigasjon og utvalgte produktkort."
+        },
+        {
+          "caption": "Opprettelse av kundekonto med passordveiledning og CSRF-beskyttet innsending.",
+          "alt": "NOVA Market-siden for å opprette konto med felt for navn, e-post og passord."
+        },
+        {
+          "caption": "Intern checkout med handlekurv, leveringsvalg og en serverberegnet totalsum i EUR.",
+          "alt": "NOVA Market-checkout som viser produkter, leveringsalternativer og ordresammendrag."
+        },
+        {
+          "caption": "Stripe-hostet Sandbox Checkout brukt til å kontrollere overføringen til ekstern betaling.",
+          "alt": "Stripe Sandbox Checkout med en testordre fra NOVA Market og betalingsskjema."
+        },
+        {
+          "caption": "Bekreftet sandbox-betaling vist etter behandling av en signert webhook.",
+          "alt": "NOVA Market-bekreftelsesside som viser en godkjent demoordre."
+        }
+      ]
+    },
+    "limitations": {
+      "title": "Nåværende begrensninger",
+      "items": [
+        "Stripe kjører kun i sandbox-modus, og katalogen er fiktiv.",
+        "Ingen fysisk ordrebehandling, levering eller administratorløsning er koblet til.",
+        "Databasemigrasjoner og opprydding av utløpte rate-limit-poster utføres manuelt.",
+        "Gratis hosting kan gi cold starts etter perioder uten aktivitet.",
+        "Den hostede Stripe-reisen verifiseres manuelt og ikke med nettleserdrevne tester.",
+        "Juridiske sider demonstrerer informasjonsarkitektur og erstatter ikke juridisk vurdering."
+      ]
+    },
+    "nextSteps": {
+      "title": "Neste steg",
+      "items": [
+        "Legge til nettleserdrevne ende-til-ende-tester for den offentlige checkout-reisen.",
+        "Legge til CI-kontroller for tester, formatering, migrasjoner og ressursintegritet.",
+        "Innføre arbeidsflyter for administrasjon av katalog og ordre.",
+        "Automatisere opprydding av rate limits og legge til strukturert overvåking.",
+        "Legge til responsive bildevarianter og srcset-levering.",
+        "Dokumentere gjenoppretting, sikkerhetskopiering og rollback."
+      ]
+    }
   },
   "livingStartpakke": {
     "kicker": "INNSIKTSDREVET PRODUKTUTVIKLING",

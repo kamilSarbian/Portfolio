@@ -1,36 +1,44 @@
 import Card from "../components/Card";
 import { useTranslation } from "react-i18next";
-import { NOVA_MARKET } from "../content/novaMarket";
+import { Link } from "react-router-dom";
+
+import { NOVA_MARKET_LINKS } from "../content/novaMarket";
 
 const API_DOCS_URL = "https://api.kamilsarbian.dev/docs";
 const GITHUB_URL = "https://github.com/kamilSarbian/Portfolio";
 const PROJECT_LINKS = {
   auth: {
+    projectPath: "/projects/auth-api",
     githubUrl: GITHUB_URL,
     apiDocsUrl: API_DOCS_URL,
     screenshot: null,
   },
   jarvis: {
+    projectPath: "/projects/jarvis-ai-environment",
     architecture: true,
     privateRepository: true,
     screenshot: null,
   },
   nova: {
-    githubUrl: NOVA_MARKET.repositoryUrl,
-    liveUrl: NOVA_MARKET.liveUrl,
+    projectPath: "/projects/nova-market",
+    githubUrl: NOVA_MARKET_LINKS.repositoryUrl,
+    liveUrl: NOVA_MARKET_LINKS.liveUrl,
     screenshot: null,
   },
   living: {
+    projectPath: "/projects/living-startpakke",
     prototype: true,
     privateResearch: true,
     screenshot: null,
   },
   classifier: {
+    projectPath: "/projects/image-classifier",
     githubUrl: GITHUB_URL,
     apiDocsUrl: API_DOCS_URL,
     screenshot: null,
   },
   imageProcessing: {
+    projectPath: "/projects/image-editor",
     githubUrl: GITHUB_URL,
     apiDocsUrl: API_DOCS_URL,
     screenshot: null,
@@ -40,7 +48,7 @@ const PROJECT_LINKS = {
 const PROJECT_CASES = [
   { id: "auth", onOpenKey: "auth" },
   { id: "jarvis", onOpenKey: "jarvis", onArchitectureKey: "jarvisArchitecture" },
-  { id: "nova", onOpenKey: "nova", content: NOVA_MARKET.card },
+  { id: "nova", onOpenKey: "nova" },
   { id: "living", onOpenKey: "living", onPrototypeKey: "livingPrototype", productCase: true },
   { id: "classifier", onOpenKey: "classifier" },
   { id: "imageProcessing", onOpenKey: "imageProcessing", secondary: true },
@@ -53,14 +61,13 @@ function CaseStudy({
   onOpenPrototype,
   featured = true,
   productCase = false,
-  content = null,
 }) {
   const { t } = useTranslation();
   const base = `projects.caseStudies.${id}`;
-  const stack = content?.stack ?? t(`${base}.stack`, { returnObjects: true });
+  const stack = t(`${base}.stack`, { returnObjects: true });
   const visibleStack = Array.isArray(stack) ? stack.slice(0, 4) : [];
   const links = PROJECT_LINKS[id];
-  const kicker = content?.kicker ?? t(`${base}.kicker`, { defaultValue: "" });
+  const kicker = t(`${base}.kicker`);
   const fields = productCase
     ? ["problem", "discovery", "currentDirection", "currentStage"]
     : ["problem", "solution", "businessValue", "productionThinking"];
@@ -70,7 +77,11 @@ function CaseStudy({
       <div className="case-study-header">
         <div>
           {kicker ? <p className="case-study-kicker">{kicker}</p> : null}
-          <h2>{content?.title ?? t(`${base}.title`)}</h2>
+          <h2>
+            <Link className="case-study-title-link" to={links.projectPath}>
+              {t(`${base}.title`)}
+            </Link>
+          </h2>
         </div>
       </div>
 
@@ -82,7 +93,7 @@ function CaseStudy({
                 ? t(`${base}.cardLabels.${field}`)
                 : t(`projects.caseLabels.${field}`)}
             </h3>
-            <p>{content?.[field] ?? t(`${base}.${field}`)}</p>
+            <p>{t(`${base}.${field}`)}</p>
           </section>
         ))}
       </div>
@@ -211,7 +222,6 @@ export default function Projects({
               onOpenPrototype={projectActions[project.onPrototypeKey]}
               featured={!project.secondary}
               productCase={project.productCase}
-              content={project.content}
             />
           ))}
         </div>

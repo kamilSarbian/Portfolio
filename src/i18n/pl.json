@@ -34,8 +34,8 @@
         "description": "Studium prywatnego środowiska opartego na OpenClaw z trwałym kontekstem, cyklicznym monitoringiem, bezpiecznymi integracjami i obsługą Linux VPS."
       },
       "nova": {
-        "title": "NOVA Market — Flask & Stripe Case Study | Kamil Sarbian",
-        "description": "Explore NOVA Market, a Flask e-commerce portfolio demo with Neon PostgreSQL, Stripe Sandbox Checkout, signed webhooks, rate limiting, and 40 tests."
+        "title": "NOVA Market — case study Flask i Stripe | Kamil Sarbian",
+        "description": "Poznaj NOVA Market: demo e-commerce we Flasku z Neon PostgreSQL, Stripe Sandbox Checkout, podpisanymi webhookami, rate limitingiem i 40 testami."
       },
       "living": {
         "title": "Living Startpakke — badania i product discovery | Kamil Sarbian",
@@ -210,6 +210,7 @@
     },
     "caseStudies": {
       "auth": {
+        "kicker": "Uwierzytelnianie backendowe i kontrola dostępu",
         "title": "Authentication & User Management API",
         "problem": "Wiele narzędzi wewnętrznych potrzebuje bezpiecznego dostępu użytkowników bez opierania się na dużych zewnętrznych systemach zarządzania tożsamością.",
         "solution": "Serwis FastAPI z logowaniem JWT, chronionym dostępem użytkownika, uprawnieniami opartymi o role, walidacją i trwałym zapisem w PostgreSQL.",
@@ -219,12 +220,22 @@
         "screenshot": "Interaktywne demo dostępne w widoku projektu."
       },
       "jarvis": {
+        "kicker": "Prywatne środowisko automatyzacji AI",
         "title": "JARVIS — prywatne środowisko automatyzacji AI",
         "problem": "Research techniczny, analiza ofert pracy, notatki infrastrukturalne i decyzje projektowe były rozproszone między narzędziami i sesjami.",
         "solution": "Prywatne środowisko oparte na OpenClaw, uruchomione na samodzielnie zarządzanym serwerze Ubuntu VPS, z trwałą pamięcią, monitoringiem i dostępem przez Telegram.",
         "businessValue": "Utrzymuje kontekst techniczny, wyniki researchu i powtarzalne procesy operacyjne w jednym prywatnym środowisku.",
         "productionThinking": "Jasne granice platformy, ochrona sekretów, izolowane zadania cykliczne, monitoring zasobów, udokumentowane ograniczenia i plan poprawy niezawodności.",
         "stack": ["OpenClaw", "Linux/VPS", "Docker", "Telegram"]
+      },
+      "nova": {
+        "kicker": "Case study e-commerce we Flasku",
+        "title": "NOVA Market",
+        "problem": "Sam interfejs sklepu nie pokazuje granic zaufania, trwałości danych ani obsługi błędów wymaganych w procesie zakupowym.",
+        "solution": "Wdrożona aplikacja Flask łącząca katalog produktów, konta klientów, wyceniany po stronie serwera checkout, PostgreSQL i Stripe Sandbox.",
+        "businessValue": "Pokazuje pełną ścieżkę klienta oraz mechanizmy backendowe potrzebne do zachowania wiarygodnych kwot, płatności i statusów zamówień.",
+        "productionThinking": "Podpisane webhooki, idempotentne potwierdzanie płatności, wersjonowane migracje, współdzielony rate limiting, nagłówki bezpieczeństwa i izolowane testy PostgreSQL.",
+        "stack": ["Python", "Flask", "PostgreSQL", "Stripe"]
       },
       "living": {
         "kicker": "Koncepcja produktu cyfrowego rozwijana na podstawie badań",
@@ -242,6 +253,7 @@
         "stack": ["Product Discovery", "User Research", "Analiza insightów", "Figma"]
       },
       "classifier": {
+        "kicker": "Backendowy serwis wspierany przez AI",
         "title": "AI-assisted Image Classification API",
         "problem": "Zespoły często potrzebują szybkiej klasyfikacji przesyłanych treści wizualnych bez inwestowania w dedykowaną infrastrukturę ML.",
         "solution": "Serwis FastAPI, który przyjmuje przesłane obrazy, wykonuje zero-shot classification z użyciem CLIP, obsługuje własne etykiety albo presety i zwraca uporządkowane predykcje JSON.",
@@ -251,6 +263,7 @@
         "screenshot": "Interaktywne demo dostępne w widoku projektu."
       },
       "imageProcessing": {
+        "kicker": "Backendowy serwis przetwarzania obrazów",
         "title": "Image Processing API",
         "problem": "Zespoły tracą czas na ręczne resize, konwersję albo obracanie obrazów w narzędziach desktopowych lub rozproszonych skryptach.",
         "solution": "Serwis FastAPI, który przyjmuje upload obrazu i wykonuje resize, konwersję do grayscale albo rotation przez API-driven processing oraz zwraca PNG gotowy do pobrania.",
@@ -268,6 +281,196 @@
     "imgClassDesc":"API w Pythonie, które przyjmuje obraz i zwraca klasyfikację przy użyciu modelu ML. Endpoint obsługuje przesyłanie plików oraz zwraca wyniki predykcji w formacie JSON.",
     "authTitle": "Auth & User Management API",
     "authDesc": "API do zarządzania użytkownikami z rejestracją, logowaniem oraz autoryzacją JWT. System obsługuje role użytkowników (admin/user), profile oraz integrację z bazą danych PostgreSQL przy użyciu SQLAlchemy."
+  },
+  "novaMarket": {
+    "cta": {
+      "live": "Zobacz demo na żywo",
+      "source": "Zobacz kod źródłowy"
+    },
+    "hero": {
+      "eyebrow": "Flask · PostgreSQL · Stripe Sandbox",
+      "title": "Kompletna ścieżka e-commerce zbudowana jako wdrożone case study portfolio.",
+      "description": "NOVA Market to responsywna aplikacja Flask, która łączy przeglądanie katalogu, konta klientów, wyceniany po stronie serwera koszyk, wybór dostawy, Stripe Sandbox Checkout, obsługę podpisanych webhooków i historię zamówień w jeden spójny proces.",
+      "status": "Działające demo portfolio · Stripe w trybie testowym",
+      "language": "Interfejs aplikacji po angielsku",
+      "disclaimer": "NOVA Market jest techniczną demonstracją portfolio. Produkty, dane klientów i zamówienia są fikcyjne. Stripe działa wyłącznie w trybie sandbox, a aplikacja nie przyjmuje zamówień komercyjnych ani nie realizuje dostaw."
+    },
+    "facts": [
+      { "label": "Testy automatyczne", "value": "40 zaliczonych" },
+      { "label": "Baza danych", "value": "Neon PostgreSQL" },
+      { "label": "Migracje", "value": "2 wersjonowane migracje SQL" },
+      { "label": "Zasoby produktowe", "value": "20 udokumentowanych obrazów WebP" }
+    ],
+    "overview": {
+      "title": "Przegląd projektu",
+      "paragraphs": [
+        "NOVA Market pokazuje pracę inżynierską stojącą za nowoczesną ścieżką e-commerce, zamiast prezentować wyłącznie wizualny interfejs sklepu.",
+        "Aplikacja łączy responsywny interfejs z backendem Flask, trwałym zapisem w PostgreSQL, cenami kontrolowanymi przez serwer, uwierzytelnionymi sesjami i Stripe Sandbox Checkout. Potwierdzenie płatności jest przetwarzane przez podpisany webhook przed aktualizacją lokalnego statusu zamówienia."
+      ]
+    },
+    "problem": {
+      "title": "Problem",
+      "body": "Proces zakupowy musi koordynować stan między przeglądarką, aplikacją, bazą danych i dostawcą płatności bez ufania cenom przesłanym przez klienta ani zakładania, że przekierowanie potwierdza płatność.",
+      "items": [
+        "Utrzymanie cen produktów, kosztów dostawy, waluty i sum pod kontrolą serwera.",
+        "Połączenie uwierzytelniania, koszyka, wyboru dostawy, płatności i historii zamówień.",
+        "Bezpieczne i idempotentne przetwarzanie asynchronicznego potwierdzenia płatności.",
+        "Ochrona publicznych operacji logowania, rejestracji i checkoutu przed nadużyciami.",
+        "Jasne komunikowanie fikcyjnego katalogu i wyłącznie testowego zakresu płatności."
+      ]
+    },
+    "solution": {
+      "title": "Rozwiązanie",
+      "body": "Zbudowałem modułową aplikację Flask z oddzielnymi warstwami tras, reguł biznesowych, persystencji, integracji płatności, zabezpieczeń i magazynu limitów żądań.",
+      "items": [
+        "Zaufane dane produktów i zasady dostawy są ponownie pobierane z PostgreSQL przed checkoutem.",
+        "Sesje Stripe Checkout powstają na podstawie sum EUR obliczonych przez serwer.",
+        "Podpisane webhooki są porównywane z lokalnym zamówieniem, kwotą, walutą i identyfikatorem sesji.",
+        "Wersjonowane migracje SQL i idempotentne seedowanie katalogu kontrolują inicjalizację bazy.",
+        "Liczniki w PostgreSQL współdzielą stan rate limitingu między procesami aplikacji."
+      ]
+    },
+    "architecture": {
+      "title": "Architektura",
+      "body": "Cloudflare zapewnia wyłącznie autorytatywny DNS. Ruch aplikacji i webhooków kończy się w Renderze, zanim dotrze do Gunicorna i Flaska.",
+      "dnsTitle": "Rozwiązywanie DNS",
+      "dnsAriaLabel": "Przeglądarka rozwiązuje domenę NOVA Market przez autorytatywny DNS Cloudflare, który zwraca cel Render.",
+      "dnsNodes": ["Przeglądarka", "Autorytatywny DNS Cloudflare", "Cel Render"],
+      "dnsNote": "Cloudflare działa w trybie DNS only i nie jest proxy aplikacji.",
+      "appTitle": "Żądanie aplikacji",
+      "appAriaLabel": "Przeglądarka wysyła żądanie HTTPS przez własną domenę Render do Gunicorna, Flaska i Neon PostgreSQL.",
+      "appNodes": ["Przeglądarka", "Własna domena Render", "Gunicorn", "Flask", "Neon PostgreSQL"],
+      "stripeTitle": "Podpisany webhook",
+      "stripeAriaLabel": "Stripe wysyła podpisany webhook przez Render i Gunicorn do weryfikacji we Flasku i bazy Neon PostgreSQL.",
+      "stripeNodes": ["Stripe", "Render", "Gunicorn", "Weryfikacja Flask", "Neon PostgreSQL"]
+    },
+    "featuresTitle": "Główne funkcje",
+    "featureGroups": [
+      {
+        "title": "Sklep i konta",
+        "items": [
+          "Responsywny katalog, wyszukiwanie, filtrowanie, sortowanie i strony produktów.",
+          "Rejestracja, logowanie, koszyk sesyjny i historia zamówień klienta.",
+          "Dwadzieścia zoptymalizowanych ilustracji produktowych przygotowanych dla dema."
+        ]
+      },
+      {
+        "title": "Checkout i płatności",
+        "items": [
+          "Ceny EUR kontrolowane przez serwer i przejrzyste koszty dostawy.",
+          "Wewnętrzne podsumowanie przed przejściem do Stripe Sandbox Checkout.",
+          "Podpisane, zweryfikowane i idempotentne potwierdzenie płatności."
+        ]
+      },
+      {
+        "title": "Utrzymanie",
+        "items": [
+          "Wdrożenie Gunicorn na Renderze z publicznym endpointem health check.",
+          "Neon PostgreSQL z wersjonowanymi migracjami i izolowanymi schematami testowymi.",
+          "Przyjazne strony błędów 404, 429, 500 i 503."
+        ]
+      }
+    ],
+    "security": {
+      "title": "Bezpieczeństwo i niezawodność",
+      "body": "Publiczne wdrożenie wykorzystuje warstwowe mechanizmy bezpieczeństwa:",
+      "items": [
+        "hashowanie haseł scrypt, ochrona CSRF i bezpieczne cookies produkcyjne",
+        "ceny, koszty dostawy, sumy i waluta EUR kontrolowane przez serwer",
+        "parametryzowane zapytania PostgreSQL i unikalność adresów e-mail bez rozróżniania wielkości liter",
+        "Content Security Policy, walidacja zaufanych hostów i podstawowe nagłówki bezpieczeństwa",
+        "wymuszanie kluczy testowych Stripe i weryfikacja podpisów webhooków",
+        "idempotentne tworzenie sesji Checkout i potwierdzanie płatności",
+        "rate limiting oparty na PostgreSQL z identyfikatorami klientów HMAC-SHA256",
+        "odpowiedzi fail-closed, gdy współdzielony magazyn limitów jest niedostępny"
+      ]
+    },
+    "payment": {
+      "title": "Proces płatności",
+      "steps": [
+        "Klient sprawdza produkty i wybiera sposób dostawy.",
+        "Flask ponownie pobiera zaufane ceny i oblicza sumę w EUR.",
+        "Lokalne oczekujące zamówienie i jego pozycje trafiają do PostgreSQL.",
+        "Flask tworzy sesję Stripe Sandbox Checkout z zaufanych wartości.",
+        "Przeglądarka kończy płatność testową w hostowanym Stripe Checkout.",
+        "Stripe wysyła podpisane zdarzenie do endpointu webhooka.",
+        "Flask weryfikuje podpis, kwotę, walutę, identyfikator sesji i numer zamówienia.",
+        "Lokalne zamówienie jest aktualizowane idempotentnie i pojawia się w historii konta."
+      ],
+      "note": "Aplikacja nigdy nie przetwarza bezpośrednio danych karty."
+    },
+    "contribution": {
+      "title": "Mój wkład",
+      "body": "Zaprojektowałem i wdrożyłem cały projekt portfolio, w tym:",
+      "items": [
+        "architekturę Flask, responsywny sklep i system wizualny",
+        "katalog, konta, koszyk, dostawę, checkout i procesy zamówień",
+        "schemat PostgreSQL, migracje, idempotentne seedowanie i izolowane testy",
+        "Stripe Sandbox Checkout, podpisane webhooki i lokalną weryfikację płatności",
+        "nagłówki bezpieczeństwa, konfigurację zaufanego proxy i rate limiting w bazie",
+        "konfigurację Gunicorn i Render, integrację Neon i własną domenę",
+        "testy automatyczne, weryfikację wdrożenia i dokumentację pochodzenia assetów"
+      ]
+    },
+    "results": {
+      "title": "Rezultaty",
+      "items": [
+        "40 testów automatycznych przechodzących w izolowanym środowisku PostgreSQL.",
+        "Działający katalog, konta, koszyk, checkout i trwały zapis zamówień.",
+        "Działające tworzenie sesji Stripe Sandbox Checkout i potwierdzanie podpisanym webhookiem.",
+        "Idempotentne aktualizacje zamówień działające pod publiczną własną domeną.",
+        "Dwadzieścia udokumentowanych assetów WebP bez odwołań do starych plików JPEG."
+      ],
+      "note": "Pełna ścieżka od rejestracji do płatności w sandboxie została zweryfikowana ręcznie. Wyniki nie oznaczają pomiarów ruchu produkcyjnego, konwersji ani skalowalności."
+    },
+    "gallery": {
+      "title": "Przegląd interfejsu",
+      "body": "Aplikacja demonstracyjna pozostaje celowo anglojęzyczna. Zrzuty wykorzystują fikcyjne dane i pokazują pełną ścieżkę sandboxową.",
+      "images": [
+        {
+          "caption": "Responsywny sklep NOVA Market z katalogiem, nawigacją kategorii i ciemnym interfejsem e-commerce.",
+          "alt": "Strona główna NOVA Market z sekcją hero, nawigacją i wyróżnionymi kartami produktów."
+        },
+        {
+          "caption": "Tworzenie konta klienta ze wskazówkami dotyczącymi hasła i formularzem chronionym przez CSRF.",
+          "alt": "Strona tworzenia konta NOVA Market z polami nazwy, adresu e-mail i hasła."
+        },
+        {
+          "caption": "Wewnętrzny checkout z produktami, wyborem dostawy i sumą EUR obliczoną przez serwer.",
+          "alt": "Checkout NOVA Market pokazujący produkty, opcje dostawy i podsumowanie zamówienia."
+        },
+        {
+          "caption": "Hostowany Stripe Sandbox Checkout używany do sprawdzenia przekazania płatności.",
+          "alt": "Stripe Sandbox Checkout z testowym zamówieniem NOVA Market i formularzem płatności."
+        },
+        {
+          "caption": "Potwierdzenie płatności sandboxowej wyświetlane po przetworzeniu podpisanego webhooka.",
+          "alt": "Strona potwierdzenia NOVA Market pokazująca pomyślnie zatwierdzone zamówienie demonstracyjne."
+        }
+      ]
+    },
+    "limitations": {
+      "title": "Obecne ograniczenia",
+      "items": [
+        "Stripe działa wyłącznie w trybie sandbox, a katalog jest fikcyjny.",
+        "Projekt nie obejmuje fizycznej realizacji zamówień, dostawy ani panelu administratora.",
+        "Migracje bazy i usuwanie wygasłych liczników rate limitingu są wykonywane ręcznie.",
+        "Darmowy hosting może powodować cold start po okresie bezczynności.",
+        "Hostowana ścieżka Stripe jest weryfikowana ręcznie, bez testów sterowanych przeglądarką.",
+        "Strony prawne pokazują architekturę informacji i nie zastępują konsultacji prawnej."
+      ]
+    },
+    "nextSteps": {
+      "title": "Kolejne kroki",
+      "items": [
+        "Dodać przeglądarkowe testy end-to-end publicznej ścieżki checkoutu.",
+        "Dodać kontrole CI dla testów, formatowania, migracji i integralności assetów.",
+        "Wprowadzić procesy administracji katalogiem i zamówieniami.",
+        "Zautomatyzować czyszczenie limitów i dodać uporządkowany monitoring.",
+        "Dodać responsywne warianty obrazów oraz srcset.",
+        "Udokumentować odzyskiwanie, kopie zapasowe i rollback."
+      ]
+    }
   },
   "livingStartpakke": {
     "kicker": "PRODUCT DISCOVERY OPARTE NA BADANIACH",

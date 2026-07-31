@@ -36,7 +36,6 @@ export const ROUTE_META = Object.freeze({
     indexable: true,
     schemaType: "SoftwareApplication",
     ogType: "article",
-    language: "en",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     schemaName: "NOVA Market",
