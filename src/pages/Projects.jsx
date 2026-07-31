@@ -1,5 +1,6 @@
 import Card from "../components/Card";
 import { useTranslation } from "react-i18next";
+import { NOVA_MARKET } from "../content/novaMarket";
 
 const API_DOCS_URL = "https://api.kamilsarbian.dev/docs";
 const GITHUB_URL = "https://github.com/kamilSarbian/Portfolio";
@@ -12,6 +13,11 @@ const PROJECT_LINKS = {
   jarvis: {
     architecture: true,
     privateRepository: true,
+    screenshot: null,
+  },
+  nova: {
+    githubUrl: NOVA_MARKET.repositoryUrl,
+    liveUrl: NOVA_MARKET.liveUrl,
     screenshot: null,
   },
   living: {
@@ -34,18 +40,27 @@ const PROJECT_LINKS = {
 const PROJECT_CASES = [
   { id: "auth", onOpenKey: "auth" },
   { id: "jarvis", onOpenKey: "jarvis", onArchitectureKey: "jarvisArchitecture" },
+  { id: "nova", onOpenKey: "nova", content: NOVA_MARKET.card },
   { id: "living", onOpenKey: "living", onPrototypeKey: "livingPrototype", productCase: true },
   { id: "classifier", onOpenKey: "classifier" },
   { id: "imageProcessing", onOpenKey: "imageProcessing", secondary: true },
 ];
 
-function CaseStudy({ id, onOpen, onOpenArchitecture, onOpenPrototype, featured = true, productCase = false }) {
+function CaseStudy({
+  id,
+  onOpen,
+  onOpenArchitecture,
+  onOpenPrototype,
+  featured = true,
+  productCase = false,
+  content = null,
+}) {
   const { t } = useTranslation();
   const base = `projects.caseStudies.${id}`;
-  const stack = t(`${base}.stack`, { returnObjects: true });
+  const stack = content?.stack ?? t(`${base}.stack`, { returnObjects: true });
   const visibleStack = Array.isArray(stack) ? stack.slice(0, 4) : [];
   const links = PROJECT_LINKS[id];
-  const kicker = t(`${base}.kicker`, { defaultValue: "" });
+  const kicker = content?.kicker ?? t(`${base}.kicker`, { defaultValue: "" });
   const fields = productCase
     ? ["problem", "discovery", "currentDirection", "currentStage"]
     : ["problem", "solution", "businessValue", "productionThinking"];
@@ -55,7 +70,7 @@ function CaseStudy({ id, onOpen, onOpenArchitecture, onOpenPrototype, featured =
       <div className="case-study-header">
         <div>
           {kicker ? <p className="case-study-kicker">{kicker}</p> : null}
-          <h2>{t(`${base}.title`)}</h2>
+          <h2>{content?.title ?? t(`${base}.title`)}</h2>
         </div>
       </div>
 
@@ -67,7 +82,7 @@ function CaseStudy({ id, onOpen, onOpenArchitecture, onOpenPrototype, featured =
                 ? t(`${base}.cardLabels.${field}`)
                 : t(`projects.caseLabels.${field}`)}
             </h3>
-            <p>{t(`${base}.${field}`)}</p>
+            <p>{content?.[field] ?? t(`${base}.${field}`)}</p>
           </section>
         ))}
       </div>
@@ -118,6 +133,15 @@ function CaseStudy({ id, onOpen, onOpenArchitecture, onOpenPrototype, featured =
             </>
           ) : null}
 
+          {links.liveUrl ? (
+            <>
+              <span aria-hidden="true">|</span>
+              <a href={links.liveUrl} target="_blank" rel="noreferrer">
+                {t("projects.liveDemo")}
+              </a>
+            </>
+          ) : null}
+
           {links.apiDocsUrl ? (
             <>
               <span aria-hidden="true">|</span>
@@ -148,6 +172,7 @@ export default function Projects({
   onOpenAuth,
   onOpenJarvis,
   onOpenJarvisArchitecture,
+  onOpenNova,
   onOpenLiving,
   onOpenLivingPrototype,
   onOpenImageEditor,
@@ -158,6 +183,7 @@ export default function Projects({
     auth: onOpenAuth,
     jarvis: onOpenJarvis,
     jarvisArchitecture: onOpenJarvisArchitecture,
+    nova: onOpenNova,
     living: onOpenLiving,
     livingPrototype: onOpenLivingPrototype,
     classifier: onOpenImageClassifier,
@@ -185,6 +211,7 @@ export default function Projects({
               onOpenPrototype={projectActions[project.onPrototypeKey]}
               featured={!project.secondary}
               productCase={project.productCase}
+              content={project.content}
             />
           ))}
         </div>

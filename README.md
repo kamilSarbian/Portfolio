@@ -8,6 +8,7 @@ The portfolio follows a problem-first approach: understand the workflow and unde
 
 - Portfolio: https://kamilsarbian.dev
 - API docs: https://api.kamilsarbian.dev/docs
+- NOVA Market live demo: https://nova.kamilsarbian.dev
 - GitHub: https://github.com/kamilSarbian/Portfolio
 
 ## Problem
@@ -24,6 +25,7 @@ The application combines a React frontend with a FastAPI backend and exposes sev
 - contact workflow with backend validation and email delivery
 - optional AI-assisted technical direction for contact inquiries
 - a private AI automation environment documented as the JARVIS case study
+- a deployed Flask e-commerce case study with PostgreSQL and Stripe Sandbox
 - a research-led digital product discovery case study for Living Startpakke
 - API documentation through Swagger
 
@@ -96,6 +98,23 @@ A private OpenClaw-based environment running on a self-managed Linux VPS, with p
 
 **Project boundary**
 JARVIS is presented as a configured and extended private environment, not as an agent platform built from scratch. Private workspace data and repository contents are not published.
+
+### NOVA Market — Flask E-commerce and Stripe Sandbox
+
+Live case study: https://kamilsarbian.dev/projects/nova-market
+
+Live demo: https://nova.kamilsarbian.dev
+
+Source code: https://github.com/kamilSarbian/E-commerce_NOVA_Market
+
+**Problem**
+A visual storefront alone does not demonstrate the trust boundaries, persistence, and failure handling required by a complete checkout journey.
+
+**Solution**
+A deployed Flask application connecting catalogue discovery, customer accounts, a server-priced cart, delivery selection, Neon PostgreSQL, Stripe Sandbox Checkout, signed webhook confirmation, and order history.
+
+**Reliability and security**
+The project includes versioned SQL migrations, parameterized queries, CSRF protection, secure production cookies, server-controlled totals, signed and idempotent payment confirmation, PostgreSQL-backed rate limiting, 40 automated tests, and documented WebP product assets.
 
 ### Living Startpakke — Research-led Product Discovery
 
@@ -338,7 +357,7 @@ python -m pytest -q
 
 The static `index.html` provides English fallback metadata, a global Person JSON-LD entity, and a 1200 x 630 Open Graph image. React updates the page title, description, canonical URL, Open Graph metadata, Twitter metadata, robots directive, and route-specific JSON-LD when the route or interface language changes.
 
-All eight public routes use one canonical URL per route. Languages do not have separate URL variants, so the project intentionally does not publish `hreflang` links. The client-side 404 page uses `noindex,follow`, but Vercel can still return HTTP 200 for unknown SPA routes.
+All nine public routes use one canonical URL per route. Languages do not have separate URL variants, so the project intentionally does not publish `hreflang` links. The client-side 404 page uses `noindex,follow`, but Vercel can still return HTTP 200 for unknown SPA routes.
 
 Social crawlers that do not execute JavaScript receive the global English fallback and shared Open Graph image. Route-specific social previews and server-level 404 responses require prerendering or server-rendered routes and remain outside the current MVP.
 
@@ -355,6 +374,7 @@ Production domains:
 - Frontend: https://kamilsarbian.dev
 - API: https://api.kamilsarbian.dev
 - JARVIS: https://jarvis.kamilsarbian.dev
+- NOVA Market demo: https://nova.kamilsarbian.dev
 
 Key production concepts demonstrated:
 
@@ -372,8 +392,8 @@ Public API safeguards include explicit production CORS origins, process-local ra
 For the public GitHub profile, pin only the strongest repositories:
 
 1. `Portfolio` - backend portfolio and case studies.
-2. Auth/API focused project, if separated into its own repository later.
-3. AI automation or image classification project, if separated into its own repository later.
+2. `E-commerce_NOVA_Market` - deployed Flask, PostgreSQL, and Stripe Sandbox project.
+3. Auth/API focused project, if separated into its own repository later.
 
 Avoid pinning tutorial repositories or unfinished experiments. Supporting experiments should stay visible only when they help explain API integration or backend thinking.
 

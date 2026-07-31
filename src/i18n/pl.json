@@ -33,6 +33,10 @@
         "title": "JARVIS — prywatne środowisko automatyzacji AI | Kamil Sarbian",
         "description": "Studium prywatnego środowiska opartego na OpenClaw z trwałym kontekstem, cyklicznym monitoringiem, bezpiecznymi integracjami i obsługą Linux VPS."
       },
+      "nova": {
+        "title": "NOVA Market — Flask & Stripe Case Study | Kamil Sarbian",
+        "description": "Explore NOVA Market, a Flask e-commerce portfolio demo with Neon PostgreSQL, Stripe Sandbox Checkout, signed webhooks, rate limiting, and 40 tests."
+      },
       "living": {
         "title": "Living Startpakke — badania i product discovery | Kamil Sarbian",
         "description": "Koncepcja produktu cyfrowego rozwijana na podstawie badań, kontaktu z interesariuszami, analizy insightów, prototypowania i iteracyjnych testów."
@@ -192,6 +196,7 @@
     "privateRepository": "Prywatne repozytorium 🔒",
     "privateResearch": "Prywatne materiały badawcze 🔒",
     "github": "GitHub",
+    "liveDemo": "Demo na żywo",
     "apiDocs": "Dokumentacja API",
     "linksLabel": "Linki projektu",
     "featuredLabel": "Wyróżnione case study",

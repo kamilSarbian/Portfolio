@@ -12,7 +12,12 @@ import {
 
 const rootDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const languages = ["en", "pl", "no"];
-const allowedSchemaTypes = new Set(["ProfilePage", "CollectionPage", "CreativeWork"]);
+const allowedSchemaTypes = new Set([
+  "ProfilePage",
+  "CollectionPage",
+  "CreativeWork",
+  "SoftwareApplication",
+]);
 const errors = [];
 const warnings = [];
 

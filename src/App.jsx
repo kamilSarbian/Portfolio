@@ -14,6 +14,7 @@ import ProjectImageClassifier from "./pages/ProjectImageClassifier";
 import ProjectAuth from "./pages/ProjectAuth";
 import ProjectJarvis from "./pages/ProjectJarvis";
 import ProjectLivingStartpakke from "./pages/ProjectLivingStartpakke";
+import ProjectNovaMarket from "./pages/ProjectNovaMarket";
 
 import "./App.css";
 
@@ -86,6 +87,7 @@ export default function App() {
                 onOpenAuth={() => goTo("/projects/auth-api")}
                 onOpenJarvis={() => goTo("/projects/jarvis-ai-environment")}
                 onOpenJarvisArchitecture={() => goTo("/projects/jarvis-ai-environment#architecture")}
+                onOpenNova={() => goTo("/projects/nova-market")}
                 onOpenLiving={() => goTo("/projects/living-startpakke")}
                 onOpenLivingPrototype={() => goTo("/projects/living-startpakke#prototype")}
                 onOpenPwned={() => goTo("/projects/password-checker")}
@@ -108,6 +110,11 @@ export default function App() {
           <Route
             path="/projects/living-startpakke"
             element={<ProjectLivingStartpakke onGoProjects={() => goTo("/projects")} />}
+          />
+
+          <Route
+            path="/projects/nova-market"
+            element={<ProjectNovaMarket onGoProjects={() => goTo("/projects")} />}
           />
 
           <Route

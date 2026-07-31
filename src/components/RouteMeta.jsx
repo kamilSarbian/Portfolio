@@ -57,7 +57,7 @@ function setRouteJsonLd(route, title, description, url, language) {
   const schema = {
     "@context": "https://schema.org",
     "@type": route.schemaType,
-    name: title,
+    name: route.schemaName ?? title,
     description,
     url,
     inLanguage: language,
@@ -69,12 +69,23 @@ function setRouteJsonLd(route, title, description, url, language) {
     },
   };
 
-  if (route.schemaType === "CreativeWork") {
+  if (["CreativeWork", "SoftwareApplication"].includes(route.schemaType)) {
     schema.author = {
       "@type": "Person",
       "@id": PERSON_ID,
       name: "Kamil Sarbian",
     };
+  }
+
+  if (route.schemaType === "SoftwareApplication") {
+    schema.applicationCategory = route.applicationCategory;
+    schema.operatingSystem = route.operatingSystem;
+    schema.url = route.applicationUrl;
+    schema.codeRepository = route.codeRepository;
+    schema.datePublished = route.datePublished;
+    schema.isAccessibleForFree = true;
+    schema.programmingLanguage = ["Python", "JavaScript", "HTML", "CSS", "SQL"];
+    schema.image = new URL(route.imagePath, SITE_URL).href;
   }
 
   if (route.schemaType === "ProfilePage") {
@@ -113,7 +124,8 @@ export default function RouteMeta() {
   useEffect(() => {
     const canonicalUrl = toCanonicalUrl(route.canonicalPath);
     const routeUrl = canonicalUrl ?? new URL(location.pathname, SITE_URL).href;
-    const schemaLanguage = toSchemaLanguage(language);
+    const routeLanguage = route.language ?? language;
+    const schemaLanguage = toSchemaLanguage(routeLanguage);
 
     document.title = title;
     setMeta('meta[name="description"]', { name: "description" }, description);
@@ -122,7 +134,7 @@ export default function RouteMeta() {
 
     setMeta('meta[property="og:type"]', { property: "og:type" }, route.ogType);
     setMeta('meta[property="og:site_name"]', { property: "og:site_name" }, "Kamil Sarbian Portfolio");
-    setMeta('meta[property="og:locale"]', { property: "og:locale" }, toOgLocale(language));
+    setMeta('meta[property="og:locale"]', { property: "og:locale" }, toOgLocale(routeLanguage));
     setMeta('meta[property="og:title"]', { property: "og:title" }, title);
     setMeta('meta[property="og:description"]', { property: "og:description" }, description);
     setMeta('meta[property="og:url"]', { property: "og:url" }, routeUrl);

@@ -8,6 +8,7 @@ Software developer portfolio focused on backend systems, AI automation, API inte
 - Case studies: https://kamilsarbian.dev/projects
 - Authentication & User Management API: https://kamilsarbian.dev/projects/auth-api
 - JARVIS — private OpenClaw-based AI automation environment, configured and extended for persistent context, monitoring, and operational workflows: https://kamilsarbian.dev/projects/jarvis-ai-environment
+- NOVA Market — deployed Flask e-commerce portfolio demo with Neon PostgreSQL, Stripe Sandbox Checkout, signed webhooks, and PostgreSQL-backed rate limiting: https://kamilsarbian.dev/projects/nova-market
 - Living Startpakke — research-led, user-informed digital product concept in discovery and prototype feedback outreach, not a finished or validated product: https://kamilsarbian.dev/projects/living-startpakke
 - AI-assisted Image Classification API: https://kamilsarbian.dev/projects/image-classifier
 - Image Processing API: https://kamilsarbian.dev/projects/image-editor
@@ -22,6 +23,14 @@ Software developer portfolio focused on backend systems, AI automation, API inte
 - Linux/VPS infrastructure
 - Product discovery and research-led digital products
 - Practical deployment and reliability thinking
+
+## NOVA Market
+
+NOVA Market is a deployed Flask e-commerce portfolio demo by Kamil Sarbian. It demonstrates catalogue discovery, customer accounts, a server-priced cart, delivery selection, Stripe Sandbox Checkout, signed webhook verification, PostgreSQL order persistence, and PostgreSQL-backed rate limiting.
+
+- Case study: https://kamilsarbian.dev/projects/nova-market
+- Live demo: https://nova.kamilsarbian.dev
+- Source code: https://github.com/kamilSarbian/E-commerce_NOVA_Market
 
 ## Preferred Summary
 
