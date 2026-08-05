@@ -28,22 +28,30 @@ function Flow({ label, nodes }) {
   );
 }
 
-function ProjectLinks() {
+function ProjectLinks({ showColdStart = false }) {
   const { t } = useTranslation();
 
   return (
-    <div className="nova-project-links">
-      <a className="btn primary" href={NOVA_MARKET_LINKS.liveUrl} target="_blank" rel="noreferrer">
-        {t("novaMarket.cta.live")} ↗
-      </a>
-      <a
-        className="btn ghost"
-        href={NOVA_MARKET_LINKS.repositoryUrl}
-        target="_blank"
-        rel="noreferrer"
-      >
-        {t("novaMarket.cta.source")} ↗
-      </a>
+    <div className="nova-project-actions">
+      <div className="nova-project-links">
+        <a className="btn primary" href={NOVA_MARKET_LINKS.liveUrl} target="_blank" rel="noreferrer">
+          {t("novaMarket.cta.live")} ↗
+        </a>
+        <a
+          className="btn ghost"
+          href={NOVA_MARKET_LINKS.repositoryUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {t("novaMarket.cta.source")} ↗
+        </a>
+      </div>
+      {showColdStart ? (
+        <p className="nova-cold-start-note">
+          <span aria-hidden="true">◷</span>
+          {t("novaMarket.cta.coldStart")}
+        </p>
+      ) : null}
     </div>
   );
 }
@@ -75,7 +83,7 @@ export default function ProjectNovaMarket({ onGoProjects }) {
                 <span className="nova-language-badge">{copy.hero.language}</span>
               </div>
 
-              <ProjectLinks />
+              <ProjectLinks showColdStart />
             </div>
 
             <img

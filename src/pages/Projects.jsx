@@ -147,7 +147,13 @@ function CaseStudy({
           {links.liveUrl ? (
             <>
               <span aria-hidden="true">|</span>
-              <a href={links.liveUrl} target="_blank" rel="noreferrer">
+              <a
+                className="case-study-live-link"
+                href={links.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span aria-hidden="true">◷</span>
                 {t("projects.liveDemo")}
               </a>
             </>

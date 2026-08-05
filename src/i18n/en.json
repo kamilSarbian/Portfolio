@@ -286,7 +286,8 @@
   "novaMarket": {
     "cta": {
       "live": "View live demo",
-      "source": "Explore source code"
+      "source": "Explore source code",
+      "coldStart": "Free-tier demo: the first load after inactivity may take about a minute while the service starts."
     },
     "hero": {
       "eyebrow": "Flask · PostgreSQL · Stripe Sandbox",

@@ -285,7 +285,8 @@
   "novaMarket": {
     "cta": {
       "live": "Zobacz demo na żywo",
-      "source": "Zobacz kod źródłowy"
+      "source": "Zobacz kod źródłowy",
+      "coldStart": "Demo na darmowym hostingu: pierwsze uruchomienie po okresie bezczynności może potrwać około minuty."
     },
     "hero": {
       "eyebrow": "Flask · PostgreSQL · Stripe Sandbox",
