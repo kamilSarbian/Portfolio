@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 import { NOVA_MARKET_LINKS } from "../content/novaMarket";
-import { NORDIC_HEARTH_IMAGES, NORDIC_HEARTH_LINKS } from "../content/nordicHearth";
+import { NORDIC_HEARTH_LINKS } from "../content/nordicHearth";
 
 const API_DOCS_URL = "https://api.kamilsarbian.dev/docs";
 const GITHUB_URL = "https://github.com/kamilSarbian/Portfolio";
@@ -30,7 +30,7 @@ const PROJECT_LINKS = {
     projectPath: "/projects/nordic-hearth",
     githubUrl: NORDIC_HEARTH_LINKS.repositoryUrl,
     liveUrl: NORDIC_HEARTH_LINKS.liveUrl,
-    screenshot: NORDIC_HEARTH_IMAGES[0].src,
+    screenshot: null,
   },
   living: {
     projectPath: "/projects/living-startpakke",
