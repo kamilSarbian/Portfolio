@@ -1,5 +1,5 @@
 export const NORDIC_HEARTH_LINKS = Object.freeze({
-  liveUrl: "https://roa-portfolio-frontend.onrender.com",
+  liveUrl: "https://nordic.kamilsarbian.dev",
   repositoryUrl: "https://github.com/kamilSarbian/Restaurant_Ordering_Analytics",
 });
 

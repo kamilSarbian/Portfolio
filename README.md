@@ -9,7 +9,7 @@ The portfolio follows a problem-first approach: understand the workflow and unde
 - Portfolio: https://kamilsarbian.dev
 - API docs: https://api.kamilsarbian.dev/docs
 - NOVA Market live demo: https://nova.kamilsarbian.dev
-- Nordic Hearth live demo: https://roa-portfolio-frontend.onrender.com
+- Nordic Hearth live demo: https://nordic.kamilsarbian.dev
 - GitHub: https://github.com/kamilSarbian/Portfolio
 
 ## Problem
@@ -91,7 +91,7 @@ Project previews are stored in `public/projects/`.
 
 Case study: https://kamilsarbian.dev/projects/nordic-hearth
 
-Live demo: https://roa-portfolio-frontend.onrender.com
+Live demo: https://nordic.kamilsarbian.dev
 
 Source code: https://github.com/kamilSarbian/Restaurant_Ordering_Analytics
 
