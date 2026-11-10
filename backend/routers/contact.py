@@ -5,7 +5,11 @@ from core.rate_limit import contact_rate_limit
 from fastapi import APIRouter, BackgroundTasks, Depends, Request
 from pydantic import BaseModel, EmailStr, Field
 from schemas.common import ErrorResponse, OkResponse
-from services.email_service import send_contact_emails, validate_email_configuration
+from services.email_service import (
+    ContactEmailError,
+    send_contact_follow_up,
+    send_owner_contact_email,
+)
 
 router = APIRouter(
     prefix="/backend/contact", tags=["contact"], dependencies=[Depends(contact_rate_limit)]
@@ -51,26 +55,29 @@ class ContactIn(BaseModel):
     "/send",
     response_model=OkResponse,
     summary="Submit contact form",
-    description="Queues email delivery to the portfolio owner and an autoresponder to the sender.",
+    description=(
+        "Sends the owner notification before confirming success. "
+        "The optional autoresponder and AI direction run as best-effort follow-up work."
+    ),
     responses={
         422: {"model": ErrorResponse, "description": "Validation error."},
         429: {"model": ErrorResponse, "description": "Contact form rate limit exceeded."},
         502: {
             "model": ErrorResponse,
-            "description": "Email delivery could not be scheduled or sent.",
+            "description": "The owner notification was not accepted by SMTP.",
         },
     },
 )
 def send_contact(payload: ContactIn, bg: BackgroundTasks, request: Request) -> dict[str, bool]:
-    """Queue contact form email delivery.
+    """Deliver the owner notification and schedule non-critical follow-up work.
 
     Args:
         payload: Validated contact form payload.
-        bg: FastAPI background task manager used for email delivery.
+        bg: FastAPI background task manager used for the optional autoresponder.
         request: Incoming request used to infer the preferred language.
 
     Raises:
-        ApiError: If email delivery cannot be scheduled.
+        ApiError: If the owner notification cannot be delivered through SMTP.
     """
 
     if payload.website and payload.website.strip():
@@ -78,24 +85,32 @@ def send_contact(payload: ContactIn, bg: BackgroundTasks, request: Request) -> d
         return {"ok": True}
 
     try:
-        validate_email_configuration()
         lang = _normalize_lang(payload.lang, request.headers.get("accept-language"))
-
-        bg.add_task(
-            send_contact_emails,
+        send_owner_contact_email(
             payload.name,
             payload.email,
             payload.message,
             payload.company,
             payload.website,
-            lang,
-            payload.ask_ai_direction,
         )
-        return {"ok": True}
-    except RuntimeError as exc:
-        logger.exception("Contact email delivery could not be scheduled.")
+    except ContactEmailError as exc:
+        logger.exception("Contact owner notification delivery failed.")
         raise ApiError(
             status_code=502,
             error_code=ErrorCode.EMAIL_SERVICE_UNAVAILABLE,
             detail="Email service temporarily unavailable.",
         ) from exc
+
+    try:
+        bg.add_task(
+            send_contact_follow_up,
+            payload.name,
+            payload.email,
+            payload.message,
+            lang,
+            payload.ask_ai_direction,
+        )
+    except RuntimeError:
+        logger.exception("Contact follow-up could not be scheduled after owner delivery.")
+
+    return {"ok": True}

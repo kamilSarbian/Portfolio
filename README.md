@@ -9,6 +9,7 @@ The portfolio follows a problem-first approach: understand the workflow and unde
 - Portfolio: https://kamilsarbian.dev
 - API docs: https://api.kamilsarbian.dev/docs
 - NOVA Market live demo: https://nova.kamilsarbian.dev
+- Nordic Hearth live demo: https://roa-portfolio-frontend.onrender.com
 - GitHub: https://github.com/kamilSarbian/Portfolio
 
 ## Problem
@@ -74,7 +75,7 @@ External services:
 - DeepSeek API for AI-assisted inquiry direction
 ```
 
-The AI layer is fallback-safe: only the inquiry message is sent to JARVIS, invalid or fallback responses do not block email delivery, and disabled integration never presents a local mock as genuine JARVIS output.
+The contact API confirms success only after SMTP accepts the owner notification. The autoresponder and optional AI direction run afterward as best-effort follow-up work, so their failure cannot create a false owner-delivery confirmation. When AI processing succeeds, the same direction is emailed separately to both the visitor and the owner. Only the inquiry message is sent to JARVIS, and disabled integration never presents a local mock as genuine JARVIS output.
 
 ## Screenshots
 
@@ -85,6 +86,23 @@ Project previews are stored in `public/projects/`.
 | ![Authentication API preview](public/projects/auth-api.png) | ![AI-assisted image classification preview](public/projects/image-classifier.png) | ![Image processing preview](public/projects/image-processing.png) |
 
 ## Featured Case Studies
+
+### Nordic Hearth — Restaurant Ordering and Analytics
+
+Case study: https://kamilsarbian.dev/projects/nordic-hearth
+
+Live demo: https://roa-portfolio-frontend.onrender.com
+
+Source code: https://github.com/kamilSarbian/Restaurant_Ordering_Analytics
+
+**Problem**
+A public restaurant demo must connect guest ordering, order operations, and reporting without depending on real customer data or exposing privileged accounts.
+
+**Solution**
+A React and FastAPI application with Neon PostgreSQL, a protected synthetic dataset, a limited shared administrator demo, paid-order analytics, and CSV exports. The frontend and backend run on Render. The first backend request after inactivity may be delayed by the free instance cold start.
+
+**Demo boundary**
+The public demo uses synthetic data. It does not accept real restaurant orders or payments, and personal account functions and super-admin access are outside its public scope.
 
 ### JARVIS — Private AI Automation Environment
 
@@ -333,7 +351,7 @@ npm run check
 npm run test:backend
 ```
 
-`npm run check` runs ESLint, Git-visible JSON validation, translation parity and unused-key reporting, SEO validation, internal route and asset checks, a tracked and non-ignored file secret scan, frontend tests, the production build, and bundle reporting.
+`npm run check` runs ESLint, Git-visible JSON validation, translation parity and unused-key reporting, SEO validation, internal route and asset checks, a tracked and non-ignored file secret scan, frontend tests, the production build, route-specific HTML tests, and bundle reporting.
 
 The unused translation report is warning-only and classified in `qa/unused-i18n-review.json`. Bundle measurements are compared with `qa/bundle-baseline.json`; intentionally refresh the baseline after an accepted production-size change:
 
@@ -355,11 +373,11 @@ python -m pytest -q
 
 ## SEO
 
-The static `index.html` provides English fallback metadata, a global Person JSON-LD entity, and a 1200 x 630 Open Graph image. React updates the page title, description, canonical URL, Open Graph metadata, Twitter metadata, robots directive, and route-specific JSON-LD when the route or interface language changes.
+The static `index.html` provides English fallback metadata, a global Person JSON-LD entity, and a 1200 x 630 Open Graph image. After Vite builds the SPA, `scripts/generate-route-html.mjs` creates an English metadata fallback for every indexable non-root route. Vercel rewrites canonical route requests to those generated files before the general SPA fallback. React then updates the page title, description, canonical URL, Open Graph metadata, Twitter metadata, robots directive, and route-specific JSON-LD when the route or interface language changes.
 
-All nine public routes use one canonical URL per route. Languages do not have separate URL variants, so the project intentionally does not publish `hreflang` links. The client-side 404 page uses `noindex,follow`, but Vercel can still return HTTP 200 for unknown SPA routes.
+All ten public routes use one canonical URL per route. Languages do not have separate URL variants, so the project intentionally does not publish `hreflang` links. The client-side 404 page uses `noindex,follow`, but Vercel can still return HTTP 200 for unknown SPA routes.
 
-Social crawlers that do not execute JavaScript receive the global English fallback and shared Open Graph image. Route-specific social previews and server-level 404 responses require prerendering or server-rendered routes and remain outside the current MVP.
+Social crawlers that do not execute JavaScript receive route-specific English metadata for known indexable routes and the shared Open Graph image. Server-level 404 responses remain outside the current SPA hosting model.
 
 ## Deployment
 

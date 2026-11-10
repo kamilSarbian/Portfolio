@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from routers import contact as contact_module
 from routers.contact import _normalize_lang, router
+from services.email_service import OwnerEmailDeliveryError
 
 
 def make_client() -> TestClient:
@@ -26,23 +27,28 @@ def test_normalize_lang_defaults_to_english():
     assert _normalize_lang(None, None) == "en"
 
 
-def test_send_contact_enqueues_email_task_with_payload_lang(monkeypatch):
-    called = {}
+def test_send_contact_delivers_owner_before_scheduling_follow_up(monkeypatch):
+    calls = []
 
-    def fake_send_contact_emails(
-        name, email, message, company=None, website=None, lang=None, ask_ai_direction=False
-    ):
-        called["payload"] = {
-            "name": name,
-            "email": email,
-            "message": message,
-            "company": company,
-            "website": website,
-            "lang": lang,
-            "ask_ai_direction": ask_ai_direction,
-        }
+    def fake_send_owner_contact_email(name, email, message, company=None, website=None):
+        calls.append(
+            (
+                "owner",
+                {
+                    "name": name,
+                    "email": email,
+                    "message": message,
+                    "company": company,
+                    "website": website,
+                },
+            )
+        )
 
-    monkeypatch.setattr(contact_module, "send_contact_emails", fake_send_contact_emails)
+    def fake_send_contact_follow_up(name, email, message, lang=None, ask_ai_direction=False):
+        calls.append(("follow_up", {"lang": lang, "ask_ai_direction": ask_ai_direction}))
+
+    monkeypatch.setattr(contact_module, "send_owner_contact_email", fake_send_owner_contact_email)
+    monkeypatch.setattr(contact_module, "send_contact_follow_up", fake_send_contact_follow_up)
 
     client = make_client()
     response = client.post(
@@ -60,26 +66,29 @@ def test_send_contact_enqueues_email_task_with_payload_lang(monkeypatch):
 
     assert response.status_code == 200
     assert response.json() == {"ok": True}
-    assert called["payload"] == {
-        "name": "Kamil",
-        "email": "kamil@example.com",
-        "message": "This is a long enough message for the contact endpoint.",
-        "company": "Acme",
-        "website": None,
-        "lang": "en",
-        "ask_ai_direction": True,
-    }
+    assert calls == [
+        (
+            "owner",
+            {
+                "name": "Kamil",
+                "email": "kamil@example.com",
+                "message": "This is a long enough message for the contact endpoint.",
+                "company": "Acme",
+                "website": None,
+            },
+        ),
+        ("follow_up", {"lang": "en", "ask_ai_direction": True}),
+    ]
 
 
 def test_send_contact_uses_accept_language_when_payload_lang_missing(monkeypatch):
     called = {}
 
-    def fake_send_contact_emails(
-        name, email, message, company=None, website=None, lang=None, ask_ai_direction=False
-    ):
+    def fake_send_contact_follow_up(name, email, message, lang=None, ask_ai_direction=False):
         called["lang"] = lang
 
-    monkeypatch.setattr(contact_module, "send_contact_emails", fake_send_contact_emails)
+    monkeypatch.setattr(contact_module, "send_owner_contact_email", lambda *args: None)
+    monkeypatch.setattr(contact_module, "send_contact_follow_up", fake_send_contact_follow_up)
 
     client = make_client()
     response = client.post(
@@ -111,13 +120,14 @@ def test_send_contact_validates_payload():
     assert response.status_code == 422
 
 
-def test_send_contact_returns_502_when_task_registration_fails(monkeypatch):
+def test_send_contact_still_succeeds_when_follow_up_registration_fails(monkeypatch):
     original_add_task = contact_module.BackgroundTasks.add_task
 
     def fake_add_task(self, func, *args, **kwargs):
         raise RuntimeError("queue unavailable")
 
     monkeypatch.setattr(contact_module.BackgroundTasks, "add_task", fake_add_task)
+    monkeypatch.setattr(contact_module, "send_owner_contact_email", lambda *args: None)
 
     client = make_client()
     response = client.post(
@@ -131,18 +141,49 @@ def test_send_contact_returns_502_when_task_registration_fails(monkeypatch):
 
     monkeypatch.setattr(contact_module.BackgroundTasks, "add_task", original_add_task)
 
+    assert response.status_code == 200
+    assert response.json() == {"ok": True}
+
+
+def test_send_contact_returns_502_when_owner_smtp_delivery_fails(monkeypatch):
+    follow_up_called = False
+
+    def fail_owner_delivery(*args):
+        raise OwnerEmailDeliveryError("SMTP rejected owner notification")
+
+    def fake_send_contact_follow_up(*args):
+        nonlocal follow_up_called
+        follow_up_called = True
+
+    monkeypatch.setattr(contact_module, "send_owner_contact_email", fail_owner_delivery)
+    monkeypatch.setattr(contact_module, "send_contact_follow_up", fake_send_contact_follow_up)
+
+    client = make_client()
+    response = client.post(
+        "/backend/contact/send",
+        json={
+            "name": "Kamil",
+            "email": "kamil@example.com",
+            "message": "This is a long enough message for the contact endpoint.",
+        },
+    )
+
     assert response.status_code == 502
-    assert response.json()["detail"] == "Email service temporarily unavailable."
+    assert response.json() == {
+        "error_code": "email_service_unavailable",
+        "detail": "Email service temporarily unavailable.",
+    }
+    assert follow_up_called is False
 
 
 def test_send_contact_silently_ignores_honeypot_submission(monkeypatch):
     called = False
 
-    def fake_send_contact_emails(*args, **kwargs):
+    def fake_send_owner_contact_email(*args, **kwargs):
         nonlocal called
         called = True
 
-    monkeypatch.setattr(contact_module, "send_contact_emails", fake_send_contact_emails)
+    monkeypatch.setattr(contact_module, "send_owner_contact_email", fake_send_owner_contact_email)
 
     client = make_client()
     response = client.post(

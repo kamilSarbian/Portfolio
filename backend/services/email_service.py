@@ -10,6 +10,18 @@ logger = logging.getLogger(__name__)
 SUPPORTED_LANGS = {"pl", "en", "no"}
 
 
+class ContactEmailError(RuntimeError):
+    """Base exception for predictable contact email delivery failures."""
+
+
+class EmailConfigurationError(ContactEmailError):
+    """Raised when contact email delivery is not configured."""
+
+
+class OwnerEmailDeliveryError(ContactEmailError):
+    """Raised when the owner notification is not accepted by SMTP."""
+
+
 def _pick_lang(lang: str | None) -> str:
     if not lang:
         return "en"
@@ -81,17 +93,17 @@ def validate_email_configuration() -> None:
     """Validate that email delivery has the required runtime configuration.
 
     Raises:
-        RuntimeError: If email delivery is enabled but SMTP or owner settings are missing.
+        EmailConfigurationError: If email delivery is disabled or required settings are missing.
     """
 
     if not getattr(settings, "email_enabled", True):
-        return
+        raise EmailConfigurationError("Email delivery is disabled.")
 
     if not settings.smtp_host or not settings.smtp_user or not settings.smtp_password:
-        raise RuntimeError("SMTP configuration is incomplete.")
+        raise EmailConfigurationError("SMTP configuration is incomplete.")
 
     if not (settings.owner_email or "").strip():
-        raise RuntimeError("Owner email is not configured.")
+        raise EmailConfigurationError("Owner email is not configured.")
 
 
 def _get_ai_direction_safely(message: str) -> str | None:
@@ -135,33 +147,26 @@ def _format_ai_direction_section(direction: str | None) -> str:
     )
 
 
-def send_contact_emails(
+def send_owner_contact_email(
     name: str,
     email: str,
     message: str,
     company: str | None = None,
     website: str | None = None,
-    lang: str | None = None,
-    ask_ai_direction: bool = False,
 ) -> None:
-    """Send the portfolio contact email and localized autoresponder.
+    """Send the owner notification required for a successful API response.
 
     Args:
         name: Sender display name from the contact form.
-        email: Sender email address used for reply-to and autoresponder.
+        email: Sender email address used for reply-to.
         message: Message body submitted through the contact form.
         company: Optional company context from the contact form.
         website: Optional website context from the contact form.
-        lang: Optional language code used to select autoresponder copy.
-        ask_ai_direction: Whether to include AI-assisted technical direction.
 
     Raises:
-        RuntimeError: If email sending is enabled but SMTP or owner settings are missing.
+        EmailConfigurationError: If SMTP delivery is not configured.
+        OwnerEmailDeliveryError: If SMTP does not accept the owner notification.
     """
-
-    if not getattr(settings, "email_enabled", True):
-        logger.info("Contact email delivery skipped because email is disabled.")
-        return
 
     validate_email_configuration()
 
@@ -182,43 +187,86 @@ def send_contact_emails(
         meta_lines.append(f"Website: {website}")
 
     meta_block = ("\n".join(meta_lines) + "\n\n") if meta_lines else ""
-    ai_direction_body = ""
-    owner_ai_direction_section = ""
-    if ask_ai_direction:
-        ai_direction = _get_ai_direction_safely(message=message)
-        ai_direction_body = _format_ai_direction_section(ai_direction)
-        owner_ai_direction_section = f"\nAI-assisted technical direction:\n{ai_direction_body}\n"
-
-    owner_msg.set_content(
-        f"Sender: {name} <{sender_addr}>\n\n"
-        f"{meta_block}"
-        f"Message:\n{message}\n"
-        f"{owner_ai_direction_section}"
-    )
-
-    logger.info("Sending contact notification email.")
     try:
+        owner_msg.set_content(
+            f"Sender: {name} <{sender_addr}>\n\n" f"{meta_block}" f"Message:\n{message}\n"
+        )
+        logger.info("Sending contact notification email.")
         _send_smtp(owner_msg)
-    except (smtplib.SMTPException, OSError) as exc:
+    except (smtplib.SMTPException, OSError, ValueError) as exc:
         logger.exception("Contact notification email failed.")
-        raise RuntimeError("Contact notification email failed.") from exc
+        raise OwnerEmailDeliveryError("Contact notification email failed.") from exc
 
+
+def send_contact_follow_up(
+    name: str,
+    email: str,
+    message: str,
+    lang: str | None = None,
+    ask_ai_direction: bool = False,
+) -> None:
+    """Send best-effort autoresponder and AI follow-up after owner delivery.
+
+    Args:
+        name: Sender display name from the contact form.
+        email: Sender email address receiving the autoresponder.
+        message: Message body used for optional AI-assisted direction.
+        lang: Optional language code used to select autoresponder copy.
+        ask_ai_direction: Whether to send AI-assisted direction to the sender and owner.
+
+    The function logs predictable AI, configuration, and SMTP failures instead of
+    changing the already completed owner-delivery result. The AI direction is
+    generated once and, when available, sent separately to both participants.
+    """
+
+    try:
+        validate_email_configuration()
+    except ContactEmailError:
+        logger.exception("Contact follow-up email configuration is unavailable.")
+        return
+
+    from_addr = (getattr(settings, "smtp_from", None) or settings.smtp_user).strip()
+    owner_addr = (settings.owner_email or "").strip()
+    sender_addr = email.strip()
+    ai_direction = _get_ai_direction_safely(message=message) if ask_ai_direction else None
+    ai_direction_body = _format_ai_direction_section(ai_direction) if ask_ai_direction else ""
     chosen = _pick_lang(lang)
     tpl = TEMPLATES[chosen]
 
-    auto = EmailMessage()
-    auto["Subject"] = tpl["subject"]
-    auto["From"] = from_addr
-    auto["To"] = sender_addr
-    auto.set_content(
-        tpl["intro"](name)
-        + (ai_direction_body + "\n" if ai_direction_body else "")
-        + tpl["closing"]
-    )
-
-    logger.info("Sending contact autoresponder in lang=%s.", chosen)
     try:
+        auto = EmailMessage()
+        auto["Subject"] = tpl["subject"]
+        auto["From"] = from_addr
+        auto["To"] = sender_addr
+        auto.set_content(
+            tpl["intro"](name)
+            + (ai_direction_body + "\n" if ai_direction_body else "")
+            + tpl["closing"]
+        )
+
+        logger.info("Sending contact autoresponder in lang=%s.", chosen)
         _send_smtp(auto)
-    except (smtplib.SMTPException, OSError) as exc:
+    except (smtplib.SMTPException, OSError, ValueError):
         logger.exception("Contact autoresponder email failed.")
-        raise RuntimeError("Contact autoresponder email failed.") from exc
+
+    if not ai_direction:
+        return
+
+    try:
+        owner_follow_up = EmailMessage()
+        owner_follow_up["Subject"] = f"[Portfolio] JARVIS direction for: {name}"
+        owner_follow_up["From"] = from_addr
+        owner_follow_up["To"] = owner_addr
+        owner_follow_up["Reply-To"] = sender_addr
+        owner_follow_up.set_content(
+            f"JARVIS follow-up for {name} <{sender_addr}>.\n\n"
+            "The original contact message was accepted by SMTP before this optional step.\n\n"
+            "AI-assisted technical direction:\n\n"
+            f"{ai_direction}\n\n"
+            "This is an automated suggestion, not a final estimate or commitment.\n"
+        )
+
+        logger.info("Sending AI-assisted contact follow-up to owner.")
+        _send_smtp(owner_follow_up)
+    except (smtplib.SMTPException, OSError, ValueError):
+        logger.exception("AI-assisted owner follow-up email failed.")

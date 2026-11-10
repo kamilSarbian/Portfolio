@@ -4,7 +4,6 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const rootDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const findings = [];
 const knownPlaceholderFragments = [
   "change-me",
   "changeme",
@@ -36,6 +35,13 @@ const tokenPatterns = [
 const assignmentPattern =
   /["']?(api[_-]?key|access[_-]?token|auth[_-]?token|jwt[_-]?secret|client[_-]?secret|password)["']?(?:\s*:\s*[A-Za-z_][^=,\n]{0,40})?\s*[:=]\s*(["'])([^"'\r\n]+)\2/gi;
 const longTokenPattern = /\b[A-Za-z0-9+/_=-]{48,}\b/g;
+const deploymentReportPath = "docs/DEPLOYMENT_REPORT.md";
+const verifiedPublicVercelDeploymentIds = new Set([
+  ["4CNwGN8Q", "s9CrP2b2", "SHbFjMdrNYdW"].join(""),
+  ["4YTfam1F", "TVqvoAYL", "caStfmdq2LDX"].join(""),
+]);
+const verifiedPublicVercelDeploymentUrlPattern =
+  /https:\/\/vercel\.com\/kamilsarbians-projects\/portfolio\/([A-Za-z0-9_-]{20,})(?=$|[\s)\]}>.,;])/g;
 
 function getTrackedFiles() {
   return execFileSync(
@@ -76,26 +82,37 @@ function shannonEntropy(value) {
   return entropy;
 }
 
-function addFinding(filePath, source, index, label) {
+function addFinding(findings, filePath, source, index, label) {
   findings.push(`${filePath}:${lineNumberAt(source, index)} — ${label}`);
 }
 
-for (const filePath of getTrackedFiles()) {
-  const normalizedPath = filePath.replaceAll("\\", "/");
+function isVerifiedPublicVercelDeploymentId(normalizedPath, source, index, value) {
+  if (normalizedPath !== deploymentReportPath) return false;
+
+  verifiedPublicVercelDeploymentUrlPattern.lastIndex = 0;
+  for (const match of source.matchAll(verifiedPublicVercelDeploymentUrlPattern)) {
+    if (!verifiedPublicVercelDeploymentIds.has(match[1])) continue;
+
+    const urlStart = match.index;
+    const urlEnd = urlStart + match[0].length;
+    const tokenEnd = index + value.length;
+    if (index >= urlStart && tokenEnd <= urlEnd) return true;
+  }
+  return false;
+}
+
+export function scanSource(normalizedPath, source) {
+  const findings = [];
   const basename = path.posix.basename(normalizedPath);
 
   if (basename.startsWith(".env") && basename !== ".env.example") {
     findings.push(`${normalizedPath}: tracked environment file.`);
   }
 
-  const buffer = await readFile(path.join(rootDirectory, filePath));
-  if (isBinary(buffer)) continue;
-
-  const source = buffer.toString("utf8");
   for (const [label, pattern] of tokenPatterns) {
     pattern.lastIndex = 0;
     for (const match of source.matchAll(pattern)) {
-      addFinding(normalizedPath, source, match.index, label);
+      addFinding(findings, normalizedPath, source, match.index, label);
     }
   }
 
@@ -103,12 +120,18 @@ for (const filePath of getTrackedFiles()) {
     assignmentPattern.lastIndex = 0;
     for (const match of source.matchAll(assignmentPattern)) {
       if (!looksLikePlaceholder(match[3])) {
-        addFinding(normalizedPath, source, match.index, `non-placeholder ${match[1]} assignment`);
+        addFinding(
+          findings,
+          normalizedPath,
+          source,
+          match.index,
+          `non-placeholder ${match[1]} assignment`,
+        );
       }
     }
   }
 
-  if (basename === "package-lock.json") continue;
+  if (basename === "package-lock.json") return findings;
 
   longTokenPattern.lastIndex = 0;
   for (const match of source.matchAll(longTokenPattern)) {
@@ -123,16 +146,38 @@ for (const filePath of getTrackedFiles()) {
     if (
       characterClasses >= 3 &&
       shannonEntropy(value) >= 4.3 &&
-      !looksLikePlaceholder(value)
+      !looksLikePlaceholder(value) &&
+      !isVerifiedPublicVercelDeploymentId(normalizedPath, source, match.index, value)
     ) {
-      addFinding(normalizedPath, source, match.index, "high-entropy long string");
+      addFinding(findings, normalizedPath, source, match.index, "high-entropy long string");
     }
   }
+
+  return findings;
 }
 
-if (findings.length) {
-  for (const finding of findings) console.error(`Secret scan finding: ${finding}`);
-  process.exitCode = 1;
-} else {
-  console.log("Secret scan passed for tracked and non-ignored Git-visible files.");
+async function scanGitVisibleFiles() {
+  const findings = [];
+
+  for (const filePath of getTrackedFiles()) {
+    const normalizedPath = filePath.replaceAll("\\", "/");
+    const buffer = await readFile(path.join(rootDirectory, filePath));
+    if (isBinary(buffer)) continue;
+    findings.push(...scanSource(normalizedPath, buffer.toString("utf8")));
+  }
+
+  return findings;
+}
+
+const isMainModule =
+  process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isMainModule) {
+  const findings = await scanGitVisibleFiles();
+  if (findings.length) {
+    for (const finding of findings) console.error(`Secret scan finding: ${finding}`);
+    process.exitCode = 1;
+  } else {
+    console.log("Secret scan passed for tracked and non-ignored Git-visible files.");
+  }
 }

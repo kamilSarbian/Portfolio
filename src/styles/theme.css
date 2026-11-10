@@ -1746,6 +1746,13 @@ a.btn:active {
   border: 1px solid var(--border);
   background: rgba(255,255,255,0.03);
 }
+
+.contact-status small{
+  display: block;
+  margin-top: 4px;
+  font-weight: 650;
+  line-height: 1.45;
+}
 .app.light .contact-status{ background: rgba(0,0,0,0.03); }
 
 .contact-status--error{

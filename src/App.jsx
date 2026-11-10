@@ -15,6 +15,7 @@ import ProjectAuth from "./pages/ProjectAuth";
 import ProjectJarvis from "./pages/ProjectJarvis";
 import ProjectLivingStartpakke from "./pages/ProjectLivingStartpakke";
 import ProjectNovaMarket from "./pages/ProjectNovaMarket";
+import ProjectNordicHearth from "./pages/ProjectNordicHearth";
 
 import "./App.css";
 
@@ -88,6 +89,7 @@ export default function App() {
                 onOpenJarvis={() => goTo("/projects/jarvis-ai-environment")}
                 onOpenJarvisArchitecture={() => goTo("/projects/jarvis-ai-environment#architecture")}
                 onOpenNova={() => goTo("/projects/nova-market")}
+                onOpenNordicHearth={() => goTo("/projects/nordic-hearth")}
                 onOpenLiving={() => goTo("/projects/living-startpakke")}
                 onOpenLivingPrototype={() => goTo("/projects/living-startpakke#prototype")}
                 onOpenPwned={() => goTo("/projects/password-checker")}
@@ -115,6 +117,11 @@ export default function App() {
           <Route
             path="/projects/nova-market"
             element={<ProjectNovaMarket onGoProjects={() => goTo("/projects")} />}
+          />
+
+          <Route
+            path="/projects/nordic-hearth"
+            element={<ProjectNordicHearth onGoProjects={() => goTo("/projects")} />}
           />
 
           <Route

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/generate-route-html.mjs",
     "lint": "eslint .",
     "check:json": "node scripts/check-json.mjs",
     "check:i18n": "node scripts/check-i18n.mjs",
@@ -15,9 +15,10 @@
     "check:secrets": "node scripts/check-secrets.mjs",
     "check:bundle": "node scripts/check-bundle.mjs",
     "test:frontend": "node --test tests/*.test.mjs",
+    "test:route-html": "node --test tests/build/route-html.test.mjs",
     "preview": "vite preview",
     "test:backend": "python -m pytest -q",
-    "check": "npm run lint && npm run check:json && npm run check:i18n && npm run check:i18n:unused && npm run check:seo && npm run check:links && npm run check:secrets && npm run test:frontend && npm run build && npm run check:bundle"
+    "check": "npm run lint && npm run check:json && npm run check:i18n && npm run check:i18n:unused && npm run check:seo && npm run check:links && npm run check:secrets && npm run test:frontend && npm run build && npm run test:route-html && npm run check:bundle"
   },
   "dependencies": {
     "i18next": "^25.8.0",

@@ -37,6 +37,10 @@
         "title": "NOVA Market — casestudie med Flask og Stripe | Kamil Sarbian",
         "description": "Utforsk NOVA Market, en e-handelsdemo med Flask, Neon PostgreSQL, Stripe Sandbox Checkout, signerte webhooks, rate limiting og 40 tester."
       },
+      "nordicHearth": {
+        "title": "Nordic Hearth — bestilling og analyse | Kamil Sarbian",
+        "description": "Utforsk Nordic Hearth, en fungerende restaurantdemo med React, FastAPI, PostgreSQL, rollebasert tilgang, betalte ordreanalyser og CSV-rapporter."
+      },
       "living": {
         "title": "Living Startpakke — innsiktsdrevet produktarbeid | Kamil Sarbian",
         "description": "Et innsiktsdrevet og brukerorientert digitalt produktkonsept formet gjennom kontakt med interessenter, innsiktsanalyse, prototyping og iterativ testing."
@@ -237,6 +241,15 @@
         "productionThinking": "Signerte webhooks, idempotent betalingsbekreftelse, versjonerte migrasjoner, delt rate limiting, sikkerhetsheadere og isolerte PostgreSQL-tester.",
         "stack": ["Python", "Flask", "PostgreSQL", "Stripe"]
       },
+      "nordicHearth": {
+        "kicker": "Restaurantbestilling og analyse",
+        "title": "Nordic Hearth",
+        "problem": "En restaurant trenger en tydelig bestillingsflyt og pålitelige driftsdata uten å blande kundeaktivitet med historisk rapportering.",
+        "solution": "En utrullet meny, handlekurv, bestillingsflyt og administratorvisning med ordreoversikt, analyse av betalte ordre og CSV-eksport.",
+        "businessValue": "Viser hvordan bestilling, drift, rapportering og en delt demo kan fungere i ett system.",
+        "productionThinking": "Rollebegrenset API-tilgang, deterministiske syntetiske data, avgrenset demo-administrator, PostgreSQL-migrasjoner og automatiske tester av backend, frontend og nettleser.",
+        "stack": ["React", "FastAPI", "PostgreSQL", "Render"]
+      },
       "living": {
         "kicker": "Innsiktsdrevet digitalt produktkonsept",
         "title": "Living Startpakke",
@@ -281,6 +294,73 @@
     "imgClassDesc":"Python-API som tar imot et bilde og returnerer en klassifisering ved hjelp av en ML-modell. Endepunktet håndterer filopplasting og returnerer prediksjonsresultater i JSON-format.",
     "authTitle": "Auth & User Management API",
     "authDesc": "API for brukeradministrasjon med registrering, innlogging og JWT-autentisering. Systemet støtter brukerroller (admin/bruker), profiler og integrasjon med PostgreSQL-database ved bruk av SQLAlchemy."
+  },
+  "nordicHearth": {
+    "eyebrow": "Casestudie: restaurantbestilling og analyse",
+    "title": "Nordic Hearth",
+    "subtitle": "En fungerende bestillingsflyt og administratorvisning bygget på beskyttede syntetiske data og en offentlig demo.",
+    "status": "Live portfoliodemo · delte syntetiske data",
+    "coldStart": "Demoen kjører på en gratis instans. Den første forespørselen etter inaktivitet kan ta omtrent ett minutt.",
+    "disclaimer": "Nordic Hearth er en teknisk portfoliodemo, ikke en ekte restaurant. Ordre- og betalingsdata er syntetiske. Demoaktivitet kan være synlig for andre besøkende.",
+    "cta": {
+      "live": "Åpne live-demo",
+      "source": "Se kildekoden"
+    },
+    "problem": {
+      "title": "Problemet",
+      "body": "Meny og handlekurv er bare starten. En restaurant trenger også pålitelige ordrer, oversikt over oppfyllelse og rapporter basert på betalingsdata. En offentlig demo må vise dette uten å eksponere ekte identiteter eller basere seg på skjøre eksempeldata."
+    },
+    "solution": {
+      "title": "Løsningen",
+      "body": "React-grensesnittet kobler bestilling til FastAPI og PostgreSQL. Administratoren kan se ordrer, analyse av betalte ordrer og CSV-rapporter. En egen demoinngang gir en avgrenset adminrolle etter validering i backend."
+    },
+    "explore": {
+      "title": "Dette kan du prøve",
+      "body": "Start med den åpne menyen, og bruk deretter Try admin demo på innloggingssiden.",
+      "items": [
+        "Bla i menyen etter kategori og legg retter i handlekurven.",
+        "Åpne administratordemoen og se ordrelisten og ordredetaljer.",
+        "Endre rapporteringsperiode og se resultater etter kategori, produkt og ordretype.",
+        "Last ned CSV-filer for ordrer, produktsalg og betalinger."
+      ]
+    },
+    "backend": {
+      "title": "Grenser i backend",
+      "body": "API-et styrer priser, autentisering, rettigheter og rapportkriterier. Den offentlige demoen får en vanlig adminrolle, aldri super admin.",
+      "items": [
+        "En kortvarig demoøkt opprettes bare når eksplisitte vilkår i backend er oppfylt.",
+        "API-tilgang sjekkes mot gjeldende bruker og rolle.",
+        "Nettleseren styrer visningen, mens backend avgjør tilgangen."
+      ]
+    },
+    "data": {
+      "title": "Data og utrulling",
+      "body": "Et deterministisk historisk datasett gjør rapporteringen mulig å undersøke. Nye demoordrer holdes adskilt fra det kanoniske datasettet.",
+      "items": [
+        "Endringer i PostgreSQL-skjemaet versjoneres og sjekkes før seedingen.",
+        "Backend og frontend kjører som separate Render-tjenester med Neon PostgreSQL.",
+        "CI sjekker backend, migrasjoner, frontend og nettleserflyter."
+      ]
+    },
+    "gallery": {
+      "title": "Bilder fra den aktive demoen",
+      "body": "Skjermbilder fra den publiserte applikasjonen viser den åpne menyen og det delte administratorområdet.",
+      "images": [
+        { "alt": "Nordic Hearth-meny med kategorifiltre og retter", "caption": "Åpen meny og kategorier" },
+        { "alt": "Administratorsiden i Nordic Hearth med informasjon om delte syntetiske data", "caption": "Administratordemo og datagrenser" },
+        { "alt": "Administratorens ordreliste i Nordic Hearth med filtre", "caption": "Ordreoversikt og filtre" },
+        { "alt": "Nordic Hearth-analyse med rapporteringsperiode og tidssone", "caption": "Analyse av betalte ordrer og rapporteringskontekst" },
+        { "alt": "Nordic Hearth CSV-eksport for ordrer, produkter og betalinger", "caption": "Tilgjengelige CSV-eksporter" }
+      ]
+    },
+    "contribution": {
+      "title": "Mitt bidrag",
+      "body": "Jeg bygget bestillings- og rapporteringsflyten, tilgangsgrensen for demoen, flyten for syntetiske data, automatiske kontroller og den offentlige utrullingen. Repositoriet beskriver implementasjonen og driftsbegrensningene."
+    },
+    "limitations": {
+      "title": "Rammene for demoen",
+      "body": "Demoen bruker delte syntetiske data og gratis hosting. Den tar ikke imot ekte bestillinger eller betalinger. Personlige kontoer og superadmin-funksjoner er ikke del av den offentlige demoen."
+    }
   },
   "novaMarket": {
     "cta": {
@@ -807,12 +887,15 @@
   },
   "contactForm": {
     "send": "Send melding →",
-    "sending": "Sender...",
-    "sendingWithAi": "Sender... JARVIS analyserer meldingen. Dette kan ta noen sekunder.",
-    "success": "Meldingen er sendt. Takk!",
+    "retry": "Prøv igjen →",
+    "retryHint": "Meldingen din står fortsatt i skjemaet. Du kan prøve å sende den på nytt.",
+    "sending": "Sender meldingen til Kamil...",
+    "sendingWithAi": "Sender meldingen til Kamil... Den valgfrie AI-oppfølgingen starter etter dette steget.",
+    "success": "E-postserveren har godkjent meldingen for levering til Kamil. Takk!",
+    "successWithAi": "E-postserveren har godkjent meldingen for levering til Kamil. Den valgfrie AI-oppfølgingen forsøkes separat og er ikke garantert.",
     "aiDirection": {
       "label": "Innledende teknisk retning støttet av AI",
-      "help": "JARVIS, Kamils AI-assistent, analyserer meldingen og foreslår en innledende teknisk retning. Du får den på e-post. Kamil svarer fortsatt personlig."
+      "help": "Etter at e-postserveren har godkjent meldingen for levering til Kamil, prøver JARVIS å lage et innledende teknisk forslag i et eget steg. Hvis analysen og e-postleveringen lykkes, mottar både du og Kamil forslaget."
     },
     "labels": {
       "name": "Navn",

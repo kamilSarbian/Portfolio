@@ -38,6 +38,10 @@
         "title": "NOVA Market — Flask & Stripe Case Study | Kamil Sarbian",
         "description": "Explore NOVA Market, a Flask e-commerce portfolio demo with Neon PostgreSQL, Stripe Sandbox Checkout, signed webhooks, rate limiting, and 40 tests."
       },
+      "nordicHearth": {
+        "title": "Nordic Hearth — Ordering & Analytics Case Study | Kamil Sarbian",
+        "description": "Explore a live restaurant ordering and analytics demo built with React, FastAPI, PostgreSQL, role-based access, and CSV reports."
+      },
       "living": {
         "title": "Living Startpakke — Research-led Discovery | Kamil Sarbian",
         "description": "Research-led, user-informed digital product concept shaped through stakeholder outreach, structured insight analysis, prototyping, and iterative testing."
@@ -238,6 +242,15 @@
         "productionThinking": "Signed webhooks, idempotent payment confirmation, versioned migrations, shared rate limiting, security headers, and isolated PostgreSQL tests.",
         "stack": ["Python", "Flask", "PostgreSQL", "Stripe"]
       },
+      "nordicHearth": {
+        "kicker": "Restaurant Ordering & Analytics",
+        "title": "Nordic Hearth",
+        "problem": "A restaurant needs a clear ordering journey and reliable operational data without mixing customer activity with historical reporting.",
+        "solution": "A deployed menu, cart, order flow, and administrator workspace with order records, paid-order analytics, and CSV exports.",
+        "businessValue": "Shows how ordering, fulfilment, reporting, and a shared demonstration can work together in one system.",
+        "productionThinking": "Role-scoped API access, a deterministic synthetic dataset, a bounded demo administrator, PostgreSQL migrations, and automated backend, frontend, and browser checks.",
+        "stack": ["React", "FastAPI", "PostgreSQL", "Render"]
+      },
       "living": {
         "kicker": "Research-led Digital Product Concept",
         "title": "Living Startpakke",
@@ -282,6 +295,73 @@
     "imgClassDesc":"Python API that accepts an image and returns a classification using an ML model. The endpoint handles file uploads and returns prediction results in JSON format.",
     "authTitle": "Auth & User Management API",
     "authDesc": "API for user management with registration, login, and JWT authentication. The system supports user roles (admin/user), profiles, and integration with a PostgreSQL database using SQLAlchemy."
+  },
+  "nordicHearth": {
+    "eyebrow": "Restaurant ordering & analytics case study",
+    "title": "Nordic Hearth",
+    "subtitle": "A working restaurant ordering flow and administrator workspace, built around a protected synthetic dataset and a public demo.",
+    "status": "Live portfolio demo · shared synthetic data",
+    "coldStart": "Hosted on a free instance. The first request after inactivity may take a minute while the backend starts.",
+    "disclaimer": "Nordic Hearth is a technical portfolio demo, not a real restaurant. Orders and payment records use synthetic data. Demo activity is shared with other visitors.",
+    "cta": {
+      "live": "Open live demo",
+      "source": "Explore source code"
+    },
+    "problem": {
+      "title": "The problem",
+      "body": "A menu and cart are only the start. A restaurant also needs a dependable order record, a way to review fulfilment, and reports grounded in payment data. A public demo needs those workflows without exposing production identities or relying on fragile sample data."
+    },
+    "solution": {
+      "title": "The solution",
+      "body": "The React interface connects guest ordering to a FastAPI backend and PostgreSQL. An administrator can review orders, inspect paid-order analytics, and download CSV reports. A dedicated demo entry grants a limited admin role after backend validation."
+    },
+    "explore": {
+      "title": "What you can try",
+      "body": "Start with the public menu, then use the demo button on the login page to see the administrator workspace.",
+      "items": [
+        "Browse the menu by category and add dishes to the cart.",
+        "Open Try admin demo to review orders and order details.",
+        "Change reporting dates and inspect analytics by category, product, and order type.",
+        "Download orders, product sales, and payments as CSV files."
+      ]
+    },
+    "backend": {
+      "title": "Backend boundaries",
+      "body": "The API owns prices, authentication, permissions, and report criteria. The public demo receives the ordinary admin role, never super admin.",
+      "items": [
+        "A short-lived demo session is issued only when explicit backend conditions are met.",
+        "API access is checked against the current user and role.",
+        "The browser controls presentation, while the backend remains authoritative."
+      ]
+    },
+    "data": {
+      "title": "Data and deployment",
+      "body": "A deterministic historical dataset keeps reporting inspectable, while demo orders are kept separate from the canonical seed.",
+      "items": [
+        "PostgreSQL schema changes are versioned and checked before seeding.",
+        "Backend and frontend run as separate Render services with Neon PostgreSQL.",
+        "Backend, migration, frontend, and browser checks run in CI."
+      ]
+    },
+    "gallery": {
+      "title": "Inside the live demo",
+      "body": "Screenshots from the deployed application, showing the public menu and the shared administrator workspace.",
+      "images": [
+        { "alt": "Nordic Hearth menu with category filters and dish cards", "caption": "Public menu and category browsing" },
+        { "alt": "Nordic Hearth administrator home with shared synthetic data notice", "caption": "Administrator demo entry and shared data boundary" },
+        { "alt": "Nordic Hearth administrator order list with filters", "caption": "Order operations and filters" },
+        { "alt": "Nordic Hearth analytics page with reporting dates and timezone", "caption": "Paid-order analytics and reporting context" },
+        { "alt": "Nordic Hearth CSV export options for orders, products, and payments", "caption": "Available CSV exports" }
+      ]
+    },
+    "contribution": {
+      "title": "My contribution",
+      "body": "I built the ordering and reporting flows, the demo access boundary, the synthetic data workflow, automated acceptance checks, and the public deployment. The repository documents the implementation and operational limits."
+    },
+    "limitations": {
+      "title": "Demo boundaries",
+      "body": "The demo uses shared synthetic data and a free hosting tier. It does not accept real restaurant orders or real payments. Personal account flows and super-admin governance are outside the public demo."
+    }
   },
   "novaMarket": {
     "cta": {
@@ -810,12 +890,15 @@
   },
   "contactForm": {
     "send": "Send message →",
-    "sending": "Sending...",
-    "sendingWithAi": "Sending... JARVIS is analyzing your request. This may take a few seconds.",
-    "success": "Message sent successfully. Thank you!",
+    "retry": "Try again →",
+    "retryHint": "Your message is still in the form. You can try sending it again.",
+    "sending": "Sending your message to Kamil...",
+    "sendingWithAi": "Sending your message to Kamil... The optional AI follow-up starts after this step.",
+    "success": "The mail server accepted your message for delivery to Kamil. Thank you!",
+    "successWithAi": "The mail server accepted your message for delivery to Kamil. The optional AI follow-up will be attempted separately and is not guaranteed.",
     "aiDirection": {
       "label": "Include AI-assisted technical direction",
-      "help": "JARVIS, Kamil's AI assistant, will analyze your message and suggest an initial technical direction. You'll receive it by email. Kamil will still reply personally."
+      "help": "After the mail server accepts your message for delivery to Kamil, JARVIS will try to prepare an initial technical direction in a separate step. If analysis and email delivery succeed, both you and Kamil will receive it."
     },
     "labels": {
       "name": "Name",

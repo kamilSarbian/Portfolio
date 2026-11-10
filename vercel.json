@@ -20,6 +20,42 @@
   ],
   "rewrites": [
     {
+      "source": "/projects",
+      "destination": "/projects/index.html"
+    },
+    {
+      "source": "/projects/auth-api",
+      "destination": "/projects/auth-api/index.html"
+    },
+    {
+      "source": "/projects/jarvis-ai-environment",
+      "destination": "/projects/jarvis-ai-environment/index.html"
+    },
+    {
+      "source": "/projects/nova-market",
+      "destination": "/projects/nova-market/index.html"
+    },
+    {
+      "source": "/projects/nordic-hearth",
+      "destination": "/projects/nordic-hearth/index.html"
+    },
+    {
+      "source": "/projects/living-startpakke",
+      "destination": "/projects/living-startpakke/index.html"
+    },
+    {
+      "source": "/projects/password-checker",
+      "destination": "/projects/password-checker/index.html"
+    },
+    {
+      "source": "/projects/image-editor",
+      "destination": "/projects/image-editor/index.html"
+    },
+    {
+      "source": "/projects/image-classifier",
+      "destination": "/projects/image-classifier/index.html"
+    },
+    {
       "source": "/((?!api/|assets/|favicon.ico|site.webmanifest|robots.txt|sitemap.xml|llms.txt).*)",
       "destination": "/index.html"
     }

@@ -123,7 +123,12 @@ export default function ContactForm() {
         );
       }
 
-      setStatus({ type: "ok", msg: t("contactForm.success") });
+      setStatus({
+        type: "ok",
+        msg: t(
+          askAiDirection ? "contactForm.successWithAi" : "contactForm.success",
+        ),
+      });
       setForm({ name: "", email: "", company: "", message: "", website: "" });
       setTouched({ name: false, email: false, message: false });
       setAskAiDirection(false);
@@ -234,7 +239,8 @@ export default function ContactForm() {
 
       {status ? (
         <div className={`contact-status ${status.type === "ok" ? "contact-status--ok" : "contact-status--error"}`}>
-          {status.msg}
+          <span>{status.msg}</span>
+          {status.type === "err" ? <small>{t("contactForm.retryHint")}</small> : null}
         </div>
       ) : null}
 
@@ -244,7 +250,9 @@ export default function ContactForm() {
             ? askAiDirection
               ? t("contactForm.sendingWithAi")
               : t("contactForm.sending")
-            : t("contactForm.send")}
+            : status?.type === "err"
+              ? t("contactForm.retry")
+              : t("contactForm.send")}
         </Button>
       </div>
     </form>

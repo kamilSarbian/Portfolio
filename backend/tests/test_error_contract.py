@@ -165,13 +165,13 @@ def test_rate_limit_returns_stable_error_code() -> None:
 
 
 def test_unavailable_service_returns_stable_error_code(monkeypatch) -> None:
-    def reject_email_configuration() -> None:
-        raise RuntimeError("email unavailable")
+    def reject_owner_delivery(*args) -> None:
+        raise contact_module.ContactEmailError("email unavailable")
 
     monkeypatch.setattr(
         contact_module,
-        "validate_email_configuration",
-        reject_email_configuration,
+        "send_owner_contact_email",
+        reject_owner_delivery,
     )
     app = _make_app(contact_module.router)
     app.dependency_overrides[contact_rate_limit] = lambda: None

@@ -37,6 +37,10 @@
         "title": "NOVA Market — case study Flask i Stripe | Kamil Sarbian",
         "description": "Poznaj NOVA Market: demo e-commerce we Flasku z Neon PostgreSQL, Stripe Sandbox Checkout, podpisanymi webhookami, rate limitingiem i 40 testami."
       },
+      "nordicHearth": {
+        "title": "Nordic Hearth — zamówienia i analityka | Kamil Sarbian",
+        "description": "Zobacz działające demo restauracji zbudowane w React, FastAPI i PostgreSQL, z kontrolą dostępu i raportami CSV."
+      },
       "living": {
         "title": "Living Startpakke — badania i product discovery | Kamil Sarbian",
         "description": "Koncepcja produktu cyfrowego rozwijana na podstawie badań, kontaktu z interesariuszami, analizy insightów, prototypowania i iteracyjnych testów."
@@ -237,6 +241,15 @@
         "productionThinking": "Podpisane webhooki, idempotentne potwierdzanie płatności, wersjonowane migracje, współdzielony rate limiting, nagłówki bezpieczeństwa i izolowane testy PostgreSQL.",
         "stack": ["Python", "Flask", "PostgreSQL", "Stripe"]
       },
+      "nordicHearth": {
+        "kicker": "Zamówienia i analityka restauracji",
+        "title": "Nordic Hearth",
+        "problem": "Restauracja potrzebuje przejrzystej ścieżki zamówienia i wiarygodnych danych operacyjnych bez mieszania aktywności klientów z danymi historycznymi.",
+        "solution": "Wdrożone menu, koszyk, zamówienia oraz panel administratora z listą zamówień, analityką opłaconych zamówień i eksportami CSV.",
+        "businessValue": "Pokazuje, jak połączyć składanie zamówień, obsługę realizacji, raportowanie i publiczne demo we wspólnym systemie.",
+        "productionThinking": "Dostęp API ograniczony rolami, deterministyczne dane syntetyczne, ograniczone uprawnienia administratora demo, migracje PostgreSQL i automatyczne testy backendu, frontendu i przeglądarki.",
+        "stack": ["React", "FastAPI", "PostgreSQL", "Render"]
+      },
       "living": {
         "kicker": "Koncepcja produktu cyfrowego rozwijana na podstawie badań",
         "title": "Living Startpakke",
@@ -281,6 +294,73 @@
     "imgClassDesc":"API w Pythonie, które przyjmuje obraz i zwraca klasyfikację przy użyciu modelu ML. Endpoint obsługuje przesyłanie plików oraz zwraca wyniki predykcji w formacie JSON.",
     "authTitle": "Auth & User Management API",
     "authDesc": "API do zarządzania użytkownikami z rejestracją, logowaniem oraz autoryzacją JWT. System obsługuje role użytkowników (admin/user), profile oraz integrację z bazą danych PostgreSQL przy użyciu SQLAlchemy."
+  },
+  "nordicHearth": {
+    "eyebrow": "Case study: zamówienia i analityka restauracji",
+    "title": "Nordic Hearth",
+    "subtitle": "Działająca ścieżka zamawiania i panel administratora, oparte na chronionych danych syntetycznych i publicznym demo.",
+    "status": "Działające demo portfolio · współdzielone dane syntetyczne",
+    "coldStart": "Demo działa na darmowej instancji. Pierwsze żądanie po bezczynności może potrwać około minuty.",
+    "disclaimer": "Nordic Hearth jest technicznym demo portfolio, nie prawdziwą restauracją. Zamówienia i płatności są danymi syntetycznymi. Aktywność w demo może być widoczna dla innych odwiedzających.",
+    "cta": {
+      "live": "Otwórz demo",
+      "source": "Zobacz kod źródłowy"
+    },
+    "problem": {
+      "title": "Problem",
+      "body": "Menu i koszyk to dopiero początek. Restauracja potrzebuje też wiarygodnego zapisu zamówień, widoku realizacji i raportów opartych na danych o płatnościach. Publiczne demo musi pokazać te procesy bez ujawniania prawdziwych tożsamości i bez kruchych danych przykładowych."
+    },
+    "solution": {
+      "title": "Rozwiązanie",
+      "body": "Interfejs React łączy zamawianie z backendem FastAPI i PostgreSQL. Administrator przegląda zamówienia, analitykę opłaconych zamówień i raporty CSV. Osobne wejście do demo udostępnia ograniczoną rolę admin po weryfikacji przez backend."
+    },
+    "explore": {
+      "title": "Co można sprawdzić",
+      "body": "Zacznij od publicznego menu, a potem użyj przycisku Try admin demo na stronie logowania.",
+      "items": [
+        "Przeglądaj menu według kategorii i dodawaj dania do koszyka.",
+        "Otwórz demo administratora i sprawdź listę oraz szczegóły zamówień.",
+        "Zmień okres raportowania i zobacz wyniki według kategorii, produktu i typu zamówienia.",
+        "Pobierz pliki CSV z zamówieniami, sprzedażą produktów i płatnościami."
+      ]
+    },
+    "backend": {
+      "title": "Granice backendu",
+      "body": "API odpowiada za ceny, uwierzytelnianie, uprawnienia i kryteria raportów. Publiczne demo otrzymuje zwykłą rolę admin, nigdy super admin.",
+      "items": [
+        "Krótka sesja demo powstaje tylko przy spełnieniu jawnych warunków backendu.",
+        "Dostęp do API zależy od bieżącego użytkownika i jego roli.",
+        "Przeglądarka steruje widokiem, a decyzje o dostępie podejmuje backend."
+      ]
+    },
+    "data": {
+      "title": "Dane i wdrożenie",
+      "body": "Deterministyczny zestaw danych historycznych pozwala sprawdzić raporty. Nowe zamówienia demo pozostają oddzielone od kanonicznego seeda.",
+      "items": [
+        "Zmiany schematu PostgreSQL są wersjonowane i sprawdzane przed seedowaniem.",
+        "Backend i frontend działają jako osobne usługi Render z bazą Neon PostgreSQL.",
+        "CI sprawdza backend, migracje, frontend i scenariusze przeglądarkowe."
+      ]
+    },
+    "gallery": {
+      "title": "Widoki działającego demo",
+      "body": "Zrzuty z wdrożonej aplikacji pokazują publiczne menu i współdzielony panel administratora.",
+      "images": [
+        { "alt": "Menu Nordic Hearth z filtrowaniem kategorii i kartami dań", "caption": "Publiczne menu i kategorie" },
+        { "alt": "Strona administratora Nordic Hearth z informacją o współdzielonych danych syntetycznych", "caption": "Wejście do demo administratora i granice danych" },
+        { "alt": "Lista zamówień administratora Nordic Hearth z filtrami", "caption": "Obsługa zamówień i filtry" },
+        { "alt": "Analityka Nordic Hearth z okresem raportowania i strefą czasową", "caption": "Analityka opłaconych zamówień i kontekst raportu" },
+        { "alt": "Eksporty CSV Nordic Hearth: zamówienia, produkty i płatności", "caption": "Dostępne eksporty CSV" }
+      ]
+    },
+    "contribution": {
+      "title": "Mój wkład",
+      "body": "Zbudowałem proces zamawiania i raportowania, granicę dostępu do demo, mechanizm danych syntetycznych, automatyczne kontrole oraz publiczne wdrożenie. Repozytorium opisuje implementację i ograniczenia operacyjne."
+    },
+    "limitations": {
+      "title": "Granice demo",
+      "body": "Demo używa współdzielonych danych syntetycznych i darmowego hostingu. Nie przyjmuje prawdziwych zamówień ani płatności. Konta osobiste i zarządzanie super adminem nie są częścią publicznego demo."
+    }
   },
   "novaMarket": {
     "cta": {
@@ -807,12 +887,15 @@
   },
   "contactForm": {
     "send": "Wyślij wiadomość →",
-    "sending": "Wysyłanie...",
-    "sendingWithAi": "Wysyłanie... JARVIS analizuje wiadomość. To może potrwać kilka sekund.",
-    "success": "Wiadomość została wysłana. Dziękuję!",
+    "retry": "Spróbuj ponownie →",
+    "retryHint": "Twoja wiadomość nadal znajduje się w formularzu. Możesz spróbować wysłać ją ponownie.",
+    "sending": "Wysyłanie wiadomości do Kamila...",
+    "sendingWithAi": "Wysyłanie wiadomości do Kamila... Opcjonalna analiza AI rozpocznie się po tym etapie.",
+    "success": "Serwer pocztowy przyjął wiadomość do wysłania do Kamila. Dziękuję!",
+    "successWithAi": "Serwer pocztowy przyjął wiadomość do wysłania do Kamila. Opcjonalny etap AI zostanie podjęty osobno i nie jest gwarantowany.",
     "aiDirection": {
       "label": "Wstępny kierunek techniczny wspierany przez AI",
-      "help": "JARVIS, asystent AI Kamila, przeanalizuje wiadomość i zaproponuje wstępny kierunek techniczny. Otrzymasz go mailem. Kamil nadal odpowie osobiście."
+      "help": "Po przyjęciu wiadomości do wysłania do Kamila JARVIS spróbuje przygotować wstępny kierunek techniczny w osobnym etapie. Jeśli analiza i wysyłka się powiodą, sugestię otrzymacie e-mailem Ty i Kamil."
     },
     "labels": {
       "name": "Imię",

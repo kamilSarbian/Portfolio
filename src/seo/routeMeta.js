@@ -44,6 +44,13 @@ export const ROUTE_META = Object.freeze({
     datePublished: "2026-07-31",
     imagePath: "/projects/nova-market/nova-market-home.png",
   },
+  "/projects/nordic-hearth": {
+    key: "nordicHearth",
+    canonicalPath: "/projects/nordic-hearth",
+    indexable: true,
+    schemaType: "CreativeWork",
+    ogType: "article",
+  },
   "/projects/living-startpakke": {
     key: "living",
     canonicalPath: "/projects/living-startpakke",
