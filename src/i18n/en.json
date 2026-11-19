@@ -317,12 +317,12 @@
     },
     "explore": {
       "title": "What you can try",
-      "body": "Start with the public menu, then use the demo button on the login page to see the administrator workspace.",
+      "body": "Start with the homepage and public menu, then use Try admin demo to open the shared administrator workspace.",
       "items": [
-        "Browse the menu by category and add dishes to the cart.",
-        "Open Try admin demo to review orders and order details.",
-        "Change reporting dates and inspect analytics by category, product, and order type.",
-        "Download orders, product sales, and payments as CSV files."
+        "Use the six-image homepage carousel with the dots or keyboard. Each displayed slide receives a fresh five-second cycle; reduced-motion mode keeps rotation manual.",
+        "In Menu sandbox, add a sample dish and preview a local JPEG, PNG, or WebP image. Changes stay in browser memory and disappear after refresh or logout.",
+        "Analytics and Exports start with NOK and offer All currencies. Reports and CSV files keep each order's original currency.",
+        "Load dated ECB rates in the reference calculator for an approximate NOK-to-EUR and NOK-to-PLN conversion without changing analytics, exports, orders, or payments."
       ]
     },
     "backend": {
@@ -345,18 +345,20 @@
     },
     "gallery": {
       "title": "Inside the live demo",
-      "body": "Screenshots from the deployed application, showing the public menu and the shared administrator workspace.",
+      "body": "Current screenshots from the deployed customer journey and shared administrator workspace.",
       "images": [
+        { "alt": "Nordic Hearth homepage with a six-image carousel and selection dots", "caption": "Homepage carousel with six selectable slides" },
         { "alt": "Nordic Hearth menu with category filters and dish cards", "caption": "Public menu and category browsing" },
         { "alt": "Nordic Hearth administrator home with shared synthetic data notice", "caption": "Administrator demo entry and shared data boundary" },
         { "alt": "Nordic Hearth administrator order list with filters", "caption": "Order operations and filters" },
-        { "alt": "Nordic Hearth analytics page with reporting dates and timezone", "caption": "Paid-order analytics and reporting context" },
+        { "alt": "Nordic Hearth analytics with dated ECB estimates from NOK to EUR and PLN", "caption": "Paid-order analytics and ECB reference calculator" },
         { "alt": "Nordic Hearth CSV export options for orders, products, and payments", "caption": "Available CSV exports" }
       ]
     },
     "contribution": {
       "title": "My contribution",
-      "body": "I built the ordering and reporting flows, the demo access boundary, the synthetic data workflow, automated acceptance checks, and the public deployment. The repository documents the implementation and operational limits."
+      "body": "I built the ordering and reporting flows, the public demo boundary, the synthetic-data workflow, and the deployment. To remove the carousel's white flash, the current image stays visible until the browser decodes the next one; the dots support keyboard navigation, and reduced-motion mode disables automatic rotation.",
+      "evidence": "Evidence: 39/39 Browser E2E checks passed in GitHub Actions, including the delayed-image scenario."
     },
     "limitations": {
       "title": "Demo boundaries",

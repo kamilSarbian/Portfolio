@@ -42,6 +42,17 @@ const verifiedPublicVercelDeploymentIds = new Set([
 ]);
 const verifiedPublicVercelDeploymentUrlPattern =
   /https:\/\/vercel\.com\/kamilsarbians-projects\/portfolio\/([A-Za-z0-9_-]{20,})(?=$|[\s)\]}>.,;])/g;
+const nordicHearthContentPath = "src/content/nordicHearth.js";
+const nordicHearthActionsUrlPrefix = [
+  "https://github.com/kamilSarbian/",
+  "Restaurant_Ordering_Analytics/actions/",
+  "runs/",
+].join("");
+const verifiedPublicGitHubActionsRunUrls = new Set([
+  [nordicHearthActionsUrlPrefix, "44132315284"].join(""),
+]);
+const publicGitHubActionsRunUrlPattern =
+  /https:\/\/github\.com\/kamilSarbian\/Restaurant_Ordering_Analytics\/actions\/runs\/\d+(?=$|[\s)\]}>.,;"'])/g;
 
 function getTrackedFiles() {
   return execFileSync(
@@ -101,6 +112,21 @@ function isVerifiedPublicVercelDeploymentId(normalizedPath, source, index, value
   return false;
 }
 
+function isVerifiedPublicGitHubActionsRun(normalizedPath, source, index, value) {
+  if (normalizedPath !== nordicHearthContentPath) return false;
+
+  publicGitHubActionsRunUrlPattern.lastIndex = 0;
+  for (const match of source.matchAll(publicGitHubActionsRunUrlPattern)) {
+    if (!verifiedPublicGitHubActionsRunUrls.has(match[0])) continue;
+
+    const urlStart = match.index;
+    const urlEnd = urlStart + match[0].length;
+    const tokenEnd = index + value.length;
+    if (index >= urlStart && tokenEnd <= urlEnd) return true;
+  }
+  return false;
+}
+
 export function scanSource(normalizedPath, source) {
   const findings = [];
   const basename = path.posix.basename(normalizedPath);
@@ -147,7 +173,8 @@ export function scanSource(normalizedPath, source) {
       characterClasses >= 3 &&
       shannonEntropy(value) >= 4.3 &&
       !looksLikePlaceholder(value) &&
-      !isVerifiedPublicVercelDeploymentId(normalizedPath, source, match.index, value)
+      !isVerifiedPublicVercelDeploymentId(normalizedPath, source, match.index, value) &&
+      !isVerifiedPublicGitHubActionsRun(normalizedPath, source, match.index, value)
     ) {
       addFinding(findings, normalizedPath, source, match.index, "high-entropy long string");
     }

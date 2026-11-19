@@ -4,6 +4,12 @@ import test from "node:test";
 import { scanSource } from "../scripts/check-secrets.mjs";
 
 const deploymentReportPath = "docs/DEPLOYMENT_REPORT.md";
+const nordicHearthContentPath = "src/content/nordicHearth.js";
+const nordicHearthActionsUrlPrefix = [
+  "https://github.com/kamilSarbian/",
+  "Restaurant_Ordering_Analytics/actions/",
+  "runs/",
+].join("");
 
 function hasEntropyFinding(filePath, source) {
   return scanSource(filePath, source).some((finding) =>
@@ -36,6 +42,24 @@ test("an unknown Vercel deployment URL cannot hide entropy", () => {
     `Vercel deployment: https://vercel.com/kamilsarbians-projects/portfolio/${unknownDeploymentId}`;
 
   assert.ok(hasEntropyFinding(deploymentReportPath, source));
+});
+
+test("the verified Nordic Hearth GitHub Actions URL does not trigger entropy", () => {
+  const runUrl = [nordicHearthActionsUrlPrefix, "44132315284"].join("");
+
+  assert.deepEqual(scanSource(nordicHearthContentPath, `e2eRunUrl: "${runUrl}"`), []);
+});
+
+test("the verified GitHub Actions URL cannot hide entropy in another file", () => {
+  const runUrl = [nordicHearthActionsUrlPrefix, "44132315284"].join("");
+
+  assert.ok(hasEntropyFinding("src/content/anotherProject.js", `runUrl: "${runUrl}"`));
+});
+
+test("an unknown GitHub Actions run cannot hide entropy", () => {
+  const unknownRunUrl = [nordicHearthActionsUrlPrefix, "98765432109"].join("");
+
+  assert.ok(hasEntropyFinding(nordicHearthContentPath, `runUrl: "${unknownRunUrl}"`));
 });
 
 test("a constructed GitHub token is still detected", () => {

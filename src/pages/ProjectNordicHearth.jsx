@@ -119,12 +119,23 @@ export default function ProjectNordicHearth({ onGoProjects }) {
             </section>
 
             <div className="nova-two-column">
-              {[copy.contribution, copy.limitations].map((section) => (
-                <section className="nova-section" key={section.title}>
-                  <h2>{section.title}</h2>
-                  <p>{section.body}</p>
-                </section>
-              ))}
+              <section className="nova-section">
+                <h2>{copy.contribution.title}</h2>
+                <p>{copy.contribution.body}</p>
+                <p>
+                  <a
+                    href={NORDIC_HEARTH_LINKS.e2eRunUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {copy.contribution.evidence} ↗
+                  </a>
+                </p>
+              </section>
+              <section className="nova-section">
+                <h2>{copy.limitations.title}</h2>
+                <p>{copy.limitations.body}</p>
+              </section>
             </div>
           </div>
 

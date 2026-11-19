@@ -316,12 +316,12 @@
     },
     "explore": {
       "title": "Dette kan du prøve",
-      "body": "Start med den åpne menyen, og bruk deretter Try admin demo på innloggingssiden.",
+      "body": "Start med forsiden og den åpne menyen, og bruk deretter Try admin demo for å åpne det delte administratorområdet.",
       "items": [
-        "Bla i menyen etter kategori og legg retter i handlekurven.",
-        "Åpne administratordemoen og se ordrelisten og ordredetaljer.",
-        "Endre rapporteringsperiode og se resultater etter kategori, produkt og ordretype.",
-        "Last ned CSV-filer for ordrer, produktsalg og betalinger."
+        "På forsiden kan du velge blant seks bilder med punktene eller tastaturet. Hvert viste bilde får en ny femsekunders syklus; ved redusert bevegelse er rotasjonen manuell.",
+        "I Menu sandbox kan du legge til en eksempelrett og forhåndsvise et lokalt JPEG-, PNG- eller WebP-bilde. Endringene blir i nettleserminnet og forsvinner ved oppdatering eller utlogging.",
+        "Analytics og Exports starter med NOK og tilbyr All currencies. Rapporter og CSV-filer beholder den opprinnelige valutaen for hver ordre.",
+        "Last inn daterte ECB-kurser i referansekalkulatoren for en omtrentlig konvertering fra NOK til EUR og PLN uten å endre analyse, eksport, ordrer eller betalinger."
       ]
     },
     "backend": {
@@ -344,18 +344,20 @@
     },
     "gallery": {
       "title": "Bilder fra den aktive demoen",
-      "body": "Skjermbilder fra den publiserte applikasjonen viser den åpne menyen og det delte administratorområdet.",
+      "body": "Oppdaterte skjermbilder fra den publiserte kundereisen og det delte administratorområdet.",
       "images": [
+        { "alt": "Nordic Hearth-forside med en karusell med seks bilder og valgpunkter", "caption": "Forsidekarusell med seks valgbare bilder" },
         { "alt": "Nordic Hearth-meny med kategorifiltre og retter", "caption": "Åpen meny og kategorier" },
         { "alt": "Administratorsiden i Nordic Hearth med informasjon om delte syntetiske data", "caption": "Administratordemo og datagrenser" },
         { "alt": "Administratorens ordreliste i Nordic Hearth med filtre", "caption": "Ordreoversikt og filtre" },
-        { "alt": "Nordic Hearth-analyse med rapporteringsperiode og tidssone", "caption": "Analyse av betalte ordrer og rapporteringskontekst" },
+        { "alt": "Nordic Hearth-analyse med daterte ECB-estimater fra NOK til EUR og PLN", "caption": "Analyse av betalte ordrer og ECB-referansekalkulator" },
         { "alt": "Nordic Hearth CSV-eksport for ordrer, produkter og betalinger", "caption": "Tilgjengelige CSV-eksporter" }
       ]
     },
     "contribution": {
       "title": "Mitt bidrag",
-      "body": "Jeg bygget bestillings- og rapporteringsflyten, tilgangsgrensen for demoen, flyten for syntetiske data, automatiske kontroller og den offentlige utrullingen. Repositoriet beskriver implementasjonen og driftsbegrensningene."
+      "body": "Jeg bygget bestillings- og rapporteringsflyten, grensen for den offentlige demoen, flyten for syntetiske data og utrullingen. For å fjerne det hvite blinket i karusellen forblir gjeldende bilde synlig til nettleseren har dekodet det neste; punktene kan styres med tastaturet, og redusert bevegelse deaktiverer automatisk rotasjon.",
+      "evidence": "Verifisering: 39/39 Browser E2E-tester bestod i GitHub Actions, inkludert scenarioet med forsinket bilde."
     },
     "limitations": {
       "title": "Rammene for demoen",
