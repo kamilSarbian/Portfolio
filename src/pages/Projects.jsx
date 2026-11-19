@@ -28,7 +28,6 @@ const PROJECT_LINKS = {
   },
   nordicHearth: {
     projectPath: "/projects/nordic-hearth",
-    githubUrl: NORDIC_HEARTH_LINKS.repositoryUrl,
     liveUrl: NORDIC_HEARTH_LINKS.liveUrl,
     screenshot: null,
   },

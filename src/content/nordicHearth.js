@@ -1,6 +1,5 @@
 export const NORDIC_HEARTH_LINKS = Object.freeze({
   liveUrl: "https://nordic.kamilsarbian.dev",
-  repositoryUrl: "https://github.com/kamilSarbian/Restaurant_Ordering_Analytics",
   e2eRunUrl:
     "https://github.com/kamilSarbian/Restaurant_Ordering_Analytics/actions/runs/44132315284",
 });

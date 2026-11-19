@@ -298,17 +298,16 @@
   "nordicHearth": {
     "eyebrow": "Case study: zamówienia i analityka restauracji",
     "title": "Nordic Hearth",
-    "subtitle": "Działająca ścieżka zamawiania i panel administratora, oparte na chronionych danych syntetycznych i publicznym demo.",
+    "subtitle": "System zamawiania dla restauracji z panelem administratora, analityką sprzedaży i eksportem raportów CSV. Zbudowany w React, FastAPI i PostgreSQL.",
     "status": "Działające demo portfolio · współdzielone dane syntetyczne",
     "coldStart": "Demo działa na darmowej instancji. Pierwsze żądanie po bezczynności może potrwać około minuty.",
     "disclaimer": "Nordic Hearth jest technicznym demo portfolio, nie prawdziwą restauracją. Zamówienia i płatności są danymi syntetycznymi. Aktywność w demo może być widoczna dla innych odwiedzających.",
     "cta": {
-      "live": "Otwórz demo",
-      "source": "Zobacz kod źródłowy"
+      "live": "Otwórz demo"
     },
     "problem": {
       "title": "Problem",
-      "body": "Menu i koszyk to dopiero początek. Restauracja potrzebuje też wiarygodnego zapisu zamówień, widoku realizacji i raportów opartych na danych o płatnościach. Publiczne demo musi pokazać te procesy bez ujawniania prawdziwych tożsamości i bez kruchych danych przykładowych."
+      "body": "Menu i koszyk to dopiero początek. Restauracja potrzebuje też wiarygodnego zapisu zamówień, widoku realizacji i raportów opartych na danych o płatnościach. Publiczne demo musi pokazać te procesy bez ujawniania prawdziwych tożsamości i bez niespójnych danych demonstracyjnych."
     },
     "solution": {
       "title": "Rozwiązanie",
@@ -316,12 +315,13 @@
     },
     "explore": {
       "title": "Co można sprawdzić",
-      "body": "Zacznij od strony głównej i publicznego menu, a następnie użyj Try admin demo, aby otworzyć współdzielony panel administratora.",
+      "body": "Najpierw przejdź ścieżkę klienta, a następnie użyj Try admin demo, aby otworzyć współdzielony panel administratora.",
       "items": [
-        "Na stronie głównej wybieraj spośród sześciu zdjęć kropkami lub klawiaturą. Każdy wyświetlony slajd otrzymuje pełne pięć sekund; tryb ograniczonego ruchu pozostawia rotację ręczną.",
+        "Przejrzyj publiczne menu, dodaj dania do koszyka i sprawdź podsumowanie zamówienia.",
+        "Użyj Try admin demo, aby otworzyć współdzielony panel administratora oraz przejrzeć listę zamówień i dostępne filtry.",
+        "Analytics i Exports startują od NOK i oferują All currencies. Raporty oraz pliki CSV zachowują oryginalną walutę każdego zamówienia, a kalkulator z datowanymi kursami ECB pokazuje orientacyjne przeliczenia NOK na EUR i PLN bez zmiany zamówień, płatności, analityki ani eksportów.",
         "W Menu sandbox dodaj przykładowe danie i podejrzyj lokalny obraz JPEG, PNG lub WebP. Zmiany pozostają w pamięci przeglądarki i znikają po odświeżeniu lub wylogowaniu.",
-        "Analytics i Exports startują od NOK i oferują All currencies. Raporty oraz pliki CSV zachowują oryginalną walutę każdego zamówienia.",
-        "Załaduj datowane kursy ECB w kalkulatorze referencyjnym, aby zobaczyć orientacyjne przeliczenie NOK na EUR i PLN bez zmiany analityki, eksportów, zamówień ani płatności."
+        "Na stronie głównej wybieraj spośród sześciu zdjęć kropkami lub klawiaturą. Każdy wyświetlony slajd otrzymuje pełne pięć sekund; tryb ograniczonego ruchu pozostawia rotację ręczną."
       ]
     },
     "backend": {
@@ -335,9 +335,9 @@
     },
     "data": {
       "title": "Dane i wdrożenie",
-      "body": "Deterministyczny zestaw danych historycznych pozwala sprawdzić raporty. Nowe zamówienia demo pozostają oddzielone od kanonicznego seeda.",
+      "body": "Stały zestaw danych historycznych pozwala łatwo sprawdzić raporty. Nowe zamówienia demo pozostają oddzielone od danych bazowych.",
       "items": [
-        "Zmiany schematu PostgreSQL są wersjonowane i sprawdzane przed seedowaniem.",
+        "Zmiany schematu PostgreSQL są wersjonowane i sprawdzane przed wczytaniem danych początkowych.",
         "Backend i frontend działają jako osobne usługi Render z bazą Neon PostgreSQL.",
         "CI sprawdza backend, migracje, frontend i scenariusze przeglądarkowe."
       ]
@@ -356,8 +356,8 @@
     },
     "contribution": {
       "title": "Mój wkład",
-      "body": "Zbudowałem procesy zamawiania i raportowania, granice publicznego demo, mechanizm danych syntetycznych i wdrożenie. Aby usunąć biały błysk karuzeli, bieżące zdjęcie pozostaje widoczne do czasu zdekodowania kolejnego przez przeglądarkę; kropki obsługują klawiaturę, a tryb ograniczonego ruchu wyłącza automatyczną rotację.",
-      "evidence": "Dowód: 39/39 testów Browser E2E przeszło w GitHub Actions, w tym scenariusz opóźnionego obrazu."
+      "body": "Zaimplementowałem backend FastAPI, warstwę danych PostgreSQL i interfejs React, w tym proces zamawiania, kontrolę dostępu opartą na rolach, dane demonstracyjne, analitykę oraz raporty CSV. Dodałem testy automatyczne i CI, a następnie wdrożyłem frontend i backend na Render z bazą Neon PostgreSQL. Karuzela dekoduje następny obraz przed płynnym przejściem, dzięki czemu nie pojawia się biały błysk.",
+      "evidence": "Testy przeglądarkowe w GitHub Actions · 39/39"
     },
     "limitations": {
       "title": "Granice demo",

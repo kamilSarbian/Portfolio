@@ -11,9 +11,6 @@ function ProjectLinks() {
       <a className="btn primary" href={NORDIC_HEARTH_LINKS.liveUrl} target="_blank" rel="noreferrer">
         {t("nordicHearth.cta.live")} ↗
       </a>
-      <a className="btn ghost" href={NORDIC_HEARTH_LINKS.repositoryUrl} target="_blank" rel="noreferrer">
-        {t("nordicHearth.cta.source")} ↗
-      </a>
     </div>
   );
 }

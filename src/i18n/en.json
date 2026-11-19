@@ -299,17 +299,16 @@
   "nordicHearth": {
     "eyebrow": "Restaurant ordering & analytics case study",
     "title": "Nordic Hearth",
-    "subtitle": "A working restaurant ordering flow and administrator workspace, built around a protected synthetic dataset and a public demo.",
+    "subtitle": "A restaurant ordering system with an administrator panel, sales analytics, and CSV report exports. Built with React, FastAPI, and PostgreSQL.",
     "status": "Live portfolio demo · shared synthetic data",
     "coldStart": "Hosted on a free instance. The first request after inactivity may take a minute while the backend starts.",
     "disclaimer": "Nordic Hearth is a technical portfolio demo, not a real restaurant. Orders and payment records use synthetic data. Demo activity is shared with other visitors.",
     "cta": {
-      "live": "Open live demo",
-      "source": "Explore source code"
+      "live": "Open live demo"
     },
     "problem": {
       "title": "The problem",
-      "body": "A menu and cart are only the start. A restaurant also needs a dependable order record, a way to review fulfilment, and reports grounded in payment data. A public demo needs those workflows without exposing production identities or relying on fragile sample data."
+      "body": "A menu and cart are only the start. A restaurant also needs a dependable order record, a way to review fulfilment, and reports grounded in payment data. A public demo needs those workflows without exposing real identities or depending on inconsistent demo data."
     },
     "solution": {
       "title": "The solution",
@@ -317,12 +316,13 @@
     },
     "explore": {
       "title": "What you can try",
-      "body": "Start with the homepage and public menu, then use Try admin demo to open the shared administrator workspace.",
+      "body": "Follow the customer journey first, then use Try admin demo to open the shared administrator workspace.",
       "items": [
-        "Use the six-image homepage carousel with the dots or keyboard. Each displayed slide receives a fresh five-second cycle; reduced-motion mode keeps rotation manual.",
+        "Browse the public menu, add dishes to the cart, and review the order summary.",
+        "Use Try admin demo to open the shared administrator workspace and review the order list with its available filters.",
+        "Analytics and Exports start with NOK and offer All currencies. Reports and CSV files retain each order's original currency, while the dated ECB calculator provides approximate NOK-to-EUR and NOK-to-PLN reference values without changing orders, payments, analytics, or exports.",
         "In Menu sandbox, add a sample dish and preview a local JPEG, PNG, or WebP image. Changes stay in browser memory and disappear after refresh or logout.",
-        "Analytics and Exports start with NOK and offer All currencies. Reports and CSV files keep each order's original currency.",
-        "Load dated ECB rates in the reference calculator for an approximate NOK-to-EUR and NOK-to-PLN conversion without changing analytics, exports, orders, or payments."
+        "Use the six-image homepage carousel with the dots or keyboard. Each displayed slide receives a fresh five-second cycle; reduced-motion mode keeps rotation manual."
       ]
     },
     "backend": {
@@ -336,9 +336,9 @@
     },
     "data": {
       "title": "Data and deployment",
-      "body": "A deterministic historical dataset keeps reporting inspectable, while demo orders are kept separate from the canonical seed.",
+      "body": "A fixed historical dataset makes reports easy to inspect, while new demo orders remain separate from the baseline dataset.",
       "items": [
-        "PostgreSQL schema changes are versioned and checked before seeding.",
+        "PostgreSQL schema changes are versioned and verified before reference data is loaded.",
         "Backend and frontend run as separate Render services with Neon PostgreSQL.",
         "Backend, migration, frontend, and browser checks run in CI."
       ]
@@ -357,8 +357,8 @@
     },
     "contribution": {
       "title": "My contribution",
-      "body": "I built the ordering and reporting flows, the public demo boundary, the synthetic-data workflow, and the deployment. To remove the carousel's white flash, the current image stays visible until the browser decodes the next one; the dots support keyboard navigation, and reduced-motion mode disables automatic rotation.",
-      "evidence": "Evidence: 39/39 Browser E2E checks passed in GitHub Actions, including the delayed-image scenario."
+      "body": "I implemented the FastAPI backend, PostgreSQL data layer, and React interface, including the ordering flow, role-based access control, demo data, analytics, and CSV reporting. I added automated tests and CI, then deployed the frontend and backend on Render with Neon PostgreSQL. The carousel decodes the next image before a smooth transition, preventing a white flash.",
+      "evidence": "Browser tests in GitHub Actions · 39/39"
     },
     "limitations": {
       "title": "Demo boundaries",
