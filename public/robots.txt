@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kamilsarbian.dev/sitemap.xml
+Sitemap: https://www.kamilsarbian.dev/sitemap.xml
 

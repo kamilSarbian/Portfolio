@@ -228,10 +228,10 @@
         "kicker": "Private AI Automation Environment",
         "title": "JARVIS — Private AI Automation Environment",
         "problem": "Technical research, job analysis, infrastructure notes, and project decisions were spread across separate tools and sessions.",
-        "solution": "A private OpenClaw-based environment on a self-managed Ubuntu VPS with persistent memory, scheduled monitoring, supporting services, and Telegram access.",
+        "solution": "An OpenClaw environment installed through npm and running as a systemd user service on a self-managed Hetzner ARM64 VPS with Ubuntu 24.04, DeepSeek V4 Pro, persistent memory, scheduled monitoring, and Telegram access.",
         "businessValue": "Keeps technical context, research outputs, and repeatable operational workflows in one private environment.",
         "productionThinking": "Clear platform boundaries, protected secrets, isolated scheduled sessions, resource monitoring, documented limitations, and an explicit reliability roadmap.",
-        "stack": ["OpenClaw", "Linux/VPS", "Docker", "Telegram"]
+        "stack": ["OpenClaw", "Linux/VPS", "DeepSeek V4 Pro", "Telegram"]
       },
       "nova": {
         "kicker": "Flask E-commerce Case Study",
@@ -667,8 +667,8 @@
     "facts": [
       { "label": "Started", "value": "May 2026" },
       { "label": "Role", "value": "Environment design, integration, automation, and operations" },
-      { "label": "Infrastructure", "value": "Self-managed Ubuntu VPS on Hetzner · ARM64" },
-      { "label": "Model", "value": "DeepSeek V4 Pro" },
+      { "label": "Infrastructure", "value": "Self-managed Hetzner ARM64 VPS · Ubuntu 24.04" },
+      { "label": "Default model", "value": "DeepSeek V4 Pro" },
       { "label": "Primary interface", "value": "Telegram" }
     ],
     "sections": {
@@ -704,18 +704,18 @@
           "Telegram integration.",
           "Extensible plugin architecture."
         ],
-        "note": "Planner workflows and MCP integrations are available platform directions but are currently outside this project’s scope."
+        "note": "External vector databases, MCP integrations, and planner workflows are not used in the current project."
       },
       "contribution": {
         "title": "My Contribution",
         "body": "My work focuses on environment design, integrations, operational workflows, and safe day-to-day use.",
         "items": [
-          "Deployed and configured OpenClaw on a self-managed VPS.",
+          "Installed OpenClaw through npm and configured it as a systemd user service on the self-managed VPS.",
           "Integrated DeepSeek V4 Pro and Telegram access.",
           "Defined workspace rules, memory structure, and research workflows.",
           "Configured isolated scheduled resource-monitoring and memory workflows.",
           "Built a custom REST service and portfolio middleware for separate use cases.",
-          "Configured CORS, Cloudflare Tunnel transport, and selected supporting services.",
+          "Configured CORS and Cloudflare Tunnel transport for the independent portfolio integration path.",
           "Documented safe Git operations and maintenance procedures."
         ]
       },
@@ -731,23 +731,25 @@
       },
       "automation": {
         "title": "Automation",
-        "body": "A scheduled isolated workflow is configured to run daily at 23:55 CEST. It creates a dated memory note and updates the long-term summary when execution completes successfully. Longer runs can approach the configured timeout limit.",
+        "body": "The isolated daily-summary workflow runs every day at 23:55 local Oslo time using the Europe/Oslo time zone. Its deterministic pipeline collects events, performs a delta check, and makes at most one model call; with no new events it skips both the model and the memory write.",
         "items": [
-          "Server resource monitoring runs every six hours.",
-          "Alerts are configured for resource usage above 80%, but an incident-triggered path has not yet been tested end to end.",
-          "Scheduled tasks run in isolated sessions to limit context overlap."
+          "A separate monitor runs every six hours and checks RAM, disk, swap, and load average; it does not measure CPU percentage directly.",
+          "RAM, disk, and swap use warning and critical thresholds of 80% and 90%, respectively.",
+          "Load thresholds scale with available cores: warning at cores × 0.8 and critical at cores × 1.5.",
+          "Warning and critical events are written to logs; Telegram alert delivery has not been confirmed end to end."
         ],
-        "note": "Resource monitoring runs on schedule, while the daily memory-summary workflow is configured and monitored with known timeout limitations."
+        "note": "The whole daily-summary job has a 180-second timeout, while its HTTP request uses urlopen(timeout=90). These are execution safeguards, not measured or guaranteed model latency."
       },
       "deployment": {
         "title": "Deployment and Operations",
         "items": [
           "SSH key access and UFW firewall rules.",
-          "Docker for selected supporting services.",
-          "System service configuration for selected supporting services.",
+          "OpenClaw installed through npm on Ubuntu 24.04 and run as a systemd user service on the Hetzner ARM64 VPS.",
+          "Restart=always and RestartSec=5 provide process-level restart handling.",
+          "Docker and Compose are installed on the host but run no JARVIS services; OpenClaw is not containerized.",
           "Resource monitoring and scheduled maintenance workflows.",
           "Cloudflare Tunnel for the portfolio integration path.",
-          "Manual operational review where automatic recovery is not yet available."
+          "Manual operational review remains necessary because full health-probe/watchdog recovery is not yet implemented."
         ]
       },
       "security": {
@@ -763,15 +765,15 @@
       "reliability": {
         "title": "Current Limitations",
         "items": [
-          "Automatic gateway recovery is incomplete.",
-          "Backup automation is not yet implemented.",
-          "Model requests do not use a custom retry layer.",
-          "End-to-end health monitoring and workflow tests remain limited."
+          "systemd restarts the process after exits, but full health-probe/watchdog recovery is not implemented.",
+          "Automated backups are not implemented.",
+          "The model path intentionally performs no immediate retry; failures are recorded as DEFERRED and receive a six-hour backoff, without a guarantee of retry exactly six hours later.",
+          "The complete automated E2E/CI scope for the private project remains unconfirmed; test hooks alone are not evidence of a passing suite."
         ]
       },
       "outsideScope": {
         "title": "Currently Outside the Project Scope",
-        "body": "The file-based memory and built-in semantic search meet current needs; adding more infrastructure without a demonstrated requirement would increase complexity.",
+        "body": "The file-based memory and built-in semantic search meet current needs. The current project does not use an external vector database, MCP integrations, or planner workflows.",
         "items": [
           "External vector database.",
           "MCP integrations.",
@@ -792,12 +794,12 @@
       "nextSteps": {
         "title": "Next Steps",
         "items": [
-          "Complete automatic gateway recovery.",
+          "Add health-probe/watchdog-based recovery beyond process restarts.",
           "Introduce encrypted backup automation.",
-          "Review memory-workflow timeout behavior.",
-          "Add health checks and failure notifications.",
-          "Add a custom retry strategy for model requests.",
-          "Expand end-to-end workflow tests and monitoring.",
+          "Confirm Telegram alert delivery end to end.",
+          "Improve observability around DEFERRED outcomes and six-hour backoff windows.",
+          "Verify and document the complete automated E2E/CI scope.",
+          "Expand failure monitoring for the daily-summary and resource-monitoring workflows.",
           "Evaluate MCP only where a concrete integration need appears.",
           "Prepare sanitized public technical documentation."
         ]
@@ -815,7 +817,7 @@
       "workspace": "Persistent workspace",
       "semantic": "Semantic memory search",
       "scheduled": "Scheduled isolated sessions",
-      "tools": "System tools: Shell, Docker, web research, resource monitoring",
+      "tools": "System tools: Shell, web research, scheduled workflows, resource monitoring",
       "supportingTitle": "Supporting integration flows",
       "portfolioAriaLabel": "Portfolio form connects through Cloudflare Tunnel and portfolio middleware to OpenClaw",
       "portfolioForm": "Portfolio form",

@@ -227,10 +227,10 @@
         "kicker": "Privat AI-automatiseringsmiljø",
         "title": "JARVIS — privat AI-automatiseringsmiljø",
         "problem": "Teknisk research, jobbanalyse, infrastrukturnotater og prosjektbeslutninger var spredt mellom ulike verktøy og økter.",
-        "solution": "Et privat OpenClaw-basert miljø på en selvadministrert Ubuntu-VPS, med vedvarende minne, planlagt overvåking, støttetjenester og tilgang via Telegram.",
+        "solution": "Et OpenClaw-miljø installert via npm og kjørt som en systemd-brukertjeneste på en selvadministrert Hetzner ARM64-VPS med Ubuntu 24.04, DeepSeek V4 Pro, vedvarende minne, planlagt overvåking og Telegram-tilgang.",
         "businessValue": "Samler teknisk kontekst, researchresultater og repeterbare driftsprosesser i ett privat miljø.",
         "productionThinking": "Tydelige plattformgrenser, beskyttede hemmeligheter, isolerte planlagte økter, ressursovervåking, dokumenterte begrensninger og et konkret veikart for pålitelighet.",
-        "stack": ["OpenClaw", "Linux/VPS", "Docker", "Telegram"]
+        "stack": ["OpenClaw", "Linux/VPS", "DeepSeek V4 Pro", "Telegram"]
       },
       "nova": {
         "kicker": "E-handelscase med Flask",
@@ -666,8 +666,8 @@
     "facts": [
       { "label": "Startet", "value": "Mai 2026" },
       { "label": "Rolle", "value": "Miljødesign, integrasjoner, automatisering og drift" },
-      { "label": "Infrastruktur", "value": "Selvadministrert Ubuntu-VPS hos Hetzner · ARM64" },
-      { "label": "Modell", "value": "DeepSeek V4 Pro" },
+      { "label": "Infrastruktur", "value": "Selvadministrert Hetzner ARM64-VPS · Ubuntu 24.04" },
+      { "label": "Standardmodell", "value": "DeepSeek V4 Pro" },
       { "label": "Primært grensesnitt", "value": "Telegram" }
     ],
     "sections": {
@@ -703,18 +703,18 @@
           "Telegram-integrasjon.",
           "Utvidbar pluginarkitektur."
         ],
-        "note": "Planleggerprosesser og MCP-integrasjoner er mulige plattformretninger, men ligger foreløpig utenfor prosjektets omfang."
+        "note": "En ekstern vektordatabase, MCP-integrasjoner og planleggerarbeidsflyter brukes ikke i den nåværende prosjektversjonen."
       },
       "contribution": {
         "title": "Mitt bidrag",
         "body": "Arbeidet mitt omfatter miljødesign, integrasjoner, driftsprosesser og trygg daglig bruk.",
         "items": [
-          "Utrulling og konfigurasjon av OpenClaw på en selvadministrert VPS.",
+          "Installasjon av OpenClaw via npm og konfigurasjon som en systemd-brukertjeneste på den selvadministrerte VPS-en.",
           "Integrasjon av DeepSeek V4 Pro og tilgang via Telegram.",
           "Definering av regler for arbeidsområdet, minnestruktur og researchprosesser.",
           "Konfigurasjon av isolert, planlagt ressursovervåking og minneprosesser.",
           "Utvikling av en egen REST-tjeneste og portfolio-middleware for separate bruksområder.",
-          "Konfigurasjon av CORS, transport via Cloudflare Tunnel og utvalgte støttetjenester.",
+          "Konfigurasjon av CORS og transport via Cloudflare Tunnel for den uavhengige integrasjonsflyten fra porteføljen.",
           "Dokumentasjon av trygge Git-operasjoner og vedlikeholdsrutiner."
         ]
       },
@@ -730,23 +730,25 @@
       },
       "automation": {
         "title": "Automatisering",
-        "body": "En planlagt isolert prosess er konfigurert til å kjøre daglig kl. 23:55 CEST. Den oppretter et datert minnenotat og oppdaterer langtidssammendraget når kjøringen fullføres. Lengre kjøringer kan nærme seg den konfigurerte tidsgrensen.",
+        "body": "Den isolerte arbeidsflyten for daglig sammendrag kjører hver dag kl. 23:55 lokal tid i Oslo med tidssonen Europe/Oslo. Den deterministiske kjeden samler hendelser, utfører en delta-sjekk og gjør maksimalt ett modellkall; når det ikke finnes nye hendelser, hopper den over både modellen og skriving til minnet.",
         "items": [
-          "Overvåking av serverressurser kjører hver sjette time.",
-          "Varsler er konfigurert for ressursbruk over 80 %, men en hendelsesutløst flyt er ennå ikke testet fra ende til ende.",
-          "Planlagte oppgaver kjører i isolerte økter for å begrense sammenblanding av kontekst."
+          "En separat monitor kjører hver sjette time og sjekker RAM, disk, swap og load average; den måler ikke CPU-prosent direkte.",
+          "RAM, disk og swap bruker warning- og critical-terskler på henholdsvis 80 % og 90 %.",
+          "Load-tersklene skaleres med antall kjerner: warning ved kjerner × 0,8 og critical ved kjerner × 1,5.",
+          "Warning- og critical-hendelser skrives til loggene; levering av Telegram-varsler er ikke bekreftet ende til ende."
         ],
-        "note": "Ressursovervåkingen kjører etter planen, mens den daglige minnesammendragsprosessen er konfigurert og overvåkes med kjente tidsbegrensninger."
+        "note": "Hele jobben for daglig sammendrag har en tidsgrense på 180 sekunder, mens HTTP-kallet bruker urlopen(timeout=90). Dette er sikkerhetsgrenser for kjøringen, ikke målt eller garantert modellresponstid."
       },
       "deployment": {
         "title": "Utrulling og drift",
         "items": [
           "Tilgang med SSH-nøkler og UFW-brannmurregler.",
-          "Docker for utvalgte støttetjenester.",
-          "Systemtjenestekonfigurasjon for utvalgte støttetjenester.",
+          "OpenClaw er installert via npm på Ubuntu 24.04 og kjører som en systemd-brukertjeneste på Hetzner ARM64-VPS-en.",
+          "Restart=always og RestartSec=5 gir omstart på prosessnivå.",
+          "Docker og Compose er installert på verten, men kjører ingen JARVIS-tjenester; OpenClaw er ikke containerisert.",
           "Ressursovervåking og planlagte vedlikeholdsprosesser.",
           "Cloudflare Tunnel for integrasjonsflyten fra porteføljen.",
-          "Manuell driftskontroll der automatisk gjenoppretting ennå ikke er tilgjengelig."
+          "Manuell driftskontroll er fortsatt nødvendig fordi full gjenoppretting basert på health probe/watchdog ikke er implementert."
         ]
       },
       "security": {
@@ -762,15 +764,15 @@
       "reliability": {
         "title": "Nåværende begrensninger",
         "items": [
-          "Automatisk gjenoppretting av gatewayen er ufullstendig.",
-          "Automatisert sikkerhetskopiering er ennå ikke implementert.",
-          "Modellforespørsler bruker ikke en egen mekanisme for automatisk gjenforsøk.",
-          "Helhetlig helseovervåking og ende-til-ende-testing av prosesser er fortsatt begrenset."
+          "systemd starter prosessen på nytt etter avslutning, men full gjenoppretting basert på health probe/watchdog er ikke implementert.",
+          "Automatiserte sikkerhetskopier er ikke implementert.",
+          "Modellflyten gjør med hensikt ingen umiddelbare gjenforsøk; feil registreres som DEFERRED og får seks timers backoff, uten garanti for nytt forsøk nøyaktig seks timer senere.",
+          "Det fulle omfanget av automatisert E2E/CI for det private prosjektet er ikke bekreftet; testhooks alene dokumenterer ikke en bestått testpakke."
         ]
       },
       "outsideScope": {
         "title": "Foreløpig utenfor prosjektets omfang",
-        "body": "Filbasert minne og innebygd semantisk søk dekker dagens behov; mer infrastruktur uten et dokumentert behov ville økt kompleksiteten.",
+        "body": "Filbasert minne og innebygd semantisk søk dekker dagens behov. Det nåværende prosjektet bruker ikke en ekstern vektordatabase, MCP-integrasjoner eller planleggerarbeidsflyter.",
         "items": [
           "Ekstern vektordatabase.",
           "MCP-integrasjoner.",
@@ -791,12 +793,12 @@
       "nextSteps": {
         "title": "Neste steg",
         "items": [
-          "Fullføre automatisk gjenoppretting av gatewayen.",
+          "Legge til gjenoppretting basert på health probe/watchdog utover vanlig prosessomstart.",
           "Innføre automatiserte krypterte sikkerhetskopier.",
-          "Gjennomgå tidsgrensen for minneprosessen.",
-          "Legge til helsekontroller og feilvarsler.",
-          "Legge til en egen strategi for å prøve modellforespørsler på nytt.",
-          "Utvide ende-til-ende-tester og overvåking.",
+          "Bekrefte levering av Telegram-varsler ende til ende.",
+          "Forbedre observabilitet for DEFERRED-resultater og seks timers backoff-vinduer.",
+          "Verifisere og dokumentere hele omfanget av automatisert E2E/CI.",
+          "Utvide feilovervåking for daglig sammendrag og ressursovervåking.",
           "Vurdere MCP først når et konkret integrasjonsbehov oppstår.",
           "Forberede renset offentlig teknisk dokumentasjon."
         ]
@@ -814,7 +816,7 @@
       "workspace": "Vedvarende arbeidsområde",
       "semantic": "Semantisk minnesøk",
       "scheduled": "Planlagte isolerte økter",
-      "tools": "Systemverktøy: Shell, Docker, webresearch, ressursovervåking",
+      "tools": "Systemverktøy: Shell, webresearch, planlagte arbeidsflyter, ressursovervåking",
       "supportingTitle": "Støttende integrasjonsflyter",
       "portfolioAriaLabel": "Portfolio-skjemaet kobler seg via Cloudflare Tunnel og portfolio-middleware til OpenClaw",
       "portfolioForm": "Portfolio-skjema",

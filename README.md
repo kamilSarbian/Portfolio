@@ -6,7 +6,7 @@ The portfolio follows a problem-first approach: understand the workflow and unde
 
 ## Live Links
 
-- Portfolio: https://kamilsarbian.dev
+- Portfolio: https://www.kamilsarbian.dev
 - API docs: https://api.kamilsarbian.dev/docs
 - NOVA Market live demo: https://nova.kamilsarbian.dev
 - Nordic Hearth live demo: https://nordic.kamilsarbian.dev
@@ -89,7 +89,7 @@ Project previews are stored in `public/projects/`.
 
 ### Nordic Hearth — Restaurant Ordering and Analytics
 
-Case study: https://kamilsarbian.dev/projects/nordic-hearth
+Case study: https://www.kamilsarbian.dev/projects/nordic-hearth
 
 Live demo: https://nordic.kamilsarbian.dev
 
@@ -106,7 +106,7 @@ The public demo uses synthetic data. It does not accept real restaurant orders o
 
 ### JARVIS — Private AI Automation Environment
 
-Live case study: https://kamilsarbian.dev/projects/jarvis-ai-environment
+Live case study: https://www.kamilsarbian.dev/projects/jarvis-ai-environment
 
 **Problem**
 Technical research, infrastructure notes, and repeatable operational work were spread across separate tools and short-lived sessions.
@@ -119,7 +119,7 @@ JARVIS is presented as a configured and extended private environment, not as an 
 
 ### NOVA Market — Flask E-commerce and Stripe Sandbox
 
-Live case study: https://kamilsarbian.dev/projects/nova-market
+Live case study: https://www.kamilsarbian.dev/projects/nova-market
 
 Live demo: https://nova.kamilsarbian.dev
 
@@ -136,7 +136,7 @@ The project includes versioned SQL migrations, parameterized queries, CSRF prote
 
 ### Living Startpakke — Research-led Product Discovery
 
-Live case study: https://kamilsarbian.dev/projects/living-startpakke
+Live case study: https://www.kamilsarbian.dev/projects/living-startpakke
 
 **Problem**
 Critical everyday knowledge can be fragmented across families, documents, routines, and experienced staff.
@@ -389,7 +389,7 @@ Social crawlers that do not execute JavaScript receive route-specific English me
 
 Production domains:
 
-- Frontend: https://kamilsarbian.dev
+- Frontend: https://www.kamilsarbian.dev
 - API: https://api.kamilsarbian.dev
 - JARVIS: https://jarvis.kamilsarbian.dev
 - NOVA Market demo: https://nova.kamilsarbian.dev

@@ -11,6 +11,7 @@ import {
 } from "../src/seo/routeMeta.js";
 
 const rootDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const expectedSiteUrl = "https://www.kamilsarbian.dev";
 const languages = ["en", "pl", "no"];
 const allowedSchemaTypes = new Set([
   "ProfilePage",
@@ -77,6 +78,10 @@ function validateSeoCopy(language, translations, routeKeys) {
 
 function validateRouteConfiguration() {
   const canonicalUrls = new Set();
+
+  if (SITE_URL !== expectedSiteUrl) {
+    reportError(`SITE_URL must be ${expectedSiteUrl}, received ${SITE_URL}.`);
+  }
 
   for (const [pathname, route] of Object.entries(ROUTE_META)) {
     if (!pathname.startsWith("/")) {
@@ -146,6 +151,18 @@ function validateSitemap(sitemap, canonicalUrls) {
   }
 }
 
+function validateRobots(robots) {
+  const sitemapDirectives = robots
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith("Sitemap:"));
+  const expectedDirective = `Sitemap: ${expectedSiteUrl}/sitemap.xml`;
+
+  if (sitemapDirectives.length !== 1 || sitemapDirectives[0] !== expectedDirective) {
+    reportError(`public/robots.txt must contain exactly: ${expectedDirective}`);
+  }
+}
+
 async function validateOgImage() {
   const imagePath = path.join(rootDirectory, "public", OG_IMAGE_PATH.replace(/^\//, ""));
   const image = await readFile(imagePath);
@@ -167,18 +184,21 @@ function validateIndexFallback(indexHtml) {
   const requiredPatterns = [
     ['name="description"', "description"],
     ['name="robots" content="index,follow"', "robots"],
-    ['rel="canonical" href="https://kamilsarbian.dev/"', "canonical"],
+    [`rel="canonical" href="${expectedSiteUrl}/"`, "canonical"],
     ['property="og:site_name"', "og:site_name"],
     ['property="og:locale" content="en_US"', "og:locale"],
-    ['property="og:image" content="https://kamilsarbian.dev/og/portfolio-og.png"', "og:image"],
+    [`property="og:url" content="${expectedSiteUrl}/"`, "og:url"],
+    [`property="og:image" content="${expectedSiteUrl}/og/portfolio-og.png"`, "og:image"],
     ['property="og:image:width" content="1200"', "og:image:width"],
     ['property="og:image:height" content="630"', "og:image:height"],
     ['property="og:image:alt"', "og:image:alt"],
     ['name="twitter:card" content="summary_large_image"', "twitter:card"],
-    ['name="twitter:image" content="https://kamilsarbian.dev/og/portfolio-og.png"', "twitter:image"],
+    [`name="twitter:image" content="${expectedSiteUrl}/og/portfolio-og.png"`, "twitter:image"],
     ['name="twitter:image:alt"', "twitter:image:alt"],
     ['id="person-jsonld"', "person-jsonld"],
-    ['"@id": "https://kamilsarbian.dev/#person"', "Person @id"],
+    [`"@id": "${expectedSiteUrl}/#person"`, "Person @id"],
+    [`"url": "${expectedSiteUrl}/"`, "Person URL"],
+    [`"image": "${expectedSiteUrl}/avatar_new.png"`, "Person image"],
   ];
 
   for (const [pattern, label] of requiredPatterns) {
@@ -199,6 +219,7 @@ for (const language of languages) {
 }
 
 validateSitemap(await readText("public/sitemap.xml"), canonicalUrls);
+validateRobots(await readText("public/robots.txt"));
 validateIndexFallback(await readText("index.html"));
 await validateOgImage();
 

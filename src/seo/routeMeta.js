@@ -1,4 +1,4 @@
-export const SITE_URL = "https://kamilsarbian.dev";
+export const SITE_URL = "https://www.kamilsarbian.dev";
 export const OG_IMAGE_PATH = "/og/portfolio-og.png";
 
 export const ROUTE_META = Object.freeze({

@@ -227,10 +227,10 @@
         "kicker": "Prywatne środowisko automatyzacji AI",
         "title": "JARVIS — prywatne środowisko automatyzacji AI",
         "problem": "Research techniczny, analiza ofert pracy, notatki infrastrukturalne i decyzje projektowe były rozproszone między narzędziami i sesjami.",
-        "solution": "Prywatne środowisko oparte na OpenClaw, uruchomione na samodzielnie zarządzanym serwerze Ubuntu VPS, z trwałą pamięcią, monitoringiem i dostępem przez Telegram.",
+        "solution": "Środowisko OpenClaw zainstalowane przez npm i uruchomione jako usługa użytkownika systemd na samodzielnie zarządzanym serwerze Hetzner ARM64 z Ubuntu 24.04, modelem DeepSeek V4 Pro, trwałą pamięcią, cyklicznym monitoringiem i dostępem przez Telegram.",
         "businessValue": "Utrzymuje kontekst techniczny, wyniki researchu i powtarzalne procesy operacyjne w jednym prywatnym środowisku.",
         "productionThinking": "Jasne granice platformy, ochrona sekretów, izolowane zadania cykliczne, monitoring zasobów, udokumentowane ograniczenia i plan poprawy niezawodności.",
-        "stack": ["OpenClaw", "Linux/VPS", "Docker", "Telegram"]
+        "stack": ["OpenClaw", "Linux/VPS", "DeepSeek V4 Pro", "Telegram"]
       },
       "nova": {
         "kicker": "Case study e-commerce we Flasku",
@@ -666,8 +666,8 @@
     "facts": [
       { "label": "Start", "value": "Maj 2026" },
       { "label": "Rola", "value": "Projekt środowiska, integracje, automatyzacja i utrzymanie" },
-      { "label": "Infrastruktura", "value": "Samodzielnie zarządzany Ubuntu VPS na platformie Hetzner · ARM64" },
-      { "label": "Model", "value": "DeepSeek V4 Pro" },
+      { "label": "Infrastruktura", "value": "Samodzielnie zarządzany Hetzner VPS ARM64 · Ubuntu 24.04" },
+      { "label": "Domyślny model", "value": "DeepSeek V4 Pro" },
       { "label": "Główny interfejs", "value": "Telegram" }
     ],
     "sections": {
@@ -703,18 +703,18 @@
           "Integrację z Telegramem.",
           "Rozszerzalną architekturę wtyczek."
         ],
-        "note": "Procesy planowania i integracje MCP są możliwymi kierunkami platformy, ale obecnie pozostają poza zakresem projektu."
+        "note": "Zewnętrzna baza wektorowa, integracje MCP i procesy planera nie są używane w obecnej wersji projektu."
       },
       "contribution": {
         "title": "Mój wkład",
         "body": "Moja praca obejmuje projekt środowiska, integracje, procesy operacyjne i bezpieczne codzienne użytkowanie.",
         "items": [
-          "Wdrożenie i konfiguracja OpenClaw na samodzielnie zarządzanym VPS.",
+          "Instalacja OpenClaw przez npm i konfiguracja jako usługi użytkownika systemd na samodzielnie zarządzanym VPS.",
           "Integracja DeepSeek V4 Pro i dostępu przez Telegram.",
           "Zdefiniowanie reguł przestrzeni roboczej, struktury pamięci i procesów researchu.",
           "Konfiguracja izolowanych zadań monitoringu i pamięci.",
           "Budowa własnej usługi REST i middleware portfolio dla osobnych zastosowań.",
-          "Konfiguracja CORS, transportu przez Cloudflare Tunnel i wybranych usług wspierających.",
+          "Konfiguracja CORS i transportu przez Cloudflare Tunnel dla niezależnej ścieżki integracji portfolio.",
           "Dokumentacja bezpiecznych operacji Git i procedur utrzymania."
         ]
       },
@@ -730,23 +730,25 @@
       },
       "automation": {
         "title": "Automatyzacja",
-        "body": "Izolowany proces jest skonfigurowany do codziennego uruchamiania o 23:55 CEST. Tworzy notatkę pamięci z datą i aktualizuje długoterminowe podsumowanie, gdy wykonanie kończy się pomyślnie. Dłuższe uruchomienia mogą zbliżać się do skonfigurowanego limitu czasu.",
+        "body": "Izolowany proces dziennego podsumowania działa codziennie o 23:55 czasu lokalnego Oslo, w strefie Europe/Oslo. Deterministyczny potok zbiera zdarzenia, wykonuje delta-check i najwyżej jedno wywołanie modelu; gdy nie ma nowych zdarzeń, pomija model oraz zapis do pamięci.",
         "items": [
-          "Monitoring zasobów serwera działa co sześć godzin.",
-          "Alerty są skonfigurowane dla wykorzystania zasobów powyżej 80%, ale ścieżka wywołana rzeczywistym incydentem nie została jeszcze przetestowana od początku do końca.",
-          "Zadania cykliczne działają w izolowanych sesjach, aby ograniczyć mieszanie kontekstu."
+          "Osobny monitor działa co sześć godzin i sprawdza RAM, dysk, swap oraz load average; nie mierzy bezpośrednio procentowego użycia CPU.",
+          "Dla RAM, dysku i swapu progi warning i critical wynoszą odpowiednio 80% i 90%.",
+          "Progi load average zależą od liczby rdzeni: warning przy rdzenie × 0,8 i critical przy rdzenie × 1,5.",
+          "Zdarzenia warning i critical są zapisywane w logach; dostarczenie alertów do Telegrama nie zostało potwierdzone od początku do końca."
         ],
-        "note": "Monitoring zasobów działa zgodnie z harmonogramem, a codzienny proces podsumowania pamięci jest skonfigurowany i monitorowany z uwzględnieniem znanych ograniczeń czasu wykonania."
+        "note": "Całe zadanie dziennego podsumowania ma limit 180 s, a żądanie HTTP używa urlopen(timeout=90). Są to zabezpieczenia wykonania, nie zmierzona ani gwarantowana latencja modelu."
       },
       "deployment": {
         "title": "Wdrożenie i utrzymanie",
         "items": [
           "Dostęp przez klucze SSH i reguły zapory UFW.",
-          "Docker dla wybranych usług wspierających.",
-          "Konfiguracja usług systemowych dla wybranych usług wspierających.",
+          "OpenClaw zainstalowany przez npm na Ubuntu 24.04 i uruchomiony jako usługa użytkownika systemd na VPS Hetzner ARM64.",
+          "Restart=always i RestartSec=5 zapewniają ponowne uruchomienie procesu.",
+          "Docker i Compose są zainstalowane na hoście, ale nie obsługują żadnych usług JARVIS; OpenClaw nie działa w kontenerze.",
           "Monitoring zasobów i zaplanowane zadania utrzymaniowe.",
           "Cloudflare Tunnel dla ścieżki integracji z portfolio.",
-          "Ręczna kontrola operacyjna tam, gdzie automatyczne odzyskiwanie nie jest jeszcze dostępne."
+          "Ręczna kontrola operacyjna pozostaje potrzebna, ponieważ nie wdrożono pełnego odzyskiwania opartego na health-probe/watchdogu."
         ]
       },
       "security": {
@@ -762,15 +764,15 @@
       "reliability": {
         "title": "Obecne ograniczenia",
         "items": [
-          "Automatyczne odzyskiwanie bramy jest niekompletne.",
-          "Automatyzacja kopii zapasowych nie została jeszcze wdrożona.",
-          "Zapytania do modelu nie korzystają z własnej warstwy ponawiania.",
-          "Monitoring stanu i testy procesów od początku do końca pozostają ograniczone."
+          "systemd uruchamia proces ponownie po zakończeniu, ale nie wdrożono pełnego odzyskiwania opartego na health-probe/watchdogu.",
+          "Brak automatycznych kopii zapasowych.",
+          "Ścieżka modelu celowo nie wykonuje natychmiastowych ponowień; błąd zapisuje stan DEFERRED i uruchamia sześciogodzinny backoff, bez gwarancji ponowienia dokładnie po sześciu godzinach.",
+          "Pełny zakres automatycznych testów E2E/CI prywatnego projektu pozostaje niepotwierdzony; same hooki testowe nie są dowodem zaliczonego zestawu."
         ]
       },
       "outsideScope": {
         "title": "Obecnie poza zakresem projektu",
-        "body": "Pamięć plikowa i wbudowane wyszukiwanie semantyczne spełniają aktualne potrzeby; dodatkowa infrastruktura bez potwierdzonej potrzeby zwiększałaby złożoność.",
+        "body": "Pamięć plikowa i wbudowane wyszukiwanie semantyczne spełniają aktualne potrzeby. Obecny projekt nie używa zewnętrznej bazy wektorowej, integracji MCP ani procesów planera.",
         "items": [
           "Zewnętrzna baza wektorowa.",
           "Integracje MCP.",
@@ -791,12 +793,12 @@
       "nextSteps": {
         "title": "Kolejne kroki",
         "items": [
-          "Dokończyć automatyczne odzyskiwanie bramy.",
+          "Dodać odzyskiwanie oparte na health-probe/watchdogu, wykraczające poza ponowne uruchomienie procesu.",
           "Wprowadzić automatyczne szyfrowane kopie zapasowe.",
-          "Przeanalizować limity czasu procesu pamięci.",
-          "Dodać kontrole stanu i powiadomienia o błędach.",
-          "Dodać własną strategię ponawiania zapytań do modelu.",
-          "Rozszerzyć testy procesów od początku do końca i monitoring.",
+          "Potwierdzić dostarczanie alertów do Telegrama od początku do końca.",
+          "Poprawić obserwowalność wyników DEFERRED i sześciogodzinnych okresów backoffu.",
+          "Zweryfikować i udokumentować pełny zakres automatycznych testów E2E/CI.",
+          "Rozszerzyć monitoring błędów procesu dziennego podsumowania i monitoringu zasobów.",
           "Ocenić MCP dopiero przy konkretnej potrzebie integracyjnej.",
           "Przygotować oczyszczoną publiczną dokumentację techniczną."
         ]
@@ -814,7 +816,7 @@
       "workspace": "Trwała przestrzeń robocza",
       "semantic": "Semantyczne wyszukiwanie pamięci",
       "scheduled": "Zaplanowane izolowane sesje",
-      "tools": "Narzędzia: Shell, Docker, research internetowy, monitoring zasobów",
+      "tools": "Narzędzia: Shell, research internetowy, zadania cykliczne, monitoring zasobów",
       "supportingTitle": "Wspierające przepływy integracji",
       "portfolioAriaLabel": "Formularz portfolio łączy się przez Cloudflare Tunnel i middleware portfolio z OpenClaw",
       "portfolioForm": "Formularz portfolio",

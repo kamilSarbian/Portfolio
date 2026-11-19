@@ -4,15 +4,15 @@ Software developer portfolio focused on backend systems, AI automation, API inte
 
 ## Primary Pages
 
-- Home: https://kamilsarbian.dev/
-- Case studies: https://kamilsarbian.dev/projects
-- Authentication & User Management API: https://kamilsarbian.dev/projects/auth-api
-- JARVIS — private OpenClaw-based AI automation environment, configured and extended for persistent context, monitoring, and operational workflows: https://kamilsarbian.dev/projects/jarvis-ai-environment
-- NOVA Market — deployed Flask e-commerce portfolio demo with Neon PostgreSQL, Stripe Sandbox Checkout, signed webhooks, and PostgreSQL-backed rate limiting: https://kamilsarbian.dev/projects/nova-market
-- Living Startpakke — research-led, user-informed digital product concept in discovery and prototype feedback outreach, not a finished or validated product: https://kamilsarbian.dev/projects/living-startpakke
-- AI-assisted Image Classification API: https://kamilsarbian.dev/projects/image-classifier
-- Image Processing API: https://kamilsarbian.dev/projects/image-editor
-- Password Breach Checker: https://kamilsarbian.dev/projects/password-checker
+- Home: https://www.kamilsarbian.dev/
+- Case studies: https://www.kamilsarbian.dev/projects
+- Authentication & User Management API: https://www.kamilsarbian.dev/projects/auth-api
+- JARVIS — private OpenClaw-based AI automation environment, configured and extended for persistent context, monitoring, and operational workflows: https://www.kamilsarbian.dev/projects/jarvis-ai-environment
+- NOVA Market — deployed Flask e-commerce portfolio demo with Neon PostgreSQL, Stripe Sandbox Checkout, signed webhooks, and PostgreSQL-backed rate limiting: https://www.kamilsarbian.dev/projects/nova-market
+- Living Startpakke — research-led, user-informed digital product concept in discovery and prototype feedback outreach, not a finished or validated product: https://www.kamilsarbian.dev/projects/living-startpakke
+- AI-assisted Image Classification API: https://www.kamilsarbian.dev/projects/image-classifier
+- Image Processing API: https://www.kamilsarbian.dev/projects/image-editor
+- Password Breach Checker: https://www.kamilsarbian.dev/projects/password-checker
 
 ## Technical Focus
 
@@ -28,7 +28,7 @@ Software developer portfolio focused on backend systems, AI automation, API inte
 
 NOVA Market is a deployed Flask e-commerce portfolio demo by Kamil Sarbian. It demonstrates catalogue discovery, customer accounts, a server-priced cart, delivery selection, Stripe Sandbox Checkout, signed webhook verification, PostgreSQL order persistence, and PostgreSQL-backed rate limiting.
 
-- Case study: https://kamilsarbian.dev/projects/nova-market
+- Case study: https://www.kamilsarbian.dev/projects/nova-market
 - Live demo: https://nova.kamilsarbian.dev
 - Source code: https://github.com/kamilSarbian/E-commerce_NOVA_Market
 
