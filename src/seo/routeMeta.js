@@ -58,6 +58,13 @@ export const ROUTE_META = Object.freeze({
     schemaType: "CreativeWork",
     ogType: "article",
   },
+  "/projects/hospitality-wordpress": {
+    key: "hospitalityWordpress",
+    canonicalPath: "/projects/hospitality-wordpress",
+    indexable: true,
+    schemaType: "CreativeWork",
+    ogType: "article",
+  },
   "/projects/password-checker": {
     key: "passwordChecker",
     canonicalPath: "/projects/password-checker",

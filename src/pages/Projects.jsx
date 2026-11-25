@@ -37,6 +37,11 @@ const PROJECT_LINKS = {
     privateResearch: true,
     screenshot: null,
   },
+  hospitalityWordpress: {
+    projectPath: "/projects/hospitality-wordpress",
+    statusKey: "hospitalityWordpress.status",
+    stackLimit: 5,
+  },
   classifier: {
     projectPath: "/projects/image-classifier",
     githubUrl: GITHUB_URL,
@@ -57,6 +62,7 @@ const PROJECT_CASES = [
   { id: "jarvis", onOpenKey: "jarvis", onArchitectureKey: "jarvisArchitecture" },
   { id: "nova", onOpenKey: "nova" },
   { id: "living", onOpenKey: "living", onPrototypeKey: "livingPrototype", productCase: true },
+  { id: "hospitalityWordpress" },
   { id: "classifier", onOpenKey: "classifier" },
   { id: "imageProcessing", onOpenKey: "imageProcessing", secondary: true },
 ];
@@ -71,9 +77,9 @@ function CaseStudy({
 }) {
   const { t } = useTranslation();
   const base = `projects.caseStudies.${id}`;
-  const stack = t(`${base}.stack`, { returnObjects: true });
-  const visibleStack = Array.isArray(stack) ? stack.slice(0, 4) : [];
   const links = PROJECT_LINKS[id];
+  const stack = t(`${base}.stack`, { returnObjects: true });
+  const visibleStack = Array.isArray(stack) ? stack.slice(0, links.stackLimit ?? 4) : [];
   const kicker = t(`${base}.kicker`);
   const fields = productCase
     ? ["problem", "discovery", "currentDirection", "currentStage"]
@@ -87,8 +93,14 @@ function CaseStudy({
           <h2>
             <Link className="case-study-title-link" to={links.projectPath}>
               {t(`${base}.title`)}
+              {!onOpen && <span aria-hidden="true"> →</span>}
             </Link>
           </h2>
+          {links.statusKey && (
+            <div className="living-status-row">
+              <span className="living-status">{t(links.statusKey)}</span>
+            </div>
+          )}
         </div>
       </div>
 
@@ -120,9 +132,11 @@ function CaseStudy({
         </div>
 
         <div className="case-study-links">
-          <button type="button" className="inline-link" onClick={onOpen}>
-            {t("projects.viewProject")}
-          </button>
+          {onOpen && (
+            <button type="button" className="inline-link" onClick={onOpen}>
+              {t("projects.viewProject")}
+            </button>
+          )}
 
           {links.architecture ? (
             <>

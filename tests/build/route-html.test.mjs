@@ -51,6 +51,7 @@ for (const pathname of [
   "/projects/auth-api",
   "/projects/nova-market",
   "/projects/nordic-hearth",
+  "/projects/hospitality-wordpress",
 ]) {
   test(`production HTML contains route metadata for ${pathname}`, async () => {
     const route = ROUTE_META[pathname];
@@ -94,3 +95,11 @@ for (const pathname of [
     assert.equal(new URL(metaContent(html, "property", "og:url")).origin, expectedSiteUrl);
   });
 }
+
+test("the hospitality prototype is a CreativeWork without deployment or repository metadata", () => {
+  const route = ROUTE_META["/projects/hospitality-wordpress"];
+  assert.equal(route.schemaType, "CreativeWork");
+  for (const field of ["applicationUrl", "codeRepository", "downloadUrl", "imagePath"]) {
+    assert.ok(!Object.hasOwn(route, field), `Unexpected hospitality prototype field: ${field}`);
+  }
+});

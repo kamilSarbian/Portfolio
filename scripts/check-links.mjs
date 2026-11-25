@@ -51,6 +51,7 @@ function validateRoutes(appSource, combinedSource) {
 
   const navigationTargets = [
     ...appSource.matchAll(/\bgoTo\("([^"]+)"\)/g),
+    ...combinedSource.matchAll(/\bprojectPath:\s*"(\/[^"]*)"/g),
     ...combinedSource.matchAll(/\bhref="(\/[^"]*)"/g),
     ...combinedSource.matchAll(/\bhref="(#[^"]+)"/g),
   ].map((match) => match[1]);

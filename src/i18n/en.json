@@ -46,6 +46,10 @@
         "title": "Living Startpakke — Research-led Discovery | Kamil Sarbian",
         "description": "Research-led, user-informed digital product concept shaped through stakeholder outreach, structured insight analysis, prototyping, and iterative testing."
       },
+      "hospitalityWordpress": {
+        "title": "Hospitality Website Modernization | Kamil Sarbian",
+        "description": "An independent, unpublished WordPress block-theme prototype for a hospitality website, with bilingual navigation, Gutenberg editing, and local validation."
+      },
       "passwordChecker": {
         "title": "Password Breach Checker | Kamil Sarbian",
         "description": "FastAPI password security demo using privacy-preserving SHA-1 prefix lookup with the Have I Been Pwned API and localized result handling."
@@ -265,6 +269,15 @@
           "currentStage": "Current Stage"
         },
         "stack": ["Product Discovery", "User Research", "Insight Analysis", "Figma"]
+      },
+      "hospitalityWordpress": {
+        "kicker": "Independent WordPress Prototype",
+        "title": "Hospitality Website Modernization",
+        "problem": "Make menus and visitor information easier to maintain in Norwegian and English without replacing the existing booking workflow.",
+        "solution": "A local WordPress block theme with reusable blocks, native Gutenberg editing, and responsive, keyboard-friendly navigation.",
+        "businessValue": "Editors can update menu descriptions, prices, and allergens without changing theme code.",
+        "productionThinking": "Local regression and content checks; business feedback prioritized preserving the existing visual identity.",
+        "stack": ["WordPress", "PHP", "Gutenberg", "JavaScript", "Multilingual UX"]
       },
       "classifier": {
         "kicker": "AI-assisted Backend Service",
@@ -554,6 +567,56 @@
         "Add responsive image variants and srcset delivery.",
         "Document recovery, backup, and rollback procedures."
       ]
+    }
+  },
+  "hospitalityWordpress": {
+    "overview": "I built a local WordPress prototype on my own initiative to explore bilingual content and easier editing for a hospitality website. I presented it for business feedback; it was not commissioned, approved for deployment, or published.",
+    "status": "Independent Prototype / Not Deployed",
+    "sections": {
+      "context": {
+        "title": "Business Context",
+        "body": "A hospitality website needs to keep practical information and menus up to date while directing guests to an existing third-party booking service. This project focused on the website and its editing workflow, not on building an ordering or booking system."
+      },
+      "problem": {
+        "title": "Problem Definition",
+        "body": "How could editors maintain parallel Norwegian and English pages, keep menu details accurate, and give visitors a clear path to booking without replacing the booking service?"
+      },
+      "approach": {
+        "title": "Technical Approach",
+        "body": "I built the prototype locally and kept the existing third-party booking workflow unchanged. That let me evaluate the layouts, navigation, and editing experience separately from the booking service."
+      },
+      "architecture": {
+        "title": "WordPress Architecture",
+        "body": "The block theme uses reusable blocks and templates for shared layouts. The theme.json file defines shared styles and editor settings, while Gutenberg provides the native editing interface."
+      },
+      "localization": {
+        "title": "Multilingual Implementation",
+        "body": "The prototype has four primary page views in Norwegian and four corresponding views in English. Each language has its own navigation and page metadata."
+      },
+      "editorial": {
+        "title": "Editorial Workflows",
+        "body": "Editors can update menu descriptions, prices, and allergen information directly in Gutenberg without changing the theme code."
+      },
+      "accessibility": {
+        "title": "Accessibility and Navigation",
+        "body": "Navigation adapts to smaller screens and supports keyboard use. The localized navigation guides visitors through the corresponding language version."
+      },
+      "validation": {
+        "title": "Local Validation",
+        "body": "I ran regression and content checks on the local Norwegian and English views. There was no production testing."
+      },
+      "feedback": {
+        "title": "Stakeholder Feedback and Outcome",
+        "body": "Stakeholders prioritized preserving the existing visual identity over a full redesign. The product lesson was to confirm what must stay familiar before proposing visual changes and to assess CMS improvements separately from a redesign."
+      },
+      "limitations": {
+        "title": "Limitations and Project Boundary",
+        "body": "The prototype remained local. There was no production deployment, and business impact was not measured. This anonymized case study does not include the prototype, business assets, or source code."
+      },
+      "technologies": {
+        "title": "Technologies Used",
+        "body": "WordPress block theme, Gutenberg, PHP, HTML, CSS, JavaScript, and theme.json."
+      }
     }
   },
   "livingStartpakke": {

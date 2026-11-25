@@ -10,6 +10,7 @@ Software developer portfolio focused on backend systems, AI automation, API inte
 - JARVIS — private OpenClaw-based AI automation environment, configured and extended for persistent context, monitoring, and operational workflows: https://www.kamilsarbian.dev/projects/jarvis-ai-environment
 - NOVA Market — deployed Flask e-commerce portfolio demo with Neon PostgreSQL, Stripe Sandbox Checkout, signed webhooks, and PostgreSQL-backed rate limiting: https://www.kamilsarbian.dev/projects/nova-market
 - Living Startpakke — research-led, user-informed digital product concept in discovery and prototype feedback outreach, not a finished or validated product: https://www.kamilsarbian.dev/projects/living-startpakke
+- Hospitality Website Modernization — anonymized, self-initiated WordPress block-theme prototype for bilingual content and editing. Not commissioned, approved for deployment, or published: https://www.kamilsarbian.dev/projects/hospitality-wordpress
 - AI-assisted Image Classification API: https://www.kamilsarbian.dev/projects/image-classifier
 - Image Processing API: https://www.kamilsarbian.dev/projects/image-editor
 - Password Breach Checker: https://www.kamilsarbian.dev/projects/password-checker

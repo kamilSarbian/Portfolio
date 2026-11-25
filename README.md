@@ -147,6 +147,12 @@ An independently led product discovery process based on survey responses, qualit
 **Current stage**
 The concept remains in discovery and early prototype feedback outreach. It is not presented as a finished product, working application, or validated solution.
 
+### Hospitality Website Modernization — Independent WordPress Prototype
+
+Case study: https://www.kamilsarbian.dev/projects/hospitality-wordpress
+
+An anonymized, self-initiated WordPress block-theme prototype with Norwegian and English views, native Gutenberg editing, and an unchanged third-party booking workflow. It was presented for business feedback, but was not commissioned, approved for deployment, or published. The feedback highlighted the importance of preserving the existing visual identity rather than pursuing a full redesign.
+
 ### Authentication & User Management API
 
 **Problem**  
@@ -375,7 +381,7 @@ python -m pytest -q
 
 The static `index.html` provides English fallback metadata, a global Person JSON-LD entity, and a 1200 x 630 Open Graph image. After Vite builds the SPA, `scripts/generate-route-html.mjs` creates an English metadata fallback for every indexable non-root route. Vercel rewrites canonical route requests to those generated files before the general SPA fallback. React then updates the page title, description, canonical URL, Open Graph metadata, Twitter metadata, robots directive, and route-specific JSON-LD when the route or interface language changes.
 
-All ten public routes use one canonical URL per route. Languages do not have separate URL variants, so the project intentionally does not publish `hreflang` links. The client-side 404 page uses `noindex,follow`, but Vercel can still return HTTP 200 for unknown SPA routes.
+Each public route uses one canonical URL. Languages do not have separate URL variants, so the project intentionally does not publish `hreflang` links. The client-side 404 page uses `noindex,follow`, but Vercel can still return HTTP 200 for unknown SPA routes.
 
 Social crawlers that do not execute JavaScript receive route-specific English metadata for known indexable routes and the shared Open Graph image. Server-level 404 responses remain outside the current SPA hosting model.
 

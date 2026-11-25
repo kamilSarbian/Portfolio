@@ -45,6 +45,10 @@
         "title": "Living Startpakke — badania i product discovery | Kamil Sarbian",
         "description": "Koncepcja produktu cyfrowego rozwijana na podstawie badań, kontaktu z interesariuszami, analizy insightów, prototypowania i iteracyjnych testów."
       },
+      "hospitalityWordpress": {
+        "title": "Modernizacja strony lokalu gastronomicznego | Kamil Sarbian",
+        "description": "Niezależny, nieopublikowany prototyp WordPress dla gastronomii: motyw blokowy, dwujęzyczna nawigacja, edycja w Gutenbergu i lokalna weryfikacja."
+      },
       "passwordChecker": {
         "title": "Sprawdzanie wycieków haseł | Kamil Sarbian",
         "description": "Demo bezpieczeństwa haseł w FastAPI wykorzystujące prywatne wyszukiwanie prefiksu SHA-1 w API Have I Been Pwned oraz lokalne komunikaty wyników."
@@ -264,6 +268,15 @@
           "currentStage": "Aktualny etap"
         },
         "stack": ["Product Discovery", "User Research", "Analiza insightów", "Figma"]
+      },
+      "hospitalityWordpress": {
+        "kicker": "Niezależny prototyp WordPress",
+        "title": "Modernizacja strony lokalu gastronomicznego",
+        "problem": "Ułatwić aktualizację menu i informacji dla gości po norwesku i angielsku bez zastępowania dotychczasowego procesu rezerwacji.",
+        "solution": "Lokalny motyw blokowy WordPress z blokami wielokrotnego użytku, edycją w Gutenbergu i responsywną nawigacją obsługiwaną klawiaturą.",
+        "businessValue": "Redaktorzy mogą aktualizować opisy dań, ceny i alergeny bez zmian w kodzie motywu.",
+        "productionThinking": "Lokalne testy regresji i weryfikacja treści. W rozmowach priorytetem okazało się zachowanie dotychczasowej identyfikacji wizualnej.",
+        "stack": ["WordPress", "PHP", "Gutenberg", "JavaScript", "Wielojęzyczny UX"]
       },
       "classifier": {
         "kicker": "Backendowy serwis wspierany przez AI",
@@ -553,6 +566,56 @@
         "Dodać responsywne warianty obrazów oraz srcset.",
         "Udokumentować odzyskiwanie, kopie zapasowe i rollback."
       ]
+    }
+  },
+  "hospitalityWordpress": {
+    "overview": "Z własnej inicjatywy zbudowałem lokalny prototyp WordPress, by sprawdzić, jak uprościć edycję dwujęzycznej strony lokalu gastronomicznego. Pokazałem go przedstawicielom lokalu, aby zebrać opinie. Prototypu nie zamówiono, nie zatwierdzono do wdrożenia ani nie opublikowano.",
+    "status": "Niezależny prototyp / Bez wdrożenia",
+    "sections": {
+      "context": {
+        "title": "Kontekst biznesowy",
+        "body": "Strona lokalu powinna udostępniać aktualne menu i informacje praktyczne oraz kierować gości do istniejącej zewnętrznej usługi rezerwacji. Projekt dotyczył witryny i edycji jej treści, a nie budowy systemu zamówień lub rezerwacji."
+      },
+      "problem": {
+        "title": "Definicja problemu",
+        "body": "Jak ułatwić redaktorom utrzymanie równoległych stron norweskich i angielskich oraz aktualnego menu, a gościom zapewnić jasną ścieżkę do rezerwacji bez zmiany używanej usługi?"
+      },
+      "approach": {
+        "title": "Podejście techniczne",
+        "body": "Prototyp zbudowałem lokalnie i zachowałem dotychczasową ścieżkę rezerwacji przez zewnętrzną usługę. Dzięki temu mogłem ocenić układy stron, nawigację i edycję niezależnie od systemu rezerwacji."
+      },
+      "architecture": {
+        "title": "Architektura WordPress",
+        "body": "Motyw blokowy korzysta z bloków wielokrotnego użytku i szablonów wspólnych układów stron. Plik theme.json definiuje wspólne style i ustawienia edytora, a treść edytuje się w natywnym edytorze Gutenberg."
+      },
+      "localization": {
+        "title": "Obsługa dwóch języków",
+        "body": "Prototyp obejmuje cztery główne widoki po norwesku i cztery odpowiadające im widoki po angielsku. Każda wersja językowa ma własną nawigację i metadane stron."
+      },
+      "editorial": {
+        "title": "Edycja treści",
+        "body": "Redaktorzy mogą aktualizować opisy dań, ceny i informacje o alergenach bezpośrednio w Gutenbergu, bez zmiany kodu motywu."
+      },
+      "accessibility": {
+        "title": "Dostępność i nawigacja",
+        "body": "Nawigacja dostosowuje się do mniejszych ekranów i działa z klawiaturą. Menu w danym języku prowadzi do stron z tej samej wersji językowej."
+      },
+      "validation": {
+        "title": "Lokalna weryfikacja",
+        "body": "Przeprowadziłem testy regresji i sprawdziłem treści lokalnych widoków w wersji norweskiej i angielskiej. Nie wykonywałem testów produkcyjnych."
+      },
+      "feedback": {
+        "title": "Opinie przedstawicieli lokalu i wynik",
+        "body": "Dla przedstawicieli lokalu ważniejsze od zmiany wyglądu było zachowanie dotychczasowej identyfikacji wizualnej. Wniosek: przed zaproponowaniem zmian wizualnych warto ustalić, co ma pozostać rozpoznawalne, a usprawnienia CMS oceniać niezależnie od zmian wyglądu strony."
+      },
+      "limitations": {
+        "title": "Ograniczenia i zakres projektu",
+        "body": "Prototyp pozostał lokalny. Nie doszło do wdrożenia produkcyjnego ani pomiaru wpływu na biznes. To zanonimizowane studium przypadku nie udostępnia samego prototypu, materiałów firmy ani kodu źródłowego."
+      },
+      "technologies": {
+        "title": "Wykorzystane technologie",
+        "body": "Motyw blokowy WordPress, Gutenberg, PHP, HTML, CSS, JavaScript i theme.json."
+      }
     }
   },
   "livingStartpakke": {

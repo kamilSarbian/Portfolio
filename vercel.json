@@ -44,6 +44,10 @@
       "destination": "/projects/living-startpakke/index.html"
     },
     {
+      "source": "/projects/hospitality-wordpress",
+      "destination": "/projects/hospitality-wordpress/index.html"
+    },
+    {
       "source": "/projects/password-checker",
       "destination": "/projects/password-checker/index.html"
     },

@@ -14,6 +14,7 @@ import ProjectImageClassifier from "./pages/ProjectImageClassifier";
 import ProjectAuth from "./pages/ProjectAuth";
 import ProjectJarvis from "./pages/ProjectJarvis";
 import ProjectLivingStartpakke from "./pages/ProjectLivingStartpakke";
+import ProjectHospitalityWordpress from "./pages/ProjectHospitalityWordpress";
 import ProjectNovaMarket from "./pages/ProjectNovaMarket";
 import ProjectNordicHearth from "./pages/ProjectNordicHearth";
 
@@ -112,6 +113,11 @@ export default function App() {
           <Route
             path="/projects/living-startpakke"
             element={<ProjectLivingStartpakke onGoProjects={() => goTo("/projects")} />}
+          />
+
+          <Route
+            path="/projects/hospitality-wordpress"
+            element={<ProjectHospitalityWordpress />}
           />
 
           <Route

@@ -45,6 +45,10 @@
         "title": "Living Startpakke — innsiktsdrevet produktarbeid | Kamil Sarbian",
         "description": "Et innsiktsdrevet og brukerorientert digitalt produktkonsept formet gjennom kontakt med interessenter, innsiktsanalyse, prototyping og iterativ testing."
       },
+      "hospitalityWordpress": {
+        "title": "Modernisering av et serveringsnettsted | Kamil Sarbian",
+        "description": "En selvinitiert, upublisert WordPress-prototype for et serveringssted, med blokktema, tospråklig navigasjon, Gutenberg-redigering og lokal testing."
+      },
       "passwordChecker": {
         "title": "Kontroll av passordlekkasjer | Kamil Sarbian",
         "description": "FastAPI-demo for passordsikkerhet med personvernvennlig SHA-1-prefikssøk mot Have I Been Pwned API og lokaliserte resultater."
@@ -264,6 +268,15 @@
           "currentStage": "Nåværende fase"
         },
         "stack": ["Product Discovery", "Brukerinnsikt", "Innsiktsanalyse", "Figma"]
+      },
+      "hospitalityWordpress": {
+        "kicker": "Selvinitiert WordPress-prototype",
+        "title": "Modernisering av et serveringsnettsted",
+        "problem": "Gjøre menyen og gjesteinformasjonen enklere å vedlikeholde på norsk og engelsk uten å erstatte den eksisterende reservasjonsløsningen.",
+        "solution": "Et lokalt WordPress-blokktema med gjenbrukbare blokker, redigering i Gutenberg og responsiv, tastaturvennlig navigasjon.",
+        "businessValue": "Redaktører kan oppdatere menybeskrivelser, priser og allergener uten å endre temakoden.",
+        "productionThinking": "Lokale regresjons- og innholdssjekker. Tilbakemeldingene viste at det var viktigst å bevare det eksisterende visuelle uttrykket.",
+        "stack": ["WordPress", "PHP", "Gutenberg", "JavaScript", "Flerspråklig UX"]
       },
       "classifier": {
         "kicker": "AI-støttet backendtjeneste",
@@ -553,6 +566,56 @@
         "Legge til responsive bildevarianter og srcset-levering.",
         "Dokumentere gjenoppretting, sikkerhetskopiering og rollback."
       ]
+    }
+  },
+  "hospitalityWordpress": {
+    "overview": "På eget initiativ bygde jeg en lokal WordPress-prototype for å utforske tospråklig innhold og enklere redigering for et serveringssted. Jeg presenterte den for å få innspill fra virksomheten. Den var ikke bestilt, godkjent for produksjonssetting eller publisert.",
+    "status": "Selvinitiert prototype / Ikke satt i produksjon",
+    "sections": {
+      "context": {
+        "title": "Forretningskontekst",
+        "body": "Nettstedet til et serveringssted må holde praktisk informasjon og menyer oppdatert og lede gjestene til en eksisterende ekstern reservasjonstjeneste. Prosjektet handlet om nettstedet og redigeringen, ikke om å bygge et bestillings- eller reservasjonssystem."
+      },
+      "problem": {
+        "title": "Problemstilling",
+        "body": "Hvordan kunne redaktørene vedlikeholde parallelle sider på norsk og engelsk, holde menyopplysningene korrekte og gjøre det lett å finne frem til reservasjon uten å bytte tjeneste?"
+      },
+      "approach": {
+        "title": "Teknisk tilnærming",
+        "body": "Jeg bygde prototypen lokalt og lot den eksisterende eksterne reservasjonsflyten være uendret. Dermed kunne jeg vurdere sideoppsett, navigasjon og redigering uavhengig av reservasjonstjenesten."
+      },
+      "architecture": {
+        "title": "WordPress-arkitektur",
+        "body": "Blokktemaet bruker gjenbrukbare blokker og maler for felles sideoppsett. Filen theme.json definerer felles stiler og innstillinger for redigering, som skjer i den innebygde Gutenberg-editoren."
+      },
+      "localization": {
+        "title": "Flerspråklig løsning",
+        "body": "Prototypen har fire hovedvisninger på norsk og fire tilsvarende visninger på engelsk. Hvert språk har egen navigasjon og egne metadata for sidene."
+      },
+      "editorial": {
+        "title": "Redaksjonelt arbeid",
+        "body": "Redaktører kan oppdatere menybeskrivelser, priser og allergeninformasjon direkte i Gutenberg uten å endre temakoden."
+      },
+      "accessibility": {
+        "title": "Tilgjengelighet og navigasjon",
+        "body": "Navigasjonen tilpasser seg mindre skjermer og kan brukes med tastatur. Språktilpasset navigasjon leder besøkende gjennom den aktuelle språkversjonen."
+      },
+      "validation": {
+        "title": "Lokal validering",
+        "body": "Jeg gjorde regresjons- og innholdssjekker av de lokale visningene på norsk og engelsk. Det ble ikke testet i produksjon."
+      },
+      "feedback": {
+        "title": "Tilbakemeldinger og utfall",
+        "body": "Virksomheten prioriterte å bevare det eksisterende visuelle uttrykket fremfor å redesigne hele nettstedet. Lærdommen var å avklare hva som skal forbli gjenkjennelig før man foreslår visuelle endringer, og å vurdere forbedringer i publiseringsløsningen uavhengig av et nytt design."
+      },
+      "limitations": {
+        "title": "Begrensninger og avgrensning",
+        "body": "Prototypen forble lokal. Den ble ikke satt i produksjon, og forretningseffekten ble ikke målt. Casestudien er anonymisert og inneholder ikke selve prototypen, virksomhetens materiale eller kildekode."
+      },
+      "technologies": {
+        "title": "Teknologier",
+        "body": "WordPress-blokktema, Gutenberg, PHP, HTML, CSS, JavaScript og theme.json."
+      }
     }
   },
   "livingStartpakke": {
