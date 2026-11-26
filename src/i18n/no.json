@@ -34,8 +34,8 @@
         "description": "Casestudie av et privat OpenClaw-basert AI-miljø med vedvarende kontekst, planlagt overvåking, sikre integrasjoner og drift på Linux VPS."
       },
       "nova": {
-        "title": "NOVA Market — casestudie med Flask og Stripe | Kamil Sarbian",
-        "description": "Utforsk NOVA Market, en e-handelsdemo med Flask, Neon PostgreSQL, Stripe Sandbox Checkout, signerte webhooks, rate limiting og 40 tester."
+        "title": "NOVA Market: Flask og Stripe Sandbox | Kamil Sarbian",
+        "description": "E-handelsdemo med Flask, PostgreSQL, serverberegnede totalsummer, Stripe Sandbox, signerte webhooks og delte forespørselsgrenser."
       },
       "nordicHearth": {
         "title": "Nordic Hearth — bestilling og analyse | Kamil Sarbian",
@@ -49,6 +49,10 @@
         "title": "Modernisering av et serveringsnettsted | Kamil Sarbian",
         "description": "En selvinitiert, upublisert WordPress-prototype for et serveringssted, med blokktema, tospråklig navigasjon, Gutenberg-redigering og lokal testing."
       },
+      "handTracking": {
+        "title": "Hand Tracking Effects | Kamil Sarbian",
+        "description": "Skrivebordsprosjekt i Python for geststyrt tegning, skjermbilder og videoopptak med OpenCV og en ferdigtrent MediaPipe-modell for håndpunkter."
+      },
       "passwordChecker": {
         "title": "Kontroll av passordlekkasjer | Kamil Sarbian",
         "description": "FastAPI-demo for passordsikkerhet med personvernvennlig SHA-1-prefikssøk mot Have I Been Pwned API og lokaliserte resultater."
@@ -59,7 +63,7 @@
       },
       "imageClassifier": {
         "title": "API for AI-basert bildeklassifisering | Kamil Sarbian",
-        "description": "CLIP-basert API for bildeklassifisering med konfigurerbare etiketter, terskelverdier, strukturerte prediksjoner og en lokalisert demo."
+        "description": "FastAPI-demo med en ferdigtrent OpenCLIP-modell i PyTorch som vurderer bilder mot valgte etiketter uten ekstra trening."
       },
       "notFound": {
         "title": "Fant ikke siden | Kamil Sarbian",
@@ -99,11 +103,12 @@
     "httpError": "Forespørselen kunne ikke fullføres.",
     "internalError": "Det oppstod en uventet serverfeil."
   },
+  "routeLoading": "Laster siden…",
   "home": {
     "aboutLabel": "BACKEND · AI-AUTOMATISERING · INNSIKTSDREVNE DIGITALE PRODUKTER",
-    "headline": "Programvareutvikler som bygger backend-systemer, AI-automatisering og innsiktsdrevne digitale produkter",
-    "intro": "Jeg kombinerer programvareutvikling, automatisering og brukerinnsikt for å omsette reelle arbeidsflyter og brukerbehov til praktiske og pålitelige digitale løsninger.",
-    "heroTech": "Python · FastAPI · PostgreSQL · REST API-er · AI-arbeidsflyter · Linux/VPS",
+    "headline": "Jeg utvikler backend i Python, webapplikasjoner og API-integrasjoner",
+    "intro": "Jeg bygger applikasjoner med FastAPI, Flask, PostgreSQL og React. Prosjektene omfatter bestillinger, betaling i testmodus, rapportering og AI-integrasjoner, med automatiserte tester og utrulling i skyen.",
+    "heroTech": "Python · FastAPI · Flask · PostgreSQL · React / TypeScript",
     "whyTitle": "Hva jeg bygger",
     "whyBody": "Jeg arbeider med backend-utvikling, AI-automatisering og tidlige digitale produktkonsepter – med utgangspunkt i problemet, arbeidsflyten og tilgjengelig innsikt før implementering.",
     "seeProjects": "Se casestudier",
@@ -113,12 +118,12 @@
     "demoInfo": "Demoen kjører på et ekte API og skyinfrastruktur:",
     "whatIBuild": {
       "title": "Hva jeg bygger",
-      "backendTitle": "Backend-systemer",
-      "backendBody": "API-er og backend-tjenester som håndterer autentisering, validering, forretningslogikk, databaser og pålitelig kommunikasjon mellom systemer.",
-      "automationTitle": "AI-automatisering",
-      "automationBody": "Private AI-miljøer og arbeidsflyter som kombinerer språkmodeller, vedvarende minne, planlagte oppgaver, research og operativ automatisering.",
-      "productTitle": "Innsiktsdrevne digitale produkter",
-      "productBody": "Digitale produktkonsepter utviklet gjennom innsiktsarbeid, strukturert analyse, prototyping og iterativ testing."
+      "backendTitle": "Backend og webapplikasjoner",
+      "backendBody": "Jeg bygger API-er og webapplikasjoner for innlogging, bestillinger og rapportering. Jeg modellerer data, validerer inndata og tester sentrale brukerflyter.",
+      "automationTitle": "AI-integrasjoner og automatisering",
+      "automationBody": "Jeg kobler applikasjoner til språkmodell-API-er og setter opp planlagte oppgaver som daglige sammendrag og ressursovervåking.",
+      "productTitle": "Brukerinnsikt og prototyping",
+      "productBody": "Jeg undersøker brukerbehov med spørreundersøkelser og intervjuer. Funnene bruker jeg til å lage prototyper og innhente tilbakemeldinger."
     },
     "howIWork": {
       "title": "Hvordan jeg jobber",
@@ -134,24 +139,28 @@
       ]
     },
     "stackSection": {
-      "title": "Teknologistakk",
+      "title": "Teknologi på tvers av prosjekter",
       "backend": "Backend",
-      "backendValue": "Python · FastAPI · REST API-er",
-      "data": "Data",
-      "dataValue": "PostgreSQL · SQL · SQLAlchemy",
-      "integrations": "Integrasjoner",
-      "integrationsValue": "API-integrasjoner · Eksterne API-er · Middleware",
-      "automation": "AI-automatisering",
-      "automationValue": "LLM-arbeidsflyter · Vedvarende minne · Planlagte oppgaver",
-      "infrastructure": "Infrastruktur, utrulling og verktøy",
-      "infrastructureValue": "Linux/VPS · Docker · Git · Vercel · Render",
+      "backendValue": "Python · FastAPI · Flask · REST-API-er · Pydantic",
+      "data": "Data og databaser",
+      "dataValue": "PostgreSQL · SQL · SQLAlchemy · Alembic",
+      "frontend": "Frontend",
+      "frontendValue": "React · TypeScript · JavaScript · Vite",
+      "integrations": "Integrasjoner og sikkerhet",
+      "integrationsValue": "Stripe Sandbox · Webhooks · JWT · RBAC",
+      "automation": "AI og automatisering",
+      "automationValue": "OpenClaw · LLM-API-er · OpenCLIP / PyTorch · Planlagte oppgaver",
+      "quality": "Testing og CI",
+      "qualityValue": "pytest · Vitest · Playwright · GitHub Actions",
+      "infrastructure": "Infrastruktur og utrulling",
+      "infrastructureValue": "Linux / VPS · Docker Compose · Render · Vercel · Neon",
       "methodsTitle": "Arbeidsmetoder",
       "methods": [
-        "Innsiktsarbeid",
-        "Research",
-        "Innsiktsanalyse",
-        "Prototyping",
-        "Iterativ testing"
+        "API-design",
+        "Datamodellering",
+        "Automatiserte tester",
+        "Produktinnsikt",
+        "Prototyping"
       ]
     },
     "contactSection": {
@@ -240,19 +249,19 @@
         "kicker": "E-handelscase med Flask",
         "title": "NOVA Market",
         "problem": "Et visuelt butikkgrensesnitt alene viser ikke tillitsgrenser, datalagring eller feilhåndtering i en komplett kjøpsprosess.",
-        "solution": "En utrullet Flask-applikasjon som kobler produktkatalog, kundekontoer, serverberegnet checkout, PostgreSQL og Stripe Sandbox.",
+        "solution": "En nettbutikk med Flask, PostgreSQL og kundekontoer. Serveren beregner priser og totalsummer, og utsjekken bruker Stripe Sandbox.",
         "businessValue": "Viser en komplett kundereise og backend-kontrollene som holder beløp, betalinger og ordrestatus pålitelige.",
-        "productionThinking": "Signerte webhooks, idempotent betalingsbekreftelse, versjonerte migrasjoner, delt rate limiting, sikkerhetsheadere og isolerte PostgreSQL-tester.",
-        "stack": ["Python", "Flask", "PostgreSQL", "Stripe"]
+        "productionThinking": "Signerte webhooks bekrefter testbetalinger idempotent. PostgreSQL lagrer tellere for forespørselsgrenser som deles mellom applikasjonsprosessene.",
+        "stack": ["Python", "Flask", "PostgreSQL", "Stripe Sandbox"]
       },
       "nordicHearth": {
         "kicker": "Restaurantbestilling og analyse",
         "title": "Nordic Hearth",
         "problem": "En restaurant trenger en tydelig bestillingsflyt og pålitelige driftsdata uten å blande kundeaktivitet med historisk rapportering.",
-        "solution": "En utrullet meny, handlekurv, bestillingsflyt og administratorvisning med ordreoversikt, analyse av betalte ordre og CSV-eksport.",
-        "businessValue": "Viser hvordan bestilling, drift, rapportering og en delt demo kan fungere i ett system.",
-        "productionThinking": "Rollebegrenset API-tilgang, deterministiske syntetiske data, avgrenset demo-administrator, PostgreSQL-migrasjoner og automatiske tester av backend, frontend og nettleser.",
-        "stack": ["React", "FastAPI", "PostgreSQL", "Render"]
+        "solution": "Et bestillingsgrensesnitt i React og TypeScript med FastAPI og PostgreSQL. Utsjekken behandler betalinger transaksjonelt og idempotent.",
+        "businessValue": "Administratorer kan følge opp bestillinger, analysere betalte bestillinger og eksportere SQL-baserte rapporter som CSV.",
+        "productionThinking": "Rollebasert tilgang, delte syntetiske demodata, Docker Compose og automatiserte tester av backend, frontend og nettleserflyter. Frontend og backend kjører som egne tjenester på Render.",
+        "stack": ["React", "TypeScript", "FastAPI", "PostgreSQL"]
       },
       "living": {
         "kicker": "Innsiktsdrevet digitalt produktkonsept",
@@ -282,11 +291,25 @@
         "kicker": "AI-støttet backendtjeneste",
         "title": "AI-assisted Image Classification API",
         "problem": "Team trenger ofte en rask måte å klassifisere opplastet visuelt innhold på uten å investere i dedikert ML-infrastruktur.",
-        "solution": "En FastAPI-tjeneste som tar imot opplastede bilder, utfører CLIP-basert zero-shot classification, støtter egne etiketter eller presets og returnerer strukturerte JSON-prediksjoner.",
-        "businessValue": "Muliggjør image search, content moderation eller automatisk tagging uten å bygge egen ML-infrastruktur.",
-        "productionThinking": "Upload-validering, filhåndtering, lazy model loading, konfigurerbare confidence thresholds, strukturerte API-responser og eksplisitt feilhåndtering.",
-        "stack": ["Python", "FastAPI", "CLIP (zero-shot)", "PyTorch"],
+        "solution": "FastAPI bruker en ferdigtrent OpenCLIP-modell som kjører i PyTorch. Den utfører zero-shot-klassifisering mot forhåndsvalgte eller brukerdefinerte etiketter.",
+        "businessValue": "Foreslår etiketter og hjelper med den første sorteringen av bilder.",
+        "productionThinking": "Validerer opplastinger, laster modellen ved første bruk og returnerer strukturert JSON med en justerbar minste poengsum.",
+        "stack": ["Python", "FastAPI", "OpenCLIP", "PyTorch"],
         "screenshot": "Interaktiv demo tilgjengelig i prosjektvisningen."
+      },
+      "handTracking": {
+        "kicker": "Skrivebordsprosjekt med maskinsyn",
+        "title": "Hand Tracking Effects",
+        "problem": "Hvordan kan et webkamera brukes til å styre tegning og opptak uten museklikk?",
+        "solution": "En skrivebordsapp i Python bruker regler til å koble håndpunkter fra MediaPipe til tegning, skjermbilder og opptak.",
+        "businessValue": "Ett grensesnitt for å tegne på kamerabildet og ta opp korte demonstrasjoner ved hjelp av gester.",
+        "productionThinking": "JSON-innstillinger, tester av logikken, feillogging og et pakkeskript for Windows med selvtest uten bruk av kamera eller mikrofon.",
+        "stack": [
+          "Python",
+          "OpenCV",
+          "MediaPipe Tasks",
+          "NumPy"
+        ]
       },
       "imageProcessing": {
         "kicker": "Backendtjeneste for bildebehandling",
@@ -311,7 +334,7 @@
   "nordicHearth": {
     "eyebrow": "Casestudie: restaurantbestilling og analyse",
     "title": "Nordic Hearth",
-    "subtitle": "Et bestillingssystem for restaurant med administratorpanel, salgsanalyse og eksport av CSV-rapporter. Bygget med React, FastAPI og PostgreSQL.",
+    "subtitle": "Et bestillingssystem for restaurant med administratorpanel, salgsanalyse og eksport av CSV-rapporter. Bygget med React, TypeScript, FastAPI og PostgreSQL.",
     "status": "Live portfoliodemo · delte syntetiske data",
     "coldStart": "Demoen kjører på en gratis instans. Den første forespørselen etter inaktivitet kan ta omtrent ett minutt.",
     "disclaimer": "Nordic Hearth er en teknisk portfoliodemo, ikke en ekte restaurant. Ordre- og betalingsdata er syntetiske. Demoaktivitet kan være synlig for andre besøkende.",
@@ -369,12 +392,12 @@
     },
     "contribution": {
       "title": "Mitt bidrag",
-      "body": "Jeg implementerte FastAPI-backend, PostgreSQL-datalag og React-grensesnitt, inkludert bestillingsflyt, rollebasert tilgangskontroll, demodata, analyse og CSV-rapportering. Jeg la til automatiske tester og CI, og distribuerte deretter frontend og backend på Render med Neon PostgreSQL. Karusellen dekoder neste bilde før en jevn overgang, slik at det hvite blinket unngås.",
+      "body": "Jeg bygde frontend i React og TypeScript, backend i FastAPI og datalaget i PostgreSQL. Jeg implementerte rollebasert tilgang, delte syntetiske demodata, transaksjonell betalingsbehandling og idempotent utsjekk. Jeg brukte SQL til analyse av betalte bestillinger og rapporter i CSV-format. Jeg la til automatiserte tester av backend, frontend og nettleserflyter, satte opp Docker Compose for lokal utvikling og rullet ut frontend og backend som separate tjenester på Render med Neon PostgreSQL. Karusellen dekoder neste bilde før byttet for å unngå et hvitt blink.",
       "evidence": "Nettlesertester i GitHub Actions · 39/39"
     },
     "limitations": {
       "title": "Rammene for demoen",
-      "body": "Demoen bruker delte syntetiske data og gratis hosting. Den tar ikke imot ekte bestillinger eller betalinger. Personlige kontoer og superadmin-funksjoner er ikke del av den offentlige demoen."
+      "body": "Den offentlige demoen kjører på gratis hosting, med delte syntetiske data og simulerte betalinger. Stripe i testmodus er en egen variant. Demoen tar ikke imot ekte bestillinger eller betalinger og omfatter ikke personlige kontoer eller superadmin-funksjoner."
     }
   },
   "novaMarket": {
@@ -386,13 +409,13 @@
     "hero": {
       "eyebrow": "Flask · PostgreSQL · Stripe Sandbox",
       "title": "En komplett e-handelsreise bygget som en utrullbar porteføljecase.",
-      "description": "NOVA Market er en responsiv Flask-applikasjon som kobler produktkatalog, kundekontoer, serverberegnet handlekurv, valg av levering, Stripe Sandbox Checkout, behandling av signerte webhooks og ordrehistorikk i én sammenhengende flyt.",
-      "status": "Live porteføljedemo · Stripe i testmodus",
+      "description": "NOVA Market kombinerer en nettbutikk i Flask med lagring av bestillinger i PostgreSQL. Serveren beregner priser og totalsummer. Utsjekken bruker Stripe Sandbox, og signerte webhooks bekrefter testbetalinger idempotent.",
+      "status": "Live porteføljedemo · Stripe Sandbox",
       "language": "Engelsk applikasjonsgrensesnitt",
-      "disclaimer": "NOVA Market er en teknisk porteføljedemonstrasjon. Produkter, kundeopplysninger og bestillinger er fiktive. Stripe kjører kun i sandbox-modus, og applikasjonen tar ikke imot kommersielle bestillinger eller tilbyr leveringstjenester."
+      "disclaimer": "NOVA Market er en teknisk porteføljedemo. Produkter, kundeopplysninger og bestillinger er fiktive. Alle betalinger går gjennom Stripe Sandbox. Demoen tar ikke imot kommersielle bestillinger eller tilbyr levering."
     },
     "facts": [
-      { "label": "Automatiserte tester", "value": "40 bestått" },
+      { "label": "Automatiserte tester", "value": "40 bestått lokalt" },
       { "label": "Database", "value": "Neon PostgreSQL" },
       { "label": "Migrasjoner", "value": "2 versjonerte SQL-migrasjoner" },
       { "label": "Produktressurser", "value": "20 dokumenterte WebP-bilder" }
@@ -511,13 +534,13 @@
     "results": {
       "title": "Resultater",
       "items": [
-        "40 automatiserte tester består mot et isolert PostgreSQL-testmiljø.",
+        "Dokumentert lokalt resultat: 40 automatiserte tester besto mot et isolert PostgreSQL-testmiljø.",
         "Fungerende katalog, kontoer, handlekurv, checkout og lagring av ordre.",
-        "Fungerende opprettelse av Stripe Sandbox Checkout Session og signert webhook-bekreftelse.",
-        "Fungerende idempotente ordreoppdateringer på et offentlig eget domene.",
+        "Serveren beregner totalsummen før den oppretter en Stripe Sandbox Checkout-økt.",
+        "Signerte webhooks bekrefter testbetalinger idempotent i den offentlige demoen.",
         "Tjue dokumenterte WebP-produktressurser uten referanser til gamle JPEG-filer."
       ],
-      "note": "Hele sandbox-reisen fra registrering til betaling ble verifisert manuelt. Resultatene innebærer ikke målinger av produksjonstrafikk, konvertering eller skalerbarhet."
+      "note": "Jeg sjekket hele flyten fra registrering til betaling i Stripe Sandbox separat og manuelt. De lokale testene og den manuelle sjekken er ikke resultater fra GitHub Actions eller en ny offentlig E2E-kjøring i nettleser. Produksjonstrafikk, konvertering og skalerbarhet ble ikke målt."
     },
     "gallery": {
       "title": "Gjennomgang av grensesnittet",
@@ -749,7 +772,6 @@
         "body": "JARVIS støtter praktisk arbeid og presenteres ikke som en generell automatiseringsplattform.",
         "items": [
           "Teknisk research og produktresearch.",
-          "Jobbanalyse og strukturerte vurderinger av muligheter.",
           "Researchrapporter og konkurrentanalyse.",
           "Prosjektdokumentasjon og gjenfinning av kontekst.",
           "Godkjente Git-operasjoner og vedlikeholdsoppgaver.",
@@ -847,7 +869,6 @@
         "title": "Operative resultater",
         "body": "Resultatene er kvalitative og operative; det oppgis ingen SLA, ROI eller tidsbesparelse uten målte data.",
         "items": [
-          "Jobb- og markedsresearch lagres i strukturerte rapporter som kan brukes på nytt.",
           "Konkurrentresearch og KnowMe-benchmarken er tilgjengelige i ett arbeidsområde.",
           "Vedvarende prosjektkontekst kan hentes frem på tvers av økter.",
           "Ressursovervåking kjører etter en definert tidsplan."
@@ -890,6 +911,36 @@
       "genericClient": "Generell klient",
       "restService": "Egen REST-tjeneste",
       "deepseekApi": "DeepSeek V4 Pro API"
+    }
+  },
+  "handTracking": {
+    "overview": "En skrivebordsapp i Python som sporer opptil to hender med et webkamera. Du kan tegne, lagre skjermbilder og ta opp video med håndbevegelser.",
+    "status": "Skrivebordsprosjekt · Kjøres fra kildekoden",
+    "sections": {
+      "contribution": {
+        "title": "Mitt bidrag",
+        "body": "Jeg koblet kameraopptak, deteksjon av håndpunkter og gestregler til en kontroller som velger handling ut fra aktiv visning. Jeg skilte tegning, skjermbilder og opptak fra gjenkjenningen slik at logikken kan testes uten et aktivt kamera."
+      },
+      "pipeline": {
+        "title": "Fra kamerabilde til handling",
+        "body": "OpenCV leser hvert bilde fra kameraet. Den ferdigtrente Hand Landmarker-modellen i MediaPipe Tasks finner håndpunktene. Appens regler bruker fingerposisjonene og avstanden mellom tommel og pekefinger til å gjenkjenne gester. Kontrolleren velger handling ut fra aktiv modus."
+      },
+      "capture": {
+        "title": "Tegning, skjermbilder og opptak",
+        "body": "I tegnemodus tegner POINT, THREE bytter farge og FIST tømmer lerretet. I skjermbildemodus lagrer PEACE et kamerabilde. ROCK i opptaksmodus eller R-tasten starter og stopper MP4-opptak. Når mikrofonlyd er tilgjengelig, kan FFmpeg kombinere den med videoen."
+      },
+      "validation": {
+        "title": "Innstillinger og tester",
+        "body": "JSON-innstillingene kan overstyres lokalt. Appen logger feil og viser en statusmelding hvis et skjermbilde utløst av en gest ikke kan lagres. Tester dekker gestregler, handlinger og oppstartskontroller med simulerte data. GitHub Actions kjører formateringskontroll, lint og pytest på Windows."
+      },
+      "packaging": {
+        "title": "Pakking for Windows",
+        "body": "PyInstaller-oppsettet støtter en diagnostisk mappeversjon og en kjørbar enkeltfil. Pakkeskriptet sjekker modellen, MediaPipe, FFmpeg og PortAudio uten å åpne kamera eller mikrofon. Det er ikke publisert noen kjørbar fil."
+      },
+      "limits": {
+        "title": "Kjør fra kildekoden",
+        "body": "Installer avhengighetene fra requirements.txt, kjør python scripts/download_model.py for å hente og verifisere den offisielle modellen, og start deretter med python main.py. Du trenger et webkamera. Lys og håndplassering påvirker deteksjonen. Støtte på tvers av operativsystemer er ikke bekreftet."
+      }
     }
   },
   "pwnedProject": {
@@ -987,11 +1038,11 @@
   },
   "imageClassifier": {
     "title": "Image Classifier (ML)",
-    "desc": "Backend-API for CLIP-basert bildeklassifisering med strukturerte JSON-responser og konfigurerbare prediksjonsinnstillinger.",
+    "desc": "FastAPI-demoen bruker en ferdigtrent OpenCLIP-modell i PyTorch til å sammenligne et bilde med valgte tekstetiketter. Modellen trenger ikke trening på disse etikettene.",
     "arch": "Arkitektur",
     "archDesc": "Backend tilbyr et API-endepunkt som mottar et bilde lastet opp av brukeren, forbereder det for prediksjon (preprosessering) og sender det deretter til maskinlæringsmodellen. Modellen returnerer en liste over de mest sannsynlige klassene sammen med tilhørende sannsynlighet, som API-et returnerer i en JSON-respons.",
     "warning":"Merk",
-    "warningDesc":"Modellen lastes ved første forespørsel for å redusere minnebruk i hostingmiljøet.",
+    "warningDesc":"Modellen lastes ved første klassifisering. Prosenten viser relativt samsvar blant de valgte etikettene, ikke modellens målte treffsikkerhet.",
     "pick": "Velg bilde",
     "noFile": "Ingen fil valgt",
     "topK": "Top-k",

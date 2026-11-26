@@ -1,6 +1,6 @@
-# Software Developer Portfolio | Backend, AI Automation & Research-led Digital Products
+# Software Developer Portfolio | Python Backends, Web Applications & API Integrations
 
-Portfolio site and backend demo platform presenting practical backend systems, AI automation, API integrations, and research-led digital product work.
+I build Python backends and web applications with FastAPI, Flask, PostgreSQL, and React. The case studies cover ordering, payments in test mode, reporting, and AI integrations, alongside user research and prototyping.
 
 The portfolio follows a problem-first approach: understand the workflow and underlying need, validate the direction, design a reliable technical path, and present the result through clear case studies and working demonstrations.
 
@@ -99,10 +99,10 @@ Source code: https://github.com/kamilSarbian/Restaurant_Ordering_Analytics
 A public restaurant demo must connect guest ordering, order operations, and reporting without depending on real customer data or exposing privileged accounts.
 
 **Solution**
-A React and FastAPI application with Neon PostgreSQL, a protected synthetic dataset, a limited shared administrator demo, paid-order analytics, and CSV exports. The frontend and backend run on Render. The first backend request after inactivity may be delayed by the free instance cold start.
+A React and TypeScript frontend with a FastAPI backend and Neon PostgreSQL. Checkout processes payments transactionally and idempotently. SQL supports paid-order analytics and CSV reporting. The frontend and backend run as separate Render services, with Docker Compose for local development. The first backend request after inactivity may be delayed by the free instance cold start.
 
 **Demo boundary**
-The public demo uses synthetic data. It does not accept real restaurant orders or payments, and personal account functions and super-admin access are outside its public scope.
+The public demo uses shared synthetic data and simulated payments. Stripe test mode is separate. The demo does not accept real restaurant orders or payments, and personal account functions and super-admin access are outside its public scope.
 
 ### JARVIS — Private AI Automation Environment
 
@@ -132,7 +132,7 @@ A visual storefront alone does not demonstrate the trust boundaries, persistence
 A deployed Flask application connecting catalogue discovery, customer accounts, a server-priced cart, delivery selection, Neon PostgreSQL, Stripe Sandbox Checkout, signed webhook confirmation, and order history.
 
 **Reliability and security**
-The project includes versioned SQL migrations, parameterized queries, CSRF protection, secure production cookies, server-controlled totals, signed and idempotent payment confirmation, PostgreSQL-backed rate limiting, 40 automated tests, and documented WebP product assets.
+The project includes versioned SQL migrations, parameterized queries, CSRF protection, secure production cookies, server-calculated prices and totals, signed webhooks with idempotent payment confirmation, and shared PostgreSQL rate-limit counters. A documented local run passed 40 tests against an isolated PostgreSQL test environment. The Stripe Sandbox flow was checked separately by hand; neither check is a GitHub Actions result or a public browser E2E run.
 
 ### Living Startpakke — Research-led Product Discovery
 
@@ -179,7 +179,7 @@ GET /backend/users
 Manual image review and categorization can become repetitive when teams need a first-pass classification step.
 
 **Solution**  
-A CLIP-based classification workflow exposed through FastAPI and connected to a frontend upload experience.
+FastAPI uses a pretrained OpenCLIP model in PyTorch to compare uploaded images against selected labels without training on those labels. The displayed percentage is a relative score among the selected labels, not measured model accuracy.
 
 **Production Thinking**  
 Model metadata endpoint, example labels, upload handling, clear API boundaries, and cold-start awareness for hosted inference.
@@ -206,7 +206,15 @@ An image upload and processing API that supports simple transformations through 
 POST /backend/image/process
 ```
 
-## Supporting Experiment
+## Supporting Projects
+
+### Hand Tracking Effects
+
+Case study: https://www.kamilsarbian.dev/projects/hand-tracking
+
+Source code: https://github.com/kamilSarbian/Hand-Tracking-Project
+
+A Python desktop app for drawing and capture through hand gestures. OpenCV reads webcam frames, a pretrained MediaPipe Tasks model detects hand landmarks, and application rules map their positions to drawing, screenshots, and recording. The project uses NumPy and includes PyInstaller configuration for Windows. Run it from source; there is no published EXE or browser demo.
 
 ### Password Breach Checker
 
@@ -256,20 +264,13 @@ The frontend maps `error_code` to EN, PL, or NO copy and never displays `detail`
 
 ## Stack
 
-**Backend**  
-Python, FastAPI, REST APIs
+**In this repository**
 
-**Database**  
-PostgreSQL, SQLAlchemy, SQL
+Python, FastAPI, Pydantic, REST APIs, PostgreSQL, SQLAlchemy, React, Vite, i18next, OpenCLIP/PyTorch, and pytest. The frontend runs on Vercel, the API on Render, and the database on Neon PostgreSQL.
 
-**AI / Automation**  
-CLIP, embeddings-style classification workflow, OpenCLIP/PyTorch, AI-assisted inquiry workflow
+**In the projects shown here**
 
-**Frontend**  
-React, Vite, i18next
-
-**Tools and Deployment**  
-Git, Vercel, Render, Neon PostgreSQL, Linux VPS, Cloudflare Tunnel
+Nordic Hearth uses React, TypeScript, Alembic, Vitest, Playwright, and Docker Compose. NOVA Market uses Flask and Stripe Sandbox. JARVIS uses OpenClaw on a Linux VPS, while Hand Tracking uses OpenCV, MediaPipe Tasks, and NumPy.
 
 ## Project Structure
 
@@ -381,9 +382,11 @@ python -m pytest -q
 
 The static `index.html` provides English fallback metadata, a global Person JSON-LD entity, and a 1200 x 630 Open Graph image. After Vite builds the SPA, `scripts/generate-route-html.mjs` creates an English metadata fallback for every indexable non-root route. Vercel rewrites canonical route requests to those generated files before the general SPA fallback. React then updates the page title, description, canonical URL, Open Graph metadata, Twitter metadata, robots directive, and route-specific JSON-LD when the route or interface language changes.
 
-Each public route uses one canonical URL. Languages do not have separate URL variants, so the project intentionally does not publish `hreflang` links. The client-side 404 page uses `noindex,follow`, but Vercel can still return HTTP 200 for unknown SPA routes.
+The 12 indexable routes each have a canonical URL. The build generates 11 dedicated HTML files in addition to the homepage HTML. Languages do not have separate URL variants, so the project intentionally does not publish `hreflang` links. The client-side 404 page uses `noindex,follow`, but Vercel can still return HTTP 200 for unknown SPA routes.
 
 Social crawlers that do not execute JavaScript receive route-specific English metadata for known indexable routes and the shared Open Graph image. Server-level 404 responses remain outside the current SPA hosting model.
+
+The home page and shared layout load immediately. The project index, case studies, and tools load on demand in separate JavaScript chunks. The navbar selects among WebP avatar variants for different pixel densities; the original PNG remains available for structured data.
 
 ## Deployment
 
@@ -424,7 +427,7 @@ Avoid pinning tutorial repositories or unfinished experiments. Supporting experi
 ## Author
 
 **Kamil Sarbian**  
-Software Developer - backend systems, AI automation, and research-led digital products
+Software Developer - Python backends, web applications, and API integrations
 
 - LinkedIn: https://www.linkedin.com/in/kamil-sarbian/
 - GitHub: https://github.com/kamilSarbian

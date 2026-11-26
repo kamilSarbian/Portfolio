@@ -34,8 +34,8 @@
         "description": "Studium prywatnego środowiska opartego na OpenClaw z trwałym kontekstem, cyklicznym monitoringiem, bezpiecznymi integracjami i obsługą Linux VPS."
       },
       "nova": {
-        "title": "NOVA Market — case study Flask i Stripe | Kamil Sarbian",
-        "description": "Poznaj NOVA Market: demo e-commerce we Flasku z Neon PostgreSQL, Stripe Sandbox Checkout, podpisanymi webhookami, rate limitingiem i 40 testami."
+        "title": "NOVA Market: Flask i Stripe Sandbox | Kamil Sarbian",
+        "description": "Demo e-commerce we Flasku z PostgreSQL, kwotami liczonymi na serwerze, Stripe Sandbox, podpisanymi webhookami i współdzielonymi limitami żądań."
       },
       "nordicHearth": {
         "title": "Nordic Hearth — zamówienia i analityka | Kamil Sarbian",
@@ -49,6 +49,10 @@
         "title": "Modernizacja strony lokalu gastronomicznego | Kamil Sarbian",
         "description": "Niezależny, nieopublikowany prototyp WordPress dla gastronomii: motyw blokowy, dwujęzyczna nawigacja, edycja w Gutenbergu i lokalna weryfikacja."
       },
+      "handTracking": {
+        "title": "Hand Tracking Effects | Kamil Sarbian",
+        "description": "Projekt desktopowy w Pythonie do rysowania gestami, zapisywania zrzutów i nagrywania. Wykorzystuje OpenCV i gotowy model punktów dłoni MediaPipe."
+      },
       "passwordChecker": {
         "title": "Sprawdzanie wycieków haseł | Kamil Sarbian",
         "description": "Demo bezpieczeństwa haseł w FastAPI wykorzystujące prywatne wyszukiwanie prefiksu SHA-1 w API Have I Been Pwned oraz lokalne komunikaty wyników."
@@ -59,7 +63,7 @@
       },
       "imageClassifier": {
         "title": "API klasyfikacji obrazów AI | Kamil Sarbian",
-        "description": "API klasyfikacji obrazów oparte na CLIP z konfigurowalnymi etykietami, progami pewności, uporządkowanymi predykcjami i lokalizowanym demo."
+        "description": "Demo FastAPI z gotowym modelem OpenCLIP w PyTorch. Porównuje obrazy z wybranymi etykietami bez dodatkowego trenowania modelu pod te etykiety."
       },
       "notFound": {
         "title": "Nie znaleziono strony | Kamil Sarbian",
@@ -99,11 +103,12 @@
     "httpError": "Nie udało się wykonać żądania.",
     "internalError": "Wystąpił nieoczekiwany błąd serwera."
   },
+  "routeLoading": "Wczytywanie strony…",
   "home": {
     "aboutLabel": "BACKEND · AUTOMATYZACJA AI · PRODUKTY CYFROWE OPARTE NA BADANIACH",
-    "headline": "Programista tworzący systemy backendowe, automatyzacje AI i produkty cyfrowe oparte na badaniach",
-    "intro": "Łączę tworzenie oprogramowania, automatyzację i product discovery, aby przekładać rzeczywiste procesy i potrzeby użytkowników na praktyczne, niezawodne rozwiązania cyfrowe.",
-    "heroTech": "Python · FastAPI · PostgreSQL · REST APIs · AI Workflows · Linux/VPS",
+    "headline": "Tworzę backendy w Pythonie, aplikacje webowe i integracje API",
+    "intro": "Tworzę aplikacje z użyciem FastAPI, Flask, PostgreSQL i Reacta. Moje projekty obejmują obsługę zamówień, płatności w trybie testowym, raportowanie i integracje AI. Piszę testy automatyczne i wdrażam aplikacje w chmurze.",
+    "heroTech": "Python · FastAPI · Flask · PostgreSQL · React / TypeScript",
     "whyTitle": "Co buduję",
     "whyBody": "Łączę backend, automatyzację AI i wczesne koncepcje produktów cyfrowych — zaczynając od problemu, procesu i dostępnych danych, zanim przejdę do implementacji.",
     "seeProjects": "Zobacz studia przypadków",
@@ -113,12 +118,12 @@
     "demoInfo": "Demo działa na rzeczywistym API i infrastrukturze chmurowej:",
     "whatIBuild": {
       "title": "Co buduję",
-      "backendTitle": "Systemy backendowe",
-      "backendBody": "API i usługi backendowe obsługujące uwierzytelnianie, walidację, logikę biznesową, bazy danych i niezawodną komunikację między systemami.",
-      "automationTitle": "Automatyzacja AI",
-      "automationBody": "Prywatne środowiska AI i workflow łączące modele językowe, pamięć długoterminową, zadania cykliczne, badania i automatyzację operacyjną.",
-      "productTitle": "Produkty cyfrowe rozwijane na podstawie badań",
-      "productBody": "Koncepcje produktów cyfrowych rozwijane na podstawie badań, uporządkowanej analizy insightów, prototypowania i iteracyjnych testów."
+      "backendTitle": "Backendy i aplikacje webowe",
+      "backendBody": "Tworzę API i aplikacje do logowania, obsługi zamówień oraz raportowania. Modeluję dane, waliduję dane wejściowe i testuję kluczowe scenariusze.",
+      "automationTitle": "Integracje AI i automatyzacja",
+      "automationBody": "Łączę aplikacje z API modeli językowych i ustawiam zadania cykliczne, takie jak dzienne podsumowania i monitoring zasobów.",
+      "productTitle": "Badania użytkowników i prototypowanie",
+      "productBody": "Badam potrzeby użytkowników za pomocą ankiet i wywiadów. Na tej podstawie tworzę prototypy, żeby sprawdzić pomysły i zebrać opinie."
     },
     "howIWork": {
       "title": "Jak pracuję",
@@ -134,24 +139,28 @@
       ]
     },
     "stackSection": {
-      "title": "Technologie",
+      "title": "Technologie w moich projektach",
       "backend": "Backend",
-      "backendValue": "Python · FastAPI · REST APIs",
-      "data": "Dane",
-      "dataValue": "PostgreSQL · SQL · SQLAlchemy",
-      "integrations": "Integracje",
-      "integrationsValue": "Integracje API · Zewnętrzne API · Middleware",
-      "automation": "Automatyzacja AI",
-      "automationValue": "Workflow oparte na LLM · Trwała pamięć · Zadania cykliczne",
-      "infrastructure": "Infrastruktura, wdrażanie i narzędzia",
-      "infrastructureValue": "Linux/VPS · Docker · Git · Vercel · Render",
+      "backendValue": "Python · FastAPI · Flask · API REST · Pydantic",
+      "data": "Dane i bazy danych",
+      "dataValue": "PostgreSQL · SQL · SQLAlchemy · Alembic",
+      "frontend": "Frontend",
+      "frontendValue": "React · TypeScript · JavaScript · Vite",
+      "integrations": "Integracje i bezpieczeństwo",
+      "integrationsValue": "Stripe Sandbox · Webhooki · JWT · RBAC",
+      "automation": "AI i automatyzacja",
+      "automationValue": "OpenClaw · API modeli językowych · OpenCLIP / PyTorch · Zadania cykliczne",
+      "quality": "Testowanie i CI",
+      "qualityValue": "pytest · Vitest · Playwright · GitHub Actions",
+      "infrastructure": "Infrastruktura i wdrażanie",
+      "infrastructureValue": "Linux / VPS · Docker Compose · Render · Vercel · Neon",
       "methodsTitle": "Metody pracy",
       "methods": [
-        "Product discovery",
-        "Badania",
-        "Analiza insightów",
-        "Prototypowanie",
-        "Iteracyjne testowanie"
+        "Projektowanie API",
+        "Modelowanie danych",
+        "Testy automatyczne",
+        "Badanie potrzeb i pomysłów",
+        "Prototypowanie"
       ]
     },
     "contactSection": {
@@ -240,19 +249,19 @@
         "kicker": "Case study e-commerce we Flasku",
         "title": "NOVA Market",
         "problem": "Sam interfejs sklepu nie pokazuje granic zaufania, trwałości danych ani obsługi błędów wymaganych w procesie zakupowym.",
-        "solution": "Wdrożona aplikacja Flask łącząca katalog produktów, konta klientów, wyceniany po stronie serwera checkout, PostgreSQL i Stripe Sandbox.",
+        "solution": "Sklep we Flasku z PostgreSQL, kontami klientów, cenami i sumami wyliczanymi na serwerze oraz płatnościami przez Stripe Sandbox.",
         "businessValue": "Pokazuje pełną ścieżkę klienta oraz mechanizmy backendowe potrzebne do zachowania wiarygodnych kwot, płatności i statusów zamówień.",
-        "productionThinking": "Podpisane webhooki, idempotentne potwierdzanie płatności, wersjonowane migracje, współdzielony rate limiting, nagłówki bezpieczeństwa i izolowane testy PostgreSQL.",
-        "stack": ["Python", "Flask", "PostgreSQL", "Stripe"]
+        "productionThinking": "Podpisane webhooki potwierdzają płatności testowe idempotentnie. PostgreSQL przechowuje liczniki limitów żądań wspólne dla procesów aplikacji.",
+        "stack": ["Python", "Flask", "PostgreSQL", "Stripe Sandbox"]
       },
       "nordicHearth": {
         "kicker": "Zamówienia i analityka restauracji",
         "title": "Nordic Hearth",
         "problem": "Restauracja potrzebuje przejrzystej ścieżki zamówienia i wiarygodnych danych operacyjnych bez mieszania aktywności klientów z danymi historycznymi.",
-        "solution": "Wdrożone menu, koszyk, zamówienia oraz panel administratora z listą zamówień, analityką opłaconych zamówień i eksportami CSV.",
-        "businessValue": "Pokazuje, jak połączyć składanie zamówień, obsługę realizacji, raportowanie i publiczne demo we wspólnym systemie.",
-        "productionThinking": "Dostęp API ograniczony rolami, deterministyczne dane syntetyczne, ograniczone uprawnienia administratora demo, migracje PostgreSQL i automatyczne testy backendu, frontendu i przeglądarki.",
-        "stack": ["React", "FastAPI", "PostgreSQL", "Render"]
+        "solution": "Interfejs do składania zamówień w React i TypeScript, z backendem FastAPI i bazą PostgreSQL. Checkout obsługuje płatności transakcyjnie i idempotentnie.",
+        "businessValue": "Administratorzy mogą śledzić realizację, analizować opłacone zamówienia i eksportować raporty SQL do CSV.",
+        "productionThinking": "Dostęp według ról, współdzielone dane syntetyczne, Docker Compose oraz automatyczne testy backendu, frontendu i przeglądarki. Frontend i backend działają jako osobne usługi na Render.",
+        "stack": ["React", "TypeScript", "FastAPI", "PostgreSQL"]
       },
       "living": {
         "kicker": "Koncepcja produktu cyfrowego rozwijana na podstawie badań",
@@ -282,11 +291,25 @@
         "kicker": "Backendowy serwis wspierany przez AI",
         "title": "AI-assisted Image Classification API",
         "problem": "Zespoły często potrzebują szybkiej klasyfikacji przesyłanych treści wizualnych bez inwestowania w dedykowaną infrastrukturę ML.",
-        "solution": "Serwis FastAPI, który przyjmuje przesłane obrazy, wykonuje zero-shot classification z użyciem CLIP, obsługuje własne etykiety albo presety i zwraca uporządkowane predykcje JSON.",
-        "businessValue": "Umożliwia wyszukiwanie obrazów, moderację treści albo automatyczne tagowanie bez budowania własnej infrastruktury ML.",
-        "productionThinking": "Walidacja przesyłanych plików, obsługa plików, leniwe ładowanie modelu, konfigurowalne progi pewności, uporządkowane odpowiedzi API i jawna obsługa błędów.",
-        "stack": ["Python", "FastAPI", "CLIP (zero-shot)", "PyTorch"],
+        "solution": "FastAPI integruje gotowy model OpenCLIP działający w PyTorch. Klasyfikuje obrazy metodą zero-shot wobec etykiet z zestawu lub podanych przez użytkownika.",
+        "businessValue": "Sugeruje etykiety i pomaga we wstępnym porządkowaniu obrazów.",
+        "productionThinking": "Sprawdza przesłane pliki, ładuje model przy pierwszym użyciu i zwraca dane JSON z konfigurowalnym progiem wyniku.",
+        "stack": ["Python", "FastAPI", "OpenCLIP", "PyTorch"],
         "screenshot": "Interaktywne demo dostępne w widoku projektu."
+      },
+      "handTracking": {
+        "kicker": "Desktopowy projekt widzenia komputerowego",
+        "title": "Hand Tracking Effects",
+        "problem": "Jak sterować rysowaniem i zapisem obrazu z kamery bez klikania myszą?",
+        "solution": "Aplikacja desktopowa w Pythonie wykorzystuje reguły, by przekładać punkty dłoni z MediaPipe na akcje: rysowanie, zrzuty i nagrywanie.",
+        "businessValue": "Jeden interfejs do rysowania na podglądzie z kamery i nagrywania krótkich demonstracji za pomocą gestów.",
+        "productionThinking": "Ustawienia JSON, testy logiki, logowanie błędów i skrypt pakowania na Windows z autotestem bez użycia urządzeń.",
+        "stack": [
+          "Python",
+          "OpenCV",
+          "MediaPipe Tasks",
+          "NumPy"
+        ]
       },
       "imageProcessing": {
         "kicker": "Backendowy serwis przetwarzania obrazów",
@@ -311,7 +334,7 @@
   "nordicHearth": {
     "eyebrow": "Case study: zamówienia i analityka restauracji",
     "title": "Nordic Hearth",
-    "subtitle": "System zamawiania dla restauracji z panelem administratora, analityką sprzedaży i eksportem raportów CSV. Zbudowany w React, FastAPI i PostgreSQL.",
+    "subtitle": "System zamawiania dla restauracji z panelem administratora, analityką sprzedaży i eksportem raportów CSV. Zbudowany w React, TypeScript, FastAPI i PostgreSQL.",
     "status": "Działające demo portfolio · współdzielone dane syntetyczne",
     "coldStart": "Demo działa na darmowej instancji. Pierwsze żądanie po bezczynności może potrwać około minuty.",
     "disclaimer": "Nordic Hearth jest technicznym demo portfolio, nie prawdziwą restauracją. Zamówienia i płatności są danymi syntetycznymi. Aktywność w demo może być widoczna dla innych odwiedzających.",
@@ -369,12 +392,12 @@
     },
     "contribution": {
       "title": "Mój wkład",
-      "body": "Zaimplementowałem backend FastAPI, warstwę danych PostgreSQL i interfejs React, w tym proces zamawiania, kontrolę dostępu opartą na rolach, dane demonstracyjne, analitykę oraz raporty CSV. Dodałem testy automatyczne i CI, a następnie wdrożyłem frontend i backend na Render z bazą Neon PostgreSQL. Karuzela dekoduje następny obraz przed płynnym przejściem, dzięki czemu nie pojawia się biały błysk.",
+      "body": "Zbudowałem frontend w React i TypeScript, backend FastAPI i warstwę danych PostgreSQL. Wdrożyłem dostęp według ról, współdzielone dane syntetyczne, transakcyjną obsługę płatności i idempotentny checkout. SQL wykorzystałem do analizy opłaconych zamówień i raportów CSV. Dodałem automatyczne testy backendu, frontendu i przeglądarki oraz Docker Compose do pracy lokalnej. Frontend i backend wdrożyłem jako osobne usługi na Render z Neon PostgreSQL. Karuzela dekoduje kolejne zdjęcie przed zmianą slajdu, aby uniknąć białego błysku.",
       "evidence": "Testy przeglądarkowe w GitHub Actions · 39/39"
     },
     "limitations": {
       "title": "Granice demo",
-      "body": "Demo używa współdzielonych danych syntetycznych i darmowego hostingu. Nie przyjmuje prawdziwych zamówień ani płatności. Konta osobiste i zarządzanie super adminem nie są częścią publicznego demo."
+      "body": "Publiczne demo działa na darmowym hostingu, używa współdzielonych danych syntetycznych i symulowanych płatności. Stripe w trybie testowym to osobny wariant. Demo nie przyjmuje prawdziwych zamówień ani płatności i nie obejmuje kont osobistych ani funkcji superadministratora."
     }
   },
   "novaMarket": {
@@ -386,13 +409,13 @@
     "hero": {
       "eyebrow": "Flask · PostgreSQL · Stripe Sandbox",
       "title": "Kompletna ścieżka e-commerce zbudowana jako wdrożone case study portfolio.",
-      "description": "NOVA Market to responsywna aplikacja Flask, która łączy przeglądanie katalogu, konta klientów, wyceniany po stronie serwera koszyk, wybór dostawy, Stripe Sandbox Checkout, obsługę podpisanych webhooków i historię zamówień w jeden spójny proces.",
-      "status": "Działające demo portfolio · Stripe w trybie testowym",
+      "description": "NOVA Market łączy interfejs sklepu we Flasku z zapisem zamówień w PostgreSQL. Ceny i sumy wylicza serwer. Checkout korzysta ze Stripe Sandbox, a podpisane webhooki potwierdzają płatności testowe idempotentnie.",
+      "status": "Działające demo portfolio · Stripe Sandbox",
       "language": "Interfejs aplikacji po angielsku",
-      "disclaimer": "NOVA Market jest techniczną demonstracją portfolio. Produkty, dane klientów i zamówienia są fikcyjne. Stripe działa wyłącznie w trybie sandbox, a aplikacja nie przyjmuje zamówień komercyjnych ani nie realizuje dostaw."
+      "disclaimer": "NOVA Market to techniczne demo portfolio. Produkty, dane klientów i zamówienia są fikcyjne. Płatności odbywają się wyłącznie w Stripe Sandbox. Demo nie przyjmuje komercyjnych zamówień ani nie realizuje dostaw."
     },
     "facts": [
-      { "label": "Testy automatyczne", "value": "40 zaliczonych" },
+      { "label": "Testy automatyczne", "value": "40 zaliczonych lokalnie" },
       { "label": "Baza danych", "value": "Neon PostgreSQL" },
       { "label": "Migracje", "value": "2 wersjonowane migracje SQL" },
       { "label": "Zasoby produktowe", "value": "20 udokumentowanych obrazów WebP" }
@@ -511,13 +534,13 @@
     "results": {
       "title": "Rezultaty",
       "items": [
-        "40 testów automatycznych przechodzących w izolowanym środowisku PostgreSQL.",
+        "Udokumentowany wynik lokalny: 40 testów automatycznych przeszło w izolowanym środowisku testowym PostgreSQL.",
         "Działający katalog, konta, koszyk, checkout i trwały zapis zamówień.",
-        "Działające tworzenie sesji Stripe Sandbox Checkout i potwierdzanie podpisanym webhookiem.",
-        "Idempotentne aktualizacje zamówień działające pod publiczną własną domeną.",
+        "Serwer wylicza sumę zamówienia przed utworzeniem sesji Stripe Sandbox Checkout.",
+        "Podpisane webhooki potwierdzają płatności testowe idempotentnie w publicznym wdrożeniu.",
         "Dwadzieścia udokumentowanych assetów WebP bez odwołań do starych plików JPEG."
       ],
-      "note": "Pełna ścieżka od rejestracji do płatności w sandboxie została zweryfikowana ręcznie. Wyniki nie oznaczają pomiarów ruchu produkcyjnego, konwersji ani skalowalności."
+      "note": "Pełną ścieżkę od rejestracji do płatności w Stripe Sandbox sprawdziłem osobno, ręcznie. Ani lokalne testy, ani ręczna kontrola nie są wynikiem GitHub Actions ani nowego publicznego przebiegu E2E w przeglądarce. Nie mierzono ruchu produkcyjnego, konwersji ani skalowalności."
     },
     "gallery": {
       "title": "Przegląd interfejsu",
@@ -749,7 +772,6 @@
         "body": "JARVIS wspiera praktyczną pracę, zamiast pełnić rolę uniwersalnej platformy automatyzacyjnej.",
         "items": [
           "Research techniczny i produktowy.",
-          "Analiza ofert pracy i uporządkowane przeglądy możliwości.",
           "Raporty badawcze i analiza konkurencji.",
           "Dokumentacja projektowa i wyszukiwanie kontekstu.",
           "Zatwierdzone operacje Git i zadania utrzymaniowe.",
@@ -847,7 +869,6 @@
         "title": "Rezultaty operacyjne",
         "body": "Rezultaty mają charakter jakościowy i operacyjny; bez pomiarów nie przedstawiam deklaracji dotyczących SLA, ROI ani oszczędności czasu.",
         "items": [
-          "Research rynku pracy jest zapisywany w uporządkowanych raportach do ponownego użycia.",
           "Analiza konkurencji i benchmark KnowMe pozostają dostępne w jednym środowisku.",
           "Trwały kontekst projektów można wyszukiwać między sesjami.",
           "Monitoring zasobów działa według określonego harmonogramu."
@@ -890,6 +911,36 @@
       "genericClient": "Dowolny klient",
       "restService": "Własna usługa REST",
       "deepseekApi": "API DeepSeek V4 Pro"
+    }
+  },
+  "handTracking": {
+    "overview": "Aplikacja desktopowa w Pythonie śledzi kamerą do dwóch dłoni. Gestami można rysować, zapisywać zrzuty i nagrywać wideo.",
+    "status": "Projekt desktopowy · Uruchamianie z kodu",
+    "sections": {
+      "contribution": {
+        "title": "Mój wkład",
+        "body": "Połączyłem przechwytywanie obrazu, wykrywanie punktów dłoni i reguły gestów z kontrolerem, który dobiera akcję do ekranu. Oddzieliłem rysowanie, zapis i nagrywanie od rozpoznawania gestów, żeby móc testować logikę bez kamery."
+      },
+      "pipeline": {
+        "title": "Od klatki kamery do akcji",
+        "body": "OpenCV odczytuje klatki z kamery. Gotowy model Hand Landmarker z MediaPipe Tasks wyznacza punkty dłoni. Reguły aplikacji rozpoznają gest na podstawie położenia palców i odległości kciuka od palca wskazującego, a kontroler przypisuje akcję zależnie od trybu."
+      },
+      "capture": {
+        "title": "Rysowanie, zrzuty i nagrywanie",
+        "body": "W trybie rysowania POINT rysuje, THREE zmienia kolor, a FIST czyści płótno. W trybie zrzutów PEACE zapisuje klatkę z kamery. ROCK w trybie nagrywania lub klawisz R włącza i wyłącza zapis MP4. Jeśli dźwięk z mikrofonu jest dostępny, FFmpeg może połączyć go z wideo."
+      },
+      "validation": {
+        "title": "Konfiguracja i testy",
+        "body": "Ustawienia JSON można nadpisać lokalnie. Aplikacja zapisuje błędy w logach i pokazuje komunikat, gdy nie uda się zapisać zrzutu wywołanego gestem. Testy sprawdzają reguły gestów, akcje i kontrolę startową na symulowanych danych. GitHub Actions sprawdza formatowanie, lint i testy pytest na Windows."
+      },
+      "packaging": {
+        "title": "Pakowanie na Windows",
+        "body": "Konfiguracja PyInstaller obsługuje wariant diagnostyczny w katalogu i pojedynczy plik wykonywalny. Skrypt pakowania uruchamia autotest modelu, MediaPipe, FFmpeg i PortAudio bez włączania kamery lub mikrofonu. Nie opublikowano pliku wykonywalnego."
+      },
+      "limits": {
+        "title": "Uruchomienie z kodu",
+        "body": "Zainstaluj zależności z requirements.txt, uruchom python scripts/download_model.py, aby pobrać i zweryfikować oficjalny model, a następnie użyj python main.py. Do interakcji potrzebna jest kamera. Oświetlenie i położenie dłoni wpływają na wykrywanie. Nie potwierdzono zgodności ze wszystkimi systemami."
+      }
     }
   },
   "pwnedProject": {
@@ -987,11 +1038,11 @@
   },
   "imageClassifier": {
     "title": "Image Classifier (ML)",
-    "desc": "Backend API do klasyfikacji obrazów z użyciem CLIP, uporządkowanymi odpowiedziami JSON i konfigurowalnymi ustawieniami predykcji.",
+    "desc": "Demo FastAPI używa gotowego modelu OpenCLIP w PyTorch do porównania obrazu z wybranymi etykietami tekstowymi. Nie wymaga trenowania modelu pod te etykiety.",
     "arch": "Architektura",
     "archDesc": "Backend udostępnia endpoint API, który przyjmuje obraz przesłany przez użytkownika, przygotowuje go do predykcji (preprocessing), a następnie przekazuje do modelu machine learning. Model zwraca listę najbardziej prawdopodobnych klas wraz z przypisanym prawdopodobieństwem, które API zwraca w odpowiedzi JSON.",
     "warning":"Uwaga",
-    "warningDesc":"Model ładuje się przy pierwszym żądaniu, aby ograniczyć zużycie pamięci w środowisku hostingowym.",
+    "warningDesc":"Model ładuje się przy pierwszej próbie klasyfikacji. Procent pokazuje względne dopasowanie wśród wybranych etykiet, a nie zmierzoną skuteczność modelu.",
     "pick": "Wybierz obraz",
     "noFile": "Nie wybrano pliku",
     "topK": "Top-k",

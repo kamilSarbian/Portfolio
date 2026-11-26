@@ -13,6 +13,7 @@ Software developer portfolio focused on backend systems, AI automation, API inte
 - Hospitality Website Modernization — anonymized, self-initiated WordPress block-theme prototype for bilingual content and editing. Not commissioned, approved for deployment, or published: https://www.kamilsarbian.dev/projects/hospitality-wordpress
 - AI-assisted Image Classification API: https://www.kamilsarbian.dev/projects/image-classifier
 - Image Processing API: https://www.kamilsarbian.dev/projects/image-editor
+- Hand Tracking Effects: desktop Python project for gesture-controlled drawing, screenshots and recording with a pretrained MediaPipe hand landmark model: https://www.kamilsarbian.dev/projects/hand-tracking
 - Password Breach Checker: https://www.kamilsarbian.dev/projects/password-checker
 
 ## Technical Focus

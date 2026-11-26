@@ -62,11 +62,13 @@ export default function Navbar({ theme, active, onToggleTheme, onGoHome, onGoPro
       <button type="button" className="brand" onClick={onGoHome}>
         <div className="nav-avatar">
           <img
-            src="/avatar_new.png"
+            src="/avatar-40.webp"
+            srcSet="/avatar-40.webp 40w, /avatar-80.webp 80w, /avatar-120.webp 120w"
+            sizes="(max-width: 720px) 34px, 40px"
             alt="Kamil Sarbian"
             className="nav-avatar"
-            width="330"
-            height="547"
+            width="40"
+            height="55"
             decoding="async"
           />
         </div>

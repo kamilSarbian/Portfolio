@@ -86,6 +86,13 @@ export const ROUTE_META = Object.freeze({
     schemaType: "CreativeWork",
     ogType: "article",
   },
+  "/projects/hand-tracking": {
+    key: "handTracking",
+    canonicalPath: "/projects/hand-tracking",
+    indexable: true,
+    schemaType: "CreativeWork",
+    ogType: "article",
+  },
 });
 
 export const NOT_FOUND_META = Object.freeze({

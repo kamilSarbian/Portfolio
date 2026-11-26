@@ -60,6 +60,10 @@
       "destination": "/projects/image-classifier/index.html"
     },
     {
+      "source": "/projects/hand-tracking",
+      "destination": "/projects/hand-tracking/index.html"
+    },
+    {
       "source": "/((?!api/|assets/|favicon.ico|site.webmanifest|robots.txt|sitemap.xml|llms.txt).*)",
       "destination": "/index.html"
     }

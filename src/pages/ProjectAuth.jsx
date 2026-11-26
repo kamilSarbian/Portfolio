@@ -38,10 +38,10 @@ export default function ProjectAuth({ onGoProjects }) {
   const { t } = useTranslation();
   const stack = t("projects.caseStudies.auth.stack", { returnObjects: true });
   const endpoints = [
-    ["POST", "/auth/register"],
-    ["POST", "/auth/login"],
-    ["GET", "/users/profile"],
-    ["GET", "/users"],
+    ["POST", "/backend/auth/register"],
+    ["POST", "/backend/auth/login"],
+    ["GET", "/backend/users/profile"],
+    ["GET", "/backend/users"],
   ];
 
   return (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -7,36 +7,31 @@ import Footer from "./components/Footer";
 import RouteMeta from "./components/RouteMeta";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
-import Projects from "./pages/Projects";
-import ProjectPwned from "./pages/ProjectPwned";
-import ProjectImageEditor from "./pages/ProjectImageEditor";
-import ProjectImageClassifier from "./pages/ProjectImageClassifier";
-import ProjectAuth from "./pages/ProjectAuth";
-import ProjectJarvis from "./pages/ProjectJarvis";
-import ProjectLivingStartpakke from "./pages/ProjectLivingStartpakke";
-import ProjectHospitalityWordpress from "./pages/ProjectHospitalityWordpress";
-import ProjectNovaMarket from "./pages/ProjectNovaMarket";
-import ProjectNordicHearth from "./pages/ProjectNordicHearth";
 
 import "./App.css";
 
-export default function App() {
-  const { i18n } = useTranslation();
-  const location = useLocation();
-  const navigate = useNavigate();
+const Projects = lazy(() => import("./pages/Projects"));
+const ProjectPwned = lazy(() => import("./pages/ProjectPwned"));
+const ProjectImageEditor = lazy(() => import("./pages/ProjectImageEditor"));
+const ProjectImageClassifier = lazy(() => import("./pages/ProjectImageClassifier"));
+const ProjectAuth = lazy(() => import("./pages/ProjectAuth"));
+const ProjectJarvis = lazy(() => import("./pages/ProjectJarvis"));
+const ProjectLivingStartpakke = lazy(() => import("./pages/ProjectLivingStartpakke"));
+const ProjectHospitalityWordpress = lazy(() => import("./pages/ProjectHospitalityWordpress"));
+const ProjectNovaMarket = lazy(() => import("./pages/ProjectNovaMarket"));
+const ProjectNordicHearth = lazy(() => import("./pages/ProjectNordicHearth"));
+const ProjectHandTracking = lazy(() => import("./pages/ProjectHandTracking"));
 
-  const [theme, setTheme] = useState("dark");
-  const lang = (i18n.resolvedLanguage || i18n.language || "en").slice(0, 2);
-
-  const navActive = location.pathname === "/" ? "home" : "projects";
+function RouteScroll() {
+  const { hash, pathname } = useLocation();
 
   useEffect(() => {
-    if (!location.hash) {
+    if (!hash) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
       return undefined;
     }
 
-    const targetId = decodeURIComponent(location.hash.slice(1));
+    const targetId = decodeURIComponent(hash.slice(1));
     const timer = window.setTimeout(() => {
       const target = document.getElementById(targetId);
       if (!target) return;
@@ -46,7 +41,20 @@ export default function App() {
     }, 0);
 
     return () => window.clearTimeout(timer);
-  }, [location.hash, location.pathname]);
+  }, [hash, pathname]);
+
+  return null;
+}
+
+export default function App() {
+  const { t, i18n } = useTranslation();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [theme, setTheme] = useState("dark");
+  const lang = (i18n.resolvedLanguage || i18n.language || "en").slice(0, 2);
+
+  const navActive = location.pathname === "/" ? "home" : "projects";
 
   function goTo(path) {
     navigate(path);
@@ -76,85 +84,101 @@ export default function App() {
       />
 
       <main className="container">
-        <Routes>
-          <Route
-            path="/"
-            element={<Home onGoProjects={() => goTo("/projects")} />}
-          />
+        <Suspense
+          key={location.pathname}
+          fallback={
+            <div className="card">
+              <p className="p" role="status">{t("routeLoading")}</p>
+            </div>
+          }
+        >
+          <RouteScroll />
+          <Routes>
+            <Route
+              path="/"
+              element={<Home onGoProjects={() => goTo("/projects")} />}
+            />
 
-          <Route
-            path="/projects"
-            element={
-              <Projects
-                onOpenAuth={() => goTo("/projects/auth-api")}
-                onOpenJarvis={() => goTo("/projects/jarvis-ai-environment")}
-                onOpenJarvisArchitecture={() => goTo("/projects/jarvis-ai-environment#architecture")}
-                onOpenNova={() => goTo("/projects/nova-market")}
-                onOpenNordicHearth={() => goTo("/projects/nordic-hearth")}
-                onOpenLiving={() => goTo("/projects/living-startpakke")}
-                onOpenLivingPrototype={() => goTo("/projects/living-startpakke#prototype")}
-                onOpenPwned={() => goTo("/projects/password-checker")}
-                onOpenImageEditor={() => goTo("/projects/image-editor")}
-                onOpenImageClassifier={() => goTo("/projects/image-classifier")}
-              />
-            }
-          />
+            <Route
+              path="/projects"
+              element={
+                <Projects
+                  onOpenAuth={() => goTo("/projects/auth-api")}
+                  onOpenJarvis={() => goTo("/projects/jarvis-ai-environment")}
+                  onOpenJarvisArchitecture={() => goTo("/projects/jarvis-ai-environment#architecture")}
+                  onOpenNova={() => goTo("/projects/nova-market")}
+                  onOpenNordicHearth={() => goTo("/projects/nordic-hearth")}
+                  onOpenLiving={() => goTo("/projects/living-startpakke")}
+                  onOpenLivingPrototype={() => goTo("/projects/living-startpakke#prototype")}
+                  onOpenPwned={() => goTo("/projects/password-checker")}
+                  onOpenImageEditor={() => goTo("/projects/image-editor")}
+                  onOpenImageClassifier={() => goTo("/projects/image-classifier")}
+                  onOpenHandTracking={() => goTo("/projects/hand-tracking")}
+                />
+              }
+            />
 
-          <Route
-            path="/projects/auth-api"
-            element={<ProjectAuth onGoProjects={() => goTo("/projects")} />}
-          />
+            <Route
+              path="/projects/auth-api"
+              element={<ProjectAuth onGoProjects={() => goTo("/projects")} />}
+            />
 
-          <Route
-            path="/projects/jarvis-ai-environment"
-            element={<ProjectJarvis onGoProjects={() => goTo("/projects")} />}
-          />
+            <Route
+              path="/projects/jarvis-ai-environment"
+              element={<ProjectJarvis onGoProjects={() => goTo("/projects")} />}
+            />
 
-          <Route
-            path="/projects/living-startpakke"
-            element={<ProjectLivingStartpakke onGoProjects={() => goTo("/projects")} />}
-          />
+            <Route
+              path="/projects/living-startpakke"
+              element={<ProjectLivingStartpakke onGoProjects={() => goTo("/projects")} />}
+            />
 
-          <Route
-            path="/projects/hospitality-wordpress"
-            element={<ProjectHospitalityWordpress />}
-          />
+            <Route
+              path="/projects/hospitality-wordpress"
+              element={<ProjectHospitalityWordpress />}
+            />
 
-          <Route
-            path="/projects/nova-market"
-            element={<ProjectNovaMarket onGoProjects={() => goTo("/projects")} />}
-          />
+            <Route
+              path="/projects/nova-market"
+              element={<ProjectNovaMarket onGoProjects={() => goTo("/projects")} />}
+            />
 
-          <Route
-            path="/projects/nordic-hearth"
-            element={<ProjectNordicHearth onGoProjects={() => goTo("/projects")} />}
-          />
+            <Route
+              path="/projects/nordic-hearth"
+              element={<ProjectNordicHearth onGoProjects={() => goTo("/projects")} />}
+            />
 
-          <Route
-            path="/projects/password-checker"
-            element={<ProjectPwned onGoProjects={() => goTo("/projects")} />}
-          />
+            <Route
+              path="/projects/password-checker"
+              element={<ProjectPwned onGoProjects={() => goTo("/projects")} />}
+            />
 
-          <Route
-            path="/projects/image-editor"
-            element={<ProjectImageEditor onGoProjects={() => goTo("/projects")} />}
-          />
+            <Route
+              path="/projects/image-editor"
+              element={<ProjectImageEditor onGoProjects={() => goTo("/projects")} />}
+            />
 
-          <Route
-            path="/projects/image-classifier"
-            element={<ProjectImageClassifier onGoProjects={() => goTo("/projects")} />}
-          />
+            <Route
+              path="/projects/image-classifier"
+              element={<ProjectImageClassifier onGoProjects={() => goTo("/projects")} />}
+            />
 
-          <Route
-            path="*"
-            element={
-              <NotFound
-                onGoHome={() => goTo("/")}
-                onGoProjects={() => goTo("/projects")}
-              />
-            }
-          />
-        </Routes>
+            <Route
+              path="/projects/hand-tracking"
+              element={<ProjectHandTracking />}
+            />
+
+            <Route
+              path="*"
+              element={
+                <NotFound
+                  onGoHome={() => goTo("/")}
+                  onGoProjects={() => goTo("/projects")}
+                />
+              }
+            />
+          </Routes>
+        </Suspense>
       </main>
 
       <Footer />

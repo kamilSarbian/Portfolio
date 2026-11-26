@@ -54,6 +54,10 @@ const PROJECT_LINKS = {
     apiDocsUrl: API_DOCS_URL,
     screenshot: null,
   },
+  handTracking: {
+    projectPath: "/projects/hand-tracking",
+    githubUrl: "https://github.com/kamilSarbian/Hand-Tracking-Project",
+  },
 };
 
 const PROJECT_CASES = [
@@ -65,6 +69,7 @@ const PROJECT_CASES = [
   { id: "hospitalityWordpress" },
   { id: "classifier", onOpenKey: "classifier" },
   { id: "imageProcessing", onOpenKey: "imageProcessing", secondary: true },
+  { id: "handTracking", onOpenKey: "handTracking", secondary: true },
 ];
 
 function CaseStudy({
@@ -216,6 +221,7 @@ export default function Projects({
   onOpenLivingPrototype,
   onOpenImageEditor,
   onOpenImageClassifier,
+  onOpenHandTracking,
 }) {
   const { t } = useTranslation();
   const projectActions = {
@@ -228,6 +234,7 @@ export default function Projects({
     livingPrototype: onOpenLivingPrototype,
     classifier: onOpenImageClassifier,
     imageProcessing: onOpenImageEditor,
+    handTracking: onOpenHandTracking,
   };
 
   return (

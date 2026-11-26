@@ -6,8 +6,10 @@ import { useTranslation } from "react-i18next";
 const STACK_ROWS = [
   ["backend", "backendValue"],
   ["data", "dataValue"],
+  ["frontend", "frontendValue"],
   ["integrations", "integrationsValue"],
   ["automation", "automationValue"],
+  ["quality", "qualityValue"],
   ["infrastructure", "infrastructureValue"],
 ];
 

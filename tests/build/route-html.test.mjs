@@ -47,14 +47,12 @@ test("portfolio metadata uses the canonical www host", () => {
   assert.equal(toCanonicalUrl("/"), `${expectedSiteUrl}/`);
 });
 
-for (const pathname of [
-  "/projects/auth-api",
-  "/projects/nova-market",
-  "/projects/nordic-hearth",
-  "/projects/hospitality-wordpress",
-]) {
+const generatedRoutes = Object.entries(ROUTE_META).filter(
+  ([pathname, route]) => pathname !== "/" && route.indexable,
+);
+
+for (const [pathname, route] of generatedRoutes) {
   test(`production HTML contains route metadata for ${pathname}`, async () => {
-    const route = ROUTE_META[pathname];
     const copy = translations.seo.routes[route.key];
     const htmlPath = path.join(
       rootDirectory,
@@ -84,17 +82,33 @@ for (const pathname of [
     assert.equal(personSchema.image, `${expectedSiteUrl}/avatar_new.png`);
     assert.ok(html.includes('<div id="root"></div>'), "Generated page must retain the SPA root.");
     assert.match(html, /<script type="module" crossorigin src="\/assets\/[^"]+\.js"><\/script>/);
-
-    assert.ok(
-      vercelConfig.rewrites.some(
-        (rewrite) =>
-          rewrite.source === pathname && rewrite.destination === `${pathname}/index.html`,
-      ),
-      `Missing Vercel rewrite for ${pathname}.`,
-    );
     assert.equal(new URL(metaContent(html, "property", "og:url")).origin, expectedSiteUrl);
   });
 }
+
+test("Vercel rewrites every generated route to its HTML before the SPA fallback", () => {
+  const { rewrites } = vercelConfig;
+  const fallbackIndex = rewrites.findIndex(({ destination }) => destination === "/index.html");
+  assert.notEqual(fallbackIndex, -1, "Missing SPA fallback rewrite.");
+
+  for (const [pathname] of generatedRoutes) {
+    const rewriteIndex = rewrites.findIndex(({ source }) => source === pathname);
+    assert.notEqual(rewriteIndex, -1, `Missing Vercel rewrite for ${pathname}.`);
+    assert.equal(
+      rewrites[rewriteIndex].destination,
+      `${pathname}/index.html`,
+      `Incorrect Vercel rewrite destination for ${pathname}.`,
+    );
+    assert.ok(rewriteIndex < fallbackIndex, `Vercel rewrite for ${pathname} must precede the SPA fallback.`);
+  }
+});
+
+test("Hand Tracking is a desktop case study without a web application or download URL", () => {
+  const route = ROUTE_META["/projects/hand-tracking"];
+  assert.equal(route.schemaType, "CreativeWork");
+  assert.ok(!Object.hasOwn(route, "applicationUrl"));
+  assert.ok(!Object.hasOwn(route, "downloadUrl"));
+});
 
 test("the hospitality prototype is a CreativeWork without deployment or repository metadata", () => {
   const route = ROUTE_META["/projects/hospitality-wordpress"];
